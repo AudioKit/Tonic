@@ -92,3 +92,5 @@ iOSInjectionProject/
 # SPM
 .swiftpm
 .build
+
+.DS_Store
