@@ -23,9 +23,12 @@ final class TonicTests: XCTestCase {
         print("blues intervals \(Scale.blues.intervals)")
         print("pentatonic intervals \(Scale.pentatonicMinor.intervals)")
         print("minor scale intervals \(Scale.minor.intervals)")
+        print("chromatic scale intervals \(Scale.chromatic.intervals)")
 
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.blues))
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.minor))
         XCTAssertFalse(Scale.blues.isSubset(of: Scale.minor))
+        XCTAssertTrue(Scale.minor.isSubset(of: Scale.chromatic))
+        XCTAssertEqual(Scale.chromatic.intervals, Interval.allCases)
     }
 }

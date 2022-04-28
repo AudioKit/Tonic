@@ -1,7 +1,7 @@
 
 import Foundation
 
-enum Interval: Int {
+enum Interval: Int, CaseIterable {
     case m2
     case M2
     case m3
