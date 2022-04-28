@@ -18,4 +18,10 @@ final class TonicTests: XCTestCase {
         let cDoubleSharp = Note(noteNumber: 62, accidental: .doubleSharp)
         XCTAssertEqual(cDoubleSharp.spelling, "C𝄪")
     }
+
+    func testBluesScale() {
+        let blues = Scale(bits: 0b1001010100)
+
+        print("blues intervals: \(blues)", blues.intervals)
+    }
 }
