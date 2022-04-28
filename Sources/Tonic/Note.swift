@@ -8,7 +8,7 @@ struct Note {
     /// Semitone shift for accidental to distinguish defferent spelling of the note.
     var accidental: Accidental = .natural
 
-    /// THe way the note is described in a musical context (usually a key or scale)
+    /// The way the note is described in a musical context (usually a key or scale)
     var spelling: String {
         let whiteKeyNoteNumber = noteNumber - accidental.rawValue
 
