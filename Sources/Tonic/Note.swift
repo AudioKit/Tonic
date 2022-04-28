@@ -12,7 +12,7 @@ struct Note {
     var spelling: String {
         let baseNote = midiNoteNumber-accidentalShift
 
-        let baseSpelling = ["C", "", "D",  "","E", "F",  "","G",  "","A",  "","B"]
+        let baseSpelling = ["C", "", "D", "", "E", "F", "", "G", "", "A", "", "B"]
         let note = baseSpelling[Int(baseNote % 12)]
         assert(note != "")
 
