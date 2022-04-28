@@ -11,5 +11,11 @@ final class TonicTests: XCTestCase {
 
         let cSharp = Note(noteNumber: 61, accidental: .sharp)
         XCTAssertEqual(cSharp.spelling, "C♯")
+
+        let dDoubleFlat = Note(noteNumber: 60, accidental: .doubleFlat)
+        XCTAssertEqual(dDoubleFlat.spelling, "D𝄫")
+
+        let cDoubleSharp = Note(noteNumber: 62, accidental: .doubleSharp)
+        XCTAssertEqual(cDoubleSharp.spelling, "C𝄪")
     }
 }
