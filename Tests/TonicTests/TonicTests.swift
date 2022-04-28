@@ -19,10 +19,13 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(cDoubleSharp.spelling, "C𝄪")
     }
 
-    func testBluesScale() {
+    func testScales() {
         print("blues intervals \(Scale.blues.intervals)")
-        print("pentatonic intervals \(Scale.pentatonic.intervals)")
+        print("pentatonic intervals \(Scale.pentatonicMinor.intervals)")
+        print("minor scale intervals \(Scale.minor.intervals)")
 
-        XCTAssertTrue(Scale.pentatonic.isSubset(of: Scale.blues))
+        XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.blues))
+        XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.minor))
+        XCTAssertFalse(Scale.blues.isSubset(of: Scale.minor))
     }
 }
