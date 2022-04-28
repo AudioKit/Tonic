@@ -21,5 +21,8 @@ final class TonicTests: XCTestCase {
 
     func testBluesScale() {
         print("blues intervals \(Scale.blues.intervals)")
+        print("pentatonic intervals \(Scale.pentatonic.intervals)")
+
+        XCTAssertTrue(Scale.pentatonic.isSubset(of: Scale.blues))
     }
 }
