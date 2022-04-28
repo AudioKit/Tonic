@@ -20,8 +20,6 @@ final class TonicTests: XCTestCase {
     }
 
     func testBluesScale() {
-        let blues = Scale(rawValue: 0b1001110100)
-
-        print("blues intervals: \(blues)", blues.intervals)
+        print("blues intervals \(Scale.blues.intervals)")
     }
 }
