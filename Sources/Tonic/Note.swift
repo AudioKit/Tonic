@@ -2,21 +2,20 @@ import Foundation
 
 struct Note {
 
-    /// 0-127 starting at C
-    var midiNoteNumber: Int8
+    /// MIDI Note 0-127 starting at C
+    var noteNumber: Int8
 
     /// Semitone shift for accidental to distinguish defferent spelling of the note.
-    var accidentalShift: Int8
+    var accidental: Accidental = .natural
 
+    /// THe way the note is described in a musical context (usually a key or scale)
     var spelling: String {
-        let baseNote = midiNoteNumber-accidentalShift
+        let whiteKeyNoteNumber = noteNumber - accidental.rawValue
 
-        let baseSpelling = ["C", "", "D", "", "E", "F", "", "G", "", "A", "", "B"]
-        let note = baseSpelling[Int(baseNote % 12)]
-        assert(note != "")
+        let letters: [Letter?] = [.C, nil, .D, nil, .E, .F, nil, .G, nil, .A, nil, .B]
+        let letter = letters[Int(whiteKeyNoteNumber % 12)]
+        guard let letter = letter else { fatalError() }
 
-        let accidental = ["𝄫", "♭", "", "♯", "𝄪"][Int(accidentalShift) + 2]
-
-        return note + accidental
+        return "\(letter)\(accidental)"
     }
 }

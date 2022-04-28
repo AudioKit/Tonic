@@ -3,13 +3,13 @@ import XCTest
 
 final class TonicTests: XCTestCase {
     func testNoteSpelling() {
-        let note = Note(midiNoteNumber: 60, accidentalShift: 0)
-        XCTAssertEqual(note.spelling, "C")
+        let c = Note(noteNumber: 60)
+        XCTAssertEqual(c.spelling, "C")
 
-        let note2 = Note(midiNoteNumber: 61, accidentalShift: -1)
-        XCTAssertEqual(note2.spelling, "D♭")
+        let dFlat = Note(noteNumber: 61, accidental: .flat)
+        XCTAssertEqual(dFlat.spelling, "D♭")
 
-        let note3 = Note(midiNoteNumber: 61, accidentalShift: 1)
-        XCTAssertEqual(note3.spelling, "C♯")
+        let cSharp = Note(noteNumber: 61, accidental: .sharp)
+        XCTAssertEqual(cSharp.spelling, "C♯")
     }
 }
