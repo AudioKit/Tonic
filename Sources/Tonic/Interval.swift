@@ -2,8 +2,8 @@
 import Foundation
 
 enum Interval: UInt8 {
-    case d2
     case m2
+    case M2
     case m3
     case M3
     case P4
