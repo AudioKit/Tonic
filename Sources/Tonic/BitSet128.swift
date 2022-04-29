@@ -32,4 +32,14 @@ struct BitSet128 {
     var count: Int {
         low.nonzeroBitCount + high.nonzeroBitCount
     }
+
+    mutating func shift(bits: Int) {
+        if bits > 0 {
+            high <<= bits
+            // How many do we have to copy from low to high?
+            let lowToHigh = (low << (64 - bits)) & ((1 << bits) - 1)
+            high |= lowToHigh
+            low <<= bits
+        }
+    }
 }
