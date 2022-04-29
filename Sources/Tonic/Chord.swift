@@ -20,21 +20,32 @@ struct Chord {
         noteCount == 3
     }
 
+    var notes: [Note] {
+        var r: [Note] = []
+        for root in 0..<128 {
+            let n = Note(noteNumber: Int8(root))
+            if contains(note: n) {
+                r.append(n)
+            }
+        }
+        return r
+    }
+
     /// Add a note to a chord.
     mutating func add(note: Note) {
-        if note.noteNumber < 63 {
+        if note.noteNumber < 64 {
             lowNotes |= 1 << note.noteNumber
         } else {
-            highNotes |= 1 << (note.noteNumber-64)
+            highNotes |= 1 << (note.noteNumber - 64)
         }
     }
 
     /// Is a note in a chord?
     func contains(note: Note) -> Bool {
-        if note.noteNumber < 63 {
+        if note.noteNumber < 64 {
             return (lowNotes & (1 << note.noteNumber)) != 0
         } else {
-            return (highNotes & (1 << (note.noteNumber-64))) != 0
+            return (highNotes & (1 << (note.noteNumber - 64))) != 0
         }
     }
 
@@ -42,7 +53,7 @@ struct Chord {
         if semitones > 0 {
             highNotes <<= semitones
             // How many do we have to copy from low to high?
-            let lowToHigh = (lowNotes << (64 - semitones)) & ((1 << semitones)-1)
+            let lowToHigh = (lowNotes << (64 - semitones)) & ((1 << semitones) - 1)
             highNotes |= lowToHigh
             lowNotes <<= semitones
         }
@@ -53,16 +64,16 @@ func generateTriads() -> [Chord] {
 
     var chords: [Chord] = []
     for root in 0..<127 {
-        var chord = Chord()
-        if root + Interval.P5.rawValue > 127 {
+        if root + 7 >= 127 {
             continue
         }
-        chord.add(note: Note(noteNumber: Int8(root)))
-        for third in [Interval.m3, Interval.M3] {
-            chord.add(note: Note(noteNumber: Int8(root + third.rawValue)))
-            chord.add(note: Note(noteNumber: Int8(root + Interval.P5.rawValue)))
+        for third in [3, 4] {
+            var chord = Chord()
+            chord.add(note: Note(noteNumber: Int8(root)))
+            chord.add(note: Note(noteNumber: Int8(root + third)))
+            chord.add(note: Note(noteNumber: Int8(root + 7)))
+            chords.append(chord)
         }
-        chords.append(chord)
     }
     return chords
 }

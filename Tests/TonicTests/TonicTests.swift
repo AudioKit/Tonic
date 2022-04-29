@@ -40,4 +40,14 @@ final class TonicTests: XCTestCase {
         chord.add(note: Note(noteNumber: 67))
         XCTAssertTrue(chord.isTriad)
     }
+
+    func testGenerateTriads() {
+        let chords = generateTriads()
+//        print(chords.map({$0.notes.map({$0.spelling})}))
+        print(chords.count)
+        for chord in chords where !chord.isTriad {
+            print(chord.notes.map({$0.spelling}))
+        }
+        XCTAssert(chords.allSatisfy({ $0.isTriad }))
+    }
 }

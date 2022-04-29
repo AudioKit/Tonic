@@ -14,6 +14,10 @@ struct Note {
 
         let letters: [Letter?] = [.C, nil, .D, nil, .E, .F, nil, .G, nil, .A, nil, .B]
         let letter = letters[Int(whiteKeyNoteNumber % 12)]
+        if accidental == .natural && letter == nil {
+            let newLetter = letters[Int(whiteKeyNoteNumber % 12) - 1]
+            return "\(newLetter!)\(Accidental.sharp)"
+        }
         guard let letter = letter else { fatalError() }
 
         return "\(letter)\(accidental)"
