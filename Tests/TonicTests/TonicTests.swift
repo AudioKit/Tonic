@@ -19,6 +19,15 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(cDoubleSharp.spelling, "C𝄪")
     }
 
+    func testNoteShift() {
+        let d = Note(noteNumber: 60).shift(.M2)
+        XCTAssertEqual(d.spelling, "D")
+
+        let eFlat = Note(noteNumber: 60).shift(.m3)
+        XCTAssertEqual(eFlat.spelling, "E♭")
+
+    }
+
     func testScales() {
         print("blues intervals \(Scale.blues.intervals)")
         print("pentatonic intervals \(Scale.pentatonicMinor.intervals)")
@@ -43,11 +52,7 @@ final class TonicTests: XCTestCase {
 
     func testGenerateTriads() {
         let chords = generateTriads()
-//        print(chords.map({$0.notes.map({$0.spelling})}))
-        print(chords.count)
-        for chord in chords where !chord.isTriad {
-            print(chord.notes.map({$0.spelling}))
-        }
+        print(chords.map({$0.notes.map({$0.spelling})}))
         XCTAssert(chords.allSatisfy({ $0.isTriad }))
     }
 }

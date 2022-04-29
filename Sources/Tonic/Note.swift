@@ -22,4 +22,8 @@ struct Note {
 
         return "\(letter)\(accidental)"
     }
+
+    func shift(_ shift: Interval) -> Note {
+        return Note(noteNumber: noteNumber + Int8(shift.semitones))
+    }
 }

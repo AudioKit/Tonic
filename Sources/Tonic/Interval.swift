@@ -13,4 +13,8 @@ enum Interval: Int, CaseIterable {
     case M6
     case m7
     case M7
+
+    var semitones: Int {
+        return rawValue + 1 // Fix later
+    }
 }
