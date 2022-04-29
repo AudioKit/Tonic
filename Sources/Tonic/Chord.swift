@@ -1,6 +1,7 @@
 
 import Foundation
 
+/// Chord addresses all possible combinations of simultaneous MIDI notes.
 struct Chord {
 
     // Since we don't have a UInt128
