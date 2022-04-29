@@ -4,7 +4,7 @@ import Foundation
 /// Chord addresses all possible combinations of simultaneous MIDI notes.
 struct Chord {
 
-    // Since we don't have a UInt128
+    // Since we don't have a UInt128, we use two UInt64s.
     var highNotes: UInt64 = 0
     var lowNotes: UInt64 = 0
 
