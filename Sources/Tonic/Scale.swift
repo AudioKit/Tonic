@@ -16,6 +16,18 @@ struct Scale: OptionSet {
         return result
     }
 
+    init(rawValue: Int) {
+        self.rawValue = rawValue
+    }
+
+    init(intervals: [Interval]) {
+        var r = 0
+        for interval in intervals {
+            r |= (1 << interval.rawValue)
+        }
+        self.rawValue = r
+    }
+
     static let pentatonicMinor = Scale(rawValue: 0b1001010100)
     static let blues = Scale(rawValue: 0b1001110100)
     static let minor = Scale(rawValue: 0b1011010110)
