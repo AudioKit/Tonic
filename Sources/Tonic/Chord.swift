@@ -8,6 +8,12 @@ struct Chord {
     var highNotes: UInt64 = 0
     var lowNotes: UInt64 = 0
 
+    init(notes: [Note]) {
+        for n in notes {
+            add(note: n)
+        }
+    }
+
     var noteCount: Int {
         lowNotes.nonzeroBitCount + highNotes.nonzeroBitCount
     }
@@ -89,10 +95,11 @@ func generateTriads() -> [Chord] {
             continue
         }
         for third in [3, 4] {
-            var chord = Chord()
-            chord.add(note: Note(noteNumber: Int8(root)))
-            chord.add(note: Note(noteNumber: Int8(root + third)))
-            chord.add(note: Note(noteNumber: Int8(root + 7)))
+            let chord = Chord(notes: [
+                Note(noteNumber: Int8(root)),
+                Note(noteNumber: Int8(root + third)),
+                Note(noteNumber: Int8(root + 7))
+            ])
             chords.append(chord)
         }
     }
