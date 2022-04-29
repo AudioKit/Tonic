@@ -32,4 +32,12 @@ final class TonicTests: XCTestCase {
         XCTAssertTrue(Scale.minor.isSubset(of: Scale.chromatic))
         XCTAssertEqual(Scale.chromatic.intervals, Interval.allCases)
     }
+
+    func testChords() {
+        var chord = Chord()
+        chord.add(note: Note(noteNumber: 60))
+        chord.add(note: Note(noteNumber: 64))
+        chord.add(note: Note(noteNumber: 67))
+        XCTAssertTrue(chord.isTriad)
+    }
 }
