@@ -48,3 +48,21 @@ struct Chord {
         }
     }
 }
+
+func generateTriads() -> [Chord] {
+
+    var chords: [Chord] = []
+    for root in 0..<127 {
+        var chord = Chord()
+        if root + Interval.P5.rawValue > 127 {
+            continue
+        }
+        chord.add(note: Note(noteNumber: Int8(root)))
+        for third in [Interval.m3, Interval.M3] {
+            chord.add(note: Note(noteNumber: Int8(root + third.rawValue)))
+            chord.add(note: Note(noteNumber: Int8(root + Interval.P5.rawValue)))
+        }
+        chords.append(chord)
+    }
+    return chords
+}
