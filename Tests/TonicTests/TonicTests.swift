@@ -3,29 +3,36 @@ import XCTest
 
 final class TonicTests: XCTestCase {
     func testNoteSpelling() {
-        let c = Note(noteNumber: 60)
-        XCTAssertEqual(c.spelling, "C")
-        XCTAssertEqual(c.letter, .C)
+        let c4 = Note()
+        XCTAssertEqual(c4.noteNumber, 60)
+        XCTAssertEqual(c4.spelling, "C")
 
-        let dFlat = Note(noteNumber: 61, accidental: .flat)
+        let c5 = Note(octave: 5)
+        XCTAssertEqual(c5.noteNumber, 72)
+        XCTAssertEqual(c5.spelling, "C")
+
+        let dFlat = Note(letter: .D, accidental: .flat)
+        XCTAssertEqual(dFlat.noteNumber, 61)
         XCTAssertEqual(dFlat.spelling, "D♭")
-        XCTAssertEqual(dFlat.letter, .D)
 
-        let cSharp = Note(noteNumber: 61, accidental: .sharp)
+        let cSharp = Note(accidental: .sharp)
+        XCTAssertEqual(cSharp.noteNumber, 61)
         XCTAssertEqual(cSharp.spelling, "C♯")
 
-        let dDoubleFlat = Note(noteNumber: 60, accidental: .doubleFlat)
+        let dDoubleFlat = Note(letter: .D, accidental: .doubleFlat)
+        XCTAssertEqual(dDoubleFlat.noteNumber, 60)
         XCTAssertEqual(dDoubleFlat.spelling, "D𝄫")
 
-        let cDoubleSharp = Note(noteNumber: 62, accidental: .doubleSharp)
+        let cDoubleSharp = Note(accidental: .doubleSharp)
+        XCTAssertEqual(cDoubleSharp.noteNumber, 62)
         XCTAssertEqual(cDoubleSharp.spelling, "C𝄪")
     }
 
     func testNoteShift() {
-        let d = Note(noteNumber: 60).shift(.M2)
+        let d = Note().shift(.M2)
         XCTAssertEqual(d.spelling, "D")
 
-        let eFlat = Note(noteNumber: 60).shift(.m3)
+        let eFlat = Note().shift(.m3)
          XCTAssertEqual(eFlat.spelling, "E♭")
 
     }
@@ -45,7 +52,7 @@ final class TonicTests: XCTestCase {
     }
 
     func testChords() {
-        let chord = Chord(notes: [Note(noteNumber: 60), Note(noteNumber: 64), Note(noteNumber: 67)])
+        let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
         XCTAssertTrue(chord.isTriad)
     }
 
@@ -59,11 +66,11 @@ final class TonicTests: XCTestCase {
     }
 
     func testChordHausdorff() {
-        let C = Chord(notes: [Note(noteNumber: 60), Note(noteNumber: 64), Note(noteNumber: 67)])
+        let C = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
 
         XCTAssertEqual(C.hausdorff(to: C), 0)
 
-        let Cm = Chord(notes: [Note(noteNumber: 60), Note(noteNumber: 63), Note(noteNumber: 67)])
+        let Cm = Chord(notes: [Note(), Note(letter: .E, accidental: .flat), Note(letter: .G)])
 
         XCTAssertEqual(C.hausdorff(to: Cm), 1)
     }

@@ -2,62 +2,37 @@ import Foundation
 
 struct Note {
 
-    /// MIDI Note 0-127 starting at C
-    var noteNumber: Int8
+    /// Base name for the note
+    var letter: Letter = .C
 
-    /// Semitone shift for accidental to distinguish defferent spelling of the note.
+    /// Semitone shift for the letter
     var accidental: Accidental = .natural
 
-    init(noteNumber: Int8, accidental: Accidental? = nil) {
-        self.noteNumber = noteNumber
-        if accidental == nil {
-            for accidental in Accidental.allCases {
-                let nn = Int(noteNumber) - Int(accidental.rawValue)
-                if nn < 0 || nn > 127 {
-                    continue
-                }
-                let base = Note(noteNumber: Int8(nn), accidental: .natural)
-                if base.letter == letter {
-                    self.accidental = accidental
-                }
-            }
-        } else {
-            self.accidental = accidental!
-        }
+    /// Range from -1 to 7
+    var octave: Int = 4
+
+    init(letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 4) {
+        self.letter = letter
+        self.accidental = accidental
+        self.octave = octave
     }
 
-    init(noteNumber: Int8, letter: Letter) {
-        self.noteNumber = noteNumber
-        for accidental in Accidental.allCases {
-            let nn = Int(noteNumber) - Int(accidental.rawValue)
-            if nn < 0 || nn > 127 {
-                continue
-            }
-            let base = Note(noteNumber: Int8(nn))
-            if base.accidental == .natural && base.letter == letter {
-                self.accidental = accidental
-            }
-        }
+    init(noteNumber: UInt8) {
+        let letters: [Letter] = [.C, .C, .D, .D, .E, .F, .F, .G, .G, .A, .A, .B]
+        letter = letters[Int(noteNumber % 12)]
+
+        let accidentals: [Accidental] = [.natural, .sharp, .natural, .sharp, .natural, .natural, .sharp, .natural, .sharp, .natural, .sharp, .natural]
+        accidental = accidentals[Int(noteNumber % 12)]
+        octave = Int(Double(noteNumber) / 12) - 1
     }
 
-    var letter: Letter {
-        let whiteKeyNoteNumber = noteNumber - accidental.rawValue
-        let letters: [Letter?] = [.C, nil, .D, nil, .E, .F, nil, .G, nil, .A, nil, .B]
-        return letters[Int(whiteKeyNoteNumber % 12)] ?? letters[Int(whiteKeyNoteNumber % 12) - 1]!
+    /// MIDI Note 0-127 starting at C
+    var noteNumber: Int8 {
+        return Int8((octave + 1) * 12) + Int8(letter.baseNote) + accidental.rawValue
     }
 
     /// The way the note is described in a musical context (usually a key or scale)
     var spelling: String {
-        let whiteKeyNoteNumber = noteNumber - accidental.rawValue
-
-        let letters: [Letter?] = [.C, nil, .D, nil, .E, .F, nil, .G, nil, .A, nil, .B]
-        let letter = letters[Int(whiteKeyNoteNumber % 12)]
-        if accidental == .natural && letter == nil {
-            let newLetter = letters[Int(whiteKeyNoteNumber % 12) - 1]
-            return "\(newLetter!)\(Accidental.sharp)"
-        }
-        guard let letter = letter else { return ""}
-
         return "\(letter)\(accidental)"
     }
 
@@ -66,9 +41,16 @@ struct Note {
     }
 
     func shift(_ shift: Interval) -> Note {
-        let letters: [Letter] = [.C, .D, .E, .F, .G, .A, .B]
-        let newLetterIndex = (letters.firstIndex(of: letter)! + (shift.degree - 1)) % letters.count
-        let letter = letters[newLetterIndex]
-        return Note(noteNumber: noteNumber + Int8(shift.semitones), letter: letter)
+        var newNote = Note(letter: .C, accidental: .natural, octave: 0)
+        let newLetterIndex = (letter.rawValue + (shift.degree - 1))
+        let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
+        let newOctave = octave + (newLetterIndex >= Letter.allCases.count ? 1 : 0)
+        for accidental in Accidental.allCases {
+            newNote = Note(letter: newLetter, accidental: accidental, octave: newOctave)
+            if newNote.noteNumber == Int8(noteNumber) + Int8(shift.semitones) {
+                return newNote
+            }
+        }
+        fatalError()
     }
 }

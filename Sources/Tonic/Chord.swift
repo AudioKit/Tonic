@@ -45,7 +45,7 @@ struct Chord {
     /// Calls a function for each note in the chord.
     func forEachNote(_ f: (Note) -> ()) {
         noteSet.forEach { bit in
-            f(Note(noteNumber: Int8(bit)))
+            f(Note(noteNumber: UInt8(bit)))
         }
     }
 
@@ -78,19 +78,17 @@ struct Chord {
 func generateTriads() -> [Chord2] {
 
     var chords: [Chord2] = []
-    for root in 0..<127 {
-        if root + 7 >= 127 {
-            continue
-        }
-        let rootNote1 = Note(noteNumber: Int8(root))
-        var rootNotes = [rootNote1]
-        if rootNote1.accidental == .sharp {
-            rootNotes.append(Note(noteNumber: Int8(root), accidental: .flat))
-        }
-
-        for rootNote in rootNotes {
-            for third in [Interval.m3, Interval.M3] {
-                chords.append(Chord2(notes: [rootNote, rootNote.shift(third), rootNote.shift(Interval.P5)]))
+    for octave in -1...7 {
+        let accidentals: [Accidental] = [.flat, .natural, .sharp]
+        for accidental in  accidentals {
+            for letter in Letter.allCases {
+                let root = Note(letter: letter, accidental: accidental, octave: octave)
+                if root.noteNumber + 7 >= 127 {
+                    continue
+                }
+                for third in [Interval.m3, Interval.M3] {
+                    chords.append(Chord2(notes: [root, root.shift(third), root.shift(.P5)]))
+                }
             }
         }
     }
