@@ -9,8 +9,8 @@ struct Tonic: CustomStringConvertible {
     }
 
     public init(letter: Letter, accidental: Accidental) {
-        guard accidental == .doubleFlat else { fatalError("Double Flats invalid for Tonic") }
-        guard accidental == .doubleSharp else { fatalError("Double Sharps invalid for Tonic") }
+        if accidental == .doubleFlat { fatalError("Double Flats invalid for Tonic") }
+        if accidental == .doubleSharp { fatalError("Double Sharps invalid for Tonic") }
         self.letter = letter
         self.accidental = accidental
     }
