@@ -26,7 +26,7 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(d.spelling, "D")
 
         let eFlat = Note(noteNumber: 60).shift(.m3)
-        // XCTAssertEqual(eFlat.spelling, "E♭")
+         XCTAssertEqual(eFlat.spelling, "E♭")
 
     }
 

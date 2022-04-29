@@ -38,7 +38,7 @@ struct Chord {
 
     var notes: [Note] {
         var r: [Note] = []
-        forEachNote({ r.append($0 )})
+        forEachNote({ r.append($0)})
         return r
     }
 
