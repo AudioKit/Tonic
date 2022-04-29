@@ -57,4 +57,20 @@ final class TonicTests: XCTestCase {
         print(chords.map({$0.notes.map({$0.spelling})}))
         XCTAssert(chords.allSatisfy({ $0.isTriad }))
     }
+
+    func testChordHausdorff() {
+        var C = Chord()
+        C.add(note: Note(noteNumber: 60))
+        C.add(note: Note(noteNumber: 64))
+        C.add(note: Note(noteNumber: 67))
+
+        XCTAssertEqual(C.hausdorff(to: C), 0)
+
+        var Cm = Chord()
+        Cm.add(note: Note(noteNumber: 60))
+        Cm.add(note: Note(noteNumber: 63))
+        Cm.add(note: Note(noteNumber: 67))
+
+        XCTAssertEqual(C.hausdorff(to: Cm), 1)
+    }
 }

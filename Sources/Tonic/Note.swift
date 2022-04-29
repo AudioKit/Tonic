@@ -29,6 +29,10 @@ struct Note {
         return "\(letter)\(accidental)"
     }
 
+    func semitones(to: Note) -> Int {
+        abs(Int(noteNumber - to.noteNumber))
+    }
+
     func shift(_ shift: Interval) -> Note {
         return Note(noteNumber: noteNumber + Int8(shift.semitones))
     }

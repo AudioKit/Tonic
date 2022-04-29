@@ -58,6 +58,23 @@ struct Chord {
             lowNotes <<= semitones
         }
     }
+
+    /// One-sided Hausdorff distance to another chord.
+    ///
+    /// https://en.wikipedia.org/wiki/Hausdorff_distance
+    func hausdorff(to: Chord) -> Int {
+        let myNotes = self.notes
+        let otherNotes = to.notes
+        var d_sup = 0
+        for n0 in myNotes {
+            var d_inf = Int.max
+            for n1 in otherNotes {
+                d_inf = min(d_inf, n0.semitones(to: n1))
+            }
+            d_sup = max(d_sup, d_inf)
+        }
+        return d_sup
+    }
 }
 
 func generateTriads() -> [Chord] {
