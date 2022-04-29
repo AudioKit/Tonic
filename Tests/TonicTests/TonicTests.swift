@@ -22,6 +22,7 @@ final class TonicTests: XCTestCase {
     func testScales() {
         print("blues intervals \(Scale.blues.intervals)")
         print("pentatonic intervals \(Scale.pentatonicMinor.intervals)")
+        print("major scale intervales \(Scale.major.intervals)")
         print("minor scale intervals \(Scale.minor.intervals)")
         print("chromatic scale intervals \(Scale.chromatic.intervals)")
 
