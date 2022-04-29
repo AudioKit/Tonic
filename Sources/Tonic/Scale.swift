@@ -15,8 +15,8 @@ struct Scale: OptionSet {
         return result
     }
 
-    static let pentatonicMinor: Scale = Scale(rawValue: 0b1001010100)
-    static let blues: Scale = Scale(rawValue: 0b1001110100)
-    static let minor: Scale = Scale(rawValue: 0b1011010110)
+    static let pentatonicMinor = Scale(rawValue: 0b1001010100)
+    static let blues = Scale(rawValue: 0b1001110100)
+    static let minor = Scale(rawValue: 0b1011010110)
     static let chromatic = Scale(rawValue: 0b11111111111)
 }
