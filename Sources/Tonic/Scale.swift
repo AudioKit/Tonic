@@ -1,6 +1,7 @@
 
 import Foundation
 
+/// A set of intervals from the root (tonic).
 struct Scale: OptionSet {
     let rawValue: Int
 
