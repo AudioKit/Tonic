@@ -53,6 +53,7 @@ final class TonicTests: XCTestCase {
         let chords = generateTriads()
         print(chords.map({$0.notes.map({$0.spelling})}))
         XCTAssert(chords.allSatisfy({ $0.isTriad }))
+        print(chords.count)
     }
 
     func testChordHausdorff() {

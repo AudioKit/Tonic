@@ -8,9 +8,22 @@ struct Note {
     /// Semitone shift for accidental to distinguish defferent spelling of the note.
     var accidental: Accidental = .natural
 
-    init(noteNumber: Int8, accidental: Accidental = .natural) {
+    init(noteNumber: Int8, accidental: Accidental? = nil) {
         self.noteNumber = noteNumber
-        self.accidental = accidental
+        if accidental == nil {
+            for accidental in Accidental.allCases {
+                let nn = Int(noteNumber) - Int(accidental.rawValue)
+                if nn < 0 || nn > 127 {
+                    continue
+                }
+                let base = Note(noteNumber: Int8(nn), accidental: .natural)
+                if base.letter == letter {
+                    self.accidental = accidental
+                }
+            }
+        } else {
+            self.accidental = accidental!
+        }
     }
 
     init(noteNumber: Int8, letter: Letter) {
@@ -25,7 +38,6 @@ struct Note {
                 self.accidental = accidental
             }
         }
-        print(self.spelling)
     }
 
     var letter: Letter {
