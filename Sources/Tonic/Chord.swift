@@ -5,8 +5,8 @@ import Foundation
 struct Chord {
 
     // Since we don't have a UInt128, we use two UInt64s.
-    var highNotes: UInt64 = 0
-    var lowNotes: UInt64 = 0
+    private var highNotes: UInt64 = 0
+    private var lowNotes: UInt64 = 0
 
     init(notes: [Note]) {
         for n in notes {
