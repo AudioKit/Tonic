@@ -22,13 +22,17 @@ struct Chord {
 
     var notes: [Note] {
         var r: [Note] = []
+        forEachNote({ r.append($0 )})
+        return r
+    }
+
+    func forEachNote(_ f: (Note) -> ()) {
         for root in 0..<128 {
             let n = Note(noteNumber: Int8(root))
             if contains(note: n) {
-                r.append(n)
+                f(n)
             }
         }
-        return r
     }
 
     /// Add a note to a chord.
