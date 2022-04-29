@@ -5,9 +5,11 @@ final class TonicTests: XCTestCase {
     func testNoteSpelling() {
         let c = Note(noteNumber: 60)
         XCTAssertEqual(c.spelling, "C")
+        XCTAssertEqual(c.letter, .C)
 
         let dFlat = Note(noteNumber: 61, accidental: .flat)
         XCTAssertEqual(dFlat.spelling, "D♭")
+        XCTAssertEqual(dFlat.letter, .D)
 
         let cSharp = Note(noteNumber: 61, accidental: .sharp)
         XCTAssertEqual(cSharp.spelling, "C♯")
