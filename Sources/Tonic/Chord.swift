@@ -73,12 +73,10 @@ struct Chord {
     ///
     /// https://en.wikipedia.org/wiki/Hausdorff_distance
     func hausdorff(to: Chord) -> Int {
-        let myNotes = self.notes
-        let otherNotes = to.notes
         var d_sup = 0
-        for n0 in myNotes {
+        self.forEachNote { n0 in
             var d_inf = Int.max
-            for n1 in otherNotes {
+            to.forEachNote { n1 in
                 d_inf = min(d_inf, n0.semitones(to: n1))
             }
             d_sup = max(d_sup, d_inf)
