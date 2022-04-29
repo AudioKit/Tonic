@@ -37,4 +37,14 @@ struct Chord {
             return (highNotes & (1 << (note.noteNumber-64))) != 0
         }
     }
+
+    mutating func shift(semitones: Int) {
+        if semitones > 0 {
+            highNotes <<= semitones
+            // How many do we have to copy from low to high?
+            let lowToHigh = (lowNotes << (64 - semitones)) & ((1 << semitones)-1)
+            highNotes |= lowToHigh
+            lowNotes <<= semitones
+        }
+    }
 }
