@@ -51,7 +51,9 @@ final class TonicTests: XCTestCase {
 
     func testGenerateTriads() {
         let chords = generateTriads()
-        print(chords.map({$0.notes.map({$0.spelling})}))
+        for chord in chords {
+            print(chord.notes.map { $0.spelling }.joined(separator: " "))
+        }
         XCTAssert(chords.allSatisfy({ $0.isTriad }))
         print(chords.count)
     }
