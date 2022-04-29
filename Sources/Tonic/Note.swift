@@ -8,6 +8,26 @@ struct Note {
     /// Semitone shift for accidental to distinguish defferent spelling of the note.
     var accidental: Accidental = .natural
 
+    init(noteNumber: Int8, accidental: Accidental = .natural) {
+        self.noteNumber = noteNumber
+        self.accidental = accidental
+    }
+
+    init(noteNumber: Int8, letter: Letter) {
+        self.noteNumber = noteNumber
+        for accidental in Accidental.allCases {
+            let nn = Int(noteNumber) - Int(accidental.rawValue)
+            if nn < 0 || nn > 127 {
+                continue
+            }
+            let base = Note(noteNumber: Int8(nn))
+            if base.accidental == .natural && base.letter == letter {
+                self.accidental = accidental
+            }
+        }
+        print(self.spelling)
+    }
+
     var letter: Letter {
         let whiteKeyNoteNumber = noteNumber - accidental.rawValue
         let letters: [Letter?] = [.C, nil, .D, nil, .E, .F, nil, .G, nil, .A, nil, .B]
@@ -24,7 +44,7 @@ struct Note {
             let newLetter = letters[Int(whiteKeyNoteNumber % 12) - 1]
             return "\(newLetter!)\(Accidental.sharp)"
         }
-        guard let letter = letter else { fatalError() }
+        guard let letter = letter else { return ""}
 
         return "\(letter)\(accidental)"
     }
@@ -34,6 +54,9 @@ struct Note {
     }
 
     func shift(_ shift: Interval) -> Note {
-        return Note(noteNumber: noteNumber + Int8(shift.semitones))
+        let letters: [Letter] = [.C, .D, .E, .F, .G, .A, .B]
+        let newLetterIndex = (letters.firstIndex(of: letter)! + (shift.degree - 1)) % letters.count
+        let letter = letters[newLetterIndex]
+        return Note(noteNumber: noteNumber + Int8(shift.semitones), letter: letter)
     }
 }

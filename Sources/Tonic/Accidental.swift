@@ -1,6 +1,6 @@
 import Foundation
 
-enum Accidental: Int8, CustomStringConvertible {
+enum Accidental: Int8, CustomStringConvertible, CaseIterable {
     case doubleFlat = -2
     case flat = -1
     case natural = 0

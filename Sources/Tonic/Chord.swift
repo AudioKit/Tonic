@@ -93,12 +93,12 @@ func generateTriads() -> [Chord] {
         if root + 7 >= 127 {
             continue
         }
-        for third in [3, 4] {
-            let chord = Chord(notes: [
-                Note(noteNumber: Int8(root)),
-                Note(noteNumber: Int8(root + third)),
-                Note(noteNumber: Int8(root + 7))
-            ])
+        for third in [Interval.m3, Interval.M3] {
+            let rootNote = Note(noteNumber: Int8(root))
+            var chord = Chord(notes: [rootNote])
+            chord.add(note: rootNote.shift(third))
+            chord.add(note: rootNote.shift(Interval.P5))
+            print(chord.notes)
             chords.append(chord)
         }
     }
