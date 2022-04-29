@@ -8,8 +8,16 @@ struct Chord {
     var highNotes: UInt64 = 0
     var lowNotes: UInt64 = 0
 
+    var noteCount: Int {
+        lowNotes.nonzeroBitCount + highNotes.nonzeroBitCount
+    }
+
+    var isDyad: Bool {
+        noteCount == 2
+    }
+
     var isTriad: Bool {
-        lowNotes.nonzeroBitCount + highNotes.nonzeroBitCount == 3
+        noteCount == 3
     }
 
     /// Add a note to a chord.
