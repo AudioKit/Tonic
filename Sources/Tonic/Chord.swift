@@ -32,6 +32,7 @@ struct Chord {
         return r
     }
 
+    /// Calls a function for each note in the chord.
     func forEachNote(_ f: (Note) -> ()) {
         for root in 0..<128 {
             let n = Note(noteNumber: Int8(root))
