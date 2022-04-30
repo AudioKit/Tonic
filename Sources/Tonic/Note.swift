@@ -16,11 +16,9 @@ public struct Note: Equatable, Hashable {
         self.octave = octave
     }
 
-    public init(pitch: Pitch, key: Key) {
-        self.init(noteNumber: pitch.noteNumber, key: key)
-    }
+    public init(pitch: Pitch, key: Key = .C) {
 
-    public init(noteNumber: Int8, key: Key = Key.C) {
+        let noteNumber = pitch.noteNumber
         let baseNoteNumber = noteNumber % 12
 
         let keyNotes = key.notes.map { $0.noteNumber % 12 }
@@ -61,14 +59,19 @@ public struct Note: Equatable, Hashable {
         return Int8(octaveShift) + Int8(note)
     }
 
+    public var pitch: Pitch {
+        let octaveShift = UInt8((octave + 1) * 12)
+        let note = Int(letter.baseNote) + Int(accidental.rawValue)
+        return Pitch(Int8(octaveShift) + Int8(note))
+    }
+
     /// The way the note is described in a musical context (usually a key or scale)
     public var spelling: String {
         return "\(letter)\(accidental)"
     }
 
     func spelling(in key: Key) -> String {
-        let note = Note(noteNumber: noteNumber, key: key)
-        return note.spelling
+        Note(pitch: pitch, key: key).spelling
     }
 
     public func semitones(to: Note) -> Int {

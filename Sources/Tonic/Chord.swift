@@ -12,12 +12,6 @@ public struct Chord {
         }
     }
 
-    public init(noteNumbers: [Int8]) {
-        for n in noteNumbers {
-            noteSet.add(note: Note(noteNumber: n))
-        }
-    }
-
     public var noteCount: Int {
         notes.count
     }
