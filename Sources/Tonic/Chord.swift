@@ -93,6 +93,7 @@ struct Chord {
 
 }
 
+/// A table of note sets so we can look up chord names.
 class ChordTable {
 
     static let shared = ChordTable()
