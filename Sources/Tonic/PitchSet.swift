@@ -30,4 +30,12 @@ public struct PitchSet: Hashable, Equatable {
     public var count: Int {
         bits.count
     }
+
+    func chord(in key: Key) -> Chord {
+        var c = Chord(notes: [])
+        forEachPitch { p in
+            c.add(note: p.note(in: key))
+        }
+        return c
+    }
 }
