@@ -75,11 +75,11 @@ struct Chord {
     func name(in key: Key) -> String {
 
         if let root = Chord.minorTriadRoots[pitchClasses(in: key)] {
-            return "\(root)m"
+            return "\(root.spelling)m"
         }
 
         if let root = Chord.majorTriadRoots[pitchClasses(in: key)] {
-            return root
+            return root.spelling
         }
 
         return "unknown chord"
@@ -97,25 +97,25 @@ struct Chord {
         return r
     }
 
-    static var majorTriadRoots: [Set<Note>: String] {
-        var r: [Set<Note>: String] = [:]
+    static var majorTriadRoots: [Set<Note>: Note] {
+        var r: [Set<Note>: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                r[Set<Note>([root, root.shift(.M3), root.shift(.P5)].map {$0.pitchClass})] = root.spelling
+                r[Set<Note>([root, root.shift(.M3), root.shift(.P5)].map {$0.pitchClass})] = root
             }
         }
         return r
     }
 
-    static var minorTriadRoots: [Set<Note>: String] {
-        var r: [Set<Note>: String] = [:]
+    static var minorTriadRoots: [Set<Note>: Note] {
+        var r: [Set<Note>: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                r[Set<Note>([root, root.shift(.m3), root.shift(.P5)].map {$0.pitchClass})] = root.spelling
+                r[Set<Note>([root, root.shift(.m3), root.shift(.P5)].map {$0.pitchClass})] = root
             }
         }
         return r
