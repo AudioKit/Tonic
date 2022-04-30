@@ -135,6 +135,32 @@ class ChordTable {
         return r
     }()
 
+    lazy var diminishedTriadRoots: [Int: Note] = {
+        var r: [Int: Note] = [:]
+        let accidentals: [Accidental] = [.flat, .natural, .sharp]
+        for accidental in  accidentals {
+            for letter in Letter.allCases {
+                let root = Note(letter, accidental: accidental)
+                r[hashPitchClasses(notes: [root, root.shift(.m3), root.shift(.d5)])] = root
+            }
+        }
+        print("generated \(r.count) diminished triads")
+        return r
+    }()
+
+    lazy var augmentedTriadRoots: [Int: Note] = {
+        var r: [Int: Note] = [:]
+        let accidentals: [Accidental] = [.flat, .natural, .sharp]
+        for accidental in  accidentals {
+            for letter in Letter.allCases {
+                let root = Note(letter, accidental: accidental)
+                r[hashPitchClasses(notes: [root, root.shift(.M3), root.shift(.A5)])] = root
+            }
+        }
+        print("generated \(r.count) diminished triads")
+        return r
+    }()
+
 }
 
 /// A set of intervals from the root (tonic).
