@@ -92,20 +92,14 @@ public struct Chord {
         let table = ChordTable.shared
         let hash = pitchClassesHash(in: key)
 
-        if let root = table.minorTriads[hash] {
-            return "\(root.spelling)m"
-        }
-
-        if let root = table.majorTriads[hash] {
-            return root.spelling
-        }
-
-        if let root = table.diminishedTriads[hash] {
-            return "\(root.spelling)°"
-        }
-
-        if let root = table.augmentedTriads[hash] {
-            return "\(root.spelling)⁺"
+        if let info = table.triads[hash] {
+            let root = info.root
+            switch info.type {
+            case .major: return root.spelling
+            case .minor: return "\(root.spelling)m"
+            case .diminished: return "\(root.spelling)°"
+            case .augmented: return "\(root.spelling)⁺"
+            }
         }
 
         return "unknown chord"
@@ -119,6 +113,15 @@ public struct Chord {
         return r.hashValue
     }
 
+}
+
+public enum TriadType {
+    case major, minor, diminished, augmented
+}
+
+public struct TriadInfo {
+    var root: Note
+    var type: TriadType
 }
 
 /// A table of note sets so we can look up chord names.
@@ -136,23 +139,30 @@ class ChordTable {
         return r.hashValue
     }
     
-    static func generateTriads(third: Interval, fifth: Interval) -> [Int: Note] {
-        var r: [Int: Note] = [:]
+    static func generateTriads(third: Interval, fifth: Interval, type: TriadType, _ r: inout [Int: TriadInfo]) {
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter, accidental: accidental)
-                r[ChordTable.hashPitchClasses(notes: [root, root.shiftUp(third), root.shiftUp(fifth)])] = root
+                r[ChordTable.hashPitchClasses(notes: [root, root.shiftUp(third), root.shiftUp(fifth)])] = TriadInfo(root: root, type: type)
             }
         }
+    }
+
+    static func generateAllTriads() -> [Int: TriadInfo] {
+        var r: [Int: TriadInfo] = [:]
+
+        ChordTable.generateTriads(third: .M3, fifth: .P5, type: .major, &r)
+        ChordTable.generateTriads(third: .m3, fifth: .P5, type: .minor, &r)
+        ChordTable.generateTriads(third: .m3, fifth: .d5, type: .diminished, &r)
+        ChordTable.generateTriads(third: .M3, fifth: .A5, type: .augmented, &r)
+
         print("generated \(r.count) triads")
+
         return r
     }
 
-    lazy var majorTriads: [Int: Note] = ChordTable.generateTriads(third: .M3, fifth: .P5)
-    lazy var minorTriads: [Int: Note] = ChordTable.generateTriads(third: .m3, fifth: .P5)
-    lazy var diminishedTriads: [Int: Note] = ChordTable.generateTriads(third: .m3, fifth: .d5)
-    lazy var augmentedTriads: [Int: Note] = ChordTable.generateTriads(third:.M3, fifth: .A5)
+    lazy var triads: [Int: TriadInfo] = ChordTable.generateAllTriads()
 
 }
 
