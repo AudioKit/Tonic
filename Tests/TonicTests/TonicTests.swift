@@ -155,4 +155,12 @@ final class TonicTests: XCTestCase {
         print("index: \(index)")
         XCTAssertEqual(c4, Note(index: index))
     }
+    
+    func testBitSet() {
+        for i in 0..<512 {
+            var set = BitSet512()
+            set.add(bit: i)
+            XCTAssertTrue(set.isSet(bit: i))
+        }
+    }
 }
