@@ -6,6 +6,7 @@ struct NoteSet: Hashable {
     var bits = BitSet512()
     
     mutating func add(note: Note) {
+        assert(note.index < 512)
         bits.add(bit: note.index)
     }
     
