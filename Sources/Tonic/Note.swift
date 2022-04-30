@@ -86,7 +86,7 @@ struct Note: Equatable, Hashable {
     
     /// Global index of the note for use in a NoteSet
     var index: Int {
-        (octave+1) * 7 * 5 + letter.rawValue * 5 + (accidental.rawValue+2)
+        (octave+1) * 7 * 5 + letter.rawValue * 5 + (Int(accidental.rawValue)+2)
     }
 }
 
