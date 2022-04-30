@@ -1,5 +1,5 @@
 import XCTest
-import Tonic
+@testable import Tonic
 
 final class TonicTests: XCTestCase {
     func testNoteSpelling() {

@@ -7,7 +7,9 @@ let package = Package(
     products: [.library(name: "Tonic", targets: ["Tonic"])],
     dependencies: [],
     targets: [
-        .target(name: "Tonic", dependencies: []),
+        .target(name: "Tonic",
+                dependencies: [],
+                swiftSettings: [.unsafeFlags(["-enable-testing"])]),
         .testTarget(name: "TonicTests", dependencies: ["Tonic"]),
     ]
 )
