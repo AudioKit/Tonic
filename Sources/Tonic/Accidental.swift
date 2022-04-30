@@ -26,4 +26,6 @@ public enum Letter: Int, CaseIterable, Equatable, Hashable, Comparable {
     var baseNote: UInt8 {
         return [0, 2, 4, 5, 7, 9, 11][rawValue]
     }
+
+    static let count = 7
 }
