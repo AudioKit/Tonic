@@ -1,18 +1,6 @@
 
 import Foundation
 
-struct Chord2 {
-    var notes: [Note]
-
-    var isDyad: Bool {
-        notes.count == 2
-    }
-
-    var isTriad: Bool {
-        notes.count == 3
-    }
-}
-
 /// Chord addresses all possible combinations of simultaneous MIDI notes.
 struct Chord {
 
@@ -140,26 +128,6 @@ struct Chord {
         return r
     }
 
-}
-
-func generateTriads() -> [Chord2] {
-
-    var chords: [Chord2] = []
-    for octave in -1...7 {
-        let accidentals: [Accidental] = [.flat, .natural, .sharp]
-        for accidental in  accidentals {
-            for letter in Letter.allCases {
-                let root = Note(letter: letter, accidental: accidental, octave: octave)
-                if root.noteNumber + 7 >= 127 {
-                    continue
-                }
-                for third in [Interval.m3, Interval.M3] {
-                    chords.append(Chord2(notes: [root, root.shift(third), root.shift(.P5)]))
-                }
-            }
-        }
-    }
-    return chords
 }
 
 /// A set of intervals from the root (tonic).

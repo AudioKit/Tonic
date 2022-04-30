@@ -112,15 +112,6 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
 
-    func testGenerateTriads() {
-        let chords = generateTriads()
-        for chord in chords {
-            print(chord.notes.map { $0.spelling }.joined(separator: " "))
-        }
-        XCTAssert(chords.allSatisfy({ $0.isTriad }))
-        print(chords.count)
-    }
-
     func testChordHausdorff() {
         let C = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
 
