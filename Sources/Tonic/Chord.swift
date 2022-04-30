@@ -114,9 +114,8 @@ struct Chord {
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                let chord = Chord2(notes: [root, root.shift(.M3), root.shift(.P5)])
                 var set: Set<String> = []
-                for note in chord.notes {
+                for note in [root, root.shift(.M3), root.shift(.P5)] {
                     set.insert(note.spelling)
                 }
                 r[root.spelling] = set
@@ -131,9 +130,8 @@ struct Chord {
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                let chord = Chord2(notes: [root, root.shift(.m3), root.shift(.P5)])
                 var set: Set<String> = []
-                for note in chord.notes {
+                for note in [root, root.shift(.m3), root.shift(.P5)] {
                     set.insert(note.spelling)
                 }
                 r[root.spelling] = set
