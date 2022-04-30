@@ -83,6 +83,11 @@ struct Note: Equatable, Hashable {
     var pitchClass: Note {
         Note(letter, accidental: accidental, octave: 4)
     }
+    
+    /// Global index of the note for use in a NoteSet
+    var index: Int {
+        (octave+1) * 7 * 5 + letter.rawValue * 5 + (accidental.rawValue+2)
+    }
 }
 
 extension Note: Comparable {
