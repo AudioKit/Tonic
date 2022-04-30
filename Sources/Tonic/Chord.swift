@@ -92,19 +92,19 @@ struct Chord {
         let table = ChordTable.shared
         let hash = pitchClassesHash(in: key)
 
-        if let root = table.minorTriadRoots[hash] {
+        if let root = table.minorTriads[hash] {
             return "\(root.spelling)m"
         }
 
-        if let root = table.majorTriadRoots[hash] {
+        if let root = table.majorTriads[hash] {
             return root.spelling
         }
 
-        if let root = table.diminishedTriadRoots[hash] {
+        if let root = table.diminishedTriads[hash] {
             return "\(root.spelling)°"
         }
 
-        if let root = table.augmentedTriadRoots[hash] {
+        if let root = table.augmentedTriads[hash] {
             return "\(root.spelling)⁺"
         }
 
@@ -149,10 +149,10 @@ class ChordTable {
         return r
     }
 
-    lazy var majorTriadRoots: [Int: Note] = ChordTable.generateTriads(third: .M3, fifth: .P5)
-    lazy var minorTriadRoots: [Int: Note] = ChordTable.generateTriads(third: .m3, fifth: .P5)
-    lazy var diminishedTriadRoots: [Int: Note] = ChordTable.generateTriads(third: .m3, fifth: .d5)
-    lazy var augmentedTriadRoots: [Int: Note] = ChordTable.generateTriads(third:.M3, fifth: .A5)
+    lazy var majorTriads: [Int: Note] = ChordTable.generateTriads(third: .M3, fifth: .P5)
+    lazy var minorTriads: [Int: Note] = ChordTable.generateTriads(third: .m3, fifth: .P5)
+    lazy var diminishedTriads: [Int: Note] = ChordTable.generateTriads(third: .m3, fifth: .d5)
+    lazy var augmentedTriads: [Int: Note] = ChordTable.generateTriads(third:.M3, fifth: .A5)
 
 }
 
