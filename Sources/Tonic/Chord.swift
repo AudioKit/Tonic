@@ -4,7 +4,7 @@ import Foundation
 /// Chord addresses all possible combinations of simultaneous MIDI notes.
 public struct Chord {
 
-    var noteSet = BitSet128()
+    public var noteSet = NoteSet()
 
     public init(notes: [Note]) {
         for n in notes {
@@ -12,9 +12,9 @@ public struct Chord {
         }
     }
 
-    public init(noteNumbers: [Int]) {
+    public init(noteNumbers: [Int8]) {
         for n in noteNumbers {
-            noteSet.add(bit: n)
+            noteSet.add(note: Note(noteNumber: n))
         }
     }
 
@@ -38,19 +38,19 @@ public struct Chord {
 
     /// Calls a function for each note in the chord.
     public func forEachNote(_ f: (Note) -> ()) {
-        noteSet.forEach { bit in
-            f(Note(noteNumber: Int8(bit)))
+        noteSet.forEachNote { n in
+            f(n)
         }
     }
 
     /// Add a note to a chord.
     public mutating func add(note: Note) {
-        noteSet.add(bit: Int(note.noteNumber))
+        noteSet.add(note: note)
     }
 
     /// Is a note in a chord?
     public func contains(note: Note) -> Bool {
-        noteSet.isSet(bit: Int(note.noteNumber))
+        noteSet.contains(note: note)
     }
 
     /// One-sided Hausdorff distance to another chord.
@@ -68,29 +68,11 @@ public struct Chord {
         return d_sup
     }
 
-    /// Get the notes in the chord using a Key to name them.
-    public func notes(in key: Key) -> [Note] {
-        var r: [Note] = []
-        noteSet.forEach { noteNumber in
-            r.append(Note(noteNumber: Int8(noteNumber), key: key))
-        }
-        return r
-    }
-    
-    /// Get the notes in the chord using a Key to name them.
-    public func noteSet(in key: Key) -> NoteSet {
-        var r = NoteSet()
-        noteSet.forEach { noteNumber in
-            r.add(note: Note(noteNumber: Int8(noteNumber), key: key))
-        }
-        return r
-    }
-
     /// Try to give this chord a name in a particular key.
-    public func name(in key: Key) -> String {
+    public var name: String {
 
         let table = ChordTable.shared
-        let hash = pitchClassesHash(in: key)
+        let hash = pitchClassesHash
 
         if let info = table.triads[hash] {
             let root = info.root
@@ -105,10 +87,10 @@ public struct Chord {
         return "unknown chord"
     }
 
-    func pitchClassesHash(in key: Key) -> Int {
+    public var pitchClassesHash: Int {
         var r = NoteSet()
-        noteSet.forEach { noteNumber in
-            r.add(note: Note(noteNumber: Int8(noteNumber), key: key).pitchClass)
+        noteSet.forEachNote { note in
+            r.add(note: note.pitchClass)
         }
         return r.hashValue
     }
