@@ -9,13 +9,16 @@ enum Interval: Int, CaseIterable {
     case P4
     case d5
     case P5
+    case A5
     case m6
     case M6
     case m7
     case M7
 
     var semitones: Int {
-        return rawValue + 1 // Fix later
+        switch self {
+            
+        }
     }
 
     var degree: Int {
@@ -35,6 +38,8 @@ enum Interval: Int, CaseIterable {
             return 5
         case .P5:
             return 5
+        case .A5:
+            return 6
         case .m6:
             return 6
         case .M6:

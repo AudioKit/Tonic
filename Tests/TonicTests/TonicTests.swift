@@ -105,9 +105,10 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(majorChord.name(in: cSharpMajor), "C♯")
         XCTAssertEqual(majorChord.name(in: dFlatMajor), "D♭")
 
+        let minorChord = Chord(noteNumbers: [61, 65, 70])
         let aSharpMinor = Key(root: Note(.A, accidental: .sharp), scale: .minor)
         let bFlatMinor = Key(root: Note(.B, accidental: .flat), scale: .minor)
-        let minorChord = Chord(noteNumbers: [61, 65, 70])
+
         XCTAssertEqual(minorChord.name(in: aSharpMinor), "A♯m")
         XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
