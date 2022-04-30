@@ -2,10 +2,11 @@
 import Foundation
 
 public struct Pitch {
-    var noteNumber: Int8
 
-    public init(_ noteNumber: Int8) {
-        self.noteNumber = noteNumber
+    var midiNoteNumber: Int8
+
+    public init(_ midiNoteNumber: Int8) {
+        self.midiNoteNumber = midiNoteNumber
     }
 
     func note(in key: Key) -> Note {

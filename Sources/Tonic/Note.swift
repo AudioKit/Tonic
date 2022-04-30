@@ -18,7 +18,7 @@ public struct Note: Equatable, Hashable {
 
     public init(pitch: Pitch, key: Key = .C) {
 
-        let noteNumber = pitch.noteNumber
+        let noteNumber = pitch.midiNoteNumber
         let baseNoteNumber = noteNumber % 12
 
         let keyNotes = key.notes.map { $0.noteNumber % 12 }
