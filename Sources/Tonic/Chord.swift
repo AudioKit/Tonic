@@ -82,6 +82,7 @@ struct Chord {
         return r
     }
 
+    /// Try to give this chord a name in a particular key.
     func name(in key: Key) -> String {
         var root = ""
         var modifier = ""
