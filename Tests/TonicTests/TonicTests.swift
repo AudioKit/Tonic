@@ -144,4 +144,11 @@ final class TonicTests: XCTestCase {
 
         XCTAssertEqual(C.hausdorff(to: Cm), 1)
     }
+    
+    func testNoteIndex() {
+        let c4 = Note()
+        let index = c4.index
+        print("index: \(index)")
+        XCTAssertEqual(c4, Note(index: index))
+    }
 }

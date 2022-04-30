@@ -11,4 +11,10 @@ struct NoteSet {
     func contains(note: Note) -> Bool {
         bits.isSet(bit: note.index)
     }
+    
+    func forEachNote(f: (Note) -> ()) {
+        bits.forEach { noteIndex in
+            f(Note(index: noteIndex))
+        }
+    }
 }

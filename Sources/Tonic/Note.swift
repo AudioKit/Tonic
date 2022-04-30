@@ -49,6 +49,13 @@ struct Note: Equatable, Hashable {
 
         octave = Int(Double(noteNumber) / 12) - 1
     }
+    
+    init(index: Int) {
+        octave = (index / 35) - 1
+        letter = Letter(rawValue: (index % 35) / 5)!
+        accidental = Accidental(rawValue: Int8(index % 5) - 2)!
+    }
+    
     /// MIDI Note 0-127 starting at C
     var noteNumber: Int8 {
         let octaveShift = UInt8((octave + 1) * 12)
