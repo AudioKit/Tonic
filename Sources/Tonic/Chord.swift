@@ -73,19 +73,16 @@ struct Chord {
 
     /// Try to give this chord a name in a particular key.
     func name(in key: Key) -> String {
-        var root = ""
-        var modifier = ""
 
-        if let x = Chord.minorTriads.first(where: { _, noteSet in noteSet == pitchClasses(in: key)}) {
-            root = x.key
-            modifier = "m"
+        if let root = Chord.minorTriadRoots[pitchClasses(in: key)] {
+            return "\(root)m"
         }
 
-        if let x = Chord.majorTriads.first(where: { _, noteSet in noteSet == pitchClasses(in: key)}) {
-            root = x.key
+        if let root = Chord.majorTriadRoots[pitchClasses(in: key)] {
+            return root
         }
 
-        return "\(root)\(modifier)"
+        return "unknown chord"
     }
 
     func pitchClasses(in key: Key) -> Set<Note> {
@@ -100,25 +97,25 @@ struct Chord {
         return r
     }
 
-    static var majorTriads: [String: Set<Note>] {
-        var r: [String: Set<Note>] = [:]
+    static var majorTriadRoots: [Set<Note>: String] {
+        var r: [Set<Note>: String] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                r[root.spelling] = Set<Note>([root, root.shift(.M3), root.shift(.P5)].map {$0.pitchClass})
+                r[Set<Note>([root, root.shift(.M3), root.shift(.P5)].map {$0.pitchClass})] = root.spelling
             }
         }
         return r
     }
 
-    static var minorTriads: [String: Set<Note>] {
-        var r: [String: Set<Note>] = [:]
+    static var minorTriadRoots: [Set<Note>: String] {
+        var r: [Set<Note>: String] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                r[root.spelling] = Set<Note>([root, root.shift(.m3), root.shift(.P5)].map {$0.pitchClass})
+                r[Set<Note>([root, root.shift(.m3), root.shift(.P5)].map {$0.pitchClass})] = root.spelling
             }
         }
         return r
