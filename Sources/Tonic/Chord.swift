@@ -157,7 +157,7 @@ class ChordTable {
                 r[hashPitchClasses(notes: [root, root.shift(.M3), root.shift(.A5)])] = root
             }
         }
-        print("generated \(r.count) diminished triads")
+        print("generated \(r.count) augmented triads")
         return r
     }()
 
