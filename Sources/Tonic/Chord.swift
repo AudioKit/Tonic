@@ -113,8 +113,8 @@ class ChordTable {
 
     static let shared = ChordTable()
 
-    func hashPitchClasses(notes: [Note]) -> Int {
-        notes.map { $0.pitchClass }.sorted().hashValue
+    func hashPitchClasses(notes: [Note?]) -> Int {
+        notes.compactMap { $0 }.map { $0.pitchClass }.sorted().hashValue
     }
 
     lazy var majorTriadRoots: [Int: Note] = {

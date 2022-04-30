@@ -30,10 +30,10 @@ final class TonicTests: XCTestCase {
 
     func testNoteShift() {
         let d = Note().shift(.M2)
-        XCTAssertEqual(d.spelling, "D")
+        XCTAssertEqual(d!.spelling, "D")
 
         let eFlat = Note().shift(.m3)
-         XCTAssertEqual(eFlat.spelling, "E♭")
+         XCTAssertEqual(eFlat!.spelling, "E♭")
 
     }
 
@@ -127,7 +127,12 @@ final class TonicTests: XCTestCase {
         let cMajor = Key(root: Note(.C), scale: .major)
 
         XCTAssertEqual(augChord.notes(in: cMajor), [Note(.C), Note(.E), Note(.G, accidental: .sharp)])
-        // XCTAssertEqual(augChord.name(in: cMajor), "C⁺")
+        XCTAssertEqual(augChord.name(in: cMajor), "C⁺")
+
+        let augChord2 = Chord(noteNumbers: [61, 65, 69])
+        let cSharpMajor = Key(root: Note(.C, accidental: .sharp), scale: .major)
+        XCTAssertEqual(augChord2.notes(in: cSharpMajor), [Note(.C, accidental: .sharp), Note(.E, accidental: .sharp), Note(.A)])
+        XCTAssertEqual(augChord2.name(in: cSharpMajor), "A⁺")
     }
 
     func testChordHausdorff() {
