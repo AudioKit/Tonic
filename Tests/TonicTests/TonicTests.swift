@@ -48,7 +48,6 @@ final class TonicTests: XCTestCase {
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.minor))
         XCTAssertFalse(Scale.blues.isSubset(of: Scale.minor))
         XCTAssertTrue(Scale.minor.isSubset(of: Scale.chromatic))
-        XCTAssertEqual(Scale.chromatic.intervals, Interval.allCases)
     }
 
     func testKey() {

@@ -9,11 +9,11 @@ enum Interval: Int, CaseIterable {
     case P4
     case d5
     case P5
-    case A5
     case m6
     case M6
     case m7
     case M7
+    case A5
 
     var semitones: Int {
         switch self {
