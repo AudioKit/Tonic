@@ -1,10 +1,10 @@
 import Foundation
 
-struct Tonic: CustomStringConvertible {
+public struct Tonic: CustomStringConvertible {
     var letter: Letter
     var accidental: Accidental
 
-    var description: String {
+    public var description: String {
         "\(letter)\(accidental)"
     }
 

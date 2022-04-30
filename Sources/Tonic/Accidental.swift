@@ -1,7 +1,7 @@
 import Foundation
 
-enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
-    static func < (lhs: Accidental, rhs: Accidental) -> Bool {
+public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
+    public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
         lhs.rawValue < rhs.rawValue
     }
 
@@ -11,13 +11,13 @@ enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashabl
     case sharp = 1
     case doubleSharp = 2
 
-    var description: String {
+    public var description: String {
         ["𝄫", "♭", "", "♯", "𝄪"][Int(self.rawValue) + 2]
     }
 }
 
-enum Letter: Int, CaseIterable, Equatable, Hashable, Comparable {
-    static func < (lhs: Letter, rhs: Letter) -> Bool {
+public enum Letter: Int, CaseIterable, Equatable, Hashable, Comparable {
+    public static func < (lhs: Letter, rhs: Letter) -> Bool {
         lhs.rawValue < rhs.rawValue
     }
 

@@ -1,6 +1,6 @@
 import Foundation
 
-enum Mode {
+public enum Mode {
     case ionian
     case dorian
     case phrygian

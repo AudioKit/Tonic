@@ -2,29 +2,33 @@
 import Foundation
 
 /// A set of notes represented by a bit set.
-struct NoteSet: Hashable, Equatable {
+public struct NoteSet: Hashable, Equatable {
     var bits = BitSet512()
     
-    init() { }
+    public init() { }
     
-    init(notes: [Note]) {
+    public init(notes: [Note]) {
         for note in notes {
             add(note: note)
         }
     }
     
-    mutating func add(note: Note) {
+    public mutating func add(note: Note) {
         assert(note.index < 512)
         bits.add(bit: note.index)
     }
     
-    func contains(note: Note) -> Bool {
+    public func contains(note: Note) -> Bool {
         bits.isSet(bit: note.index)
     }
     
-    func forEachNote(f: (Note) -> ()) {
+    public func forEachNote(f: (Note) -> ()) {
         bits.forEach { noteIndex in
             f(Note(index: noteIndex))
         }
+    }
+
+    public var count: Int {
+        bits.count
     }
 }

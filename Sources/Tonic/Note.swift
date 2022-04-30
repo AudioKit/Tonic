@@ -1,22 +1,22 @@
 import Foundation
 
-struct Note: Equatable, Hashable {
+public struct Note: Equatable, Hashable {
     /// Base name for the note
-    var letter: Letter = .C
+    public var letter: Letter = .C
 
     /// Semitone shift for the letter
-    var accidental: Accidental = .natural
+    public var accidental: Accidental = .natural
 
     /// Range from -1 to 7
-    var octave: Int = 4
+    public var octave: Int = 4
 
-    init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 4) {
+    public init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 4) {
         self.letter = letter
         self.accidental = accidental
         self.octave = octave
     }
 
-    init(noteNumber: Int8, key: Key = Key.C) {
+    public init(noteNumber: Int8, key: Key = Key.C) {
         let baseNoteNumber = noteNumber % 12
 
         let keyNotes = key.notes.map { $0.noteNumber % 12 }
@@ -44,29 +44,29 @@ struct Note: Equatable, Hashable {
         octave = Int(Double(noteNumber) / 12) - 1
     }
     
-    init(index: Int) {
+    public init(index: Int) {
         octave = (index / 35) - 1
         letter = Letter(rawValue: (index % 35) / 5)!
         accidental = Accidental(rawValue: Int8(index % 5) - 2)!
     }
     
     /// MIDI Note 0-127 starting at C
-    var noteNumber: Int8 {
+    public var noteNumber: Int8 {
         let octaveShift = UInt8((octave + 1) * 12)
         let note = Int(letter.baseNote) + Int(accidental.rawValue)
         return Int8(octaveShift) + Int8(note)
     }
 
     /// The way the note is described in a musical context (usually a key or scale)
-    var spelling: String {
+    public var spelling: String {
         return "\(letter)\(accidental)"
     }
 
-    func semitones(to: Note) -> Int {
+    public func semitones(to: Note) -> Int {
         abs(Int(noteNumber - to.noteNumber))
     }
 
-    func shiftDown(_ shift: Interval) -> Note? {
+    public func shiftDown(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (letter.rawValue - (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
@@ -80,7 +80,7 @@ struct Note: Equatable, Hashable {
         return nil
     }
 
-    func shiftUp(_ shift: Interval) -> Note? {
+    public func shiftUp(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
@@ -95,18 +95,18 @@ struct Note: Equatable, Hashable {
     }
 
     /// Returns representative note in canonical octave.
-    var pitchClass: Note {
+    public var pitchClass: Note {
         Note(letter, accidental: accidental, octave: 4)
     }
     
     /// Global index of the note for use in a NoteSet
-    var index: Int {
+    public var index: Int {
         (octave+1) * 7 * 5 + letter.rawValue * 5 + (Int(accidental.rawValue)+2)
     }
 }
 
 extension Note: Comparable {
-    static func < (lhs: Note, rhs: Note) -> Bool {
+    public static func < (lhs: Note, rhs: Note) -> Bool {
         (lhs.letter, lhs.accidental, lhs.octave) < (rhs.letter, rhs.accidental, rhs.octave)
     }
 }
