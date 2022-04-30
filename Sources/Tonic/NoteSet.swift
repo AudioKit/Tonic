@@ -5,6 +5,14 @@ import Foundation
 struct NoteSet: Hashable, Equatable {
     var bits = BitSet512()
     
+    init() { }
+    
+    init(notes: [Note]) {
+        for note in notes {
+            add(note: note)
+        }
+    }
+    
     mutating func add(note: Note) {
         assert(note.index < 512)
         bits.add(bit: note.index)
