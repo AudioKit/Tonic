@@ -74,11 +74,13 @@ struct Chord {
     /// Try to give this chord a name in a particular key.
     func name(in key: Key) -> String {
 
-        if let root = Chord.minorTriadRoots[pitchClasses(in: key)] {
+        let table = ChordTable.shared
+
+        if let root = table.minorTriadRoots[pitchClasses(in: key)] {
             return "\(root.spelling)m"
         }
 
-        if let root = Chord.majorTriadRoots[pitchClasses(in: key)] {
+        if let root = table.majorTriadRoots[pitchClasses(in: key)] {
             return root.spelling
         }
 
@@ -89,7 +91,13 @@ struct Chord {
         Set<Note>(notes(in: key).map { $0.pitchClass })
     }
 
-    static var majorTriadRoots: [Set<Note>: Note] {
+}
+
+class ChordTable {
+
+    static let shared = ChordTable()
+
+    lazy var majorTriadRoots: [Set<Note>: Note] = {
         var r: [Set<Note>: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
@@ -98,10 +106,11 @@ struct Chord {
                 r[Set<Note>([root, root.shift(.M3), root.shift(.P5)].map {$0.pitchClass})] = root
             }
         }
+        print("generated \(r.count) major triads")
         return r
-    }
+    }()
 
-    static var minorTriadRoots: [Set<Note>: Note] {
+    lazy var minorTriadRoots: [Set<Note>: Note] = {
         var r: [Set<Note>: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
@@ -110,8 +119,9 @@ struct Chord {
                 r[Set<Note>([root, root.shift(.m3), root.shift(.P5)].map {$0.pitchClass})] = root
             }
         }
+        print("generated \(r.count) minor triads")
         return r
-    }
+    }()
 
 }
 
