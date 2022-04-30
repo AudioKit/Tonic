@@ -65,7 +65,7 @@ struct Note: Equatable, Hashable {
         abs(Int(noteNumber - to.noteNumber))
     }
 
-    func shift(_ shift: Interval) -> Note {
+    func shift(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
@@ -76,7 +76,7 @@ struct Note: Equatable, Hashable {
                 return newNote
             }
         }
-        fatalError()
+        return nil
     }
 
     /// Returns representative note in canonical octave.

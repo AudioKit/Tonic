@@ -8,8 +8,9 @@ struct Key {
         var r = [root]
 
         for interval in scale.intervals {
-            let note = root.shift(interval)
-            r.append(note)
+            if let note = root.shift(interval) {
+                r.append(note)
+            }
         }
         return r
     }
