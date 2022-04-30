@@ -9,7 +9,7 @@ let package = Package(
     targets: [
         .target(name: "Tonic",
                 dependencies: [],
-                swiftSettings: [.unsafeFlags(["-enable-testing"])]),
+                swiftSettings: [.unsafeFlags(["-enable-testing", "-g"])]),
         .testTarget(name: "TonicTests", dependencies: ["Tonic"]),
     ]
 )
