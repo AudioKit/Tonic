@@ -133,6 +133,10 @@ final class TonicTests: XCTestCase {
         let cSharpMajor = Key(root: Note(.C, accidental: .sharp), scale: .major)
         XCTAssertEqual(augChord2.notes(in: cSharpMajor), [Note(.C, accidental: .sharp), Note(.E, accidental: .sharp), Note(.A)])
         XCTAssertEqual(augChord2.name(in: cSharpMajor), "A⁺")
+
+        let dFlatMajor = Key(root: Note(.D, accidental: .flat), scale: .major)
+        XCTAssertEqual(augChord2.notes(in: dFlatMajor), [Note(.D, accidental: .flat), Note(.F), Note(.A)])
+        XCTAssertEqual(augChord2.name(in: dFlatMajor), "D♭⁺")
     }
 
     func testChordHausdorff() {
