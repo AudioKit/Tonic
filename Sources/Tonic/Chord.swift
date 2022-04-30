@@ -12,6 +12,12 @@ struct Chord {
         }
     }
 
+    init(noteNumbers: [Int]) {
+        for n in noteNumbers {
+            noteSet.add(bit: n)
+        }
+    }
+
     var noteCount: Int {
         notes.count
     }

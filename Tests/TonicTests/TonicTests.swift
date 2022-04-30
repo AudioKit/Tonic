@@ -63,7 +63,7 @@ final class TonicTests: XCTestCase {
         let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
         XCTAssertTrue(chord.isTriad)
 
-        let majorChord = Chord(notes: [Note(noteNumber: 61), Note(noteNumber: 65), Note(noteNumber: 68)])
+        let majorChord = Chord(noteNumbers: [61, 65, 68])
         let cSharpMajor = Key(root: Note(letter: .C, accidental: .sharp), scale: .major)
         let dFlatMajor = Key(root: Note(letter: .D, accidental: .flat), scale: .major)
 
@@ -80,7 +80,7 @@ final class TonicTests: XCTestCase {
 
         let aSharpMinor = Key(root: Note(letter: .A, accidental: .sharp), scale: .minor)
         let bFlatMinor = Key(root: Note(letter: .B, accidental: .flat), scale: .minor)
-        let minorChord = Chord(notes: [Note(noteNumber: 58), Note(noteNumber: 61), Note(noteNumber: 65)])
+        let minorChord = Chord(noteNumbers: [58, 61, 65])
         
         XCTAssertEqual(minorChord.notes(in: aSharpMinor),
                        [Note(letter: .A, accidental: .sharp, octave: 3),
@@ -98,7 +98,7 @@ final class TonicTests: XCTestCase {
         let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
         XCTAssertTrue(chord.isTriad)
 
-        let majorChord = Chord(notes: [Note(noteNumber: 68), Note(noteNumber: 73), Note(noteNumber: 77)])
+        let majorChord = Chord(noteNumbers: [68, 73, 77])
         let cSharpMajor = Key(root: Note(letter: .C, accidental: .sharp), scale: .major)
         let dFlatMajor = Key(root: Note(letter: .D, accidental: .flat), scale: .major)
 
@@ -107,7 +107,7 @@ final class TonicTests: XCTestCase {
 
         let aSharpMinor = Key(root: Note(letter: .A, accidental: .sharp), scale: .minor)
         let bFlatMinor = Key(root: Note(letter: .B, accidental: .flat), scale: .minor)
-        let minorChord = Chord(notes: [Note(noteNumber: 61), Note(noteNumber: 65), Note(noteNumber: 70)])
+        let minorChord = Chord(noteNumbers: [61, 65, 70])
         XCTAssertEqual(minorChord.name(in: aSharpMinor), "A♯m")
         XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
