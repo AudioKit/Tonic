@@ -7,27 +7,19 @@ final class ChordTests: XCTestCase {
         let chord = Chord(notes: [Note(.C), Note(.E), Note(.G)])
         XCTAssertTrue(chord.isTriad)
 
-        let Cs = Chord(notes: [Note(.C, accidental: .sharp),
-                               Note(.E, accidental: .sharp),
-                               Note(.G, accidental: .sharp)])
+        let Cs = Chord(notes: [.Cs, .Es, .Gs])
 
         XCTAssertEqual(Cs.name, "C♯")
 
-        let Db = Chord(notes: [Note(.D, accidental: .flat),
-                               Note(.F),
-                               Note(.A, accidental: .flat)])
+        let Db = Chord(notes: [.Db, .F, .Ab])
 
         XCTAssertEqual(Db.name, "D♭")
 
-        let Asm = Chord(notes: [Note(.A, accidental: .sharp),
-                                Note(.C, accidental: .sharp),
-                                Note(.E, accidental: .sharp)])
+        let Asm = Chord(notes: [.As, .Cs, .Es])
 
         XCTAssertEqual(Asm.name, "A♯m")
 
-        let Bbm = Chord(notes: [Note(.B, accidental: .flat),
-                                Note(.D, accidental: .flat),
-                                Note(.F)])
+        let Bbm = Chord(notes: [.Bb, .Db, .F])
 
         XCTAssertEqual(Bbm.name, "B♭m")
     }
@@ -39,14 +31,8 @@ final class ChordTests: XCTestCase {
         let Cs = pitches.chord(in: .Cs)
         let Db = pitches.chord(in: .Db)
 
-        XCTAssertEqual(Cs.notes,
-                       [Note(.C, accidental: .sharp),
-                        Note(.E, accidental: .sharp),
-                        Note(.G, accidental: .sharp)])
-        XCTAssertEqual(Db.notes,
-                       [Note(.D, accidental: .flat),
-                        Note(.F),
-                        Note(.A, accidental: .flat)])
+        XCTAssertEqual(Cs.notes, [.Cs, .Es, .Gs])
+        XCTAssertEqual(Db.notes, [.Db, .F, .Ab])
         XCTAssertEqual(Cs.name, "C♯")
         XCTAssertEqual(Db.name, "D♭")
 

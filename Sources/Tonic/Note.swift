@@ -115,6 +115,36 @@ public struct Note: Equatable, Hashable {
     public var index: Int {
         (octave+1) * 7 * 5 + letter.rawValue * 5 + (Int(accidental.rawValue)+2)
     }
+
+    static var Cb = Note(.C, accidental: .flat)
+    static var C = Note(.C)
+    static var Cs = Note(.C, accidental: .sharp)
+
+    static var Db = Note(.D, accidental: .flat)
+    static var D = Note(.D)
+    static var Ds = Note(.D, accidental: .sharp)
+
+    static var Eb = Note(.E, accidental: .flat)
+    static var E = Note(.E)
+    static var Es = Note(.E, accidental: .sharp)
+
+    static var Fb = Note(.F, accidental: .flat)
+    static var F = Note(.F)
+    static var Fs = Note(.F, accidental: .sharp)
+
+    static var Gb = Note(.G, accidental: .flat)
+    static var G = Note(.G)
+    static var Gs = Note(.G, accidental: .sharp)
+
+    static var Ab = Note(.A, accidental: .flat)
+    static var A = Note(.A)
+    static var As = Note(.A, accidental: .sharp)
+
+    static var Bb = Note(.B, accidental: .flat)
+    static var B = Note(.B)
+    static var Bs = Note(.B, accidental: .sharp)
+
+
 }
 
 extension Note: Comparable {
