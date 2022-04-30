@@ -83,13 +83,63 @@ struct Chord {
     }
 
     func name(in key: Key) -> String {
-        let rootNote = Note(noteNumber: notes.first!.noteNumber, key: key)
+        var root = ""
         var modifier = ""
-        if rootNote.shift(.m3).noteNumber == notes[1].noteNumber {
+
+        if let x = minorTriads.first(where: { _, noteSet in noteSet == noteNames(in: key)}) {
+            root = x.key
             modifier = "m"
         }
-        return "\(rootNote.spelling)\(modifier)"
+
+        if let x = majorTriads.first(where: { _, noteSet in noteSet == noteNames(in: key)}) {
+            root = x.key
+        }
+
+        return "\(root)\(modifier)"
     }
+
+    func noteNames(in key: Key) -> Set<String> {
+        var r: Set<String> = []
+        for note in notes(in: key) {
+            r.insert(note.spelling)
+        }
+        return r
+    }
+
+    var majorTriads: [String: Set<String>] {
+        var r: [String: Set<String>] = [:]
+        let accidentals: [Accidental] = [.flat, .natural, .sharp]
+        for accidental in  accidentals {
+            for letter in Letter.allCases {
+                let root = Note(letter: letter, accidental: accidental)
+                let chord = Chord2(notes: [root, root.shift(.M3), root.shift(.P5)])
+                var set: Set<String> = []
+                for note in chord.notes {
+                    set.insert(note.spelling)
+                }
+                r[root.spelling] = set
+            }
+        }
+        return r
+    }
+
+    var minorTriads: [String: Set<String>] {
+        var r: [String: Set<String>] = [:]
+        let accidentals: [Accidental] = [.flat, .natural, .sharp]
+        for accidental in  accidentals {
+            for letter in Letter.allCases {
+                let root = Note(letter: letter, accidental: accidental)
+                let chord = Chord2(notes: [root, root.shift(.m3), root.shift(.P5)])
+                var set: Set<String> = []
+                for note in chord.notes {
+                    set.insert(note.spelling)
+                }
+                r[root.spelling] = set
+            }
+        }
+        return r
+    }
+
 }
 
 func generateTriads() -> [Chord2] {

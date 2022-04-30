@@ -91,6 +91,24 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
 
+    func testInversions() {
+        let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
+        XCTAssertTrue(chord.isTriad)
+
+        let majorChord = Chord(notes: [Note(noteNumber: 68), Note(noteNumber: 73), Note(noteNumber: 77)])
+        let cSharpMajor = Key(root: Note(letter: .C, accidental: .sharp), scale: .major)
+        let dFlatMajor = Key(root: Note(letter: .D, accidental: .flat), scale: .major)
+
+        XCTAssertEqual(majorChord.name(in: cSharpMajor), "C♯")
+        XCTAssertEqual(majorChord.name(in: dFlatMajor), "D♭")
+
+        let aSharpMinor = Key(root: Note(letter: .A, accidental: .sharp), scale: .minor)
+        let bFlatMinor = Key(root: Note(letter: .B, accidental: .flat), scale: .minor)
+        let minorChord = Chord(notes: [Note(noteNumber: 61), Note(noteNumber: 65), Note(noteNumber: 70)])
+        XCTAssertEqual(minorChord.name(in: aSharpMinor), "A♯m")
+        XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
+    }
+
     func testGenerateTriads() {
         let chords = generateTriads()
         for chord in chords {
