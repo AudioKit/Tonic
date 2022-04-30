@@ -75,12 +75,13 @@ struct Chord {
     func name(in key: Key) -> String {
 
         let table = ChordTable.shared
+        let hash = pitchClassesHash(in: key)
 
-        if let root = table.minorTriadRoots[pitchClassesHash(in: key)] {
+        if let root = table.minorTriadRoots[hash] {
             return "\(root.spelling)m"
         }
 
-        if let root = table.majorTriadRoots[pitchClassesHash(in: key)] {
+        if let root = table.majorTriadRoots[hash] {
             return root.spelling
         }
 
