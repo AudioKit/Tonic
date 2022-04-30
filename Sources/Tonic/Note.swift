@@ -22,7 +22,7 @@ public struct Note: Equatable, Hashable {
         let baseNoteNumber = noteNumber % 12
 
         let keyNotes = key.notes.map { $0.noteNumber % 12 }
-        if let index = keyNotes.firstIndex(of: Int8(baseNoteNumber)) {
+        if let index = keyNotes.firstIndex(of: baseNoteNumber) {
             letter = key.notes[index].letter
             accidental = key.notes[index].accidental
         } else {
