@@ -1,10 +1,14 @@
 import Foundation
 
 public struct Key {
-    public var root: Note
-    public var scale: Scale = .major
+    public let root: Note
+    public let scale: Scale
+    public let notes: [Note]
 
-    public var notes: [Note] {
+    public init(root: Note, scale: Scale = .major) {
+        self.root = root
+        self.scale = scale
+
         var r = [root]
 
         for interval in scale.intervals {
@@ -12,7 +16,7 @@ public struct Key {
                 r.append(note)
             }
         }
-        return r
+        self.notes = r
     }
 
     public var preferredAccidental: Accidental {
