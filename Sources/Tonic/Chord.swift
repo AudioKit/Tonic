@@ -88,11 +88,7 @@ struct Chord {
     }
 
     func pitchClassesHash(in key: Key) -> Int {
-        var hasher = Hasher()
-        notes(in: key).map { $0.pitchClass }.sorted().forEach { note in
-            hasher.combine(note)
-        }
-        return hasher.finalize()
+        notes(in: key).map { $0.pitchClass }.sorted().hashValue
     }
 
 }
@@ -103,11 +99,7 @@ class ChordTable {
     static let shared = ChordTable()
 
     func hashPitchClasses(notes: [Note]) -> Int {
-        var hasher = Hasher()
-        notes.map { $0.pitchClass }.sorted().forEach { note in
-            hasher.combine(note)
-        }
-        return hasher.finalize()
+        notes.map { $0.pitchClass }.sorted().hashValue
     }
 
     lazy var majorTriadRoots: [Int: Note] = {
