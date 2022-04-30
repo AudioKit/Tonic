@@ -1,6 +1,10 @@
 import Foundation
 
-enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable {
+enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
+    static func < (lhs: Accidental, rhs: Accidental) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
+
     case doubleFlat = -2
     case flat = -1
     case natural = 0
@@ -12,7 +16,11 @@ enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashabl
     }
 }
 
-enum Letter: Int, CaseIterable, Equatable, Hashable {
+enum Letter: Int, CaseIterable, Equatable, Hashable, Comparable {
+    static func < (lhs: Letter, rhs: Letter) -> Bool {
+        lhs.rawValue < rhs.rawValue
+    }
+
     case C, D, E, F, G, A, B
 
     var baseNote: UInt8 {
