@@ -2,9 +2,7 @@ import Foundation
 
 struct Note: Equatable, Hashable, Comparable {
     static func < (lhs: Note, rhs: Note) -> Bool {
-        lhs.letter == rhs.letter ? (lhs.accidental == rhs.accidental ? lhs.octave < rhs.octave
-                                                                     : lhs.accidental < rhs.accidental)
-                                 : lhs.letter < rhs.letter
+        (lhs.letter, lhs.accidental, lhs.octave) < (rhs.letter, rhs.accidental, rhs.octave)
     }
 
     /// Base name for the note
