@@ -89,14 +89,6 @@ struct Chord {
         Set<Note>(notes(in: key).map { $0.pitchClass })
     }
 
-    func noteNames(in key: Key) -> Set<String> {
-        var r: Set<String> = []
-        for note in notes(in: key) {
-            r.insert(note.spelling)
-        }
-        return r
-    }
-
     static var majorTriadRoots: [Set<Note>: Note] {
         var r: [Set<Note>: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
