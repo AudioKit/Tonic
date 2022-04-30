@@ -23,4 +23,6 @@ struct Key {
         }
 
     }
+
+    static var C = Key(root: Note(.C), scale: .major)
 }

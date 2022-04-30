@@ -16,16 +16,7 @@ struct Note: Equatable, Hashable {
         self.octave = octave
     }
 
-    init(noteNumber: Int8) {
-        let letters: [Letter] = [.C, .C, .D, .D, .E, .F, .F, .G, .G, .A, .A, .B]
-        letter = letters[Int(noteNumber % 12)]
-
-        let accidentals: [Accidental] = [.natural, .sharp, .natural, .sharp, .natural, .natural, .sharp, .natural, .sharp, .natural, .sharp, .natural]
-        accidental = accidentals[Int(noteNumber % 12)]
-        octave = Int(Double(noteNumber) / 12) - 1
-    }
-
-    init(noteNumber: Int8, key: Key) {
+    init(noteNumber: Int8, key: Key = Key.C) {
         let baseNoteNumber = noteNumber % 12
 
         let keyNotes = key.notes.map { $0.noteNumber % 12 }
@@ -34,9 +25,12 @@ struct Note: Equatable, Hashable {
             accidental = key.notes[index].accidental
         } else {
             if key.preferredAccidental == .sharp {
-                let note = Note(noteNumber: noteNumber)
-                letter = note.letter
-                accidental = note.accidental
+                let letters: [Letter] = [.C, .C, .D, .D, .E, .F, .F, .G, .G, .A, .A, .B]
+                letter = letters[Int(noteNumber % 12)]
+
+                let accidentals: [Accidental] = [.natural, .sharp, .natural, .sharp, .natural, .natural, .sharp, .natural, .sharp, .natural, .sharp, .natural]
+                accidental = accidentals[Int(noteNumber % 12)]
+
             } else {
                 let letters: [Letter] = [.C, .D, .D, .E, .E, .F, .G, .G, .A, .A, .B, .B]
                 letter = letters[Int(noteNumber % 12)]
