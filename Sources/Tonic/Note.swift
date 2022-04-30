@@ -16,6 +16,10 @@ public struct Note: Equatable, Hashable {
         self.octave = octave
     }
 
+    public init(pitch: Pitch, key: Key) {
+        self.init(noteNumber: pitch.noteNumber, key: key)
+    }
+
     public init(noteNumber: Int8, key: Key = Key.C) {
         let baseNoteNumber = noteNumber % 12
 
