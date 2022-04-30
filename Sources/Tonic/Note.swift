@@ -26,7 +26,7 @@ struct Note: Equatable {
         octave = Int(Double(noteNumber) / 12) - 1
     }
 
-    init(noteNumber: UInt8, key: Key) {
+    init(noteNumber: Int8, key: Key) {
         let baseNoteNumber = noteNumber % 12
 
         let keyNotes = key.notes.map { $0.noteNumber % 12 }
@@ -40,7 +40,9 @@ struct Note: Equatable {
     }
     /// MIDI Note 0-127 starting at C
     var noteNumber: Int8 {
-        return Int8((octave + 1) * 12) + Int8(letter.baseNote) + accidental.rawValue
+        let octaveShift = UInt8((octave + 1) * 12)
+        let note = Int(letter.baseNote) + Int(accidental.rawValue)
+        return Int8(octaveShift) + Int8(note)
     }
 
     /// The way the note is described in a musical context (usually a key or scale)

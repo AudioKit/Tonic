@@ -77,13 +77,15 @@ struct Chord {
     func notes(in key: Key) -> [Note] {
         var r: [Note] = []
         noteSet.forEach { noteNumber in
-            r.append(Note(noteNumber: UInt8(noteNumber), key: key))
+            r.append(Note(noteNumber: Int8(noteNumber), key: key))
         }
         return r
     }
 
     func name(in key: Key) -> String {
-        return ""
+        let rootNote = Note(noteNumber: notes.first!.noteNumber, key: key)
+        let modifier =  key.scale == .minor ? "m" : ""
+        return "\(rootNote.spelling)\(modifier)"
     }
 }
 
