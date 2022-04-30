@@ -77,6 +77,7 @@ struct Chord {
         return r
     }
     
+    /// Get the notes in the chord using a Key to name them.
     func noteSet(in key: Key) -> NoteSet {
         var r = NoteSet()
         noteSet.forEach { noteNumber in
