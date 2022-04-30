@@ -98,6 +98,7 @@ public enum TriadType {
 public struct TriadInfo {
     var root: Note
     var type: TriadType
+    var notes: NoteSet
 }
 
 /// A table of note sets so we can look up chord names.
@@ -105,12 +106,10 @@ class ChordTable {
 
     static let shared = ChordTable()
 
-    static func hashPitchClasses(notes: [Note?]) -> Int {
+    static func hashPitchClasses(notes: [Note]) -> Int {
         var r = NoteSet()
         for note in notes {
-            if let note = note {
-                r.add(note: note.pitchClass)
-            }
+            r.add(note: note.pitchClass)
         }
         return r.hashValue
     }
@@ -120,7 +119,12 @@ class ChordTable {
         for accidental in accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter, accidental: accidental)
-                r[ChordTable.hashPitchClasses(notes: [root, root.shiftUp(third), root.shiftUp(fifth)])] = TriadInfo(root: root, type: type)
+                let notes = [root, root.shiftUp(third), root.shiftUp(fifth)].compactMap { $0 }
+                if notes.count == 3 {
+                    r[ChordTable.hashPitchClasses(notes: notes)] = TriadInfo(root: root,
+                                                                             type: type,
+                                                                             notes: NoteSet(notes: notes))
+                }
             }
         }
     }
