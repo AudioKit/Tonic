@@ -76,6 +76,14 @@ struct Chord {
         }
         return r
     }
+    
+    func noteSet(in key: Key) -> NoteSet {
+        var r = NoteSet()
+        noteSet.forEach { noteNumber in
+            r.add(note: Note(noteNumber: Int8(noteNumber), key: key))
+        }
+        return r
+    }
 
     /// Try to give this chord a name in a particular key.
     func name(in key: Key) -> String {
@@ -103,7 +111,11 @@ struct Chord {
     }
 
     func pitchClassesHash(in key: Key) -> Int {
-        notes(in: key).map { $0.pitchClass }.sorted().hashValue
+        var r = NoteSet()
+        noteSet.forEach { noteNumber in
+            r.add(note: Note(noteNumber: Int8(noteNumber), key: key).pitchClass)
+        }
+        return r.hashValue
     }
 
 }
@@ -114,7 +126,13 @@ class ChordTable {
     static let shared = ChordTable()
 
     func hashPitchClasses(notes: [Note?]) -> Int {
-        notes.compactMap { $0 }.map { $0.pitchClass }.sorted().hashValue
+        var r = NoteSet()
+        for note in notes {
+            if let note = note {
+                r.add(note: note.pitchClass)
+            }
+        }
+        return r.hashValue
     }
 
     lazy var majorTriadRoots: [Int: Note] = {
