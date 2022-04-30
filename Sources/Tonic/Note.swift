@@ -67,4 +67,9 @@ struct Note: Equatable, Hashable {
         }
         fatalError()
     }
+
+    /// Returns representative note in canonical octave.
+    func pitchClass() -> Note {
+        Note(letter: letter, accidental: accidental, octave: 4)
+    }
 }
