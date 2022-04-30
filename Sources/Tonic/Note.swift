@@ -1,6 +1,11 @@
 import Foundation
 
-struct Note: Equatable, Hashable {
+struct Note: Equatable, Hashable, Comparable {
+    static func < (lhs: Note, rhs: Note) -> Bool {
+        lhs.letter == rhs.letter ? (lhs.accidental == rhs.accidental ? lhs.octave < rhs.octave
+                                                                     : lhs.accidental < rhs.accidental)
+                                 : lhs.letter < rhs.letter
+    }
 
     /// Base name for the note
     var letter: Letter = .C
