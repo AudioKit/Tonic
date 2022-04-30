@@ -1,10 +1,6 @@
 import Foundation
 
-struct Note: Equatable, Hashable, Comparable {
-    static func < (lhs: Note, rhs: Note) -> Bool {
-        (lhs.letter, lhs.accidental, lhs.octave) < (rhs.letter, rhs.accidental, rhs.octave)
-    }
-
+struct Note: Equatable, Hashable {
     /// Base name for the note
     var letter: Letter = .C
 
@@ -74,5 +70,11 @@ struct Note: Equatable, Hashable, Comparable {
     /// Returns representative note in canonical octave.
     var pitchClass: Note {
         Note(letter, accidental: accidental, octave: 4)
+    }
+}
+
+extension Note: Comparable {
+    static func < (lhs: Note, rhs: Note) -> Bool {
+        (lhs.letter, lhs.accidental, lhs.octave) < (rhs.letter, rhs.accidental, rhs.octave)
     }
 }
