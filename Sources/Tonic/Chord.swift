@@ -84,7 +84,10 @@ struct Chord {
 
     func name(in key: Key) -> String {
         let rootNote = Note(noteNumber: notes.first!.noteNumber, key: key)
-        let modifier =  key.scale == .minor ? "m" : ""
+        var modifier = ""
+        if rootNote.shift(.m3).noteNumber == notes[1].noteNumber {
+            modifier = "m"
+        }
         return "\(rootNote.spelling)\(modifier)"
     }
 }
