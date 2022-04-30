@@ -11,7 +11,7 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(c5.noteNumber, 72)
         XCTAssertEqual(c5.spelling, "C")
 
-        let dFlat = Note(letter: .D, accidental: .flat)
+        let dFlat = Note(.D, accidental: .flat)
         XCTAssertEqual(dFlat.noteNumber, 61)
         XCTAssertEqual(dFlat.spelling, "D♭")
 
@@ -19,7 +19,7 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(cSharp.noteNumber, 61)
         XCTAssertEqual(cSharp.spelling, "C♯")
 
-        let dDoubleFlat = Note(letter: .D, accidental: .doubleFlat)
+        let dDoubleFlat = Note(.D, accidental: .doubleFlat)
         XCTAssertEqual(dDoubleFlat.noteNumber, 60)
         XCTAssertEqual(dDoubleFlat.spelling, "D𝄫")
 
@@ -52,72 +52,72 @@ final class TonicTests: XCTestCase {
     }
 
     func testKey() {
-        let cMajor = Key(root: Note(letter: .C))
+        let cMajor = Key(root: Note(.C))
         print(cMajor.notes.map({$0.spelling}))
 
-        let cMinor = Key(root: Note(letter: .C), scale: .minor)
+        let cMinor = Key(root: Note(.C), scale: .minor)
         print(cMinor.notes.map({$0.spelling}))
     }
 
     func testChords() {
-        let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
+        let chord = Chord(notes: [Note(), Note(.E), Note(.G)])
         XCTAssertTrue(chord.isTriad)
 
         let majorChord = Chord(noteNumbers: [61, 65, 68])
-        let cSharpMajor = Key(root: Note(letter: .C, accidental: .sharp), scale: .major)
-        let dFlatMajor = Key(root: Note(letter: .D, accidental: .flat), scale: .major)
+        let cSharpMajor = Key(root: Note(.C, accidental: .sharp), scale: .major)
+        let dFlatMajor = Key(root: Note(.D, accidental: .flat), scale: .major)
 
         XCTAssertEqual(majorChord.notes(in: cSharpMajor),
-                       [Note(letter: .C, accidental: .sharp),
-                        Note(letter: .E, accidental: .sharp),
-                        Note(letter: .G, accidental: .sharp)])
+                       [Note(.C, accidental: .sharp),
+                        Note(.E, accidental: .sharp),
+                        Note(.G, accidental: .sharp)])
         XCTAssertEqual(majorChord.notes(in: dFlatMajor),
-                       [Note(letter: .D, accidental: .flat),
-                        Note(letter: .F),
-                        Note(letter: .A, accidental: .flat)])
+                       [Note(.D, accidental: .flat),
+                        Note(.F),
+                        Note(.A, accidental: .flat)])
         XCTAssertEqual(majorChord.name(in: cSharpMajor), "C♯")
         XCTAssertEqual(majorChord.name(in: dFlatMajor), "D♭")
 
-        let aSharpMinor = Key(root: Note(letter: .A, accidental: .sharp), scale: .minor)
-        let bFlatMinor = Key(root: Note(letter: .B, accidental: .flat), scale: .minor)
+        let aSharpMinor = Key(root: Note(.A, accidental: .sharp), scale: .minor)
+        let bFlatMinor = Key(root: Note(.B, accidental: .flat), scale: .minor)
         let minorChord = Chord(noteNumbers: [58, 61, 65])
         
         XCTAssertEqual(minorChord.notes(in: aSharpMinor),
-                       [Note(letter: .A, accidental: .sharp, octave: 3),
-                        Note(letter: .C, accidental: .sharp),
-                        Note(letter: .E, accidental: .sharp)])
+                       [Note(.A, accidental: .sharp, octave: 3),
+                        Note(.C, accidental: .sharp),
+                        Note(.E, accidental: .sharp)])
         XCTAssertEqual(minorChord.notes(in: bFlatMinor),
-                       [Note(letter: .B, accidental: .flat, octave: 3),
-                        Note(letter: .D, accidental: .flat),
-                        Note(letter: .F)])
+                       [Note(.B, accidental: .flat, octave: 3),
+                        Note(.D, accidental: .flat),
+                        Note(.F)])
         XCTAssertEqual(minorChord.name(in: aSharpMinor), "A♯m")
         XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
 
     func testInversions() {
-        let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
+        let chord = Chord(notes: [Note(), Note(.E), Note(.G)])
         XCTAssertTrue(chord.isTriad)
 
         let majorChord = Chord(noteNumbers: [68, 73, 77])
-        let cSharpMajor = Key(root: Note(letter: .C, accidental: .sharp), scale: .major)
-        let dFlatMajor = Key(root: Note(letter: .D, accidental: .flat), scale: .major)
+        let cSharpMajor = Key(root: Note(.C, accidental: .sharp), scale: .major)
+        let dFlatMajor = Key(root: Note(.D, accidental: .flat), scale: .major)
 
         XCTAssertEqual(majorChord.name(in: cSharpMajor), "C♯")
         XCTAssertEqual(majorChord.name(in: dFlatMajor), "D♭")
 
-        let aSharpMinor = Key(root: Note(letter: .A, accidental: .sharp), scale: .minor)
-        let bFlatMinor = Key(root: Note(letter: .B, accidental: .flat), scale: .minor)
+        let aSharpMinor = Key(root: Note(.A, accidental: .sharp), scale: .minor)
+        let bFlatMinor = Key(root: Note(.B, accidental: .flat), scale: .minor)
         let minorChord = Chord(noteNumbers: [61, 65, 70])
         XCTAssertEqual(minorChord.name(in: aSharpMinor), "A♯m")
         XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
 
     func testChordHausdorff() {
-        let C = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
+        let C = Chord(notes: [Note(), Note(.E), Note(.G)])
 
         XCTAssertEqual(C.hausdorff(to: C), 0)
 
-        let Cm = Chord(notes: [Note(), Note(letter: .E, accidental: .flat), Note(letter: .G)])
+        let Cm = Chord(notes: [Note(), Note(.E, accidental: .flat), Note(.G)])
 
         XCTAssertEqual(C.hausdorff(to: Cm), 1)
     }

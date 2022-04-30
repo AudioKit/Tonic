@@ -14,7 +14,7 @@ struct Note: Equatable, Hashable, Comparable {
     /// Range from -1 to 7
     var octave: Int = 4
 
-    init(letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 4) {
+    init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 4) {
         self.letter = letter
         self.accidental = accidental
         self.octave = octave
@@ -58,12 +58,12 @@ struct Note: Equatable, Hashable, Comparable {
     }
 
     func shift(_ shift: Interval) -> Note {
-        var newNote = Note(letter: .C, accidental: .natural, octave: 0)
+        var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newOctave = octave + (newLetterIndex >= Letter.allCases.count ? 1 : 0)
         for accidental in Accidental.allCases {
-            newNote = Note(letter: newLetter, accidental: accidental, octave: newOctave)
+            newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if newNote.noteNumber == Int8(noteNumber) + Int8(shift.semitones) {
                 return newNote
             }
@@ -73,6 +73,6 @@ struct Note: Equatable, Hashable, Comparable {
 
     /// Returns representative note in canonical octave.
     var pitchClass: Note {
-        Note(letter: letter, accidental: accidental, octave: 4)
+        Note(letter, accidental: accidental, octave: 4)
     }
 }

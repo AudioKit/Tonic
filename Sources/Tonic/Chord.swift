@@ -114,7 +114,7 @@ class ChordTable {
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
-                let root = Note(letter: letter, accidental: accidental)
+                let root = Note(letter, accidental: accidental)
                 r[hashPitchClasses(notes: [root, root.shift(.M3), root.shift(.P5)])] = root
             }
         }
@@ -127,7 +127,7 @@ class ChordTable {
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
-                let root = Note(letter: letter, accidental: accidental)
+                let root = Note(letter, accidental: accidental)
                 r[hashPitchClasses(notes: [root, root.shift(.m3), root.shift(.P5)])] = root
             }
         }
