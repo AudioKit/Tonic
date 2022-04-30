@@ -1,6 +1,7 @@
 
 import Foundation
 
+/// A set of notes represented by a bit set.
 struct NoteSet {
     var bits: BitSet512
     
