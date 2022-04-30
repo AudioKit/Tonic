@@ -1,7 +1,7 @@
 
 import Foundation
 
-protocol BitSet {
+protocol BitSet: Hashable {
     init()
     func isSet(bit: Int) -> Bool
     mutating func add(bit: Int)

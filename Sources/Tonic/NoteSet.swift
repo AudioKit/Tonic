@@ -2,8 +2,8 @@
 import Foundation
 
 /// A set of notes represented by a bit set.
-struct NoteSet {
-    var bits: BitSet512
+struct NoteSet: Hashable {
+    var bits = BitSet512()
     
     mutating func add(note: Note) {
         bits.add(bit: note.index)
