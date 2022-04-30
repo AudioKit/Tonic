@@ -63,7 +63,7 @@ enum Interval: Int, CaseIterable {
         case .P5:
             return 5
         case .A5:
-            return 6
+            return 5
         case .m6:
             return 6
         case .M6:

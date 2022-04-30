@@ -121,6 +121,15 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(dimChord.name(in: cMajor), "B°")
     }
 
+    func testAugmentedChords() {
+
+        let augChord = Chord(noteNumbers: [60, 64, 68])
+        let cMajor = Key(root: Note(.C), scale: .major)
+
+        XCTAssertEqual(augChord.notes(in: cMajor), [Note(.C), Note(.E), Note(.G, accidental: .sharp)])
+        // XCTAssertEqual(augChord.name(in: cMajor), "C⁺")
+    }
+
     func testChordHausdorff() {
         let C = Chord(notes: [Note(), Note(.E), Note(.G)])
 

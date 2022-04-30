@@ -39,7 +39,7 @@ struct Chord {
     /// Calls a function for each note in the chord.
     func forEachNote(_ f: (Note) -> ()) {
         noteSet.forEach { bit in
-            f(Note(noteNumber: UInt8(bit)))
+            f(Note(noteNumber: Int8(bit)))
         }
     }
 
@@ -93,6 +93,10 @@ struct Chord {
 
         if let root = table.diminishedTriadRoots[hash] {
             return "\(root.spelling)°"
+        }
+
+        if let root = table.augmentedTriadRoots[hash] {
+            return "\(root.spelling)⁺"
         }
 
         return "unknown chord"

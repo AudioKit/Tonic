@@ -13,6 +13,15 @@ struct Key {
         }
         return r
     }
+
+    var preferredAccidental: Accidental {
+        if root.accidental == .natural || root.accidental == .sharp  {
+            return .sharp
+        } else {
+            return .flat
+        }
+
+    }
 }
 
 enum CircleOfFifths: Int {

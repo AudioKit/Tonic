@@ -16,7 +16,7 @@ struct Note: Equatable, Hashable {
         self.octave = octave
     }
 
-    init(noteNumber: UInt8) {
+    init(noteNumber: Int8) {
         let letters: [Letter] = [.C, .C, .D, .D, .E, .F, .F, .G, .G, .A, .A, .B]
         letter = letters[Int(noteNumber % 12)]
 
@@ -29,12 +29,24 @@ struct Note: Equatable, Hashable {
         let baseNoteNumber = noteNumber % 12
 
         let keyNotes = key.notes.map { $0.noteNumber % 12 }
-        guard let index = keyNotes.firstIndex(of: Int8(baseNoteNumber)) else {
-            fatalError()
+        if let index = keyNotes.firstIndex(of: Int8(baseNoteNumber)) {
+            letter = key.notes[index].letter
+            accidental = key.notes[index].accidental
+        } else {
+            if key.preferredAccidental == .sharp {
+                let note = Note(noteNumber: noteNumber)
+                letter = note.letter
+                accidental = note.accidental
+            } else {
+                let letters: [Letter] = [.C, .D, .D, .E, .E, .F, .G, .G, .A, .A, .B, .B]
+                letter = letters[Int(noteNumber % 12)]
+
+                let accidentals: [Accidental] = [.natural, .flat, .natural, .flat, .natural, .natural, .flat, .natural, .flat, .natural, .flat, .natural]
+                accidental = accidentals[Int(noteNumber % 12)]
+            }
         }
 
-        letter = key.notes[index].letter
-        accidental = key.notes[index].accidental
+
         octave = Int(Double(noteNumber) / 12) - 1
     }
     /// MIDI Note 0-127 starting at C
