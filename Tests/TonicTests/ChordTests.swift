@@ -32,6 +32,26 @@ final class ChordTests: XCTestCase {
         XCTAssertEqual(Bbm.name, "B♭m")
     }
 
+    func testNaming() {
+
+        let pitches = PitchSet(numbers: [61, 65, 68])
+
+        let Cs = pitches.chord(in: .Cs)
+        let Db = pitches.chord(in: .Db)
+
+        XCTAssertEqual(Cs.notes,
+                       [Note(.C, accidental: .sharp),
+                        Note(.E, accidental: .sharp),
+                        Note(.G, accidental: .sharp)])
+        XCTAssertEqual(Db.notes,
+                       [Note(.D, accidental: .flat),
+                        Note(.F),
+                        Note(.A, accidental: .flat)])
+        XCTAssertEqual(Cs.name, "C♯")
+        XCTAssertEqual(Db.name, "D♭")
+
+    }
+
     func testInversions() {
         let chord = Chord(notes: [Note(.C), Note(.E), Note(.G)])
         XCTAssertTrue(chord.isTriad)

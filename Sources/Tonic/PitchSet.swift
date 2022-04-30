@@ -13,6 +13,12 @@ public struct PitchSet: Hashable, Equatable {
         }
     }
 
+    public init(numbers: [Int8]) {
+        for n in numbers {
+            add(pitch: Pitch(n))
+        }
+    }
+
     public mutating func add(pitch: Pitch) {
         bits.add(bit: Int(pitch.midiNoteNumber))
     }
