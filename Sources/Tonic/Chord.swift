@@ -126,7 +126,7 @@ class ChordTable {
 
     static let shared = ChordTable()
 
-    func hashPitchClasses(notes: [Note?]) -> Int {
+    static func hashPitchClasses(notes: [Note?]) -> Int {
         var r = NoteSet()
         for note in notes {
             if let note = note {
@@ -135,58 +135,24 @@ class ChordTable {
         }
         return r.hashValue
     }
-
-    lazy var majorTriadRoots: [Int: Note] = {
+    
+    static func generateTriads(shifts: [Interval]) -> [Int: Note] {
         var r: [Int: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter, accidental: accidental)
-                r[hashPitchClasses(notes: [root, root.shift(.M3), root.shift(.P5)])] = root
+                r[ChordTable.hashPitchClasses(notes: [root, root.shift(shifts[0]), root.shift(shifts[1])])] = root
             }
         }
-        print("generated \(r.count) major triads")
+        print("generated \(r.count) triads")
         return r
-    }()
+    }
 
-    lazy var minorTriadRoots: [Int: Note] = {
-        var r: [Int: Note] = [:]
-        let accidentals: [Accidental] = [.flat, .natural, .sharp]
-        for accidental in  accidentals {
-            for letter in Letter.allCases {
-                let root = Note(letter, accidental: accidental)
-                r[hashPitchClasses(notes: [root, root.shift(.m3), root.shift(.P5)])] = root
-            }
-        }
-        print("generated \(r.count) minor triads")
-        return r
-    }()
-
-    lazy var diminishedTriadRoots: [Int: Note] = {
-        var r: [Int: Note] = [:]
-        let accidentals: [Accidental] = [.flat, .natural, .sharp]
-        for accidental in  accidentals {
-            for letter in Letter.allCases {
-                let root = Note(letter, accidental: accidental)
-                r[hashPitchClasses(notes: [root, root.shift(.m3), root.shift(.d5)])] = root
-            }
-        }
-        print("generated \(r.count) diminished triads")
-        return r
-    }()
-
-    lazy var augmentedTriadRoots: [Int: Note] = {
-        var r: [Int: Note] = [:]
-        let accidentals: [Accidental] = [.flat, .natural, .sharp]
-        for accidental in  accidentals {
-            for letter in Letter.allCases {
-                let root = Note(letter, accidental: accidental)
-                r[hashPitchClasses(notes: [root, root.shift(.M3), root.shift(.A5)])] = root
-            }
-        }
-        print("generated \(r.count) augmented triads")
-        return r
-    }()
+    lazy var majorTriadRoots: [Int: Note] = ChordTable.generateTriads(shifts: [.M3, .P5])
+    lazy var minorTriadRoots: [Int: Note] = ChordTable.generateTriads(shifts: [.m3, .P5])
+    lazy var diminishedTriadRoots: [Int: Note] = ChordTable.generateTriads(shifts: [.m3, .d5])
+    lazy var augmentedTriadRoots: [Int: Note] = ChordTable.generateTriads(shifts: [.M3, .A5])
 
 }
 
