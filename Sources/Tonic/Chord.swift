@@ -88,6 +88,10 @@ struct Chord {
         return "\(root)\(modifier)"
     }
 
+    func pitchClasses(in key: Key) -> Set<Note> {
+        Set<Note>(notes(in: key).map { $0.pitchClass })
+    }
+
     func noteNames(in key: Key) -> Set<String> {
         var r: Set<String> = []
         for note in notes(in: key) {
