@@ -51,6 +51,11 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(Scale.chromatic.intervals, Interval.allCases)
     }
 
+    func testKey() {
+        let cMajor = Key(root: Note(letter: .C))
+        print(cMajor.notes.map({$0.spelling}))
+    }
+
     func testChords() {
         let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
         XCTAssertTrue(chord.isTriad)
