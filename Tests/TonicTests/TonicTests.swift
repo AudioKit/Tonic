@@ -2,7 +2,8 @@ import XCTest
 @testable import Tonic
 
 final class TonicTests: XCTestCase {
-    func testNoteSpelling() {
+
+    func testNoteOctave() {
         let c4 = Note(.C)
         XCTAssertEqual(c4.noteNumber, 60)
         XCTAssertEqual(c4.spelling, "C")
@@ -10,7 +11,9 @@ final class TonicTests: XCTestCase {
         let c5 = Note(octave: 5)
         XCTAssertEqual(c5.noteNumber, 72)
         XCTAssertEqual(c5.spelling, "C")
+    }
 
+    func testNoteSpelling() {
         let dFlat = Note(.D, accidental: .flat)
         XCTAssertEqual(dFlat.noteNumber, 61)
         XCTAssertEqual(dFlat.spelling, "D♭")
@@ -61,10 +64,10 @@ final class TonicTests: XCTestCase {
 
     func testKey() {
         let cMajor = Key.C
-        print(cMajor.notes.map({$0.spelling}))
+        XCTAssertEqual(cMajor.notes.map({$0.spelling}), ["C", "D", "E", "F", "G", "A", "B"])
 
         let cMinor = Key.c
-        print(cMinor.notes.map({$0.spelling}))
+        XCTAssertEqual(cMinor.notes.map({$0.spelling}), ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
     }
 
     func testChords() {
