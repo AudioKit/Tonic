@@ -112,6 +112,15 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
 
+    func testDiminishedChords() {
+
+        let dimChord = Chord(noteNumbers: [59, 62, 65])
+        let cMajor = Key(root: Note(.C), scale: .major)
+
+        XCTAssertEqual(dimChord.notes(in: cMajor), [Note(.B, octave: 3), Note(.D), Note(.F)])
+        XCTAssertEqual(dimChord.name(in: cMajor), "B°")
+    }
+
     func testChordHausdorff() {
         let C = Chord(notes: [Note(), Note(.E), Note(.G)])
 

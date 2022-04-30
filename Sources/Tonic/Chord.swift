@@ -91,6 +91,10 @@ struct Chord {
             return root.spelling
         }
 
+        if let root = table.diminishedTriadRoots[hash] {
+            return "\(root.spelling)°"
+        }
+
         return "unknown chord"
     }
 
