@@ -68,7 +68,7 @@ struct Chord {
         return d_sup
     }
 
-    /// Get the notes in the chord asuing a Key to name them.
+    /// Get the notes in the chord using a Key to name them.
     func notes(in key: Key) -> [Note] {
         var r: [Note] = []
         noteSet.forEach { noteNumber in
