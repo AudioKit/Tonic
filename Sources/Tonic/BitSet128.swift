@@ -1,28 +1,28 @@
 
 import Foundation
 
-struct BitSet128 {
-    private var high: UInt64 = 0
-    private var low: UInt64 = 0
+protocol BitSet {
+    init()
+    func isSet(bit: Int) -> Bool
+    mutating func add(bit: Int)
+    func forEach(_ f: (Int) -> ())
+    var count: Int { get }
+    var totalBits: Int { get }
+}
 
+struct BitSet64: BitSet {
+    private var bits: UInt64 = 0
+    
     func isSet(bit: Int) -> Bool {
-        if bit < 64 {
-            return (low & (1 << bit)) != 0
-        } else {
-            return (high & (1 << (bit - 64))) != 0
-        }
+        return (bits & (1 << bit)) != 0
     }
-
+    
     mutating func add(bit: Int) {
-        if bit < 64 {
-            low |= 1 << bit
-        } else {
-            high |= 1 << (bit - 64)
-        }
+        bits |= 1 << bit
     }
 
     func forEach(_ f: (Int) -> ()) {
-        for bit in 0..<128 {
+        for bit in 0..<64 {
             if isSet(bit: bit) {
                 f(bit)
             }
@@ -30,16 +30,52 @@ struct BitSet128 {
     }
 
     var count: Int {
-        low.nonzeroBitCount + high.nonzeroBitCount
+        bits.nonzeroBitCount
     }
-
-    mutating func shift(bits: Int) {
-        if bits > 0 {
-            high <<= bits
-            // How many do we have to copy from low to high?
-            let lowToHigh = (low << (64 - bits)) & ((1 << bits) - 1)
-            high |= lowToHigh
-            low <<= bits
-        }
+    
+    var totalBits: Int {
+        64
     }
 }
+
+struct BitSet2x<B: BitSet>: BitSet {
+    private var high = B()
+    private var low = B()
+    
+    func isSet(bit: Int) -> Bool {
+        if bit < low.totalBits {
+            return low.isSet(bit: bit)
+        } else {
+            return high.isSet(bit: bit - low.totalBits)
+        }
+    }
+
+    mutating func add(bit: Int) {
+        if bit < low.totalBits {
+            low.add(bit: bit)
+        } else {
+            high.add(bit: bit - low.totalBits)
+        }
+    }
+
+    func forEach(_ f: (Int) -> ()) {
+        for bit in 0..<2*low.totalBits {
+            if isSet(bit: bit) {
+                f(bit)
+            }
+        }
+    }
+
+    var count: Int {
+        low.count + high.count
+    }
+    
+    var totalBits: Int {
+        2 * low.totalBits
+    }
+
+}
+
+typealias BitSet128 = BitSet2x<BitSet64>
+typealias BitSet256 = BitSet2x<BitSet128>
+typealias BitSet512 = BitSet2x<BitSet256>
