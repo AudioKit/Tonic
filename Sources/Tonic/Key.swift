@@ -1,13 +1,21 @@
 import Foundation
 
-struct KeySignature {
+struct Key {
+    var root: Note
+    var scale: Scale = .major
 
-    /// The position in the circle of fifths.
-    var index: Int
+    var notes: [Note] {
+        var r = [root]
 
+        for interval in scale.intervals {
+            let note = root.shift(interval)
+            r.append(note)
+        }
+        return r
+    }
 }
 
-enum Key: Int {
+enum CircleOfFifths: Int {
     case Cb
     case Gb
     case Db
@@ -39,4 +47,5 @@ enum Key: Int {
     case gs
     case ds
     case `as`
+
 }

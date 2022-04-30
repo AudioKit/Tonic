@@ -55,25 +55,35 @@ final class TonicTests: XCTestCase {
         let chord = Chord(notes: [Note(), Note(letter: .E), Note(letter: .G)])
         XCTAssertTrue(chord.isTriad)
 
-        let majorChord = Chord(notes: [Note(noteNumber: 61), Note(noteNumber: 64), Note(noteNumber: 67)])
-        XCTAssertEqual(majorChord.notes(in: .Cs), [Note(letter: .C, accidental: .sharp),
-                                                  Note(letter: .E, accidental: .sharp),
-                                                  Note(letter: .G, accidental: .sharp)])
-        XCTAssertEqual(majorChord.notes(in: .Db), [Note(letter: .D, accidental: .flat),
-                                                  Note(letter: .F),
-                                                  Note(letter: .A, accidental: .flat)])
-        XCTAssertEqual(majorChord.name(in: .Cs), "C♯")
-        XCTAssertEqual(majorChord.name(in: .Db), "D♭")
+        let majorChord = Chord(notes: [Note(noteNumber: 61), Note(noteNumber: 65), Note(noteNumber: 68)])
+        let cSharpMajor = Key(root: Note(letter: .C, accidental: .sharp), scale: .major)
+        let dFlatMajor = Key(root: Note(letter: .D, accidental: .flat), scale: .major)
 
+        XCTAssertEqual(majorChord.notes(in: cSharpMajor),
+                       [Note(letter: .C, accidental: .sharp),
+                        Note(letter: .E, accidental: .sharp),
+                        Note(letter: .G, accidental: .sharp)])
+        XCTAssertEqual(majorChord.notes(in: dFlatMajor),
+                       [Note(letter: .D, accidental: .flat),
+                        Note(letter: .F),
+                        Note(letter: .A, accidental: .flat)])
+        XCTAssertEqual(majorChord.name(in: cSharpMajor), "C♯")
+        XCTAssertEqual(majorChord.name(in: dFlatMajor), "D♭")
+
+        let aSharpMinor = Key(root: Note(letter: .A, accidental: .sharp), scale: .minor)
+        let bFlatMinor = Key(root: Note(letter: .B, accidental: .flat), scale: .minor)
         let minorChord = Chord(notes: [Note(noteNumber: 58), Note(noteNumber: 61), Note(noteNumber: 65)])
-        XCTAssertEqual(minorChord.notes(in: .as), [Note(letter: .A, accidental: .sharp),
-                                                  Note(letter: .C, accidental: .sharp),
-                                                  Note(letter: .E, accidental: .sharp)])
-        XCTAssertEqual(minorChord.notes(in: .bb), [Note(letter: .B, accidental: .flat),
-                                                  Note(letter: .D, accidental: .flat),
-                                                  Note(letter: .F)])
-        XCTAssertEqual(minorChord.name(in: .as), "A♯m")
-        XCTAssertEqual(minorChord.name(in: .bb), "B♭m")
+        
+        XCTAssertEqual(minorChord.notes(in: aSharpMinor),
+                       [Note(letter: .A, accidental: .sharp, octave: 3),
+                        Note(letter: .C, accidental: .sharp),
+                        Note(letter: .E, accidental: .sharp)])
+        XCTAssertEqual(minorChord.notes(in: bFlatMinor),
+                       [Note(letter: .B, accidental: .flat, octave: 3),
+                        Note(letter: .D, accidental: .flat),
+                        Note(letter: .F)])
+        XCTAssertEqual(minorChord.name(in: aSharpMinor), "A♯m")
+        XCTAssertEqual(minorChord.name(in: bFlatMinor), "B♭m")
     }
 
     func testGenerateTriads() {

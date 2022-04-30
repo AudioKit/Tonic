@@ -75,8 +75,13 @@ struct Chord {
     }
 
     func notes(in key: Key) -> [Note] {
-        return []
+        var r: [Note] = []
+        noteSet.forEach { noteNumber in
+            r.append(Note(noteNumber: UInt8(noteNumber), key: key))
+        }
+        return r
     }
+
     func name(in key: Key) -> String {
         return ""
     }

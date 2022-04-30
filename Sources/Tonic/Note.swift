@@ -26,6 +26,18 @@ struct Note: Equatable {
         octave = Int(Double(noteNumber) / 12) - 1
     }
 
+    init(noteNumber: UInt8, key: Key) {
+        let baseNoteNumber = noteNumber % 12
+
+        let keyNotes = key.notes.map { $0.noteNumber % 12 }
+        guard let index = keyNotes.firstIndex(of: Int8(baseNoteNumber)) else {
+            fatalError()
+        }
+
+        letter = key.notes[index].letter
+        accidental = key.notes[index].accidental
+        octave = Int(Double(noteNumber) / 12) - 1
+    }
     /// MIDI Note 0-127 starting at C
     var noteNumber: Int8 {
         return Int8((octave + 1) * 12) + Int8(letter.baseNote) + accidental.rawValue
