@@ -1,6 +1,6 @@
 import Foundation
 
-struct Note {
+struct Note: Equatable {
 
     /// Base name for the note
     var letter: Letter = .C

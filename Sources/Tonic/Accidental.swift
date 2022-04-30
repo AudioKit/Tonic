@@ -1,6 +1,6 @@
 import Foundation
 
-enum Accidental: Int8, CustomStringConvertible, CaseIterable {
+enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable {
     case doubleFlat = -2
     case flat = -1
     case natural = 0
@@ -12,7 +12,7 @@ enum Accidental: Int8, CustomStringConvertible, CaseIterable {
     }
 }
 
-enum Letter: Int, CaseIterable {
+enum Letter: Int, CaseIterable, Equatable {
     case C, D, E, F, G, A, B
 
     var baseNote: UInt8 {

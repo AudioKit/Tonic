@@ -73,6 +73,13 @@ struct Chord {
         }
         return d_sup
     }
+
+    func notes(in key: Key) -> [Note] {
+        return []
+    }
+    func name(in key: Key) -> String {
+        return ""
+    }
 }
 
 func generateTriads() -> [Chord2] {
