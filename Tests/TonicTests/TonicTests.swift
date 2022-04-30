@@ -54,6 +54,9 @@ final class TonicTests: XCTestCase {
     func testKey() {
         let cMajor = Key(root: Note(letter: .C))
         print(cMajor.notes.map({$0.spelling}))
+
+        let cMinor = Key(root: Note(letter: .C), scale: .minor)
+        print(cMinor.notes.map({$0.spelling}))
     }
 
     func testChords() {
