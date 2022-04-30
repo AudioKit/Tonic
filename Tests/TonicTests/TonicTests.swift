@@ -14,10 +14,13 @@ final class TonicTests: XCTestCase {
         let dFlat = Note(.D, accidental: .flat)
         XCTAssertEqual(dFlat.noteNumber, 61)
         XCTAssertEqual(dFlat.spelling, "D♭")
+        XCTAssertEqual(dFlat.spelling(in: Key.C), "C♯")
+        XCTAssertEqual(dFlat.spelling(in: Key.F), "D♭")
 
         let cSharp = Note(accidental: .sharp)
         XCTAssertEqual(cSharp.noteNumber, 61)
         XCTAssertEqual(cSharp.spelling, "C♯")
+        XCTAssertEqual(cSharp.spelling(in: Key.Ab), "D♭")
 
         let dDoubleFlat = Note(.D, accidental: .doubleFlat)
         XCTAssertEqual(dDoubleFlat.noteNumber, 60)

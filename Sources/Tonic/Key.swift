@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Key {
+public struct Key: Equatable {
     public let root: Note
     public let scale: Scale
     public let notes: [Note]
@@ -20,11 +20,20 @@ public struct Key {
     }
 
     public var preferredAccidental: Accidental {
-        if root.accidental == .natural || root.accidental == .sharp  {
+        if root.accidental == .sharp  {
             return .sharp
-        } else {
+        }
+        if root.accidental == .flat {
             return .flat
         }
+
+        let naturalKeysWithFlats: [Key] = [.F, .d, .g, .c, .f]
+        if naturalKeysWithFlats.contains(self) {
+            return .flat
+        }
+
+        return .sharp
+
 
     }
 

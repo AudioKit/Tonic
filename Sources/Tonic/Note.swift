@@ -62,6 +62,11 @@ public struct Note: Equatable, Hashable {
         return "\(letter)\(accidental)"
     }
 
+    func spelling(in key: Key) -> String {
+        let note = Note(noteNumber: noteNumber, key: key)
+        return note.spelling
+    }
+
     public func semitones(to: Note) -> Int {
         abs(Int(noteNumber - to.noteNumber))
     }
