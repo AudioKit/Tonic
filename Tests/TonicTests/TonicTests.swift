@@ -47,11 +47,11 @@ final class TonicTests: XCTestCase {
     }
 
     func testScales() {
-        print("blues intervals \(Scale.blues.intervals)")
-        print("pentatonic intervals \(Scale.pentatonicMinor.intervals)")
-        print("major scale intervales \(Scale.major.intervals)")
-        print("minor scale intervals \(Scale.minor.intervals)")
-        print("chromatic scale intervals \(Scale.chromatic.intervals)")
+        XCTAssertEqual(Scale.blues.intervals, [.m3, .P4, .d5, .P5, .m7])
+        XCTAssertEqual(Scale.pentatonicMinor.intervals, [.m3, .P4, .P5, .m7])
+        XCTAssertEqual(Scale.major.intervals, [.M2, .M3, .P4, .P5, .M6, .M7])
+        XCTAssertEqual(Scale.minor.intervals, [.M2, .m3, .P4, .P5, .m6, .m7])
+        XCTAssertEqual(Scale.chromatic.intervals, [.m2, .M2, .m3, .M3, .P4, .d5, .P5, .m6, .M6, .m7, .M7])
 
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.blues))
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.minor))
