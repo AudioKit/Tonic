@@ -22,9 +22,11 @@ struct BitSet64: BitSet {
     }
 
     func forEach(_ f: (Int) -> ()) {
-        for bit in 0..<64 {
-            if isSet(bit: bit) {
-                f(bit)
+        if bits != 0 {
+            for bit in 0..<64 {
+                if isSet(bit: bit) {
+                    f(bit)
+                }
             }
         }
     }
@@ -59,11 +61,8 @@ struct BitSet2x<B: BitSet>: BitSet {
     }
 
     func forEach(_ f: (Int) -> ()) {
-        for bit in 0..<2*low.totalBits {
-            if isSet(bit: bit) {
-                f(bit)
-            }
-        }
+        low.forEach(f)
+        high.forEach({ f($0+low.totalBits) })
     }
 
     var count: Int {
