@@ -142,7 +142,7 @@ class ChordTable {
         for accidental in accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter, accidental: accidental)
-                r[ChordTable.hashPitchClasses(notes: [root, root.shift(third), root.shift(fifth)])] = root
+                r[ChordTable.hashPitchClasses(notes: [root, root.shiftUp(third), root.shiftUp(fifth)])] = root
             }
         }
         print("generated \(r.count) triads")

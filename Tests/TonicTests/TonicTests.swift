@@ -3,7 +3,7 @@ import XCTest
 
 final class TonicTests: XCTestCase {
     func testNoteSpelling() {
-        let c4 = Note()
+        let c4 = Note(.C)
         XCTAssertEqual(c4.noteNumber, 60)
         XCTAssertEqual(c4.spelling, "C")
 
@@ -29,11 +29,17 @@ final class TonicTests: XCTestCase {
     }
 
     func testNoteShift() {
-        let d = Note().shift(.M2)
+        let d = Note(.C).shiftUp(.M2)
         XCTAssertEqual(d!.spelling, "D")
 
-        let eFlat = Note().shift(.m3)
+        let eFlat = Note(.C).shiftUp(.m3)
          XCTAssertEqual(eFlat!.spelling, "E♭")
+
+        let c = Note(.D).shiftDown(.M2)
+        XCTAssertEqual(c!.spelling, "C")
+
+        let cs = Note(.D).shiftDown(.m2)
+        XCTAssertEqual(cs!.spelling, "C♯")
 
     }
 
@@ -59,7 +65,7 @@ final class TonicTests: XCTestCase {
     }
 
     func testChords() {
-        let chord = Chord(notes: [Note(), Note(.E), Note(.G)])
+        let chord = Chord(notes: [Note(.C), Note(.E), Note(.G)])
         XCTAssertTrue(chord.isTriad)
 
         let majorChord = Chord(noteNumbers: [61, 65, 68])
@@ -94,7 +100,7 @@ final class TonicTests: XCTestCase {
     }
 
     func testInversions() {
-        let chord = Chord(notes: [Note(), Note(.E), Note(.G)])
+        let chord = Chord(notes: [Note(.C), Note(.E), Note(.G)])
         XCTAssertTrue(chord.isTriad)
 
         let majorChord = Chord(noteNumbers: [68, 73, 77])
@@ -140,17 +146,17 @@ final class TonicTests: XCTestCase {
     }
 
     func testChordHausdorff() {
-        let C = Chord(notes: [Note(), Note(.E), Note(.G)])
+        let C = Chord(notes: [Note(.C), Note(.E), Note(.G)])
 
         XCTAssertEqual(C.hausdorff(to: C), 0)
 
-        let Cm = Chord(notes: [Note(), Note(.E, accidental: .flat), Note(.G)])
+        let Cm = Chord(notes: [Note(.C), Note(.E, accidental: .flat), Note(.G)])
 
         XCTAssertEqual(C.hausdorff(to: Cm), 1)
     }
     
     func testNoteIndex() {
-        let c4 = Note()
+        let c4 = Note(.C)
         let index = c4.index
         print("index: \(index)")
         XCTAssertEqual(c4, Note(index: index))

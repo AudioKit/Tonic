@@ -66,7 +66,21 @@ struct Note: Equatable, Hashable {
         abs(Int(noteNumber - to.noteNumber))
     }
 
-    func shift(_ shift: Interval) -> Note? {
+    func shiftDown(_ shift: Interval) -> Note? {
+        var newNote = Note(.C, accidental: .natural, octave: 0)
+        let newLetterIndex = (letter.rawValue - (shift.degree - 1))
+        let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
+        let newOctave = octave + (newLetterIndex >= Letter.allCases.count ? 1 : 0)
+        for accidental in Accidental.allCases {
+            newNote = Note(newLetter, accidental: accidental, octave: newOctave)
+            if newNote.noteNumber == Int8(noteNumber) - Int8(shift.semitones) {
+                return newNote
+            }
+        }
+        return nil
+    }
+
+    func shiftUp(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
