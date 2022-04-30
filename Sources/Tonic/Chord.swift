@@ -76,19 +76,23 @@ struct Chord {
 
         let table = ChordTable.shared
 
-        if let root = table.minorTriadRoots[pitchClasses(in: key)] {
+        if let root = table.minorTriadRoots[pitchClassesHash(in: key)] {
             return "\(root.spelling)m"
         }
 
-        if let root = table.majorTriadRoots[pitchClasses(in: key)] {
+        if let root = table.majorTriadRoots[pitchClassesHash(in: key)] {
             return root.spelling
         }
 
         return "unknown chord"
     }
 
-    func pitchClasses(in key: Key) -> Set<Note> {
-        Set<Note>(notes(in: key).map { $0.pitchClass })
+    func pitchClassesHash(in key: Key) -> Int {
+        var hasher = Hasher()
+        notes(in: key).map { $0.pitchClass }.sorted().forEach { note in
+            hasher.combine(note)
+        }
+        return hasher.finalize()
     }
 
 }
@@ -98,26 +102,34 @@ class ChordTable {
 
     static let shared = ChordTable()
 
-    lazy var majorTriadRoots: [Set<Note>: Note] = {
-        var r: [Set<Note>: Note] = [:]
+    func hashPitchClasses(notes: [Note]) -> Int {
+        var hasher = Hasher()
+        notes.map { $0.pitchClass }.sorted().forEach { note in
+            hasher.combine(note)
+        }
+        return hasher.finalize()
+    }
+
+    lazy var majorTriadRoots: [Int: Note] = {
+        var r: [Int: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                r[Set<Note>([root, root.shift(.M3), root.shift(.P5)].map {$0.pitchClass})] = root
+                r[hashPitchClasses(notes: [root, root.shift(.M3), root.shift(.P5)])] = root
             }
         }
         print("generated \(r.count) major triads")
         return r
     }()
 
-    lazy var minorTriadRoots: [Set<Note>: Note] = {
-        var r: [Set<Note>: Note] = [:]
+    lazy var minorTriadRoots: [Int: Note] = {
+        var r: [Int: Note] = [:]
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in  accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter: letter, accidental: accidental)
-                r[Set<Note>([root, root.shift(.m3), root.shift(.P5)].map {$0.pitchClass})] = root
+                r[hashPitchClasses(notes: [root, root.shift(.m3), root.shift(.P5)])] = root
             }
         }
         print("generated \(r.count) minor triads")
