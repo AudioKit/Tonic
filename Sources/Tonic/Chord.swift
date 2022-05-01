@@ -102,7 +102,7 @@ public struct TriadInfo {
 }
 
 /// A table of note sets so we can look up chord names.
-class ChordTable {
+public class ChordTable {
 
     static let shared = ChordTable()
 
@@ -147,8 +147,8 @@ class ChordTable {
 }
 
 /// A set of intervals from the root (tonic).
-struct ChordType: OptionSet {
-    let rawValue: Int
+public struct ChordType: OptionSet {
+    public let rawValue: Int
 
     var intervals: [Interval] {
 
@@ -161,7 +161,7 @@ struct ChordType: OptionSet {
         return result
     }
 
-    init(rawValue: Int) {
+    public init(rawValue: Int) {
         self.rawValue = rawValue
     }
 
