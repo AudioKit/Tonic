@@ -155,9 +155,6 @@ public struct BitSet2x<B: BitSet>: BitSet {
         high.formSymmetricDifference(other.high)
     }
 
-    public typealias Element = Int
-    public typealias ArrayLiteralElement = Int
-
 }
 
 public typealias BitSet128 = BitSet2x<BitSet64>
