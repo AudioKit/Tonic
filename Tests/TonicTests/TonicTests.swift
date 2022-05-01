@@ -41,7 +41,7 @@ final class TonicTests: XCTestCase {
     }
 
     func testNoteIndex() {
-        let c4 = Note(.C)
+        let c4 = Note.C
         let index = c4.index
         XCTAssertEqual(c4, Note(index: index))
     }

@@ -39,22 +39,22 @@ final class ChordTests: XCTestCase {
     }
 
     func testInversions() {
-        let chord = Chord(notes: [Note(.C), Note(.E), Note(.G)])
+        let chord = Chord(notes:  [.C, .E, .G])
         XCTAssertTrue(chord.isTriad)
 
-        let firstInversion = Chord(notes: [Note(.C), Note(.E), Note(.A, octave: 6)])
+        let firstInversion = Chord(notes: [.C, .E, Note(.A, octave: 6)])
         XCTAssertEqual(firstInversion.name, "Am")
 
-        let secondInversion = Chord(notes: [Note(.E, octave: 1), Note(.A), Note(.C)])
+        let secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])
         XCTAssertEqual(secondInversion.name, "Am")
     }
 
     func testDiminishedChords() {
 
-        let aDim = Chord(notes: [Note(.A), Note(.C), Note(.E, accidental: .flat)])
+        let aDim = Chord(notes: [.A, .C, .Eb])
         XCTAssertEqual(aDim.name, "A°")
 
-        let bDim = Chord(notes: [Note(.B), Note(.D), Note(.F)])
+        let bDim = Chord(notes: [.B, .D, .F])
         XCTAssertEqual(bDim.name, "B°")
 
 
@@ -62,22 +62,22 @@ final class ChordTests: XCTestCase {
 
     func testAugmentedChords() {
 
-        let cAug = Chord(notes: [Note(.C), Note(.E), Note(.G, accidental: .sharp)])
+        let cAug = Chord(notes: [.C, .E, .Gs])
         XCTAssertEqual(cAug.name, "C⁺")
 
-        let aAug = Chord(notes: [Note(.A), Note(.C, accidental: .sharp), Note(.E, accidental: .sharp)])
+        let aAug = Chord(notes: [.A, .Cs, .Es])
         XCTAssertEqual(aAug.name, "A⁺")
 
-        let dbAug = Chord(notes: [Note(.D, accidental: .flat), Note(.F), Note(.A)])
+        let dbAug = Chord(notes: [.Db, .F, .A])
         XCTAssertEqual(dbAug.name, "D♭⁺")
     }
 
     func testChordHausdorff() {
-        let C = Chord(notes: [Note(.C), Note(.E), Note(.G)])
+        let C = Chord(notes: [.C, .E, .G])
 
         XCTAssertEqual(C.hausdorff(to: C), 0)
 
-        let Cm = Chord(notes: [Note(.C), Note(.E, accidental: .flat), Note(.G)])
+        let Cm = Chord(notes: [.C, .Eb, .G])
 
         XCTAssertEqual(C.hausdorff(to: Cm), 1)
     }
