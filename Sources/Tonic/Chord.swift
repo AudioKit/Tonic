@@ -80,7 +80,7 @@ public struct Chord: Equatable {
         if let info = table.triads[hash] {
             let root = info.root
             switch info.type {
-            case .major: return root.spelling
+            case .major: return "\(root.spelling)"
             case .minor: return "\(root.spelling)m"
             case .diminished: return "\(root.spelling)°"
             case .augmented: return "\(root.spelling)⁺"

@@ -20,10 +20,10 @@ public struct Key: Equatable {
     }
 
     public var preferredAccidental: Accidental {
-        if root.accidental == .sharp  {
+        if root.spelling.accidental == .sharp  {
             return .sharp
         }
-        if root.accidental == .flat {
+        if root.spelling.accidental == .flat {
             return .flat
         }
 
