@@ -71,8 +71,8 @@ public struct Note: Equatable, Hashable {
         Note(pitch: pitch, key: key).spelling
     }
 
-    public func semitones(to: Note) -> Int {
-        abs(Int(noteNumber - to.noteNumber))
+    public func semitones(to: Note) -> Int8 {
+        pitch.semitones(to: to.pitch)
     }
 
     public func shiftDown(_ shift: Interval) -> Note? {

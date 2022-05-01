@@ -12,4 +12,8 @@ public struct Pitch: Equatable {
     func note(in key: Key) -> Note {
         Note(pitch: self, key: key)
     }
+
+    func semitones(to: Pitch) -> Int8 {
+        abs(midiNoteNumber - to.midiNoteNumber)
+    }
 }

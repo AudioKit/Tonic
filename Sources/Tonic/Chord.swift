@@ -59,10 +59,10 @@ public struct Chord: Equatable {
     /// One-sided Hausdorff distance to another chord.
     ///
     /// https://en.wikipedia.org/wiki/Hausdorff_distance
-    public func hausdorff(to: Chord) -> Int {
-        var d_sup = 0
+    public func hausdorff(to: Chord) -> Int8 {
+        var d_sup: Int8 = 0
         self.forEachNote { n0 in
-            var d_inf = Int.max
+            var d_inf = Int8.max
             to.forEachNote { n1 in
                 d_inf = min(d_inf, n0.semitones(to: n1))
             }
