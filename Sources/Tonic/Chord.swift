@@ -12,6 +12,15 @@ public struct Chord: Equatable {
         }
     }
 
+    public init(_ root: Note, type: ChordType) {
+        add(note: root)
+        for interval in type.intervals {
+            if let note = root.shiftUp(interval) {
+                add(note: note)
+            }
+        }
+    }
+
     public var noteCount: Int {
         notes.count
     }
