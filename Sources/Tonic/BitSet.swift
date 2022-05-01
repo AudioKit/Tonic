@@ -10,21 +10,26 @@ public protocol BitSet: Hashable {
     var totalBits: Int { get }
 }
 
-public struct BitSet64: BitSet {
-    private var bits: UInt64 = 0
+public struct BitSet64: BitSet, OptionSet {
+
+    public var rawValue: UInt64 = 0
 
     public init() {}
+
+    public init(rawValue: UInt64) {
+        self.rawValue = rawValue
+    }
     
     public func isSet(bit: Int) -> Bool {
-        return (bits & (1 << bit)) != 0
+        return (rawValue & (1 << bit)) != 0
     }
     
     public mutating func add(bit: Int) {
-        bits |= 1 << bit
+        rawValue |= 1 << bit
     }
 
     public func forEach(_ f: (Int) -> ()) {
-        if bits != 0 {
+        if rawValue != 0 {
             for bit in 0..<64 {
                 if isSet(bit: bit) {
                     f(bit)
@@ -34,7 +39,7 @@ public struct BitSet64: BitSet {
     }
 
     public var count: Int {
-        bits.nonzeroBitCount
+        rawValue.nonzeroBitCount
     }
     
     public var totalBits: Int {
