@@ -173,8 +173,8 @@ struct ChordType: OptionSet {
         self.rawValue = r
     }
 
-    static let majorTriad = ChordType(intervals: [.M3, .P5])
-    static let majorSixth = ChordType(intervals: [.M3, .P5, .M6])
-    static let dominantSeventh = ChordType(intervals: [.M3, .P5, .m7])
-    static let minorTriad = ChordType(intervals: [.m3, .P5])
+    public static let majorTriad = ChordType(intervals: [.M3, .P5])
+    public static let majorSixth = ChordType(intervals: [.M3, .P5, .M6])
+    public static let dominantSeventh = ChordType(intervals: [.M3, .P5, .m7])
+    public static let minorTriad = ChordType(intervals: [.m3, .P5])
 }
