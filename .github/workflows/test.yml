@@ -1,0 +1,21 @@
+name: CI
+
+on: [push, pull_request]
+env:
+  XCODE_VER: 13.1
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        xcode_version: ['13.1']
+    runs-on: macos-latest
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app
+    steps:
+      - name: Check out Tonic 
+        uses: actions/checkout@v2
+      - name: Test tonic 
+        run: |
+          set -euo pipefail
+          swift test
