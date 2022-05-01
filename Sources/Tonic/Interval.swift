@@ -13,7 +13,10 @@ public enum Interval: Int, CaseIterable {
     case M6
     case m7
     case M7
+    case d4
+    case A4
     case A5
+    case A6
 
     var semitones: Int {
         switch self {
@@ -26,8 +29,12 @@ public enum Interval: Int, CaseIterable {
             return 3
         case .M3:
             return 4
+        case .d4:
+            return 4
         case .P4:
             return 5
+        case .A4:
+            return 6
         case .d5:
             return 6
         case .P5:
@@ -38,6 +45,8 @@ public enum Interval: Int, CaseIterable {
             return 8
         case .M6:
             return 9
+        case .A6:
+            return 10
         case .m7:
             return 10
         case .M7:
@@ -56,7 +65,11 @@ public enum Interval: Int, CaseIterable {
             return 3
         case .M3:
             return 3
+        case .d4:
+            return 4
         case .P4:
+            return 4
+        case .A4:
             return 4
         case .d5:
             return 5
@@ -67,6 +80,8 @@ public enum Interval: Int, CaseIterable {
         case .m6:
             return 6
         case .M6:
+            return 6
+        case .A6:
             return 6
         case .m7:
             return 7
