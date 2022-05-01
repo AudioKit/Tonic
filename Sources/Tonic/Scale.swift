@@ -5,7 +5,7 @@ import Foundation
 public struct Scale: OptionSet {
     public let rawValue: Int
 
-    public var description: String = ""
+    public let description: String
 
     public var intervals: [Interval] {
 
@@ -20,6 +20,7 @@ public struct Scale: OptionSet {
 
     public init(rawValue: Int) {
         self.rawValue = rawValue
+        self.description = ""
     }
 
     public init(intervals: [Interval], description: String) {
