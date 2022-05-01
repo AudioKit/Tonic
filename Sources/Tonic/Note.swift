@@ -1,5 +1,6 @@
 import Foundation
 
+/// A pitch with a particular spelling.
 public struct Note: Equatable, Hashable {
     /// Base name for the note
     public var spelling: NoteSpelling = NoteSpelling(letter: .C, accidental: .natural)
