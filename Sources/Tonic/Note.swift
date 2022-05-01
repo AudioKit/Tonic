@@ -66,8 +66,6 @@ public struct Note: Equatable, Hashable {
     }
 
     /// The way the note is described in a musical context (usually a key or scale)
-
-
     func spelling(in key: Key) -> NoteSpelling {
         Note(pitch: pitch, key: key).spelling
     }
