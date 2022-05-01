@@ -116,33 +116,33 @@ public struct Note: Equatable, Hashable {
         (octave+1) * 7 * 5 + letter.rawValue * 5 + (Int(accidental.rawValue)+2)
     }
 
-    static var Cb = Note(.C, accidental: .flat)
-    static var C = Note(.C)
-    static var Cs = Note(.C, accidental: .sharp)
+    public static var Cb = Note(.C, accidental: .flat)
+    public static var C = Note(.C)
+    public static var Cs = Note(.C, accidental: .sharp)
 
-    static var Db = Note(.D, accidental: .flat)
-    static var D = Note(.D)
-    static var Ds = Note(.D, accidental: .sharp)
+    public static var Db = Note(.D, accidental: .flat)
+    public static var D = Note(.D)
+    public static var Ds = Note(.D, accidental: .sharp)
 
-    static var Eb = Note(.E, accidental: .flat)
-    static var E = Note(.E)
-    static var Es = Note(.E, accidental: .sharp)
+    public static var Eb = Note(.E, accidental: .flat)
+    public static var E = Note(.E)
+    public static var Es = Note(.E, accidental: .sharp)
 
-    static var Fb = Note(.F, accidental: .flat)
-    static var F = Note(.F)
-    static var Fs = Note(.F, accidental: .sharp)
+    public static var Fb = Note(.F, accidental: .flat)
+    public static var F = Note(.F)
+    public static var Fs = Note(.F, accidental: .sharp)
 
-    static var Gb = Note(.G, accidental: .flat)
-    static var G = Note(.G)
-    static var Gs = Note(.G, accidental: .sharp)
+    public static var Gb = Note(.G, accidental: .flat)
+    public static var G = Note(.G)
+    public static var Gs = Note(.G, accidental: .sharp)
 
-    static var Ab = Note(.A, accidental: .flat)
-    static var A = Note(.A)
-    static var As = Note(.A, accidental: .sharp)
+    public static var Ab = Note(.A, accidental: .flat)
+    public static var A = Note(.A)
+    public static var As = Note(.A, accidental: .sharp)
 
-    static var Bb = Note(.B, accidental: .flat)
-    static var B = Note(.B)
-    static var Bs = Note(.B, accidental: .sharp)
+    public static var Bb = Note(.B, accidental: .flat)
+    public static var B = Note(.B)
+    public static var Bs = Note(.B, accidental: .sharp)
 
 
 }
