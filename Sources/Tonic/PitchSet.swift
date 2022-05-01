@@ -2,6 +2,8 @@
 import Foundation
 
 /// A set of pitches represented by a bit set.
+///
+/// Addresses all possible combinations of simultaneous MIDI notes.
 public struct PitchSet: Hashable, Equatable {
     var bits = BitSet128()
 
