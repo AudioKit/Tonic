@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct Pitch {
+public struct Pitch: Equatable {
 
     var midiNoteNumber: Int8
 

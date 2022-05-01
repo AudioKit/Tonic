@@ -2,7 +2,7 @@
 import Foundation
 
 /// Chord addresses all possible combinations of simultaneous MIDI notes.
-public struct Chord {
+public struct Chord: Equatable {
 
     public var noteSet = NoteSet()
 
