@@ -3,7 +3,7 @@ import Foundation
 
 /// Essentially a midi note number.
 ///
-/// We want to use a notion of pitch that lends itself to combinatorical algorithms,
+/// We want to use a notion of pitch that lends itself to combinatorial algorithms,
 /// as opposed to useing e.g. a fundamental frequency.
 public struct Pitch: Equatable, Hashable {
 
