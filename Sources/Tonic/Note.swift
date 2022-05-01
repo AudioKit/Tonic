@@ -3,6 +3,7 @@ import Foundation
 public struct Note: Equatable, Hashable {
     /// Base name for the note
     public var spelling: NoteSpelling = NoteSpelling(letter: .C, accidental: .natural)
+    public var spellingWithOctave: String { "\(spelling)\(octave)"}
 
     /// Range from -1 to 7
     public var octave: Int = 4
