@@ -1,5 +1,14 @@
 import Foundation
 
+public struct NoteSpelling: Equatable, Hashable, CustomStringConvertible {
+    var letter: Letter
+    var accidental: Accidental
+
+    public var description: String {
+        return "\(letter)\(accidental)"
+    }
+}
+
 public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
     public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
         lhs.rawValue < rhs.rawValue
