@@ -1,5 +1,6 @@
 import Foundation
 
+/// A scale with a root note (tonic).
 public struct Key: Equatable {
     public let root: Note
     public let scale: Scale
