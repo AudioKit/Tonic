@@ -61,9 +61,7 @@ public struct Note: Equatable, Hashable {
     }
 
     public var pitch: Pitch {
-        let octaveShift = UInt8((octave + 1) * 12)
-        let note = Int(spelling.letter.baseNote) + Int(spelling.accidental.rawValue)
-        return Pitch(Int8(octaveShift) + Int8(note))
+        return Pitch(noteNumber)
     }
 
     /// The way the note is described in a musical context (usually a key or scale)
