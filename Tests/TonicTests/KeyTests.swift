@@ -31,8 +31,10 @@ class KeyTests: XCTestCase {
                        ["C", "F", "Am"])
     }
 
-    func testKeySharedNotes() {
+    func testKeyNoteSets() {
         XCTAssertEqual(Key.C.noteSet.intersection(Key.Cm.noteSet).notes.map { $0.spelling.description }, ["C", "D", "F", "G"])
+
+        XCTAssertEqual(Key.C.noteSet.symmetricDifference(Key.Cm.noteSet).notes.map { $0.spelling.description }, ["E♭", "E", "A♭", "A", "B♭", "B"])
     }
 
 }
