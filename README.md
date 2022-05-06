@@ -5,9 +5,9 @@ Swift library for music theory.
 Tonic answers musical questions, such as:
 
 - What's the note for this pitch in this key?
-- Is this set of notes a chord?
-- If so, what's the name of the chord?
-- What chords are in this key?
+- Is this set of notes a chord? 
+- If so, what's the name of the chord? `Chord(notes: [notes]).name`
+- What chords are in this key? `Key.Cm.chords`
 - What chords in this key contain this note?
 - What notes do these keys have in common?
 - What notes don't these keys have in common?
