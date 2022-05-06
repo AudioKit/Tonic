@@ -10,8 +10,6 @@ Tonic answers musical questions, such as:
 - What chords in this key contain this note? `Key.C.chords.filter { $0.contains(note: Note(.C)) }`
 - What notes do these keys have in common? `Key.C.noteSet.intersection(Key.Cm.noteSet)`
 - What notes don't these keys have in common? `Key.C.noteSet.symmetricDifference(Key.Cm.noteSet)`
-- What chords do these keys have in common?
-- Are these notes/chords enharmonic?
 
 ## Goals
 
