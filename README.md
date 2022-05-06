@@ -1,6 +1,6 @@
 # Tonic
 
-Swift library for music theory.
+Swift library for music theory, currently focused on chords/harmony.
 
 Tonic answers musical questions, such as:
 
