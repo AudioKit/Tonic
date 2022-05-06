@@ -19,8 +19,8 @@ public struct Note: Equatable, Hashable {
         let noteNumber = pitch.midiNoteNumber
         let baseNoteNumber = noteNumber % 12
 
-        let keyNotes = key.notes.map { $0.pitch.pitchClass }
-        if let index = keyNotes.firstIndex(of: baseNoteNumber) {
+        let keyPitchClasses = key.notes.map { $0.pitch.pitchClass }
+        if let index = keyPitchClasses.firstIndex(of: baseNoteNumber) {
             let letter = key.notes[index].spelling.letter
             let accidental = key.notes[index].spelling.accidental
             spelling = NoteSpelling(letter: letter, accidental: accidental)
