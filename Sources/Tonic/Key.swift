@@ -38,6 +38,20 @@ public struct Key: Equatable {
 
     }
 
+    /// Returns all the chords in the key.
+    public var chords: [Chord] {
+        let table = ChordTable.shared
+        var result: [Chord] = []
+
+        for (_, info) in table.triads {
+            if info.notes.isSubset(of: notes) {
+                result.append(Chord(noteSet: info.notes))
+            }
+        }
+
+        return result
+    }
+
     public static let Cb = Key(root: Note(.C, accidental: .flat), scale: .major)
     public static let Gb = Key(root: Note(.G, accidental: .flat), scale: .major)
     public static let Db = Key(root: Note(.D, accidental: .flat), scale: .major)

@@ -14,6 +14,10 @@ public struct Chord: Equatable {
         }
     }
 
+    public init(noteSet: NoteSet) {
+        self.noteSet = noteSet
+    }
+
     public init(_ root: Note, type: ChordType) {
         add(note: root)
         for interval in type.intervals {
