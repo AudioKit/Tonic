@@ -30,7 +30,9 @@ public struct Key: Equatable {
                 chordInfos.append(info)
             }
         }
-        chords = chordInfos.sorted(by: {$0.root.spelling.letter < $1.root.spelling.letter}).map { Chord(noteSet: $0.notes) }
+        let chordsInfosStartingWithC = chordInfos.sorted(by: {$0.root.spelling.letter < $1.root.spelling.letter})
+        let index = chordsInfosStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
+        chords = Array(chordsInfosStartingWithC.map { Chord(noteSet: $0.notes) }.rotatingLeft(positions: index))
     }
 
     public var preferredAccidental: Accidental {
@@ -51,4 +53,17 @@ public struct Key: Equatable {
 
     }
 
+}
+
+extension RangeReplaceableCollection {
+    func rotatingLeft(positions: Int) -> SubSequence {
+        let index = self.index(startIndex, offsetBy: positions, limitedBy: endIndex) ?? endIndex
+        return self[index...] + self[..<index]
+    }
+    mutating func rotateLeft(positions: Int) {
+        let index = self.index(startIndex, offsetBy: positions, limitedBy: endIndex) ?? endIndex
+        let slice = self[..<index]
+        removeSubrange(..<index)
+        insert(contentsOf: slice, at: endIndex)
+    }
 }
