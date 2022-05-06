@@ -4,7 +4,7 @@ import Foundation
 public struct Key: Equatable {
     public let root: Note
     public let scale: Scale
-    public let notes: NoteSet
+    public let noteSet: NoteSet
 
     /// All the chords in the key.
     public let chords: [Chord]
@@ -20,19 +20,19 @@ public struct Key: Equatable {
                 r.append(note)
             }
         }
-        self.notes = NoteSet(notes: r)
+        self.noteSet = NoteSet(notes: r)
 
         let table = ChordTable.shared
         var chordInfos: [TriadInfo] = []
 
         for (_, info) in table.triads {
-            if info.notes.isSubset(of: notes) {
+            if info.noteSet.isSubset(of: noteSet) {
                 chordInfos.append(info)
             }
         }
         let chordsInfosStartingWithC = chordInfos.sorted(by: {$0.root.spelling.letter < $1.root.spelling.letter})
         let rootPosition = chordsInfosStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
-        chords = Array(chordsInfosStartingWithC.map { Chord(noteSet: $0.notes) }.rotatingLeft(positions: rootPosition))
+        chords = Array(chordsInfosStartingWithC.map { Chord(noteSet: $0.noteSet) }.rotatingLeft(positions: rootPosition))
     }
 
     public var preferredAccidental: Accidental {

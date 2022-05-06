@@ -124,6 +124,6 @@ public enum TriadType {
 public struct TriadInfo {
     var root: Note
     var type: TriadType
-    var notes: NoteSet
+    var noteSet: NoteSet
 }
 

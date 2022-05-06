@@ -19,7 +19,7 @@ public struct Note: Equatable, Hashable {
         let pitchClass = pitch.pitchClass
         var noteInKey: Note?
 
-        key.notes.forEachNote { note in
+        key.noteSet.forEachNote { note in
             if note.pitch.pitchClass == pitchClass {
                 noteInKey = note
             }
