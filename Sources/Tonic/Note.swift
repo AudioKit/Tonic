@@ -16,8 +16,7 @@ public struct Note: Equatable, Hashable {
 
     public init(pitch: Pitch, key: Key = .C) {
 
-        let noteNumber = pitch.midiNoteNumber
-        let baseNoteNumber = noteNumber % 12
+        let baseNoteNumber = pitch.pitchClass
 
         let keyPitchClasses = key.notes.map { $0.pitch.pitchClass }
         if let index = keyPitchClasses.firstIndex(of: baseNoteNumber) {
@@ -43,7 +42,7 @@ public struct Note: Equatable, Hashable {
         }
 
 
-        octave = Int(Double(noteNumber) / 12) - 1
+        octave = Int(Double(pitch.midiNoteNumber) / 12) - 1
     }
     
     public init(index: Int) {
