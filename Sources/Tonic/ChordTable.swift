@@ -18,7 +18,7 @@ public class ChordTable {
         for accidental in accidentals {
             for letter in Letter.allCases {
                 let root = Note(letter, accidental: accidental)
-                let notes = [root, root.shiftUp(third), root.shiftUp(fifth)].compactMap { $0 }
+                let notes = [root, root.shiftUp(third), root.shiftUp(fifth)].compactMap { $0 }.map { $0.noteClass }
                 if notes.count == 3 {
                     r[ChordTable.hashNoteClasses(notes: notes)] = TriadInfo(root: root,
                                                                             type: type,
