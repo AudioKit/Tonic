@@ -26,4 +26,9 @@ class KeyTests: XCTestCase {
                        ["C♭", "D♭m", "E♭m", "F♭", "G♭", "A♭m", "B♭°"])
     }
 
+    func testKeyChordsContain() {
+        XCTAssertEqual(Key.C.chords.filter { $0.contains(note: Note(.C)) }.map { $0.name },
+                       ["C", "F", "Am"])
+    }
+
 }
