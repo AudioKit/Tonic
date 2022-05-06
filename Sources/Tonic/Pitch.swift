@@ -22,4 +22,9 @@ public struct Pitch: Equatable, Hashable {
     func semitones(to: Pitch) -> Int8 {
         abs(midiNoteNumber - to.midiNoteNumber)
     }
+
+    /// Equivalence classes of pitches modulo octave.
+    var pitchClass: Int8 {
+        midiNoteNumber % 12
+    }
 }
