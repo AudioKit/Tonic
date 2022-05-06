@@ -1,4 +1,3 @@
-
 import Foundation
 
 /// A set of intervals from the root (tonic).

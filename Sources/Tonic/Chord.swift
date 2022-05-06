@@ -1,4 +1,3 @@
-
 import Foundation
 
 /// Chord addresses all possible combinations of simultaneous Notes.

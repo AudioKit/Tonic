@@ -1,4 +1,3 @@
-
 import Foundation
 
 /// A set of pitches represented by a bit set.
