@@ -11,4 +11,13 @@ class KeyTests: XCTestCase {
         let cMinor = Key.c
         XCTAssertEqual(cMinor.notes.notes.map({$0.spelling.description}), ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
     }
+
+    func testKeyChords() {
+
+        var cMajor = Key.C
+
+        for chord in cMajor.chords {
+            print(chord.name)
+        }
+    }
 }
