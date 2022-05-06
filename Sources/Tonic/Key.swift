@@ -23,15 +23,14 @@ public struct Key: Equatable {
         self.notes = NoteSet(notes: r)
 
         let table = ChordTable.shared
-        var chords: [Chord] = []
+        var chordInfos: [TriadInfo] = []
 
         for (_, info) in table.triads {
             if info.notes.isSubset(of: notes) {
-                chords.append(Chord(noteSet: info.notes))
+                chordInfos.append(info)
             }
         }
-
-        self.chords = chords
+        chords = chordInfos.sorted(by: {$0.root.spelling.letter < $1.root.spelling.letter}).map { Chord(noteSet: $0.notes) }
     }
 
     public var preferredAccidental: Accidental {
