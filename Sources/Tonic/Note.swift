@@ -16,27 +16,27 @@ public struct Note: Equatable, Hashable {
 
     public init(pitch: Pitch, key: Key = .C) {
 
-        let baseNoteNumber = pitch.pitchClass
+        let pitchClass = pitch.pitchClass
 
         let keyPitchClasses = key.notes.map { $0.pitch.pitchClass }
-        if let index = keyPitchClasses.firstIndex(of: baseNoteNumber) {
+        if let index = keyPitchClasses.firstIndex(of: pitchClass) {
             let letter = key.notes[index].spelling.letter
             let accidental = key.notes[index].spelling.accidental
             spelling = NoteSpelling(letter: letter, accidental: accidental)
         } else {
             if key.preferredAccidental == .sharp {
                 let letters: [Letter] = [.C, .C, .D, .D, .E, .F, .F, .G, .G, .A, .A, .B]
-                let letter = letters[Int(baseNoteNumber)]
+                let letter = letters[Int(pitchClass)]
 
                 let accidentals: [Accidental] = [.natural, .sharp, .natural, .sharp, .natural, .natural, .sharp, .natural, .sharp, .natural, .sharp, .natural]
-                let accidental = accidentals[Int(baseNoteNumber)]
+                let accidental = accidentals[Int(pitchClass)]
                 spelling = NoteSpelling(letter: letter, accidental: accidental)
             } else {
                 let letters: [Letter] = [.C, .D, .D, .E, .E, .F, .G, .G, .A, .A, .B, .B]
-                let letter = letters[Int(baseNoteNumber)]
+                let letter = letters[Int(pitchClass)]
 
                 let accidentals: [Accidental] = [.natural, .flat, .natural, .flat, .natural, .natural, .flat, .natural, .flat, .natural, .flat, .natural]
-                let accidental = accidentals[Int(baseNoteNumber)]
+                let accidental = accidentals[Int(pitchClass)]
                 spelling = NoteSpelling(letter: letter, accidental: accidental)
             }
         }
