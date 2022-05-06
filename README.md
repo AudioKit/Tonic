@@ -4,12 +4,11 @@ Swift library for music theory.
 
 Tonic answers musical questions, such as:
 
-- What's the note for this pitch in this key?
-- Is this set of notes a chord? 
-- If so, what's the name of the chord? `Chord(notes: [notes]).name`
+- What's the note for this pitch in this key? `Note(pitch: Pitch(midiNoteNumber), key: .Bb)`
+- What's the name of a chord? `Chord(notes: [notes]).name`
 - What chords are in this key? `Key.Cm.chords`
-- What chords in this key contain this note?
-- What notes do these keys have in common?
+- What chords in this key contain this note? `Key.C.chords.filter { $0.contains(note: Note(.C)) }`
+- What notes do these keys have in common? `Key.C.noteSet.intersection(Key.Cm.noteSet)`
 - What notes don't these keys have in common?
 - What chords do these keys have in common?
 - Are these notes/chords enharmonic?
