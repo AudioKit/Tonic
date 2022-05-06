@@ -13,19 +13,8 @@ class KeyTests: XCTestCase {
 
     func testKeyChords() {
 
-        print("chords in C major:")
-        for chord in Key.C.chords {
-            print(chord.name)
-        }
-
-        print("chords in A minor:")
-        for chord in Key.Am.chords {
-            print(chord.name)
-        }
-
-        print("chords in G major:")
-        for chord in Key.G.chords {
-            print(chord.name)
-        }
+        XCTAssertEqual(Key.C.chords.map { $0.name }, ["C", "Dm", "Em", "F", "G", "Am", "B°"])
+        XCTAssertEqual(Key.Am.chords.map { $0.name }, ["Am", "B°", "C", "Dm", "Em", "F", "G"])
+        XCTAssertEqual(Key.G.chords.map { $0.name }, ["G", "Am", "Bm", "C", "D", "Em", "F♯°"])
     }
 }
