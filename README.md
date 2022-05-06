@@ -8,7 +8,7 @@ Tonic answers musical questions, such as:
 - If so, what's the name of the chord?
 - What chords are in this key?
 - What chords in this key contain this note?
-- What chords to these keys have in common?
+- What chords do these keys have in common?
 
 ## Goals
 
