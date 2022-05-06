@@ -5,6 +5,7 @@ import Foundation
 ///
 /// Addresses all possible combinations of simultaneous MIDI notes.
 public struct PitchSet: Hashable, Equatable {
+
     var bits = BitSet128()
 
     public init() { }
@@ -21,11 +22,15 @@ public struct PitchSet: Hashable, Equatable {
         }
     }
 
+    public init(bits: BitSet128) {
+        self.bits = bits
+    }
+
     public mutating func add(pitch: Pitch) {
         bits.add(bit: Int(pitch.midiNoteNumber))
     }
 
-    public func contains(pitch: Pitch) -> Bool {
+    public func contains(_ pitch: Pitch) -> Bool {
         bits.isSet(bit: Int(pitch.midiNoteNumber))
     }
 
@@ -46,4 +51,56 @@ public struct PitchSet: Hashable, Equatable {
         }
         return c
     }
+}
+
+extension PitchSet: SetAlgebra {
+
+    public func union(_ other: __owned PitchSet) -> PitchSet {
+        PitchSet(bits: bits.union(other.bits))
+    }
+
+    public func intersection(_ other: PitchSet) -> PitchSet {
+        PitchSet(bits: bits.intersection(other.bits))
+    }
+
+    public func symmetricDifference(_ other: __owned PitchSet) -> PitchSet {
+        PitchSet(bits: bits.symmetricDifference(other.bits))
+    }
+
+    public mutating func insert(_ newMember: __owned Pitch) -> (inserted: Bool, memberAfterInsert: Pitch) {
+        let (inserted, memberAfter) = bits.insert(Int(newMember.midiNoteNumber))
+        return (inserted, Pitch(Int8(memberAfter)))
+    }
+
+    public mutating func remove(_ member: Pitch) -> Pitch? {
+        if let i = bits.remove(Int(member.midiNoteNumber)) {
+            return Pitch(Int8(i))
+        } else {
+            return nil
+        }
+    }
+
+    public mutating func update(with newMember: __owned Pitch) -> Pitch? {
+        if let i = bits.update(with: Int(newMember.midiNoteNumber)) {
+            return Pitch(Int8(i))
+        } else {
+            return nil
+        }
+    }
+
+    public mutating func formUnion(_ other: __owned PitchSet) {
+        bits.formUnion(other.bits)
+    }
+
+    public mutating func formIntersection(_ other: PitchSet) {
+        bits.formIntersection(other.bits)
+    }
+
+    public mutating func formSymmetricDifference(_ other: __owned PitchSet) {
+        bits.formSymmetricDifference(other.bits)
+    }
+
+    public typealias Element = Pitch
+
+    public typealias ArrayLiteralElement = Pitch
 }
