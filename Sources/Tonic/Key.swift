@@ -16,7 +16,7 @@ public struct Key: Equatable {
         var r = [root]
 
         for interval in scale.intervals {
-            if let note = root.shiftUp(interval) {
+            if let note = root.shiftUp(interval)?.noteClass {
                 r.append(note)
             }
         }

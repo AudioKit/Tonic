@@ -19,6 +19,11 @@ class KeyTests: XCTestCase {
             print(chord.name)
         }
 
+        print("chords in A minor:")
+        for chord in Key.Am.chords {
+            print(chord.name)
+        }
+
         print("chords in G major:")
         for chord in Key.G.chords {
             print(chord.name)
