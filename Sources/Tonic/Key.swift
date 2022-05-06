@@ -39,7 +39,7 @@ public struct Key: Equatable {
     }
 
     /// Returns all the chords in the key.
-    public var chords: [Chord] {
+    public lazy var chords: [Chord] = {
         let table = ChordTable.shared
         var result: [Chord] = []
 
@@ -50,7 +50,7 @@ public struct Key: Equatable {
         }
 
         return result
-    }
+    }()
 
     public static let Cb = Key(root: Note(.C, accidental: .flat), scale: .major)
     public static let Gb = Key(root: Note(.G, accidental: .flat), scale: .major)
