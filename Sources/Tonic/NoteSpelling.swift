@@ -1,5 +1,6 @@
 import Foundation
 
+/// A note letter and accidental which spell a note. This leaves out the octave of the note.
 public struct NoteSpelling: Equatable, Hashable, CustomStringConvertible {
     var letter: Letter
     var accidental: Accidental
@@ -9,6 +10,7 @@ public struct NoteSpelling: Equatable, Hashable, CustomStringConvertible {
     }
 }
 
+/// A semitone offset applied to a note.
 public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
     public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
         lhs.rawValue < rhs.rawValue
@@ -25,6 +27,7 @@ public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, 
     }
 }
 
+/// The names for the "white key" notes.
 public enum Letter: Int, CaseIterable, Equatable, Hashable, Comparable {
     public static func < (lhs: Letter, rhs: Letter) -> Bool {
         lhs.rawValue < rhs.rawValue
