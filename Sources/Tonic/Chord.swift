@@ -76,13 +76,10 @@ public struct Chord: Equatable {
         return d_sup
     }
 
-    /// Try to give this chord a name in a particular key.
+    /// Try to give this chord a name
     public var name: String {
 
-        let table = ChordTable.shared
-        let hash = pitchClassesHash
-
-        if let info = table.triads[hash] {
+        if let info = ChordTable.shared.triads[pitchClassesHash] {
             let root = info.root
             switch info.type {
             case .major: return "\(root.spelling)"
@@ -103,6 +100,21 @@ public struct Chord: Equatable {
         return r.hashValue
     }
 
+    func romanNumeralNotation(in key: Key) -> String? {
+        let capitalRomanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII"]
+        if let index = key.chords.firstIndex(where: { $0 == self }) {
+            if let info = ChordTable.shared.triads[pitchClassesHash] {
+                let romanNumeral = capitalRomanNumerals[index]
+                switch info.type {
+                case .major: return romanNumeral
+                case .minor: return romanNumeral.lowercased()
+                case .diminished: return "\(romanNumeral.lowercased())°"
+                case .augmented: return "\(romanNumeral)⁺"
+                }
+            }
+        }
+        return nil
+    }
 }
 
 public enum TriadType {

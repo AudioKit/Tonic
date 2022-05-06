@@ -25,4 +25,17 @@ class KeyTests: XCTestCase {
         XCTAssertEqual(Key.Cb.chords.map { $0.name },
                        ["C♭", "D♭m", "E♭m", "F♭", "G♭", "A♭m", "B♭°"])
     }
+
+    func testKeyChordRomanNumerals() {
+        XCTAssertEqual(Key.C.chords.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
+                       ["I", "ii", "iii", "IV", "V", "vi", "vii°"])
+        XCTAssertEqual(Key.C.chords.map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
+                       ["III", "iv", "v", "VI", "VII", "i", "ii°"])
+        XCTAssertEqual(Key.C.chords.map { $0.romanNumeralNotation(in: Key.G) ?? "" },
+                       ["IV", "", "vi", "", "I", "ii", ""])
+        XCTAssertEqual(Key.Am.chords.map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
+                       ["i", "ii°", "III", "iv", "v", "VI", "VII"])
+        XCTAssertEqual(Key.Am.chords.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
+                       ["vi", "vii°", "I", "ii", "iii", "IV", "V"])
+    }
 }
