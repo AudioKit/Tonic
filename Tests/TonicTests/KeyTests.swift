@@ -14,7 +14,13 @@ class KeyTests: XCTestCase {
 
     func testKeyChords() {
 
+        print("chords in C major:")
         for chord in Key.C.chords {
+            print(chord.name)
+        }
+
+        print("chords in G major:")
+        for chord in Key.G.chords {
             print(chord.name)
         }
     }
