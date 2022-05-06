@@ -9,7 +9,10 @@ Tonic answers musical questions, such as:
 - If so, what's the name of the chord?
 - What chords are in this key?
 - What chords in this key contain this note?
+- What notes do these keys have in common?
+- What notes don't these keys have in common?
 - What chords do these keys have in common?
+- Are these notes/chords enharmonic?
 
 ## Goals
 
