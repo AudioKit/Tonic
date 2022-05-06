@@ -1,5 +1,6 @@
 import Foundation
 
+/// Interface to bit sets used to represent sets of pitches and sets of notes.
 public protocol BitSet: Hashable, SetAlgebra {
     init()
     func isSet(bit: Int) -> Bool
@@ -10,6 +11,7 @@ public protocol BitSet: Hashable, SetAlgebra {
     var totalBits: Int { get }
 }
 
+/// Bit set from a single UInt64.
 public struct BitSet64: BitSet, OptionSet {
 
     public var rawValue: UInt64 = 0
@@ -51,6 +53,8 @@ public struct BitSet64: BitSet, OptionSet {
     }
 }
 
+/// Bit set made by combining bit sets. By building up bit sets using generics, we avoid extra
+/// allocation that would occur if we used arrays.
 public struct BitSet2x<B: BitSet>: BitSet {
     private var high = B()
     private var low = B()
