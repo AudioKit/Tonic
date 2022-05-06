@@ -6,6 +6,9 @@ public struct Key: Equatable {
     public let scale: Scale
     public let notes: NoteSet
 
+    /// All the chords in the key.
+    public let chords: [Chord]
+
     public init(root: Note, scale: Scale = .major) {
         self.root = root
         self.scale = scale
@@ -18,6 +21,17 @@ public struct Key: Equatable {
             }
         }
         self.notes = NoteSet(notes: r)
+
+        let table = ChordTable.shared
+        var chords: [Chord] = []
+
+        for (_, info) in table.triads {
+            if info.notes.isSubset(of: notes) {
+                chords.append(Chord(noteSet: info.notes))
+            }
+        }
+
+        self.chords = chords
     }
 
     public var preferredAccidental: Accidental {
@@ -37,20 +51,6 @@ public struct Key: Equatable {
 
 
     }
-
-    /// Returns all the chords in the key.
-    public lazy var chords: [Chord] = {
-        let table = ChordTable.shared
-        var result: [Chord] = []
-
-        for (_, info) in table.triads {
-            if info.notes.isSubset(of: notes) {
-                result.append(Chord(noteSet: info.notes))
-            }
-        }
-
-        return result
-    }()
 
     public static let Cb = Key(root: Note(.C, accidental: .flat), scale: .major)
     public static let Gb = Key(root: Note(.G, accidental: .flat), scale: .major)

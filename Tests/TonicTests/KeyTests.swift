@@ -14,9 +14,7 @@ class KeyTests: XCTestCase {
 
     func testKeyChords() {
 
-        var cMajor = Key.C
-
-        for chord in cMajor.chords {
+        for chord in Key.C.chords {
             print(chord.name)
         }
     }
