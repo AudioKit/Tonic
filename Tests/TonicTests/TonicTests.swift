@@ -18,10 +18,10 @@ final class TonicTests: XCTestCase {
 
     func testKey() {
         let cMajor = Key.C
-        XCTAssertEqual(cMajor.notes.map({$0.spelling.description}), ["C", "D", "E", "F", "G", "A", "B"])
+        XCTAssertEqual(cMajor.notes.notes.map({$0.spelling.description}), ["C", "D", "E", "F", "G", "A", "B"])
 
         let cMinor = Key.c
-        XCTAssertEqual(cMinor.notes.map({$0.spelling.description}), ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
+        XCTAssertEqual(cMinor.notes.notes.map({$0.spelling.description}), ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
     }
     
     func testBitSet() {

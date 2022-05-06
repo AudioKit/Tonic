@@ -17,12 +17,16 @@ public struct Note: Equatable, Hashable {
     public init(pitch: Pitch, key: Key = .C) {
 
         let pitchClass = pitch.pitchClass
+        var noteInKey: Note?
 
-        let keyPitchClasses = key.notes.map { $0.pitch.pitchClass }
-        if let index = keyPitchClasses.firstIndex(of: pitchClass) {
-            let letter = key.notes[index].spelling.letter
-            let accidental = key.notes[index].spelling.accidental
-            spelling = NoteSpelling(letter: letter, accidental: accidental)
+        key.notes.forEachNote { note in
+            if note.pitch.pitchClass == pitchClass {
+                noteInKey = note
+            }
+        }
+
+        if let note = noteInKey {
+            spelling = note.spelling
         } else {
             if key.preferredAccidental == .sharp {
                 let letters: [Letter] = [.C, .C, .D, .D, .E, .F, .F, .G, .G, .A, .A, .B]

@@ -4,7 +4,7 @@ import Foundation
 public struct Key: Equatable {
     public let root: Note
     public let scale: Scale
-    public let notes: [Note]
+    public let notes: NoteSet
 
     public init(root: Note, scale: Scale = .major) {
         self.root = root
@@ -17,7 +17,7 @@ public struct Key: Equatable {
                 r.append(note)
             }
         }
-        self.notes = r
+        self.notes = NoteSet(notes: r)
     }
 
     public var preferredAccidental: Accidental {

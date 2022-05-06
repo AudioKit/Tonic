@@ -32,6 +32,14 @@ public struct NoteSet: Hashable, Equatable {
         }
     }
 
+    public var notes: [Note] {
+        var r: [Note] = []
+        forEachNote { n in
+            r.append(n)
+        }
+        return r
+    }
+
     public var count: Int {
         bits.count
     }
