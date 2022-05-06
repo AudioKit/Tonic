@@ -4,6 +4,7 @@ Swift library for music theory.
 
 Tonic answers musical questions, such as:
 
+- What's the note for this pitch in this key?
 - Is this set of notes a chord?
 - If so, what's the name of the chord?
 - What chords are in this key?
