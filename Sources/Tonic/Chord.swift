@@ -95,7 +95,7 @@ public struct Chord: Equatable {
     public var pitchClassesHash: Int {
         var r = NoteSet()
         noteSet.forEachNote { note in
-            r.add(note: note.pitchClass)
+            r.add(note: note.noteClass)
         }
         return r.hashValue
     }

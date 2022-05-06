@@ -102,7 +102,7 @@ public struct Note: Equatable, Hashable {
     }
 
     /// Returns representative note in canonical octave.
-    public var pitchClass: Note {
+    public var noteClass: Note {
         Note(spelling.letter, accidental: spelling.accidental, octave: 4)
     }
     
