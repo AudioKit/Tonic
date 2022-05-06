@@ -5,7 +5,7 @@ public class ChordTable {
 
     static let shared = ChordTable()
 
-    static func hashPitchClasses(notes: [Note]) -> Int {
+    static func hashNoteClasses(notes: [Note]) -> Int {
         var r = NoteSet()
         for note in notes {
             r.add(note: note.noteClass)
@@ -20,9 +20,9 @@ public class ChordTable {
                 let root = Note(letter, accidental: accidental)
                 let notes = [root, root.shiftUp(third), root.shiftUp(fifth)].compactMap { $0 }
                 if notes.count == 3 {
-                    r[ChordTable.hashPitchClasses(notes: notes)] = TriadInfo(root: root,
-                                                                             type: type,
-                                                                             notes: NoteSet(notes: notes))
+                    r[ChordTable.hashNoteClasses(notes: notes)] = TriadInfo(root: root,
+                                                                            type: type,
+                                                                            notes: NoteSet(notes: notes))
                 }
             }
         }
