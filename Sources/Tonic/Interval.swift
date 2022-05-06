@@ -1,5 +1,6 @@
 import Foundation
 
+/// A name for a distance between notes. Some Intervals refer to the same difference in pitch.
 public enum Interval: Int, CaseIterable {
     case m2
     case M2
