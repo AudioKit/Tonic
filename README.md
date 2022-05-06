@@ -8,7 +8,7 @@ Tonic answers musical questions, such as:
 - Is this set of notes a chord? 
 - If so, what's the name of the chord? `Chord(notes: [notes]).name`
 - What chords are in this key? `Key.Cm.chords`
-- What chords in this key contain this note?
+- What chords in this key contain this note? `Key.C.chords.filter { $0.contains(note: Note(.C)) }`
 - What notes do these keys have in common?
 - What notes don't these keys have in common?
 - What chords do these keys have in common?
