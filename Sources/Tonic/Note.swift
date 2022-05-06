@@ -27,17 +27,17 @@ public struct Note: Equatable, Hashable {
         } else {
             if key.preferredAccidental == .sharp {
                 let letters: [Letter] = [.C, .C, .D, .D, .E, .F, .F, .G, .G, .A, .A, .B]
-                let letter = letters[Int(noteNumber % 12)]
+                let letter = letters[Int(baseNoteNumber)]
 
                 let accidentals: [Accidental] = [.natural, .sharp, .natural, .sharp, .natural, .natural, .sharp, .natural, .sharp, .natural, .sharp, .natural]
-                let accidental = accidentals[Int(noteNumber % 12)]
+                let accidental = accidentals[Int(baseNoteNumber)]
                 spelling = NoteSpelling(letter: letter, accidental: accidental)
             } else {
                 let letters: [Letter] = [.C, .D, .D, .E, .E, .F, .G, .G, .A, .A, .B, .B]
-                let letter = letters[Int(noteNumber % 12)]
+                let letter = letters[Int(baseNoteNumber)]
 
                 let accidentals: [Accidental] = [.natural, .flat, .natural, .flat, .natural, .natural, .flat, .natural, .flat, .natural, .flat, .natural]
-                let accidental = accidentals[Int(noteNumber % 12)]
+                let accidental = accidentals[Int(baseNoteNumber)]
                 spelling = NoteSpelling(letter: letter, accidental: accidental)
             }
         }
