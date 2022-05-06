@@ -55,7 +55,7 @@ public struct Chord: Equatable {
 
     /// Is a note in a chord?
     public func contains(note: Note) -> Bool {
-        noteSet.contains(note: note)
+        noteSet.contains(note)
     }
 
     /// One-sided Hausdorff distance to another chord.
