@@ -26,7 +26,7 @@ final class ChordTests: XCTestCase {
 
     func testNaming() {
 
-        let pitches = PitchSet(numbers: [61, 65, 68])
+        let pitches = PitchSet2(numbers: [61, 65, 68])
 
         let Cs = pitches.chord(in: .Cs)
         let Db = pitches.chord(in: .Db)
