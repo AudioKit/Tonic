@@ -41,6 +41,33 @@ public struct BitSet64_2<T: IntRepresentable>: BitSet2 {
         rawValue &= ~(1 << bit.intValue)
     }
 
+    public func forEach(_ f: (Element) -> ()) {
+        if rawValue != 0 {
+            for bit in 0..<64 {
+                let e = Element(intValue: bit)
+                if isSet(e) {
+                    f(e)
+                }
+            }
+        }
+    }
+
+    public var first: Element? {
+        if rawValue != 0 {
+            for bit in 0..<64 {
+                let e = Element(intValue: bit)
+                if isSet(e) {
+                    return e
+                }
+            }
+        }
+        return nil
+    }
+
+    public var count: Int {
+        rawValue.nonzeroBitCount
+    }
+
     public var totalBits: Int {
         64
     }
