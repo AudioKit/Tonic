@@ -22,7 +22,7 @@ public class ChordTable {
                 if notes.count == 3 {
                     r[ChordTable.hashNoteClasses(notes: notes)] = TriadInfo(root: root,
                                                                             type: type,
-                                                                            noteSet: NoteSet(notes: notes))
+                                                                            notes: notes)
                 }
             }
         }

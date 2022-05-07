@@ -38,6 +38,16 @@ public struct Chord: Equatable {
         noteCount == 3
     }
 
+    public var inversion: Int? {
+        if let info = ChordTable.shared.triads[pitchClassesHash] {
+            if let firstNote = noteSet.notes.first {
+                let infoNotes = info.notes.map { $0.noteClass}
+                return infoNotes.firstIndex(of: firstNote.noteClass)
+            }
+        }
+        return nil
+    }
+
     public var notes: [Note] {
         var r: [Note] = []
         forEachNote({ r.append($0)})
@@ -124,6 +134,9 @@ public enum TriadType {
 public struct TriadInfo {
     var root: Note
     var type: TriadType
-    var noteSet: NoteSet
+    var notes: [Note]
+    var noteSet: NoteSet {
+        NoteSet(notes: notes)
+    }
 }
 

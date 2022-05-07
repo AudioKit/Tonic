@@ -40,12 +40,15 @@ final class ChordTests: XCTestCase {
 
     func testInversions() {
         let chord = Chord(notes:  [.C, .E, .G])
+        XCTAssertEqual(chord.inversion, 0)
         XCTAssertTrue(chord.isTriad)
 
         let firstInversion = Chord(notes: [.C, .E, Note(.A, octave: 6)])
+        XCTAssertEqual(firstInversion.inversion, 1)
         XCTAssertEqual(firstInversion.name, "Am")
 
         let secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])
+        XCTAssertEqual(secondInversion.inversion, 2)
         XCTAssertEqual(secondInversion.name, "Am")
     }
 
