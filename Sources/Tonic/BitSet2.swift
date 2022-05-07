@@ -31,14 +31,17 @@ public struct BitSet64_2<T: IntRepresentable>: BitSet2 {
     }
 
     public func contains(_ member: T) -> Bool {
+        assert(member.intValue < totalBits)
         return (rawValue & (1 << member.intValue)) != 0
     }
 
     public mutating func add(_ bit: T) {
+        assert(bit.intValue < totalBits)
         rawValue |= 1 << bit.intValue
     }
 
     public mutating func rm(_ bit: T) {
+        assert(bit.intValue < totalBits)
         rawValue &= ~(1 << bit.intValue)
     }
 
