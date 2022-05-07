@@ -22,6 +22,11 @@ final class TonicTests: XCTestCase {
             set.add(bit: i)
             XCTAssertTrue(set.isSet(bit: i))
         }
+
+        var set = BitSet512()
+        XCTAssertEqual(set.first, nil)
+        set.add(bit: 42)
+        XCTAssertEqual(set.first, 42)
     }
 
     func testNoteSet() {
