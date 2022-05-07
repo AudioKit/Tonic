@@ -6,9 +6,9 @@ public class ChordTable {
     static let shared = ChordTable()
 
     static func hash(_ noteClasses: [NoteClass]) -> Int {
-        var r = NoteSet2()
+        var r = NoteSet()
         for noteClass in noteClasses {
-            r.add(noteClass.canonicalNote)
+            r.add(note: noteClass.canonicalNote)
         }
         return r.hashValue
     }

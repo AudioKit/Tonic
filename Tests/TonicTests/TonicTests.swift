@@ -29,10 +29,10 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(set.first, 42)
     }
 
-    func testNoteSet2() {
-        var set = NoteSet2()
+    func testNoteSet() {
+        var set = NoteSet()
         for i in 0..<128 {
-            set.add(Note(pitch: Pitch(Int8(i))))
+            set.add(note: Note(pitch: Pitch(Int8(i))))
         }
         XCTAssertEqual(set.count, 128)
     }

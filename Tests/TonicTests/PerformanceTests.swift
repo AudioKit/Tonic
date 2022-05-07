@@ -23,9 +23,9 @@ final class PerformanceTests: XCTestCase {
     func testNoteSetPerf() {
         measure {
             for _ in 0..<1000 {
-                var set = NoteSet2()
+                var set = NoteSet()
                 for i in 0..<128 {
-                    set.add(Note(pitch: Pitch(Int8(i))))
+                    set.add(note: Note(pitch: Pitch(Int8(i))))
                 }
                 assert(set.count == 128)
             }
