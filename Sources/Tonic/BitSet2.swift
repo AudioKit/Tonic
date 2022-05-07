@@ -127,6 +127,7 @@ public struct BitSet2x_2<B: BitSet2>: BitSet2 {
     }
 
     public mutating func add(_ bit: Element) {
+        assert(bit.intValue < totalBits)
         if bit.intValue < low.totalBits {
             low.add(bit)
         } else {
