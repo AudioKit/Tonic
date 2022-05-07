@@ -11,4 +11,14 @@ class Chord2Tests: XCTestCase {
         XCTAssertEqual(Chord2.Bbm.description, "B♭m")
     }
 
+    func testDiminishedChords() {
+        XCTAssertEqual(Chord2.Adim.description, "A°")
+        XCTAssertEqual(Chord2.Bdim.description, "B°")
+    }
+
+    func testAugmentedChords() {
+        XCTAssertEqual(Chord2.Caug.description, "C⁺")
+        XCTAssertEqual(Chord2.Aaug.description, "A⁺")
+        XCTAssertEqual(Chord2(.Db, type: .augmentedTriad).description, "D♭⁺")
+    }
 }
