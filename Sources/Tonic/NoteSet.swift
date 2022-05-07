@@ -42,6 +42,13 @@ public struct NoteSet: Hashable, Equatable {
     public var count: Int {
         bits.count
     }
+
+    var first: Note? {
+        if let firstIndex = bits.first {
+            return Note(index: firstIndex)
+        }
+        return nil
+    }
 }
 
 extension NoteSet: SetAlgebra {
