@@ -30,6 +30,17 @@ public struct NoteClass: Equatable, Hashable, CustomStringConvertible {
     }
 }
 
+extension NoteClass: IntRepresentable {
+    public init(intValue: Int) {
+        self.letter = Letter(rawValue: intValue / 5)!
+        self.accidental = Accidental(rawValue: Int8((intValue % 5) - 2))!
+    }
+
+    public var intValue: Int {
+        5 * letter.rawValue + Int(accidental.rawValue) + 2
+    }
+}
+
 /// A semitone offset applied to a note.
 public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
     public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
