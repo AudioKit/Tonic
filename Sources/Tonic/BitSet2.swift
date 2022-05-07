@@ -6,9 +6,7 @@ public protocol IntRepresentable {
     var intValue: Int { get }
 }
 
-public protocol BitSet2 {
-    associatedtype Element: IntRepresentable
-
+public protocol BitSet2: Hashable, SetAlgebra where Element: IntRepresentable {
     init()
     func contains(_: Element) -> Bool
     mutating func add(_: Element)
@@ -166,3 +164,58 @@ public struct BitSet2x_2<B: BitSet2>: BitSet2 {
 
 }
 
+extension BitSet2x_2: SetAlgebra {
+
+    public func union(_ other: __owned BitSet2x_2<B>) -> BitSet2x_2<B> {
+        Self(low: low.union(other.low), high: high.union(other.high))
+    }
+
+    public func intersection(_ other: BitSet2x_2<B>) -> BitSet2x_2<B> {
+        Self(low: low.intersection(other.low), high: high.intersection(other.high))
+
+    }
+
+    public func symmetricDifference(_ other: __owned BitSet2x_2<B>) -> BitSet2x_2<B> {
+        Self(low: low.symmetricDifference(other.low), high: high.symmetricDifference(other.high))
+    }
+
+    public mutating func insert(_ newMember: __owned B.Element) -> (inserted: Bool, memberAfterInsert: B.Element) {
+        if contains(newMember) {
+            return (false, newMember)
+        }
+        add(newMember)
+        return (true, newMember)
+    }
+
+    public mutating func remove(_ member: B.Element) -> B.Element? {
+        if contains(member) {
+            rm(member)
+            return member
+        }
+        return nil
+    }
+
+    public mutating func update(with newMember: __owned B.Element) -> B.Element? {
+        if contains(newMember) {
+            return newMember
+        }
+        add(newMember)
+        return nil
+    }
+
+    public mutating func formUnion(_ other: __owned BitSet2x_2<B>) {
+        low.formUnion(other.low)
+        high.formUnion(other.high)
+    }
+
+    public mutating func formIntersection(_ other: BitSet2x_2<B>) {
+        low.formIntersection(other.low)
+        high.formIntersection(other.high)
+    }
+
+    public mutating func formSymmetricDifference(_ other: __owned BitSet2x_2<B>) {
+        low.formSymmetricDifference(other.low)
+        high.formSymmetricDifference(other.high)
+    }
+
+}
