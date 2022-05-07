@@ -48,4 +48,16 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(cs!.description, "C♯4")
     }
 
+    func testNoteIntValue() {
+
+        let lowest = Note(.C, octave: -1).intValue
+        let highest = Note(pitch: Pitch(127), key: .C).intValue
+
+        for i in lowest..<highest {
+            let n = Note(intValue: i)
+            XCTAssertEqual(n.intValue, i)
+        }
+
+    }
+
 }
