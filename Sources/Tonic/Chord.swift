@@ -86,7 +86,7 @@ public struct Chord: Equatable {
     }
 
     /// Try to give this chord a name
-    public var name: String {
+    public var description: String {
 
         if let info = ChordTable.shared.triads[pitchClassesHash] {
             let root = info.root

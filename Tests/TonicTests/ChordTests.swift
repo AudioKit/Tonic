@@ -9,19 +9,19 @@ final class ChordTests: XCTestCase {
 
         let Cs = Chord(notes: [.Cs, .Es, .Gs])
 
-        XCTAssertEqual(Cs.name, "C♯")
+        XCTAssertEqual(Cs.description, "C♯")
 
         let Db = Chord(notes: [.Db, .F, .Ab])
 
-        XCTAssertEqual(Db.name, "D♭")
+        XCTAssertEqual(Db.description, "D♭")
 
         let Asm = Chord(notes: [.As, .Cs, .Es])
 
-        XCTAssertEqual(Asm.name, "A♯m")
+        XCTAssertEqual(Asm.description, "A♯m")
 
         let Bbm = Chord(notes: [.Bb, .Db, .F])
 
-        XCTAssertEqual(Bbm.name, "B♭m")
+        XCTAssertEqual(Bbm.description, "B♭m")
     }
 
     func testNaming() {
@@ -33,8 +33,8 @@ final class ChordTests: XCTestCase {
 
         XCTAssertEqual(Cs.notes, [.Cs, .Es, .Gs])
         XCTAssertEqual(Db.notes, [.Db, .F, .Ab])
-        XCTAssertEqual(Cs.name, "C♯")
-        XCTAssertEqual(Db.name, "D♭")
+        XCTAssertEqual(Cs.description, "C♯")
+        XCTAssertEqual(Db.description, "D♭")
 
     }
 
@@ -45,20 +45,20 @@ final class ChordTests: XCTestCase {
 
         let firstInversion = Chord(notes: [.C, .E, Note(.A, octave: 6)])
         XCTAssertEqual(firstInversion.inversion, 1)
-        XCTAssertEqual(firstInversion.name, "Am")
+        XCTAssertEqual(firstInversion.description, "Am")
 
         let secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])
         XCTAssertEqual(secondInversion.inversion, 2)
-        XCTAssertEqual(secondInversion.name, "Am")
+        XCTAssertEqual(secondInversion.description, "Am")
     }
 
     func testDiminishedChords() {
 
         let aDim = Chord(notes: [.A, .C, .Eb])
-        XCTAssertEqual(aDim.name, "A°")
+        XCTAssertEqual(aDim.description, "A°")
 
         let bDim = Chord(notes: [.B, .D, .F])
-        XCTAssertEqual(bDim.name, "B°")
+        XCTAssertEqual(bDim.description, "B°")
 
 
     }
@@ -66,13 +66,13 @@ final class ChordTests: XCTestCase {
     func testAugmentedChords() {
 
         let cAug = Chord(notes: [.C, .E, .Gs])
-        XCTAssertEqual(cAug.name, "C⁺")
+        XCTAssertEqual(cAug.description, "C⁺")
 
         let aAug = Chord(notes: [.A, .Cs, .Es])
-        XCTAssertEqual(aAug.name, "A⁺")
+        XCTAssertEqual(aAug.description, "A⁺")
 
         let dbAug = Chord(notes: [.Db, .F, .A])
-        XCTAssertEqual(dbAug.name, "D♭⁺")
+        XCTAssertEqual(dbAug.description, "D♭⁺")
     }
 
     func testRomanNumerals() {
