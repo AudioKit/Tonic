@@ -26,6 +26,21 @@ public struct Chord2: Equatable {
         type.intervals.count == 2
     }
 
+    func romanNumeralNotation(in key: Key) -> String? {
+        let capitalRomanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII"]
+        if let index = key.chords2.firstIndex(where: { $0 == self }) {
+            let romanNumeral = capitalRomanNumerals[index]
+            switch type {
+            case .majorTriad: return romanNumeral
+            case .minorTriad: return romanNumeral.lowercased()
+            case .diminishedTriad: return "\(romanNumeral.lowercased())°"
+            case .augmentedTriad: return "\(romanNumeral)⁺"
+            default: return nil
+            }
+        }
+        return nil
+    }
+
     /// Try to give this chord a name
     public var description: String {
 

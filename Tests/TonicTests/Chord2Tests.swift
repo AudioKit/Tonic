@@ -21,4 +21,17 @@ class Chord2Tests: XCTestCase {
         XCTAssertEqual(Chord2.Aaug.description, "A⁺")
         XCTAssertEqual(Chord2(.Db, type: .augmentedTriad).description, "D♭⁺")
     }
+
+    func testRomanNumerals() {
+        XCTAssertEqual(Key.C.chords2.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
+                       ["I", "ii", "iii", "IV", "V", "vi", "vii°"])
+        XCTAssertEqual(Key.C.chords2.map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
+                       ["III", "iv", "v", "VI", "VII", "i", "ii°"])
+        XCTAssertEqual(Key.C.chords2.map { $0.romanNumeralNotation(in: Key.G) ?? "" },
+                       ["IV", "", "vi", "", "I", "ii", ""])
+        XCTAssertEqual(Key.Am.chords2.map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
+                       ["i", "ii°", "III", "iv", "v", "VI", "VII"])
+        XCTAssertEqual(Key.Am.chords2.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
+                       ["vi", "vii°", "I", "ii", "iii", "IV", "V"])
+    }
 }
