@@ -39,7 +39,11 @@ public struct Key: Equatable {
         let chordsInfosStartingWithC = chordInfos.sorted(by: {$0.root.letter < $1.root.letter})
         let rootPosition = chordsInfosStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
         chords = Array(chordsInfosStartingWithC.map { Chord(noteSet: $0.noteSet) }.rotatingLeft(positions: rootPosition))
-        self.chords2 = chords2
+
+        let chords2StartingWithC = chords2.sorted(by: {$0.root.letter < $1.root.letter})
+        let rootPosition2 = chords2StartingWithC.firstIndex(where: { $0.root == root }) ?? 0
+        self.chords2 = Array(chords2StartingWithC.rotatingLeft(positions: rootPosition2))
+
     }
 
     public var preferredAccidental: Accidental {
