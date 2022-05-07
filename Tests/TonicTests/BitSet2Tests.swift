@@ -15,4 +15,14 @@ class BitSet2Tests: XCTestCase {
 
     }
 
+    func testNoteSet() {
+        var set = NoteSet2()
+        set.add(Note(.C))
+
+        XCTAssertEqual(Note(.C).intValue, 177)
+        XCTAssertEqual(Note(intValue: 49).intValue, 49)
+
+        XCTAssertTrue(set.contains(Note(.C)))
+    }
+
 }

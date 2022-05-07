@@ -124,7 +124,7 @@ extension Note: Comparable {
 extension Note: IntRepresentable {
 
     public init(intValue: Int) {
-        octave = (index / 35) - 1
+        octave = (intValue / 35) - 1
         let letter = Letter(rawValue: (intValue % 35) / 5)!
         let accidental = Accidental(rawValue: Int8(intValue % 5) - 2)!
         noteClass = NoteClass(letter, accidental: accidental)
@@ -136,3 +136,9 @@ extension Note: IntRepresentable {
 }
 
 public typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>
+
+extension NoteSet2 {
+    public mutating func add(note: Note) {
+        add(note)
+    }
+}
