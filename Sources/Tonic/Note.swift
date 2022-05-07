@@ -135,4 +135,4 @@ extension Note: IntRepresentable {
     }
 }
 
-typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>
+public typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>
