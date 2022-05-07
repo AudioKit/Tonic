@@ -49,11 +49,11 @@ extension PitchSet2 {
         }
     }
 
-    func chord(in key: Key) -> Chord {
-        var c = Chord(notes: [])
+    func chord(in key: Key) -> Chord2? {
+        var notes = NoteSet()
         forEach { p in
-            c.add(note: p.note(in: key))
+            notes.add(note: p.note(in: key))
         }
-        return c
+        return Chord2(noteSet: notes)
     }
 }
