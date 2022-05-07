@@ -1,5 +1,7 @@
 import Foundation
 
+typealias NoteClassSet2 = BitSet64_2<NoteClass>
+
 /// A note letter and accidental which spell a note. This leaves out the octave of the note.
 public struct NoteClass: Equatable, Hashable, CustomStringConvertible {
 
