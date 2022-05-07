@@ -19,6 +19,15 @@ public struct NoteClass: Equatable, Hashable, CustomStringConvertible {
         self.letter = letter
         self.accidental = accidental
     }
+
+    public init(index: Int) {
+        self.letter = Letter(rawValue: index / 5)!
+        self.accidental = Accidental(rawValue: Int8((index % 5) - 2))!
+    }
+
+    public var index: Int {
+        5 * letter.rawValue + Int(accidental.rawValue) + 2
+    }
 }
 
 /// A semitone offset applied to a note.
