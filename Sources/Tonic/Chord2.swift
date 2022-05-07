@@ -25,5 +25,19 @@ public struct Chord2: Equatable {
     var isTriad: Bool {
         type.intervals.count == 2
     }
+
+    /// Try to give this chord a name
+    public var description: String {
+
+        switch type {
+        case .majorTriad: return "\(root)"
+        case .minorTriad: return "\(root)m"
+        case .diminishedTriad: return "\(root)°"
+        case .augmentedTriad: return "\(root)⁺"
+        default:
+            return "unknown chord"
+        }
+
+    }
     
 }
