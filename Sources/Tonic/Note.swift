@@ -134,3 +134,5 @@ extension Note: IntRepresentable {
         (octave+1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue)+2)
     }
 }
+
+typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>
