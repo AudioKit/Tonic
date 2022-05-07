@@ -37,13 +37,13 @@ class Chord2Tests: XCTestCase {
 
     func testNaming() {
 
-        let Cs = Chord2(noteSet: NoteSet(notes: [.Cs, .Es, .Gs]))!
+        let Cs = Chord2(notes: [.Cs, .Es, .Gs])!
         XCTAssertEqual(Cs.description, "C♯")
 
-        let Csm = Chord2(noteSet: NoteSet(notes: [.Cs, .E, .Gs]))!
+        let Csm = Chord2(notes: [.Cs, .E, .Gs])!
         XCTAssertEqual(Csm.description, "C♯m")
 
-        let Db = Chord2(noteSet: NoteSet(notes: [.Db, .F, .Ab]))!
+        let Db = Chord2(notes: [.Db, .F, .Ab])!
         XCTAssertEqual(Db.description, "D♭")
 
     }

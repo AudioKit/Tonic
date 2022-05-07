@@ -13,6 +13,14 @@ public struct Chord2: Equatable {
         self.inversion = inversion
     }
 
+    public init?(notes: [Note]) {
+        var set = NoteSet()
+        for n in notes {
+            set.add(note: n)
+        }
+        self.init(noteSet: set)
+    }
+
     public init?(noteSet: NoteSet) {
         var r = NoteSet()
         noteSet.forEachNote { note in
