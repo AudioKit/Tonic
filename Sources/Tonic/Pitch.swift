@@ -4,9 +4,16 @@ import Foundation
 ///
 /// We want to use a notion of pitch that lends itself to combinatorial algorithms,
 /// as opposed to useing e.g. a fundamental frequency.
-public struct Pitch: Equatable, Hashable {
+public struct Pitch: Equatable, Hashable, RawRepresentable {
 
     var midiNoteNumber: Int8
+    public var rawValue: Int8 {
+        midiNoteNumber
+    }
+
+    public init(rawValue: Int8) {
+        self.midiNoteNumber = rawValue
+    }
 
     public init(_ midiNoteNumber: Int8) {
         self.midiNoteNumber = midiNoteNumber
