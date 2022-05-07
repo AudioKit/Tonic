@@ -73,6 +73,34 @@ public struct BitSet64_2<T: IntRepresentable>: BitSet2 {
     }
 }
 
+extension BitSet64_2: OptionSet {
+
+    public mutating func insert(_ newMember: __owned T) -> (inserted: Bool, memberAfterInsert: T) {
+        if contains(newMember) {
+            return (false, newMember)
+        }
+        add(newMember)
+        return (true, newMember)
+    }
+
+    public mutating func remove(_ member: T) -> T? {
+        if contains(member) {
+            rm(member)
+            return member
+        }
+        return nil
+    }
+
+    public mutating func update(with newMember: __owned T) -> T? {
+        if contains(newMember) {
+            return newMember
+        }
+        add(newMember)
+        return nil
+    }
+
+}
+
 /// Bit set made by combining bit sets. By building up bit sets using generics, we avoid extra
 /// allocation that would occur if we used arrays.
 public struct BitSet2x_2<B: BitSet2>: BitSet2 {
