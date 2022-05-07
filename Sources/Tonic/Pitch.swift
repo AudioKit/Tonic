@@ -38,3 +38,15 @@ extension Pitch: RawRepresentable {
         self.midiNoteNumber = rawValue
     }
 }
+
+extension Pitch: IntRepresentable {
+
+    public var intValue: Int {
+        Int(midiNoteNumber)
+    }
+
+    public init(intValue: Int) {
+        self.midiNoteNumber = Int8(intValue)
+    }
+
+}
