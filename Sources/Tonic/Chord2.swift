@@ -21,5 +21,9 @@ public struct Chord2: Equatable {
 
         return result
     }
+
+    var isTriad: Bool {
+        type.intervals.count == 2
+    }
     
 }
