@@ -4,22 +4,22 @@ import XCTest
 class Chord2Tests: XCTestCase {
 
     func testChords() {
-        XCTAssertTrue(Chord2.C.isTriad)
-        XCTAssertEqual(Chord2.Cs.description, "C♯")
-        XCTAssertEqual(Chord2.Db.description, "D♭")
-        XCTAssertEqual(Chord2.Asm.description, "A♯m")
-        XCTAssertEqual(Chord2.Bbm.description, "B♭m")
+        XCTAssertTrue(Chord.C.isTriad)
+        XCTAssertEqual(Chord.Cs.description, "C♯")
+        XCTAssertEqual(Chord.Db.description, "D♭")
+        XCTAssertEqual(Chord.Asm.description, "A♯m")
+        XCTAssertEqual(Chord.Bbm.description, "B♭m")
     }
 
     func testDiminishedChords() {
-        XCTAssertEqual(Chord2.Adim.description, "A°")
-        XCTAssertEqual(Chord2.Bdim.description, "B°")
+        XCTAssertEqual(Chord.Adim.description, "A°")
+        XCTAssertEqual(Chord.Bdim.description, "B°")
     }
 
     func testAugmentedChords() {
-        XCTAssertEqual(Chord2.Caug.description, "C⁺")
-        XCTAssertEqual(Chord2.Aaug.description, "A⁺")
-        XCTAssertEqual(Chord2(.Db, type: .augmentedTriad).description, "D♭⁺")
+        XCTAssertEqual(Chord.Caug.description, "C⁺")
+        XCTAssertEqual(Chord.Aaug.description, "A⁺")
+        XCTAssertEqual(Chord(.Db, type: .augmentedTriad).description, "D♭⁺")
     }
 
     func testRomanNumerals() {
@@ -37,27 +37,27 @@ class Chord2Tests: XCTestCase {
 
     func testNaming() {
 
-        let Cs = Chord2(notes: [.Cs, .Es, .Gs])!
+        let Cs = Chord(notes: [.Cs, .Es, .Gs])!
         XCTAssertEqual(Cs.description, "C♯")
 
-        let Csm = Chord2(notes: [.Cs, .E, .Gs])!
+        let Csm = Chord(notes: [.Cs, .E, .Gs])!
         XCTAssertEqual(Csm.description, "C♯m")
 
-        let Db = Chord2(notes: [.Db, .F, .Ab])!
+        let Db = Chord(notes: [.Db, .F, .Ab])!
         XCTAssertEqual(Db.description, "D♭")
 
     }
 
     func testInversions() {
-        let chord = Chord2(notes:  [.C, .E, .G])!
+        let chord = Chord(notes:  [.C, .E, .G])!
         XCTAssertEqual(chord.inversion, 0)
         XCTAssertTrue(chord.isTriad)
 
-        let firstInversion = Chord2(notes: [.C, .E, Note(.A, octave: 6)])!
+        let firstInversion = Chord(notes: [.C, .E, Note(.A, octave: 6)])!
         XCTAssertEqual(firstInversion.inversion, 1)
         XCTAssertEqual(firstInversion.description, "Am")
 
-        let secondInversion = Chord2(notes: [Note(.E, octave: 1), .A, .C])!
+        let secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
         XCTAssertEqual(secondInversion.inversion, 2)
         XCTAssertEqual(secondInversion.description, "Am")
     }

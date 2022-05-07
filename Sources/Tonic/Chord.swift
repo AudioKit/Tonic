@@ -1,7 +1,7 @@
 
 import Foundation
 
-public struct Chord2: Equatable {
+public struct Chord: Equatable {
 
     public let root: NoteClass
     public let type: ChordType

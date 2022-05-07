@@ -7,7 +7,7 @@ public struct Key: Equatable {
     public let noteSet: NoteSet
 
     /// All the chords in the key (v2)
-    public let chords2: [Chord2]
+    public let chords2: [Chord]
 
     public init(root: NoteClass, scale: Scale = .major) {
         self.root = root
@@ -24,11 +24,11 @@ public struct Key: Equatable {
 
         let table = ChordTable.shared
 
-        var chords2: [Chord2] = []
+        var chords2: [Chord] = []
 
         for (_, info) in table.triads {
             if info.noteSet.isSubset(of: noteSet) {
-                chords2.append(Chord2(info.root, type: info.type.chordType))
+                chords2.append(Chord(info.root, type: info.type.chordType))
             }
         }
 
