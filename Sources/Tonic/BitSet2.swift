@@ -155,7 +155,10 @@ public struct BitSet2x_2<B: BitSet2>: BitSet2 {
         if let lowfirst = low.first {
             return lowfirst
         }
-        return high.first
+        if let highfirst = high.first {
+            return Element(intValue: highfirst.intValue + low.totalBits)
+        }
+        return nil
     }
 
     public var count: Int {
