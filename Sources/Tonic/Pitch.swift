@@ -28,17 +28,6 @@ public struct Pitch: Equatable, Hashable {
     }
 }
 
-extension Pitch: RawRepresentable {
-
-    public var rawValue: Int8 {
-        midiNoteNumber
-    }
-
-    public init(rawValue: Int8) {
-        self.midiNoteNumber = rawValue
-    }
-}
-
 extension Pitch: IntRepresentable {
 
     public var intValue: Int {
