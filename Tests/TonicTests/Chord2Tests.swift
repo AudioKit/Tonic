@@ -34,4 +34,17 @@ class Chord2Tests: XCTestCase {
         XCTAssertEqual(Key.Am.chords2.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
                        ["vi", "vii°", "I", "ii", "iii", "IV", "V"])
     }
+
+    func testNaming() {
+
+        let Cs = Chord2(noteSet: NoteSet(notes: [.Cs, .Es, .Gs]))!
+        XCTAssertEqual(Cs.description, "C♯")
+
+        let Csm = Chord2(noteSet: NoteSet(notes: [.Cs, .E, .Gs]))!
+        XCTAssertEqual(Csm.description, "C♯m")
+
+        let Db = Chord2(noteSet: NoteSet(notes: [.Db, .F, .Ab]))!
+        XCTAssertEqual(Db.description, "D♭")
+
+    }
 }

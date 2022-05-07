@@ -5,10 +5,31 @@ public struct Chord2: Equatable {
 
     public let root: NoteClass
     public let type: ChordType
+    public let inversion: Int
 
-    public init(_ root: NoteClass, type: ChordType) {
+    public init(_ root: NoteClass, type: ChordType, inversion: Int = 0) {
         self.root = root
         self.type = type
+        self.inversion = inversion
+    }
+
+    public init?(noteSet: NoteSet) {
+        var r = NoteSet()
+        noteSet.forEachNote { note in
+            r.add(note: note.noteClass.canonicalNote)
+        }
+
+        if let info = ChordTable.shared.triads[r.hashValue] {
+            self.root = info.root
+            self.type = info.type.chordType
+            if let firstNote = noteSet.notes.first {
+                self.inversion = info.noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
+            } else {
+                self.inversion = 0
+            }
+        } else {
+            return nil
+        }
     }
 
     public var noteClasses: NoteClassSet {
@@ -54,5 +75,5 @@ public struct Chord2: Equatable {
         }
 
     }
-    
+
 }
