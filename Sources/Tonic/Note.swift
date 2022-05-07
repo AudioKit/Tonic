@@ -121,4 +121,16 @@ extension Note: Comparable {
     }
 }
 
+extension Note: IntRepresentable {
 
+    public init(intValue: Int) {
+        octave = (index / 35) - 1
+        let letter = Letter(rawValue: (intValue % 35) / 5)!
+        let accidental = Accidental(rawValue: Int8(intValue % 5) - 2)!
+        noteClass = NoteClass(letter, accidental: accidental)
+    }
+
+    public var intValue: Int {
+        (octave+1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue)+2)
+    }
+}
