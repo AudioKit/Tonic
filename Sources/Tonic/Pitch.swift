@@ -50,3 +50,5 @@ extension Pitch: IntRepresentable {
     }
 
 }
+
+typealias PitchSet2 = BitSet2x_2<BitSet64_2<Pitch>>
