@@ -25,4 +25,19 @@ class BitSet2Tests: XCTestCase {
         XCTAssertTrue(set.contains(Note(.C)))
     }
 
+    func testNoteSet2() {
+
+        var set = NoteSet2()
+        var failures = 0
+        for i in 0..<128 {
+            let note = Note(pitch: Pitch(Int8(i)))
+            set.add(note)
+            if !set.contains(note) {
+                failures += 1
+            }
+        }
+        XCTAssertEqual(failures, 0)
+        XCTAssertEqual(set.count, 128)
+    }
+
 }

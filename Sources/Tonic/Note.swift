@@ -135,7 +135,7 @@ extension Note: IntRepresentable {
     }
 }
 
-public typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>
+public typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>>
 
 extension NoteSet2 {
     public mutating func add(note: Note) {
