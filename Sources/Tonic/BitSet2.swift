@@ -10,7 +10,7 @@ public protocol BitSet2 {
     associatedtype Element: IntRepresentable
 
     init()
-    func isSet(_: Element) -> Bool
+    func contains(_: Element) -> Bool
     mutating func add(_: Element)
     mutating func rm(_: Element)
     var totalBits: Int { get }
@@ -29,8 +29,8 @@ public struct BitSet64_2<T: IntRepresentable>: BitSet2 {
         self.rawValue = rawValue
     }
 
-    public func isSet(_ bit: T) -> Bool {
-        return (rawValue & (1 << bit.intValue)) != 0
+    public func contains(_ member: T) -> Bool {
+        return (rawValue & (1 << member.intValue)) != 0
     }
 
     public mutating func add(_ bit: T) {
@@ -45,7 +45,7 @@ public struct BitSet64_2<T: IntRepresentable>: BitSet2 {
         if rawValue != 0 {
             for bit in 0..<64 {
                 let e = Element(intValue: bit)
-                if isSet(e) {
+                if contains(e) {
                     f(e)
                 }
             }
@@ -56,7 +56,7 @@ public struct BitSet64_2<T: IntRepresentable>: BitSet2 {
         if rawValue != 0 {
             for bit in 0..<64 {
                 let e = Element(intValue: bit)
-                if isSet(e) {
+                if contains(e) {
                     return e
                 }
             }
@@ -89,11 +89,11 @@ public struct BitSet2x_2<B: BitSet2>: BitSet2 {
         self.high = high
     }
 
-    public func isSet(_ bit: Element) -> Bool {
+    public func contains(_ bit: Element) -> Bool {
         if bit.intValue < low.totalBits {
-            return low.isSet(bit)
+            return low.contains(bit)
         } else {
-            return high.isSet(Element(intValue: bit.intValue - low.totalBits))
+            return high.contains(Element(intValue: bit.intValue - low.totalBits))
         }
     }
 
