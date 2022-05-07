@@ -44,11 +44,11 @@ public struct PitchSet: Hashable, Equatable {
     }
 
     func chord(in key: Key) -> Chord2? {
-        var notes: [Note] = []
+        var notes = NoteSet()
         forEachPitch { p in
-            notes.append(p.note(in: key))
+            notes.add(note: p.note(in: key))
         }
-        return Chord2(notes: notes)
+        return Chord2(noteSet: notes)
     }
 }
 
