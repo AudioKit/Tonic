@@ -91,3 +91,5 @@ public struct BitSet2x_2<B: BitSet2>: BitSet2 {
     }
 
 }
+
+typealias NoteClassSet2 = BitSet64_2<NoteClass>
