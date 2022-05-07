@@ -57,7 +57,7 @@ public struct Chord: Equatable {
 
     func romanNumeralNotation(in key: Key) -> String? {
         let capitalRomanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII"]
-        if let index = key.chords2.firstIndex(where: { $0 == self }) {
+        if let index = key.chords.firstIndex(where: { $0 == self }) {
             let romanNumeral = capitalRomanNumerals[index]
             switch type {
             case .majorTriad: return romanNumeral
