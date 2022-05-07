@@ -13,6 +13,9 @@ public protocol BitSet2 {
     func contains(_: Element) -> Bool
     mutating func add(_: Element)
     mutating func rm(_: Element)
+    func forEach(_ f: (Element) -> ())
+    var first: Element? { get }
+    var count: Int { get }
     var totalBits: Int { get }
 }
 
@@ -139,6 +142,22 @@ public struct BitSet2x_2<B: BitSet2>: BitSet2 {
         } else {
             high.rm(Element(intValue: bit.intValue - low.totalBits))
         }
+    }
+
+    public func forEach(_ f: (Element) -> ()) {
+        low.forEach(f)
+        high.forEach({ f( Element(intValue: $0.intValue+low.totalBits)) })
+    }
+
+    public var first: Element? {
+        if let lowfirst = low.first {
+            return lowfirst
+        }
+        return high.first
+    }
+
+    public var count: Int {
+        low.count + high.count
     }
 
     public var totalBits: Int {
