@@ -7,6 +7,7 @@ public protocol BitSet: Hashable, SetAlgebra {
     mutating func add(bit: Int)
     mutating func rm(bit: Int)
     func forEach(_ f: (Int) -> ())
+    var first: Int? { get }
     var count: Int { get }
     var totalBits: Int { get }
 }
@@ -42,6 +43,17 @@ public struct BitSet64: BitSet, OptionSet {
                 }
             }
         }
+    }
+
+    public var first: Int? {
+        if rawValue != 0 {
+            for bit in 0..<64 {
+                if isSet(bit: bit) {
+                    return bit
+                }
+            }
+        }
+        return nil
     }
 
     public var count: Int {
@@ -93,6 +105,13 @@ public struct BitSet2x<B: BitSet>: BitSet {
     public func forEach(_ f: (Int) -> ()) {
         low.forEach(f)
         high.forEach({ f($0+low.totalBits) })
+    }
+
+    public var first: Int? {
+        if let lowfirst = low.first {
+            return lowfirst
+        }
+        return high.first
     }
 
     public var count: Int {
