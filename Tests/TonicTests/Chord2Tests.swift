@@ -1,7 +1,7 @@
 import XCTest
 @testable import Tonic
 
-class Chord2Tests: XCTestCase {
+class ChordTests: XCTestCase {
 
     func testChords() {
         XCTAssertTrue(Chord.C.isTriad)
