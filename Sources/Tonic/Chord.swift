@@ -41,8 +41,7 @@ public struct Chord: Equatable {
     public var inversion: Int? {
         if let info = ChordTable.shared.triads[pitchClassesHash] {
             if let firstNote = noteSet.notes.first {
-                let infoNotes = info.notes.map { $0.noteClass}
-                return infoNotes.firstIndex(of: firstNote.noteClass)
+                return info.noteClasses.firstIndex(of: firstNote.noteClass)
             }
         }
         return nil
@@ -92,10 +91,10 @@ public struct Chord: Equatable {
         if let info = ChordTable.shared.triads[pitchClassesHash] {
             let root = info.root
             switch info.type {
-            case .major: return "\(root.spelling)"
-            case .minor: return "\(root.spelling)m"
-            case .diminished: return "\(root.spelling)°"
-            case .augmented: return "\(root.spelling)⁺"
+            case .major: return "\(root)"
+            case .minor: return "\(root)m"
+            case .diminished: return "\(root)°"
+            case .augmented: return "\(root)⁺"
             }
         }
 
@@ -105,7 +104,7 @@ public struct Chord: Equatable {
     public var pitchClassesHash: Int {
         var r = NoteSet()
         noteSet.forEachNote { note in
-            r.add(note: note.noteClass)
+            r.add(note: note.noteClass.canonicalNote)
         }
         return r.hashValue
     }
@@ -132,11 +131,11 @@ public enum TriadType {
 }
 
 public struct TriadInfo {
-    var root: Note
+    var root: NoteClass
     var type: TriadType
-    var notes: [Note]
+    var noteClasses: [NoteClass]
     var noteSet: NoteSet {
-        NoteSet(notes: notes)
+        NoteSet(notes: noteClasses.map(\.canonicalNote))
     }
 }
 
