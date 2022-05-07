@@ -111,7 +111,10 @@ public struct BitSet2x<B: BitSet>: BitSet {
         if let lowfirst = low.first {
             return lowfirst
         }
-        return high.first
+        if let highfirst = high.first {
+            return highfirst + low.totalBits
+        }
+        return nil
     }
 
     public var count: Int {
