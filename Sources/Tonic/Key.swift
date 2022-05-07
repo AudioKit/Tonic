@@ -9,6 +9,9 @@ public struct Key: Equatable {
     /// All the chords in the key.
     public let chords: [Chord]
 
+    /// All the chords in the key (v2)
+    public let chords2: [Chord2]
+
     public init(root: NoteClass, scale: Scale = .major) {
         self.root = root
         self.scale = scale
@@ -24,15 +27,19 @@ public struct Key: Equatable {
 
         let table = ChordTable.shared
         var chordInfos: [TriadInfo] = []
+        var chords2: [Chord2] = []
 
         for (_, info) in table.triads {
             if info.noteSet.isSubset(of: noteSet) {
                 chordInfos.append(info)
+
+                chords2.append(Chord2(info.root, type: info.type.chordType))
             }
         }
         let chordsInfosStartingWithC = chordInfos.sorted(by: {$0.root.letter < $1.root.letter})
         let rootPosition = chordsInfosStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
         chords = Array(chordsInfosStartingWithC.map { Chord(noteSet: $0.noteSet) }.rotatingLeft(positions: rootPosition))
+        self.chords2 = chords2
     }
 
     public var preferredAccidental: Accidental {
