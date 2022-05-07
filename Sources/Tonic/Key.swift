@@ -4,7 +4,7 @@ import Foundation
 public struct Key: Equatable {
     public let root: NoteClass
     public let scale: Scale
-    public let noteSet: NoteSet
+    public let noteSet: NoteSet2
 
     /// All the chords in the key.
     public let chords: [Chord]
@@ -13,14 +13,15 @@ public struct Key: Equatable {
         self.root = root
         self.scale = scale
 
-        var r = [root.canonicalNote]
+        var n = NoteSet2()
+        n.add(root.canonicalNote)
 
         for interval in scale.intervals {
             if let noteClass = root.canonicalNote.shiftUp(interval)?.noteClass {
-                r.append(noteClass.canonicalNote)
+                n.add(noteClass.canonicalNote)
             }
         }
-        self.noteSet = NoteSet(notes: r)
+        self.noteSet = n
 
         let table = ChordTable.shared
         var chordInfos: [TriadInfo] = []

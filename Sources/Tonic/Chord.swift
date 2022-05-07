@@ -5,7 +5,7 @@ import Foundation
 /// Note: it may be more theoretically correct to merge this with NoteSet.
 public struct Chord: Equatable {
 
-    public var noteSet = NoteSet()
+    public var noteSet = NoteSet2()
 
     public init(notes: [Note]) {
         for n in notes {
@@ -13,7 +13,7 @@ public struct Chord: Equatable {
         }
     }
 
-    public init(noteSet: NoteSet) {
+    public init(noteSet: NoteSet2) {
         self.noteSet = noteSet
     }
 
@@ -40,7 +40,7 @@ public struct Chord: Equatable {
 
     public var inversion: Int? {
         if let info = ChordTable.shared.triads[pitchClassesHash] {
-            if let firstNote = noteSet.notes.first {
+            if let firstNote = noteSet.first {
                 return info.noteClasses.firstIndex(of: firstNote.noteClass)
             }
         }
@@ -55,14 +55,14 @@ public struct Chord: Equatable {
 
     /// Calls a function for each note in the chord.
     public func forEachNote(_ f: (Note) -> ()) {
-        noteSet.forEachNote { n in
+        noteSet.forEach { n in
             f(n)
         }
     }
 
     /// Add a note to a chord.
     public mutating func add(note: Note) {
-        noteSet.add(note: note)
+        noteSet.add(note)
     }
 
     /// Is a note in a chord?
@@ -102,9 +102,9 @@ public struct Chord: Equatable {
     }
 
     public var pitchClassesHash: Int {
-        var r = NoteSet()
-        noteSet.forEachNote { note in
-            r.add(note: note.noteClass.canonicalNote)
+        var r = NoteSet2()
+        noteSet.forEach { note in
+            r.add(note.noteClass.canonicalNote)
         }
         return r.hashValue
     }
@@ -134,8 +134,12 @@ public struct TriadInfo {
     var root: NoteClass
     var type: TriadType
     var noteClasses: [NoteClass]
-    var noteSet: NoteSet {
-        NoteSet(notes: noteClasses.map(\.canonicalNote))
+    var noteSet: NoteSet2 {
+        var n = NoteSet2()
+        for noteClass in noteClasses {
+            n.add(noteClass.canonicalNote)
+        }
+        return n
     }
 }
 

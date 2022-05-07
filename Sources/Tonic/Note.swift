@@ -24,7 +24,7 @@ public struct Note: Equatable, Hashable {
         let pitchClass = pitch.pitchClass
         var noteInKey: Note?
 
-        key.noteSet.forEachNote { note in
+        key.noteSet.forEach { note in
             if note.pitch.pitchClass == pitchClass {
                 noteInKey = note
             }
@@ -135,4 +135,14 @@ extension Note: IntRepresentable {
     }
 }
 
-typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>
+public typealias NoteSet2 = BitSet2x_2<BitSet2x_2<BitSet64_2<Note>>>
+
+extension NoteSet2 {
+    public var notes: [Note] {
+        var r: [Note] = []
+        forEach { n in
+            r.append(n)
+        }
+        return r
+    }
+}
