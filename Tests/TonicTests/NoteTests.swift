@@ -60,4 +60,13 @@ final class NoteTests: XCTestCase {
 
     }
 
+    func testNoteSetFirst() {
+
+        let chord = Chord(notes: [.C, .E, .G])
+        let set = chord.noteSet
+
+        XCTAssertEqual(set.first, Note(.C))
+
+    }
+
 }
