@@ -2,22 +2,22 @@ import Foundation
 
 /// A scale with a root note (tonic).
 public struct Key: Equatable {
-    public let root: Note
+    public let root: NoteClass
     public let scale: Scale
     public let noteSet: NoteSet
 
     /// All the chords in the key.
     public let chords: [Chord]
 
-    public init(root: Note, scale: Scale = .major) {
+    public init(root: NoteClass, scale: Scale = .major) {
         self.root = root
         self.scale = scale
 
-        var r = [root]
+        var r = [root.canonicalNote]
 
         for interval in scale.intervals {
-            if let note = root.shiftUp(interval)?.noteClass {
-                r.append(note)
+            if let noteClass = root.canonicalNote.shiftUp(interval)?.noteClass {
+                r.append(noteClass.canonicalNote)
             }
         }
         self.noteSet = NoteSet(notes: r)
@@ -30,16 +30,16 @@ public struct Key: Equatable {
                 chordInfos.append(info)
             }
         }
-        let chordsInfosStartingWithC = chordInfos.sorted(by: {$0.root.spelling.letter < $1.root.spelling.letter})
+        let chordsInfosStartingWithC = chordInfos.sorted(by: {$0.root.letter < $1.root.letter})
         let rootPosition = chordsInfosStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
         chords = Array(chordsInfosStartingWithC.map { Chord(noteSet: $0.noteSet) }.rotatingLeft(positions: rootPosition))
     }
 
     public var preferredAccidental: Accidental {
-        if root.spelling.accidental == .sharp  {
+        if root.accidental == .sharp  {
             return .sharp
         }
-        if root.spelling.accidental == .flat {
+        if root.accidental == .flat {
             return .flat
         }
 

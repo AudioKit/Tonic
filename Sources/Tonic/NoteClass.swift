@@ -1,12 +1,23 @@
 import Foundation
 
 /// A note letter and accidental which spell a note. This leaves out the octave of the note.
-public struct NoteSpelling: Equatable, Hashable, CustomStringConvertible {
+public struct NoteClass: Equatable, Hashable, CustomStringConvertible {
+
     var letter: Letter
     var accidental: Accidental
 
     public var description: String {
         return "\(letter)\(accidental)"
+    }
+
+    private static let canonicalOctave = 4
+    internal var canonicalNote: Note {
+        Note(letter, accidental: accidental, octave: NoteClass.canonicalOctave)
+    }
+
+    public init(_ letter: Letter = .C, accidental: Accidental = .natural) {
+        self.letter = letter
+        self.accidental = accidental
     }
 }
 

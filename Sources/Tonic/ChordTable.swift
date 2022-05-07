@@ -5,10 +5,10 @@ public class ChordTable {
 
     static let shared = ChordTable()
 
-    static func hashNoteClasses(notes: [Note]) -> Int {
+    static func hash(_ noteClasses: [NoteClass]) -> Int {
         var r = NoteSet()
-        for note in notes {
-            r.add(note: note.noteClass)
+        for noteClass in noteClasses {
+            r.add(note: noteClass.canonicalNote)
         }
         return r.hashValue
     }
@@ -17,12 +17,15 @@ public class ChordTable {
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in accidentals {
             for letter in Letter.allCases {
-                let root = Note(letter, accidental: accidental)
-                let notes = [root, root.shiftUp(third), root.shiftUp(fifth)].compactMap { $0 }.map { $0.noteClass }
-                if notes.count == 3 {
-                    r[ChordTable.hashNoteClasses(notes: notes)] = TriadInfo(root: root,
-                                                                            type: type,
-                                                                            notes: notes)
+                let root = NoteClass(letter, accidental: accidental)
+                let noteClasses: [NoteClass] = [root,
+                                                root.canonicalNote.shiftUp(third)?.noteClass,
+                                                root.canonicalNote.shiftUp(fifth)?.noteClass]
+                    .compactMap { $0 }
+                if noteClasses.count == 3 {
+                    r[ChordTable.hash(noteClasses)] = TriadInfo(root: root,
+                                                                type: type,
+                                                                noteClasses: noteClasses)
                 }
             }
         }

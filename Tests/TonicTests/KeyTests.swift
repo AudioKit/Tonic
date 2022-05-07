@@ -5,11 +5,11 @@ class KeyTests: XCTestCase {
 
     func testKeyNotes() {
         let cMajor = Key.C
-        XCTAssertEqual(cMajor.noteSet.notes.map { $0.spelling.description },
+        XCTAssertEqual(cMajor.noteSet.notes.map { $0.noteClass.description },
                        ["C", "D", "E", "F", "G", "A", "B"])
 
         let cMinor = Key.c
-        XCTAssertEqual(cMinor.noteSet.notes.map { $0.spelling.description },
+        XCTAssertEqual(cMinor.noteSet.notes.map { $0.noteClass.description },
                        ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
     }
 
@@ -32,9 +32,9 @@ class KeyTests: XCTestCase {
     }
 
     func testKeyNoteSets() {
-        XCTAssertEqual(Key.C.noteSet.intersection(Key.Cm.noteSet).notes.map { $0.spelling.description }, ["C", "D", "F", "G"])
+        XCTAssertEqual(Key.C.noteSet.intersection(Key.Cm.noteSet).notes.map { $0.noteClass.description }, ["C", "D", "F", "G"])
 
-        XCTAssertEqual(Key.C.noteSet.symmetricDifference(Key.Cm.noteSet).notes.map { $0.spelling.description }, ["E♭", "E", "A♭", "A", "B♭", "B"])
+        XCTAssertEqual(Key.C.noteSet.symmetricDifference(Key.Cm.noteSet).notes.map { $0.noteClass.description }, ["E♭", "E", "A♭", "A", "B♭", "B"])
     }
 
 }
