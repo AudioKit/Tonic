@@ -1,5 +1,30 @@
 import Foundation
 
+
+public enum TriadType {
+    case major, minor, diminished, augmented
+
+    var chordType: ChordType {
+        switch self {
+        case .major: return .majorTriad
+        case .minor: return .minorTriad
+        case .diminished: return .diminishedTriad
+        case .augmented: return .augmentedTriad
+        }
+    }
+}
+
+public struct TriadInfo {
+    var root: NoteClass
+    var type: TriadType
+    var noteClasses: [NoteClass]
+    var noteSet: NoteSet {
+        NoteSet(notes: noteClasses.map(\.canonicalNote))
+    }
+}
+
+
+
 /// A table of note sets so we can look up chord names.
 public class ChordTable {
 
