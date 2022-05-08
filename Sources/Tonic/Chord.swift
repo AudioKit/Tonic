@@ -27,9 +27,9 @@ public struct Chord: Equatable {
             r.add(note: note.noteClass.canonicalNote)
         }
 
-        if let info = ChordTable.shared.triads[r.hashValue] {
+        if let info = ChordTable.shared.chords[r.hashValue] {
             self.root = info.root
-            self.type = info.type.chordType
+            self.type = info.type
             if let firstNote = noteSet.notes.first {
                 self.inversion = info.noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
             } else {
@@ -40,7 +40,7 @@ public struct Chord: Equatable {
         }
     }
 
-    public var noteClasses: NoteClassSet {
+    public var noteClassSet: NoteClassSet {
         let canonicalRoot = root.canonicalNote
         var result = NoteClassSet()
 
@@ -48,6 +48,17 @@ public struct Chord: Equatable {
             result.add(noteClass: canonicalRoot.shiftUp(interval)!.noteClass)
         }
 
+        return result
+    }
+
+    public var noteClasses: [NoteClass] {
+        let canonicalRoot = root.canonicalNote
+        var result = [canonicalRoot.noteClass]
+        for interval in type.intervals {
+            if let shiftedNote = canonicalRoot.shiftUp(interval) {
+                result.append(shiftedNote.noteClass)
+            }
+        }
         return result
     }
 
