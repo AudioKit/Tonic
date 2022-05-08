@@ -179,11 +179,16 @@ public typealias BitSet128 = BitSet2x<BitSet64>
 public typealias BitSet256 = BitSet2x<BitSet128>
 public typealias BitSet512 = BitSet2x<BitSet256>
 
-public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
+public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebra {
+
     var bits: B
 
     public init() {
         bits = B()
+    }
+
+    init(bits: B) {
+        self.bits = bits
     }
 
     public func contains(_ member: T) -> Bool {
@@ -215,6 +220,49 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
 
     public var totalBits: Int {
         bits.totalBits
+    }
+
+    public func union(_ other: __owned BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
+        Self(bits: bits.union(other.bits))
+    }
+
+    public func intersection(_ other: BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
+        Self(bits: bits.intersection(other.bits))
+    }
+
+    public func symmetricDifference(_ other: __owned BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
+        Self(bits: bits.symmetricDifference(other.bits))
+    }
+
+    public mutating func insert(_ newMember: __owned T) -> (inserted: Bool, memberAfterInsert: T) {
+        let (inserted, memberAfterInsert) = bits.insert(newMember.intValue as! B.Element)
+        return (inserted, T(intValue: memberAfterInsert as! Int))
+    }
+
+    public mutating func remove(_ member: T) -> T? {
+        if let prev = bits.remove(member.intValue as! B.Element) {
+            return T(intValue: prev as! Int)
+        }
+        return nil
+    }
+
+    public mutating func update(with newMember: __owned T) -> T? {
+        if let prev = bits.update(with: newMember.intValue as! B.Element) {
+            return T(intValue: prev as! Int)
+        }
+        return nil
+    }
+
+    public mutating func formUnion(_ other: __owned BitSetAdapter<T, B>) {
+        bits.formUnion(other.bits)
+    }
+
+    public mutating func formIntersection(_ other: BitSetAdapter<T, B>) {
+        bits.formIntersection(other.bits)
+    }
+
+    public mutating func formSymmetricDifference(_ other: __owned BitSetAdapter<T, B>) {
+        bits.formSymmetricDifference(other.bits)
     }
 
 }
