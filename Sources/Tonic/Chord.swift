@@ -45,7 +45,7 @@ public struct Chord: Equatable {
         var result = NoteClassSet()
 
         for interval in type.intervals {
-            result.add(noteClass: canonicalRoot.shiftUp(interval)!.noteClass)
+            result.add(canonicalRoot.shiftUp(interval)!.noteClass)
         }
 
         return result
