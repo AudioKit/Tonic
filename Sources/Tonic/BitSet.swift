@@ -107,6 +107,8 @@ public struct BitSet2x<B: BitSet>: BitSet {
         }
     }
 
+    @inlinable
+    @inline(__always)
     public mutating func rm(bit: Int) {
         if bit < low.totalBits {
             low.rm(bit: bit)
@@ -115,11 +117,15 @@ public struct BitSet2x<B: BitSet>: BitSet {
         }
     }
 
+    @inlinable
+    @inline(__always)
     public func forEach(_ f: (Int) -> ()) {
         low.forEach(f)
         high.forEach({ f($0+low.totalBits) })
     }
 
+    @inlinable
+    @inline(__always)
     public var first: Int? {
         if let lowfirst = low.first {
             return lowfirst
@@ -135,11 +141,15 @@ public struct BitSet2x<B: BitSet>: BitSet {
     public var count: Int {
         low.count + high.count
     }
-    
+
+    @inlinable
+    @inline(__always)
     public var totalBits: Int {
         2 * low.totalBits
     }
 
+    @inlinable
+    @inline(__always)
     public func contains(_ member: Int) -> Bool {
         isSet(bit: member)
     }
@@ -218,6 +228,8 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         self.bits = bits
     }
 
+    @inlinable
+    @inline(__always)
     public func contains(_ member: T) -> Bool {
         bits.isSet(bit: member.intValue)
     }
@@ -228,14 +240,20 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         bits.add(bit: member.intValue)
     }
 
+    @inlinable
+    @inline(__always)
     public mutating func rm(_ member: T) {
         bits.rm(bit: member.intValue)
     }
 
+    @inlinable
+    @inline(__always)
     public func forEach(_ f: (T) -> ()) {
         bits.forEach( { f(T(intValue: $0)) } )
     }
 
+    @inlinable
+    @inline(__always)
     public var first: T? {
         if let bit = bits.first {
             return T(intValue: bit)
@@ -249,6 +267,8 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         bits.count
     }
 
+    @inlinable
+    @inline(__always)
     public var totalBits: Int {
         bits.totalBits
     }
