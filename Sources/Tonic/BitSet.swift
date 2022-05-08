@@ -178,3 +178,43 @@ public struct BitSet2x<B: BitSet>: BitSet {
 public typealias BitSet128 = BitSet2x<BitSet64>
 public typealias BitSet256 = BitSet2x<BitSet128>
 public typealias BitSet512 = BitSet2x<BitSet256>
+
+public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
+    var bits: B
+
+    public init() {
+        bits = B()
+    }
+
+    public func contains(_ member: T) -> Bool {
+        bits.isSet(bit: member.intValue)
+    }
+
+    public mutating func add(_ member: T) {
+        bits.add(bit: member.intValue)
+    }
+
+    public mutating func rm(_ member: T) {
+        bits.rm(bit: member.intValue)
+    }
+
+    public func forEach(_ f: (T) -> ()) {
+        bits.forEach( { f(T(intValue: $0)) } )
+    }
+
+    public var first: T? {
+        if let bit = bits.first {
+            return T(intValue: bit)
+        }
+        return nil
+    }
+
+    public var count: Int {
+        bits.count
+    }
+
+    public var totalBits: Int {
+        bits.totalBits
+    }
+
+}
