@@ -201,6 +201,11 @@ public typealias BitSet128 = BitSet2x<BitSet64>
 public typealias BitSet256 = BitSet2x<BitSet128>
 public typealias BitSet512 = BitSet2x<BitSet256>
 
+public protocol IntRepresentable {
+    init(intValue: Int)
+    var intValue: Int { get }
+}
+
 public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebra {
 
     public var bits: B

@@ -39,21 +39,3 @@ extension Pitch: IntRepresentable {
     }
 
 }
-
-typealias PitchSet2 = BitSet2x_2<BitSet64_2<Pitch>>
-
-extension PitchSet2 {
-    public init(numbers: [Int8]) {
-        for n in numbers {
-            add(Pitch(n))
-        }
-    }
-
-    func chord(in key: Key) -> Chord? {
-        var notes = NoteSet()
-        forEach { p in
-            notes.add(note: p.note(in: key))
-        }
-        return Chord(noteSet: notes)
-    }
-}
