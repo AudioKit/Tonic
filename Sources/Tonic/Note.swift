@@ -1,5 +1,16 @@
 import Foundation
 
+public typealias NoteSet = BitSetAdapter<Note, BitSet512>
+
+extension NoteSet {
+    public init(notes: [Note]) {
+        self.init()
+        for note in notes {
+            add(note)
+        }
+    }
+}
+
 /// A pitch with a particular spelling.
 public struct Note: Equatable, Hashable {
     /// Base name for the note
@@ -24,7 +35,7 @@ public struct Note: Equatable, Hashable {
         let pitchClass = pitch.pitchClass
         var noteInKey: Note?
 
-        key.noteSet.forEachNote { note in
+        key.noteSet.forEach { note in
             if note.pitch.pitchClass == pitchClass {
                 noteInKey = note
             }

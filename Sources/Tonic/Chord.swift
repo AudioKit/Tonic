@@ -16,21 +16,21 @@ public struct Chord: Equatable {
     public init?(notes: [Note]) {
         var set = NoteSet()
         for n in notes {
-            set.add(note: n)
+            set.add(n)
         }
         self.init(noteSet: set)
     }
 
     public init?(noteSet: NoteSet) {
         var r = NoteSet()
-        noteSet.forEachNote { note in
-            r.add(note: note.noteClass.canonicalNote)
+        noteSet.forEach { note in
+            r.add(note.noteClass.canonicalNote)
         }
 
         if let info = ChordTable.shared.chords[r.hashValue] {
             self.root = info.root
             self.type = info.type
-            if let firstNote = noteSet.notes.first {
+            if let firstNote = noteSet.array.first {
                 self.inversion = info.noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
             } else {
                 self.inversion = 0

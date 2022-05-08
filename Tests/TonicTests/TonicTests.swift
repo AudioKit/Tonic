@@ -32,7 +32,7 @@ final class TonicTests: XCTestCase {
     func testNoteSet() {
         var set = NoteSet()
         for i in 0..<128 {
-            set.add(note: Note(pitch: Pitch(Int8(i))))
+            set.add(Note(pitch: Pitch(Int8(i))))
         }
         XCTAssertEqual(set.count, 128)
     }

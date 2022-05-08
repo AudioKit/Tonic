@@ -8,7 +8,7 @@ public class ChordTable {
     static func hash(_ noteClasses: [NoteClass]) -> Int {
         var r = NoteSet()
         for noteClass in noteClasses {
-            r.add(note: noteClass.canonicalNote)
+            r.add(noteClass.canonicalNote)
         }
         return r.hashValue
     }

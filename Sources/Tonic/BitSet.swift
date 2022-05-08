@@ -296,4 +296,12 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         bits.formSymmetricDifference(other.bits)
     }
 
+    public var array: [T] {
+        var r: [T] = []
+        forEach { n in
+            r.append(n)
+        }
+        return r
+    }
+
 }
