@@ -25,7 +25,7 @@ final class PerformanceTests: XCTestCase {
             for _ in 0..<10000 {
                 var set = PitchSet()
                 for i in 0..<128 {
-                    set.add(pitch: Pitch(Int8(i)))
+                    set.add(Pitch(Int8(i)))
                 }
                 assert(set.count == 128)
             }

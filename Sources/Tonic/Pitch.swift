@@ -39,3 +39,5 @@ extension Pitch: IntRepresentable {
     }
 
 }
+
+public typealias PitchSet = BitSetAdapter<Pitch, BitSet128>
