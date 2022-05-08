@@ -22,6 +22,11 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(Chord(.Db, type: .augmentedTriad).description, "D♭⁺")
     }
 
+    func testSuspendedChords() {
+        XCTAssertEqual(Chord.Asus.description, "Asus")
+        XCTAssertEqual(Chord.Bsus.description, "Bsus")
+    }
+
     func testRomanNumerals() {
         XCTAssertEqual(Key.C.chords.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
                        ["I", "ii", "iii", "IV", "V", "vi", "vii°"])

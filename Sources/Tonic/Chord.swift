@@ -78,6 +78,7 @@ public struct Chord: Equatable {
         case .minorTriad: return "\(root)m"
         case .diminishedTriad: return "\(root)°"
         case .augmentedTriad: return "\(root)⁺"
+        case .suspendedTriad: return "\(root)sus"
         default:
             return "unknown chord"
         }

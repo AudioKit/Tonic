@@ -31,6 +31,7 @@ public struct ChordType: OptionSet {
     public static let minorTriad = ChordType(intervals: [.m3, .P5])
     public static let diminishedTriad = ChordType(intervals: [.m3, .d5])
     public static let augmentedTriad = ChordType(intervals: [.M3, .A5])
+    public static let suspendedTriad = ChordType(intervals: [.P4, .P5])
 
     public static let majorSixth = ChordType(intervals: [.M3, .P5, .M6])
     public static let dominantSeventh = ChordType(intervals: [.M3, .P5, .m7])

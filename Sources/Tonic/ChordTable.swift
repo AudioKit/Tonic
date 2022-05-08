@@ -2,7 +2,7 @@ import Foundation
 
 
 public enum TriadType {
-    case major, minor, diminished, augmented
+    case major, minor, diminished, augmented, suspended
 
     var chordType: ChordType {
         switch self {
@@ -10,6 +10,7 @@ public enum TriadType {
         case .minor: return .minorTriad
         case .diminished: return .diminishedTriad
         case .augmented: return .augmentedTriad
+        case .suspended: return .suspendedTriad
         }
     }
 }
@@ -63,6 +64,7 @@ public class ChordTable {
         ChordTable.generateTriads(third: .m3, fifth: .P5, type: .minor, &r)
         ChordTable.generateTriads(third: .m3, fifth: .d5, type: .diminished, &r)
         ChordTable.generateTriads(third: .M3, fifth: .A5, type: .augmented, &r)
+        ChordTable.generateTriads(third: .P4, fifth: .P5, type: .suspended, &r)
 
         print("generated \(r.count) triads")
 

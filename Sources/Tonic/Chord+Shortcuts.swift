@@ -33,6 +33,14 @@ extension Chord {
     public static var Aaug = Chord(.A, type: .augmentedTriad)
     public static var Baug = Chord(.B, type: .augmentedTriad)
 
+    public static var Csus = Chord(.C, type: .suspendedTriad)
+    public static var Dsus = Chord(.D, type: .suspendedTriad)
+    public static var Esus = Chord(.E, type: .suspendedTriad)
+    public static var Fsus = Chord(.F, type: .suspendedTriad)
+    public static var Gsus = Chord(.G, type: .suspendedTriad)
+    public static var Asus = Chord(.A, type: .suspendedTriad)
+    public static var Bsus = Chord(.B, type: .suspendedTriad)
+
     public static var Cs = Chord(.Cs, type: .majorTriad)
     public static var Ds = Chord(.Ds, type: .majorTriad)
     public static var Es = Chord(.Es, type: .majorTriad)
@@ -57,6 +65,14 @@ extension Chord {
     public static var Asdim = Chord(.As, type: .diminishedTriad)
     public static var Bsdim = Chord(.Bs, type: .diminishedTriad)
 
+    public static var Cssus = Chord(.Cs, type: .suspendedTriad)
+    public static var Dssus = Chord(.Ds, type: .suspendedTriad)
+    public static var Essus = Chord(.Es, type: .suspendedTriad)
+    public static var Fssus = Chord(.Fs, type: .suspendedTriad)
+    public static var Gssus = Chord(.Gs, type: .suspendedTriad)
+    public static var Assus = Chord(.As, type: .suspendedTriad)
+    public static var Bssus = Chord(.Bs, type: .suspendedTriad)
+
     public static var Cb = Chord(.Cb, type: .majorTriad)
     public static var Db = Chord(.Db, type: .majorTriad)
     public static var Eb = Chord(.Eb, type: .majorTriad)
@@ -80,4 +96,12 @@ extension Chord {
     public static var Gbdim = Chord(.Gb, type: .diminishedTriad)
     public static var Abdim = Chord(.Ab, type: .diminishedTriad)
     public static var Bbdim = Chord(.Bb, type: .diminishedTriad)
+
+    public static var Cbsus = Chord(.Cb, type: .suspendedTriad)
+    public static var Dbsus = Chord(.Db, type: .suspendedTriad)
+    public static var Ebsus = Chord(.Eb, type: .suspendedTriad)
+    public static var Fbsus = Chord(.Fb, type: .suspendedTriad)
+    public static var Gbsus = Chord(.Gb, type: .suspendedTriad)
+    public static var Absus = Chord(.Ab, type: .suspendedTriad)
+    public static var Bbsus = Chord(.Bb, type: .suspendedTriad)
 }
