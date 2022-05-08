@@ -27,7 +27,7 @@ class KeyTests: XCTestCase {
     }
 
     func testKeyChords() {
-        XCTAssertEqual(Key.G.chords.count, 16)
+        XCTAssertEqual(Key.G.chords.count, 19)
         for triad in Key.G.primaryTriads {
             XCTAssert(Key.G.chords.contains(triad))
         }

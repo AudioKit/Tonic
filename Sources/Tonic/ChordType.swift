@@ -6,8 +6,11 @@ public enum ChordType: Int, CaseIterable {
     case diminishedTriad
     case augmentedTriad
     case suspendedTriad
-    case majorSixth
+    case minorSixth
     case dominantSeventh
+    case majorSeventh
+    case minorSeventh
+    case minorMajorSeventh
 
     var intervals: [Interval] {
         switch self {
@@ -16,8 +19,11 @@ public enum ChordType: Int, CaseIterable {
         case .diminishedTriad: return [.m3, .d5]
         case .augmentedTriad: return [.M3, .A5]
         case .suspendedTriad: return [.P4, .P5]
-        case .majorSixth: return [.M3, .P5, .M6]
+        case .minorSixth: return [.m3, .P5, .M6]
         case .dominantSeventh: return  [.M3, .P5, .m7]
+        case .majorSeventh: return  [.M3, .P5, .M7]
+        case .minorSeventh: return  [.m3, .P5, .m7]
+        case .minorMajorSeventh: return  [.m3, .P5, .M7]
         }
     }
 
@@ -32,8 +38,11 @@ extension ChordType: CustomStringConvertible{
         case .diminishedTriad: return "°"
         case .augmentedTriad: return "⁺"
         case .suspendedTriad: return "sus"
-        case .majorSixth: return "6"
+        case .minorSixth: return "m6"
         case .dominantSeventh: return "7"
+        case .majorSeventh: return "maj7"
+        case .minorSeventh: return "m7"
+        case .minorMajorSeventh: return "mMaj7"
         }
     }
 
