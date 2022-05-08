@@ -22,19 +22,27 @@ public struct BitSet64: BitSet, OptionSet {
     public init(rawValue: UInt64) {
         self.rawValue = rawValue
     }
-    
+
+    @inlinable
+    @inline(__always)
     public func isSet(bit: Int) -> Bool {
         return (rawValue & (1 << bit)) != 0
     }
-    
+
+    @inlinable
+    @inline(__always)
     public mutating func add(bit: Int) {
         rawValue |= 1 << bit
     }
 
+    @inlinable
+    @inline(__always)
     public mutating func rm(bit: Int) {
         rawValue &= ~(1 << bit)
     }
 
+    @inlinable
+    @inline(__always)
     public func forEach(_ f: (Int) -> ()) {
         if rawValue != 0 {
             for bit in 0..<64 {
@@ -45,14 +53,20 @@ public struct BitSet64: BitSet, OptionSet {
         }
     }
 
+    @inlinable
+    @inline(__always)
     public var first: Int? {
         rawValue != 0 ? rawValue.trailingZeroBitCount : nil
     }
 
+    @inlinable
+    @inline(__always)
     public var count: Int {
         rawValue.nonzeroBitCount
     }
-    
+
+    @inlinable
+    @inline(__always)
     public var totalBits: Int {
         64
     }
@@ -61,16 +75,20 @@ public struct BitSet64: BitSet, OptionSet {
 /// Bit set made by combining bit sets. By building up bit sets using generics, we avoid extra
 /// allocation that would occur if we used arrays.
 public struct BitSet2x<B: BitSet>: BitSet {
-    private var high = B()
-    private var low = B()
+    public var high = B()
+    public var low = B()
 
     public init() {}
 
+    @inlinable
+    @inline(__always)
     public init(low: B, high: B) {
         self.low = low
         self.high = high
     }
-    
+
+    @inlinable
+    @inline(__always)
     public func isSet(bit: Int) -> Bool {
         if bit < low.totalBits {
             return low.isSet(bit: bit)
@@ -79,6 +97,8 @@ public struct BitSet2x<B: BitSet>: BitSet {
         }
     }
 
+    @inlinable
+    @inline(__always)
     public mutating func add(bit: Int) {
         if bit < low.totalBits {
             low.add(bit: bit)
@@ -110,6 +130,8 @@ public struct BitSet2x<B: BitSet>: BitSet {
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     public var count: Int {
         low.count + high.count
     }
@@ -181,7 +203,7 @@ public typealias BitSet512 = BitSet2x<BitSet256>
 
 public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebra {
 
-    var bits: B
+    public var bits: B
 
     public init() {
         bits = B()
@@ -195,6 +217,8 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         bits.isSet(bit: member.intValue)
     }
 
+    @inlinable
+    @inline(__always)
     public mutating func add(_ member: T) {
         bits.add(bit: member.intValue)
     }
@@ -214,6 +238,8 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         return nil
     }
 
+    @inlinable
+    @inline(__always)
     public var count: Int {
         bits.count
     }
