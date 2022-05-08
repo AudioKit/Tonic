@@ -75,7 +75,6 @@ public struct Chord: Equatable {
             case .majorTriad: return romanNumeral
             case .minorTriad: return romanNumeral.lowercased()
             case .diminishedTriad: return "\(romanNumeral.lowercased())°"
-            case .augmentedTriad: return "\(romanNumeral)⁺"
             default: return nil
             }
         }
@@ -84,17 +83,7 @@ public struct Chord: Equatable {
 
     /// Try to give this chord a name
     public var description: String {
-
-        switch type {
-        case .majorTriad: return "\(root)"
-        case .minorTriad: return "\(root)m"
-        case .diminishedTriad: return "\(root)°"
-        case .augmentedTriad: return "\(root)⁺"
-        case .suspendedTriad: return "\(root)sus"
-        case .majorSixth: return "\(root)6"
-        case .dominantSeventh: return "\(root)7"
-        }
-
+        return "\(root)\(type)"
     }
 
 }

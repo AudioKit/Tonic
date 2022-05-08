@@ -1,6 +1,6 @@
 import Foundation
 
-public enum ChordType: Int, CaseIterable {
+public enum ChordType: Int, CaseIterable, CustomStringConvertible {
     case majorTriad
     case minorTriad
     case diminishedTriad
@@ -20,4 +20,18 @@ public enum ChordType: Int, CaseIterable {
         case .dominantSeventh: return  [.M3, .P5, .m7]
         }
     }
+
+    /// Try to give this chord a name
+    public var description: String {
+        switch self {
+        case .majorTriad: return ""
+        case .minorTriad: return "m"
+        case .diminishedTriad: return "°"
+        case .augmentedTriad: return "⁺"
+        case .suspendedTriad: return "sus"
+        case .majorSixth: return "6"
+        case .dominantSeventh: return "7"
+        }
+    }
+
 }
