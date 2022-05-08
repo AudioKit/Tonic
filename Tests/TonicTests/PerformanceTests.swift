@@ -20,6 +20,30 @@ final class PerformanceTests: XCTestCase {
         }
     }
 
+    func testPitchSetPerf() {
+        measure {
+            for _ in 0..<10000 {
+                var set = PitchSet()
+                for i in 0..<128 {
+                    set.add(pitch: Pitch(Int8(i)))
+                }
+                assert(set.count == 128)
+            }
+        }
+    }
+
+    func testSetOfPitchesPerf() {
+        measure {
+            for _ in 0..<10000 {
+                var set = Set<Pitch>()
+                for i in 0..<128 {
+                    set.insert(Pitch(Int8(i)))
+                }
+                assert(set.count == 128)
+            }
+        }
+    }
+
     func testNoteSetPerf() {
         measure {
             for _ in 0..<1000 {
