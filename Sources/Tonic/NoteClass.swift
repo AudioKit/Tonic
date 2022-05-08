@@ -23,28 +23,32 @@ public struct NoteClass: Equatable, Hashable, CustomStringConvertible {
     }
 
     public init(index: Int) {
-        self.letter = Letter(rawValue: index / 5)!
-        self.accidental = Accidental(rawValue: Int8((index % 5) - 2))!
+        self.letter = Letter(rawValue: index / Accidental.count)!
+        self.accidental = Accidental(rawValue: Int8((index % Accidental.count) - Accidental.naturalIndex))!
     }
 
     public var index: Int {
-        5 * letter.rawValue + Int(accidental.rawValue) + 2
+        Accidental.count * letter.rawValue + Int(accidental.rawValue) + Accidental.naturalIndex
     }
 }
 
 extension NoteClass: IntRepresentable {
     public init(intValue: Int) {
-        self.letter = Letter(rawValue: intValue / 5)!
-        self.accidental = Accidental(rawValue: Int8((intValue % 5) - 2))!
+        self.letter = Letter(rawValue: intValue / Accidental.count)!
+        self.accidental = Accidental(rawValue: Int8((intValue % Accidental.count) - Accidental.naturalIndex))!
     }
 
     public var intValue: Int {
-        5 * letter.rawValue + Int(accidental.rawValue) + 2
+        Accidental.count * letter.rawValue + Int(accidental.rawValue) + 2
     }
 }
 
 /// A semitone offset applied to a note.
 public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
+
+    static var count: Int { Accidental.allCases.count }
+    static var naturalIndex: Int { count / 2}
+
     public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
         lhs.rawValue < rhs.rawValue
     }
@@ -56,7 +60,7 @@ public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, 
     case doubleSharp = 2
 
     public var description: String {
-        ["𝄫", "♭", "", "♯", "𝄪"][Int(self.rawValue) + 2]
+        ["𝄫", "♭", "", "♯", "𝄪"][Int(self.rawValue) + Accidental.naturalIndex]
     }
 }
 
@@ -71,6 +75,4 @@ public enum Letter: Int, CaseIterable, Equatable, Hashable, Comparable {
     var baseNote: UInt8 {
         return [0, 2, 4, 5, 7, 9, 11][rawValue]
     }
-
-    static let count = 7
 }
