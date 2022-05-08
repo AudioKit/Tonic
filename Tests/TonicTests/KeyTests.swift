@@ -13,17 +13,24 @@ class KeyTests: XCTestCase {
                        ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
     }
 
-    func testKeychords() {
-        XCTAssertEqual(Key.C.chords.map { $0.description },
+    func testKeyPrimaryTriads() {
+        XCTAssertEqual(Key.C.primaryTriads.map { $0.description },
                        ["C", "Dm", "Em", "F", "G", "Am", "B°"])
-        XCTAssertEqual(Key.Am.chords.map { $0.description },
+        XCTAssertEqual(Key.Am.primaryTriads.map { $0.description },
                        ["Am", "B°", "C", "Dm", "Em", "F", "G"])
-        XCTAssertEqual(Key.G.chords.map { $0.description },
+        XCTAssertEqual(Key.G.primaryTriads.map { $0.description },
                        ["G", "Am", "Bm", "C", "D", "Em", "F♯°"])
-        XCTAssertEqual(Key.Cs.chords.map { $0.description },
+        XCTAssertEqual(Key.Cs.primaryTriads.map { $0.description },
                        ["C♯", "D♯m", "E♯m", "F♯", "G♯", "A♯m", "B♯°"])
-        XCTAssertEqual(Key.Cb.chords.map { $0.description },
+        XCTAssertEqual(Key.Cb.primaryTriads.map { $0.description },
                        ["C♭", "D♭m", "E♭m", "F♭", "G♭", "A♭m", "B♭°"])
+    }
+
+    func testKeyChords() {
+        XCTAssertEqual(Key.G.chords.count, 12)
+        for triad in Key.G.primaryTriads {
+            XCTAssert(Key.G.chords.contains(triad))
+        }
     }
 
     func testKeyNoteSets() {

@@ -6,7 +6,10 @@ public struct Key: Equatable {
     public let scale: Scale
     public let noteSet: NoteSet
 
-    /// All the chords in the key (v2)
+    /// All the traditional triads
+    public let primaryTriads: [Chord]
+
+    /// All chords that fit in the key
     public let chords: [Chord]
 
     public init(root: NoteClass, scale: Scale = .major) {
@@ -25,15 +28,24 @@ public struct Key: Equatable {
         let table = ChordTable.shared
 
         var chords: [Chord] = []
+        var primaryTriads: [Chord] = []
 
-        for (_, chord) in table.chords where chord.noteClassSet.isSubset(of: noteSet.noteClassSet) && chord.type != .suspendedTriad {
+        let allowablePrimaryTriads: [ChordType] = [.majorTriad, .minorTriad, .diminishedTriad]
+
+        for (_, chord) in table.chords where chord.noteClassSet.isSubset(of: noteSet.noteClassSet) {
             chords.append(Chord(chord.root, type: chord.type))
+            if allowablePrimaryTriads.contains(chord.type) {
+                primaryTriads.append(Chord(chord.root, type: chord.type))
+            }
         }
-        assert(chords.count == 7)
+        assert(primaryTriads.count == 7)
 
-        let chordsStartingWithC = chords.sorted(by: {$0.root.letter < $1.root.letter})
-        let rootPosition2 = chordsStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
-        self.chords = Array(chordsStartingWithC.rotatingLeft(positions: rootPosition2))
+
+        let primaryTriadsStartingWithC = primaryTriads.sorted(by: {$0.root.letter < $1.root.letter})
+        let rootPosition = primaryTriadsStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
+        self.primaryTriads = Array(primaryTriadsStartingWithC.rotatingLeft(positions: rootPosition))
+
+        self.chords = chords
 
     }
 

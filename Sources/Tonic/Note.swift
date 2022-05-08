@@ -39,6 +39,7 @@ public struct Note: Equatable, Hashable {
     }
 
     public init(pitch: Pitch, key: Key = .C) {
+        octave = Int(Double(pitch.midiNoteNumber) / 12) - 1
 
         let pitchClass = pitch.pitchClass
         var noteInKey: Note?
@@ -70,7 +71,6 @@ public struct Note: Equatable, Hashable {
         }
 
 
-        octave = Int(Double(pitch.midiNoteNumber) / 12) - 1
     }
     
     public init(index: Int) {
