@@ -46,14 +46,7 @@ public struct BitSet64: BitSet, OptionSet {
     }
 
     public var first: Int? {
-        if rawValue != 0 {
-            for bit in 0..<64 {
-                if isSet(bit: bit) {
-                    return bit
-                }
-            }
-        }
-        return nil
+        rawValue != 0 ? rawValue.trailingZeroBitCount : nil
     }
 
     public var count: Int {
