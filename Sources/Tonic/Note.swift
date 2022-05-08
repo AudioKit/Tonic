@@ -9,6 +9,14 @@ extension NoteSet {
             add(note)
         }
     }
+
+    public var noteClassSet: NoteClassSet {
+        var r = NoteClassSet()
+        forEach { note in
+            r.add(note.noteClass)
+        }
+        return r
+    }
 }
 
 /// A pitch with a particular spelling.
