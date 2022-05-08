@@ -9,20 +9,14 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(Chord.Db.description, "D♭")
         XCTAssertEqual(Chord.Asm.description, "A♯m")
         XCTAssertEqual(Chord.Bbm.description, "B♭m")
-    }
 
-    func testDiminishedChords() {
         XCTAssertEqual(Chord.Adim.description, "A°")
         XCTAssertEqual(Chord.Bdim.description, "B°")
-    }
 
-    func testAugmentedChords() {
         XCTAssertEqual(Chord.Caug.description, "C⁺")
         XCTAssertEqual(Chord.Aaug.description, "A⁺")
         XCTAssertEqual(Chord(.Db, type: .augmentedTriad).description, "D♭⁺")
-    }
 
-    func testSuspendedChords() {
         XCTAssertEqual(Chord.Asus.description, "Asus")
         XCTAssertEqual(Chord.Bsus.description, "Bsus")
     }
@@ -50,6 +44,13 @@ class ChordTests: XCTestCase {
 
         let Db = Chord(notes: [.Db, .F, .Ab])!
         XCTAssertEqual(Db.description, "D♭")
+
+        let C6 = Chord(notes: [.C, .E, .G, .A])!
+        XCTAssertEqual(C6.description, "C6")
+
+        let C7 = Chord(notes: [.C, .E, .G, .Bb])!
+        XCTAssertEqual(C7.description, "C7")
+
 
     }
 

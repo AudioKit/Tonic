@@ -32,11 +32,9 @@ public class ChordTable {
     static func generateAllChords() -> [Int: Chord] {
         var r: [Int: Chord] = [:]
 
-        ChordTable.generateChords(type: .majorTriad, &r)
-        ChordTable.generateChords(type: .minorTriad, &r)
-        ChordTable.generateChords(type: .diminishedTriad, &r)
-        ChordTable.generateChords(type: .augmentedTriad, &r)
-        ChordTable.generateChords(type: .suspendedTriad, &r)
+        for chordType in ChordType.allCases {
+            ChordTable.generateChords(type: chordType, &r)
+        }
 
         print("generated \(r.count) triads")
 

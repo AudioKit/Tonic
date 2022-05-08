@@ -91,6 +91,8 @@ public struct Chord: Equatable {
         case .diminishedTriad: return "\(root)°"
         case .augmentedTriad: return "\(root)⁺"
         case .suspendedTriad: return "\(root)sus"
+        case .majorSixth: return "\(root)6"
+        case .dominantSeventh: return "\(root)7"
         }
 
     }
