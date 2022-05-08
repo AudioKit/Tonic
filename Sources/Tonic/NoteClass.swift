@@ -3,14 +3,10 @@ import Foundation
 public typealias NoteClassSet = BitSetAdapter<NoteClass, BitSet64>
 
 /// A note letter and accidental which spell a note. This leaves out the octave of the note.
-public struct NoteClass: Equatable, Hashable, CustomStringConvertible {
+public struct NoteClass: Equatable, Hashable {
 
     var letter: Letter
     var accidental: Accidental
-
-    public var description: String {
-        return "\(letter)\(accidental)"
-    }
 
     private static let canonicalOctave = 4
     internal var canonicalNote: Note {
@@ -32,6 +28,12 @@ public struct NoteClass: Equatable, Hashable, CustomStringConvertible {
     }
 }
 
+extension NoteClass: CustomStringConvertible {
+    public var description: String {
+        return "\(letter)\(accidental)"
+    }
+}
+
 extension NoteClass: IntRepresentable {
     public init(intValue: Int) {
         self.letter = Letter(rawValue: intValue / Accidental.count)!
@@ -44,35 +46,43 @@ extension NoteClass: IntRepresentable {
 }
 
 /// A semitone offset applied to a note.
-public enum Accidental: Int8, CustomStringConvertible, CaseIterable, Equatable, Hashable, Comparable {
+public enum Accidental: Int8, CaseIterable, Equatable, Hashable {
 
     static var count: Int { Accidental.allCases.count }
     static var naturalIndex: Int { count / 2}
 
-    public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
-        lhs.rawValue < rhs.rawValue
-    }
 
     case doubleFlat = -2
     case flat = -1
     case natural = 0
     case sharp = 1
     case doubleSharp = 2
+}
 
+extension Accidental: CustomStringConvertible {
     public var description: String {
         ["𝄫", "♭", "", "♯", "𝄪"][Int(self.rawValue) + Accidental.naturalIndex]
     }
 }
 
-/// The names for the "white key" notes.
-public enum Letter: Int, CaseIterable, Equatable, Hashable, Comparable {
-    public static func < (lhs: Letter, rhs: Letter) -> Bool {
+extension Accidental: Comparable {
+    public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
         lhs.rawValue < rhs.rawValue
     }
 
+}
+
+/// The names for the "white key" notes.
+public enum Letter: Int, CaseIterable, Equatable, Hashable {
     case C, D, E, F, G, A, B
 
     var baseNote: UInt8 {
         return [0, 2, 4, 5, 7, 9, 11][rawValue]
+    }
+}
+
+extension Letter: Comparable {
+    public static func < (lhs: Letter, rhs: Letter) -> Bool {
+        lhs.rawValue < rhs.rawValue
     }
 }
