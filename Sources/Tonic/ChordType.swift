@@ -1,14 +1,5 @@
 import Foundation
 
-public struct ChordInfo {
-    var root: NoteClass
-    var type: ChordType
-    var noteClasses: [NoteClass]
-    var noteSet: NoteSet {
-        NoteSet(notes: noteClasses.map(\.canonicalNote))
-    }
-}
-
 public enum ChordType: Int {
     case majorTriad, minorTriad, diminishedTriad, augmentedTriad, suspendedTriad
 

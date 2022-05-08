@@ -26,9 +26,10 @@ public struct Key: Equatable {
 
         var chords: [Chord] = []
 
-        for (_, info) in table.chords where info.noteSet.isSubset(of: noteSet) && info.type != .suspendedTriad {
-            chords.append(Chord(info.root, type: info.type))
+        for (_, chord) in table.chords where chord.noteClassSet.isSubset(of: noteSet.noteClassSet) && chord.type != .suspendedTriad {
+            chords.append(Chord(chord.root, type: chord.type))
         }
+        assert(chords.count == 7)
 
         let chordsStartingWithC = chords.sorted(by: {$0.root.letter < $1.root.letter})
         let rootPosition2 = chordsStartingWithC.firstIndex(where: { $0.root == root }) ?? 0

@@ -13,7 +13,7 @@ public class ChordTable {
         return r.hashValue
     }
 
-    static func generateChords(type: ChordType, _ r: inout [Int: ChordInfo]) {
+    static func generateChords(type: ChordType, _ r: inout [Int: Chord]) {
         let accidentals: [Accidental] = [.flat, .natural, .sharp]
         for accidental in accidentals {
             for letter in Letter.allCases {
@@ -24,15 +24,13 @@ public class ChordTable {
                     continue
                 }
 
-                r[ChordTable.hash(chord.noteClasses)] = ChordInfo(root: root,
-                                                                  type: type,
-                                                                  noteClasses: chord.noteClasses)
+                r[ChordTable.hash(chord.noteClasses)] = chord
             }
         }
     }
 
-    static func generateAllChords() -> [Int: ChordInfo] {
-        var r: [Int: ChordInfo] = [:]
+    static func generateAllChords() -> [Int: Chord] {
+        var r: [Int: Chord] = [:]
 
         ChordTable.generateChords(type: .majorTriad, &r)
         ChordTable.generateChords(type: .minorTriad, &r)
@@ -45,6 +43,6 @@ public class ChordTable {
         return r
     }
 
-    lazy var chords: [Int: ChordInfo] = ChordTable.generateAllChords()
+    lazy var chords: [Int: Chord] = ChordTable.generateAllChords()
 }
 
