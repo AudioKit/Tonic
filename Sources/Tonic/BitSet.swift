@@ -318,9 +318,7 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
 
     public var array: [T] {
         var r: [T] = []
-        forEach { n in
-            r.append(n)
-        }
+        forEach { r.append($0) }
         return r
     }
 

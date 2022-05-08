@@ -22,9 +22,7 @@ public struct Chord: Equatable {
 
     public init?(noteSet: NoteSet) {
         var r = NoteSet()
-        noteSet.forEach { note in
-            r.add(note.noteClass.canonicalNote)
-        }
+        noteSet.forEach { r.add($0.noteClass.canonicalNote) }
 
         if let info = ChordTable.shared.chords[r.hashValue] {
             self.root = info.root
