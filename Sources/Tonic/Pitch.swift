@@ -1,5 +1,7 @@
 import Foundation
 
+public typealias PitchSet = BitSetAdapter<Pitch, BitSet128>
+
 /// Essentially a midi note number.
 ///
 /// We want to use a notion of pitch that lends itself to combinatorial algorithms,
@@ -40,4 +42,3 @@ extension Pitch: IntRepresentable {
 
 }
 
-public typealias PitchSet = BitSetAdapter<Pitch, BitSet128>
