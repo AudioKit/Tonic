@@ -9,7 +9,7 @@ public struct NoteClass: Equatable, Hashable {
     var accidental: Accidental
 
     private static let canonicalOctave = 4
-    internal var canonicalNote: Note {
+    public var canonicalNote: Note {
         Note(letter, accidental: accidental, octave: NoteClass.canonicalOctave)
     }
 
