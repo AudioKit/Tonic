@@ -13,7 +13,7 @@ extension PitchSet {
 /// Essentially a midi note number.
 ///
 /// We want to use a notion of pitch that lends itself to combinatorial algorithms,
-/// as opposed to useing e.g. a fundamental frequency.
+/// as opposed to using e.g. a fundamental frequency.
 public struct Pitch: Equatable, Hashable {
 
     var midiNoteNumber: Int8
