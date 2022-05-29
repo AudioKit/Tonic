@@ -5,10 +5,10 @@ struct ContentView: View {
     var midiController = MIDIController()
     var body: some View {
         VStack {
-            Text("Chord: \(chordIdentifier.chord?.description ?? "")")
-            Text("Inversion: \(chordIdentifier.inversionText)")
+            Text("\(chordIdentifier.chord?.description ?? "") \(chordIdentifier.inversionText)")
             PianoKeyboardView(delegate: chordIdentifier)
         }
+        .padding()
         .onAppear {
             midiController.eventHandler = chordIdentifier.eventHandler
         }
