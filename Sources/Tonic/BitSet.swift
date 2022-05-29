@@ -290,7 +290,7 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         return (inserted, T(intValue: memberAfterInsert as! Int))
     }
 
-    public mutating func remove(_ member: T) -> T? {
+    @discardableResult public mutating func remove(_ member: T) -> T? {
         if let prev = bits.remove(member.intValue as! B.Element) {
             return T(intValue: prev as! Int)
         }

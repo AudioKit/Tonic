@@ -1,0 +1,34 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MIDIKit",
+        "repositoryURL": "https://github.com/orchetect/MIDIKit",
+        "state": {
+          "branch": null,
+          "revision": "747439420f604f69ff085ed2f71873afa433a940",
+          "version": "0.4.8"
+        }
+      },
+      {
+        "package": "PianoKeyboard",
+        "repositoryURL": "https://github.com/garynewby/PianoKeyboard",
+        "state": {
+          "branch": null,
+          "revision": "5e540e88b621670ec405410c6a78dcb2d84de18e",
+          "version": "1.0.26"
+        }
+      },
+      {
+        "package": "SwiftRadix",
+        "repositoryURL": "https://github.com/orchetect/SwiftRadix",
+        "state": {
+          "branch": null,
+          "revision": "467ea909bce637049fe2b6ccf1494886efcdf1e8",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
