@@ -41,7 +41,7 @@ extension NoteClass: IntRepresentable {
     }
 
     public var intValue: Int {
-        Accidental.count * letter.rawValue + Int(accidental.rawValue) + 2
+        Accidental.count * letter.rawValue + Int(accidental.rawValue) + Accidental.naturalIndex
     }
 }
 
