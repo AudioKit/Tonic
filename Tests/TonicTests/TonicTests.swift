@@ -15,19 +15,6 @@ final class TonicTests: XCTestCase {
         XCTAssertFalse(Scale.blues.isSubset(of: Scale.minor))
         XCTAssertTrue(Scale.minor.isSubset(of: Scale.chromatic))
     }
-    
-    func testBitSet() {
-        for i in 0..<512 {
-            var set = BitSet512()
-            set.add(bit: i)
-            XCTAssertTrue(set.isSet(bit: i))
-        }
-
-        var set = BitSet512()
-        XCTAssertEqual(set.first, nil)
-        set.add(bit: 42)
-        XCTAssertEqual(set.first, 42)
-    }
 
     func testNoteSet() {
         var set = NoteSet()
