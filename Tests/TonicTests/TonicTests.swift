@@ -30,4 +30,8 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(c4, Note(index: index))
     }
 
+    func testPitch() {
+        XCTAssertEqual(Pitch(64).semitones(to: Pitch(62)), 2)
+    }
+
 }
