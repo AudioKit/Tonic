@@ -10,7 +10,7 @@ final class PerformanceTests: XCTestCase {
                 // away note creation.
                 var index_sum = 0
                 for i in 0..<128 {
-                    index_sum += Note(pitch: Pitch(Int8(i))).index
+                    index_sum += Note(pitch: Pitch(Int8(i))).intValue
                 }
                 if index_sum != 23779 {
                     print("index_sum: \(index_sum)")

@@ -108,11 +108,6 @@ public struct Note: Equatable, Hashable {
         }
         return nil
     }
-    
-    /// Global index of the note for use in a NoteSet
-    public var index: Int {
-        (octave+1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue)+2)
-    }
 }
 
 extension Note: Comparable {
@@ -130,6 +125,7 @@ extension Note: IntRepresentable {
         noteClass = NoteClass(letter, accidental: accidental)
     }
 
+    /// Global index of the note for use in a NoteSet
     public var intValue: Int {
         (octave+1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue)+2)
     }
