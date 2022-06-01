@@ -17,15 +17,6 @@ public struct NoteClass: Equatable, Hashable {
         self.letter = letter
         self.accidental = accidental
     }
-
-    public init(index: Int) {
-        self.letter = Letter(rawValue: index / Accidental.count)!
-        self.accidental = Accidental(rawValue: Int8((index % Accidental.count) - Accidental.naturalIndex))!
-    }
-
-    public var index: Int {
-        Accidental.count * letter.rawValue + Int(accidental.rawValue) + Accidental.naturalIndex
-    }
 }
 
 extension NoteClass: CustomStringConvertible {
