@@ -5,11 +5,8 @@ import PackageDescription
 let package = Package(
     name: "Tonic",
     products: [.library(name: "Tonic", targets: ["Tonic"])],
-    dependencies: [],
     targets: [
-        .target(name: "Tonic",
-                dependencies: [],
-                swiftSettings: [.unsafeFlags(["-enable-testing", "-g"])]),
+        .target(name: "Tonic", swiftSettings: [.unsafeFlags(["-enable-testing", "-g"])]),
         .testTarget(name: "TonicTests", dependencies: ["Tonic"]),
     ]
 )
