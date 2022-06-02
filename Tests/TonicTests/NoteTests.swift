@@ -34,18 +34,51 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(cDoubleSharp.description, "C𝄪4")
     }
 
+    func testComparison(){
+        XCTAssert(Note.C < Note.Cs)
+    }
+
     func testNoteShift() {
         let d = Note(.C).shiftUp(.M2)
         XCTAssertEqual(d!.description, "D4")
 
         let eFlat = Note(.C).shiftUp(.m3)
-         XCTAssertEqual(eFlat!.description, "E♭4")
+        XCTAssertEqual(eFlat!.description, "E♭4")
+
+        let db = Note(.C).shiftDown(.M7)
+        XCTAssertEqual(db!.description, "D♭3")
+
+        let ebbb = Note(.F, accidental: .doubleFlat).shiftDown(.M2)
+        XCTAssertNil(ebbb)
 
         let c = Note(.D).shiftDown(.M2)
         XCTAssertEqual(c!.description, "C4")
 
         let cs = Note(.D).shiftDown(.m2)
         XCTAssertEqual(cs!.description, "C♯4")
+
+        let eb = Note(.B).shiftUp(.d4)
+        XCTAssertEqual(eb!.description, "E♭5")
+
+        let fs = Note(.C).shiftUp(.A4)
+        XCTAssertEqual(fs!.description, "F♯4")
+
+        let asharp = Note(.C).shiftUp(.A6)
+        XCTAssertEqual(asharp!.description, "A♯4")
+    }
+
+    func testNoteShiftLimits() {
+        let ebbb = Note(.F, accidental: .doubleFlat).shiftDown(.M2)
+        XCTAssertNil(ebbb)
+
+        let fsss = Note(.E, accidental: .doubleSharp).shiftUp(.M2)
+        XCTAssertNil(fsss)
+    }
+
+    func testNoteDistance() {
+        XCTAssert(Note.C.semitones(to: Note.D) == 2)
+        XCTAssert(Note.C.semitones(to: Note.G) == 7)
+        XCTAssert(Note.C.semitones(to: Note(.G, octave: 3)) == 5)
     }
 
     func testNoteIntValue() {

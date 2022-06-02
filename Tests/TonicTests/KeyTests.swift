@@ -4,13 +4,17 @@ import XCTest
 class KeyTests: XCTestCase {
 
     func testKeyNotes() {
-        let cMajor = Key.C
-        XCTAssertEqual(cMajor.noteSet.array.map { $0.noteClass.description },
+        XCTAssertEqual(Key.C.noteSet.array.map { $0.noteClass.description },
                        ["C", "D", "E", "F", "G", "A", "B"])
 
-        let cMinor = Key.c
-        XCTAssertEqual(cMinor.noteSet.array.map { $0.noteClass.description },
+        XCTAssertEqual(Key.Cm.noteSet.array.map { $0.noteClass.description },
                        ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
+
+        XCTAssertEqual(Key.Cs.noteSet.array.map { $0.noteClass.description },
+                       ["C♯", "D♯", "E♯", "F♯", "G♯", "A♯", "B♯"])
+
+        XCTAssertEqual(Key.Cb.noteSet.array.map { $0.noteClass.description },
+                       ["C♭", "D♭", "E♭", "F♭", "G♭", "A♭", "B♭"])
     }
 
     func testKeyPrimaryTriads() {

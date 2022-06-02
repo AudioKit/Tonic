@@ -61,10 +61,7 @@ public struct Key: Equatable {
         if naturalKeysWithFlats.contains(self) {
             return .flat
         }
-
         return .sharp
-
-
     }
 
 }
