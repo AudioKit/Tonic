@@ -24,7 +24,9 @@ class ChordIdentifier: ObservableObject {
         didSet {
 
             if let chord = chord {
-                result = "\(chord.description) \(inversionText)"
+                result = "Known Chord: \(chord.description) \(inversionText)"
+            } else {
+                result = "Notes: " + pitchSet.array.map { $0.note(in: .C).description }.joined(separator: ", ")
             }
 
         }
@@ -42,11 +44,18 @@ class ChordIdentifier: ObservableObject {
                 return
             }
 
+            if pitchSet.count == 2 {
+                result = "Two Notes: " +
+                pitchSet.array[0].note(in: .C).description + ", " +
+                pitchSet.array[1].note(in: .C).description
+
+                return
+            }
+
             let keys: [Key] = [.C, .G, .F, .D, .Bb, .A, .Eb, .E, .Ab, .B, .Db]
             for key in keys {
                 if let c = pitchSet.chord(in: key), c != chord {
                     chord = c
-
                     return
                 }
             }
