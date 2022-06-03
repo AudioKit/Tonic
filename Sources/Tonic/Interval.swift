@@ -89,6 +89,24 @@ public enum Interval: Int, CaseIterable {
             return 7
         }
     }
+
+    public static func betweenNotes(_ note1: Note, _ note2: Note) -> Interval? {
+        var n1 = note1
+        var n2 = note2
+        if note2.pitch < note1.pitch {
+            n2 = note1
+            n1 = note2
+        }
+        var degree = n2.letter.rawValue - n1.letter.rawValue
+        if degree < 0 { degree += Letter.allCases.count }
+        degree += 1
+        for interval in Interval.allCases {
+            if interval.degree == degree && interval.semitones == n1.semitones(to: n2) {
+                return interval
+            }
+        }
+        return nil
+    }
 }
 
 extension Interval: CustomStringConvertible {

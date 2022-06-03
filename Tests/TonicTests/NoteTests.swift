@@ -76,9 +76,9 @@ final class NoteTests: XCTestCase {
     }
 
     func testNoteDistance() {
-        XCTAssert(Note.C.semitones(to: Note.D) == 2)
-        XCTAssert(Note.C.semitones(to: Note.G) == 7)
-        XCTAssert(Note.C.semitones(to: Note(.G, octave: 3)) == 5)
+        XCTAssertEqual(Note.C.semitones(to: Note.D), 2)
+        XCTAssertEqual(Note.C.semitones(to: Note.G), 7)
+        XCTAssertEqual(Note.C.semitones(to: Note(.G, octave: 3)), 5)
     }
 
     func testNoteIntValue() {
@@ -91,6 +91,13 @@ final class NoteTests: XCTestCase {
             XCTAssertEqual(n.intValue, i)
         }
 
+    }
+
+    func testInterval() {
+        XCTAssertEqual(Interval.betweenNotes(.C, .D), .M2)
+        XCTAssertEqual(Interval.betweenNotes(.C, .G), .P5)
+        XCTAssertEqual(Interval.betweenNotes(.G, .C), .P5)
+        XCTAssertEqual(Interval.betweenNotes(.C, .Fb), .d4)
     }
 
 }
