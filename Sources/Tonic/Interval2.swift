@@ -75,11 +75,29 @@ public struct Interval2: Codable {
         self.degree = degree
     }
 
-
-
     /// Returns the notation of the interval.
     public var notation: String {
         return "\(quality.notation)\(degree)"
+    }
+
+    public static func betweenNotes(_ note1: Note, _ note2: Note) -> Interval2? {
+        var n1 = note1
+        var n2 = note2
+        if note2.pitch < note1.pitch {
+            n2 = note1
+            n1 = note2
+        }
+        var degree = n2.letter.rawValue - n1.letter.rawValue
+        if degree < 0 { degree += Letter.allCases.count }
+        degree += 1
+        for interval in Interval2.allCases {
+            if let semitones = interval.semitones {
+                if interval.degree == degree && semitones == n1.semitones(to: n2) {
+                    return interval
+                }
+            }
+        }
+        return nil
     }
 }
 

@@ -10,6 +10,13 @@ final class IntervalTests: XCTestCase {
     }
 
     func testInterval2() {
+        XCTAssertEqual(Interval2.betweenNotes(.C, .D), .M2)
+        XCTAssertEqual(Interval2.betweenNotes(.C, .G), .P5)
+        XCTAssertEqual(Interval2.betweenNotes(.G, .C), .P5)
+        XCTAssertEqual(Interval2.betweenNotes(.C, .Fb), .d4)
+    }
+
+    func testIntervalStaticVariables() {
         XCTAssertEqual(Interval2.P1.semitones, 0)
         XCTAssertEqual(Interval2.P4.semitones, 5)
         XCTAssertEqual(Interval2.P5.semitones, 7)
