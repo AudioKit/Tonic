@@ -54,6 +54,12 @@ class ChordTests: XCTestCase {
         let Cmaj7 = Chord(notes: [.C, .E, .G, .B])!
         XCTAssertEqual(Cmaj7.description, "Cmaj7")
 
+        let Cadd9 = Chord(notes: [.C, .E, .G, .D])!
+        XCTAssertEqual(Cadd9.description, "Cadd9")
+
+        let C69 = Chord(notes: [.C, .E, .G, .A, .D])!
+        XCTAssertEqual(C69.description, "C6/9")
+
 
     }
 

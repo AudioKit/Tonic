@@ -13,10 +13,13 @@ public enum Interval: Int, CaseIterable {
     case M6
     case m7
     case M7
+    case m9
+    case M9
     case d4
     case A4
     case A5
     case A6
+    case A9
 
     var semitones: Int {
         switch self {
@@ -51,6 +54,12 @@ public enum Interval: Int, CaseIterable {
             return 10
         case .M7:
             return 11
+        case .m9:
+            return 13
+        case .M9:
+            return 14
+        case .A9:
+            return 15
         }
     }
 
@@ -87,6 +96,12 @@ public enum Interval: Int, CaseIterable {
             return 7
         case .M7:
             return 7
+        case .m9:
+            return 9
+        case .M9:
+            return 9
+        case .A9:
+            return 9
         }
     }
 
@@ -143,6 +158,12 @@ extension Interval: CustomStringConvertible {
             return "Minor Seventh"
         case .M7:
             return "Major Seventh"
+        case .m9:
+            return "Minor Ninth"
+        case .M9:
+            return "Major Ninth"
+        case .A9:
+            return "Augmented Ninth"
         }
     }
 
