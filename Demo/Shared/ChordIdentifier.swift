@@ -1,18 +1,9 @@
 import Combine
 import MIDIKit
-import PianoKeyboard
+import Keyboard
 import Tonic
 
-class ChordIdentifier: ObservableObject, PianoKeyboardDelegate {
-
-    func pianoKeyUp(_ keyNumber: Int) {
-        pitchSet.remove(Pitch(Int8(keyNumber)))
-    }
-
-    func pianoKeyDown(_ keyNumber: Int) {
-        pitchSet.add(Pitch(Int8(keyNumber)))
-    }
-
+class ChordIdentifier: ObservableObject {
 
     var inversionText: String {
         if let c = chord {

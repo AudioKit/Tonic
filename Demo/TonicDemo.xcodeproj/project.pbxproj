@@ -7,95 +7,112 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F124866B2842EBEB00174121 /* PianoKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F124866A2842EBEB00174121 /* PianoKeyboardView.swift */; };
-		F124866E2842EEE700174121 /* MIDIKit in Frameworks */ = {isa = PBXBuildFile; productRef = F124866D2842EEE700174121 /* MIDIKit */; };
-		F12486712842EF1D00174121 /* PianoKeyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F12486702842EF1D00174121 /* PianoKeyboard */; };
-		F12486742842F1B700174121 /* MIDIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12486732842F1B700174121 /* MIDIController.swift */; };
-		F12486762842F1F700174121 /* ChordIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12486752842F1F700174121 /* ChordIdentifier.swift */; };
-		F179EA5D2842C283008D2010 /* TonicDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179EA5C2842C283008D2010 /* TonicDemoApp.swift */; };
-		F179EA5F2842C283008D2010 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F179EA5E2842C283008D2010 /* ContentView.swift */; };
-		F179EA612842C284008D2010 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F179EA602842C284008D2010 /* Assets.xcassets */; };
-		F179EA642842C284008D2010 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F179EA632842C284008D2010 /* Preview Assets.xcassets */; };
-		F179EA742842C5AB008D2010 /* Tonic in Frameworks */ = {isa = PBXBuildFile; productRef = F179EA732842C5AB008D2010 /* Tonic */; };
+		F1201BDA2849F42E0050DD22 /* TonicDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201BCA2849F42C0050DD22 /* TonicDemoApp.swift */; };
+		F1201BDB2849F42E0050DD22 /* TonicDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201BCA2849F42C0050DD22 /* TonicDemoApp.swift */; };
+		F1201BDC2849F42E0050DD22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201BCB2849F42C0050DD22 /* ContentView.swift */; };
+		F1201BDD2849F42E0050DD22 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201BCB2849F42C0050DD22 /* ContentView.swift */; };
+		F1201BDE2849F42E0050DD22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1201BCC2849F42E0050DD22 /* Assets.xcassets */; };
+		F1201BDF2849F42E0050DD22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1201BCC2849F42E0050DD22 /* Assets.xcassets */; };
+		F1201BEA2849F4920050DD22 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F1201BE92849F4920050DD22 /* Keyboard */; };
+		F1201BED2849F49E0050DD22 /* Keyboard in Frameworks */ = {isa = PBXBuildFile; productRef = F1201BEC2849F49E0050DD22 /* Keyboard */; };
+		F1201BF02849F4DC0050DD22 /* MIDIKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1201BEF2849F4DC0050DD22 /* MIDIKit */; };
+		F1201BF32849F5130050DD22 /* Tonic in Frameworks */ = {isa = PBXBuildFile; productRef = F1201BF22849F5130050DD22 /* Tonic */; };
+		F1201BF42849F5200050DD22 /* TonicDemo.app in Resources */ = {isa = PBXBuildFile; fileRef = F1201BD72849F42E0050DD22 /* TonicDemo.app */; };
+		F1201BF82849F5240050DD22 /* Tonic in Frameworks */ = {isa = PBXBuildFile; productRef = F1201BF72849F5240050DD22 /* Tonic */; };
+		F1201BFA2849F5280050DD22 /* MIDIKit in Frameworks */ = {isa = PBXBuildFile; productRef = F1201BF92849F5280050DD22 /* MIDIKit */; };
+		F1201C032849F5900050DD22 /* ChordIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201C012849F5900050DD22 /* ChordIdentifier.swift */; };
+		F1201C042849F5900050DD22 /* ChordIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201C012849F5900050DD22 /* ChordIdentifier.swift */; };
+		F1201C052849F5900050DD22 /* MIDIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201C022849F5900050DD22 /* MIDIController.swift */; };
+		F1201C062849F5900050DD22 /* MIDIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1201C022849F5900050DD22 /* MIDIController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		F1201BF52849F5200050DD22 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F1201BC52849F42C0050DD22 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F1201BD62849F42E0050DD22;
+			remoteInfo = "TonicDemo (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		F124866A2842EBEB00174121 /* PianoKeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PianoKeyboardView.swift; sourceTree = "<group>"; };
-		F12486732842F1B700174121 /* MIDIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MIDIController.swift; sourceTree = "<group>"; };
-		F12486752842F1F700174121 /* ChordIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChordIdentifier.swift; sourceTree = "<group>"; };
-		F12486772842F8E900174121 /* Tonic */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Tonic; path = ..; sourceTree = "<group>"; };
-		F179EA592842C283008D2010 /* TonicDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonicDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F179EA5C2842C283008D2010 /* TonicDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonicDemoApp.swift; sourceTree = "<group>"; };
-		F179EA5E2842C283008D2010 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F179EA602842C284008D2010 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		F179EA632842C284008D2010 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		F179EA752842C5F3008D2010 /* TonicDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TonicDemo.entitlements; sourceTree = "<group>"; };
+		F1201BCA2849F42C0050DD22 /* TonicDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TonicDemoApp.swift; sourceTree = "<group>"; };
+		F1201BCB2849F42C0050DD22 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		F1201BCC2849F42E0050DD22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1201BD12849F42E0050DD22 /* TonicDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonicDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1201BD72849F42E0050DD22 /* TonicDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TonicDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F1201BD92849F42E0050DD22 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		F1201C012849F5900050DD22 /* ChordIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordIdentifier.swift; sourceTree = "<group>"; };
+		F1201C022849F5900050DD22 /* MIDIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIController.swift; sourceTree = "<group>"; };
+		F1201C072849FA3A0050DD22 /* Keyboard */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Keyboard; path = ../../Keyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		F179EA562842C283008D2010 /* Frameworks */ = {
+		F1201BCE2849F42E0050DD22 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F124866E2842EEE700174121 /* MIDIKit in Frameworks */,
-				F12486712842EF1D00174121 /* PianoKeyboard in Frameworks */,
-				F179EA742842C5AB008D2010 /* Tonic in Frameworks */,
+				F1201BFA2849F5280050DD22 /* MIDIKit in Frameworks */,
+				F1201BF82849F5240050DD22 /* Tonic in Frameworks */,
+				F1201BED2849F49E0050DD22 /* Keyboard in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1201BD42849F42E0050DD22 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1201BF32849F5130050DD22 /* Tonic in Frameworks */,
+				F1201BF02849F4DC0050DD22 /* MIDIKit in Frameworks */,
+				F1201BEA2849F4920050DD22 /* Keyboard in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		F179EA502842C283008D2010 = {
+		F1201BC42849F42C0050DD22 = {
 			isa = PBXGroup;
 			children = (
-				F179EA6A2842C298008D2010 /* Packages */,
-				F179EA5B2842C283008D2010 /* TonicDemo */,
-				F179EA5A2842C283008D2010 /* Products */,
-				F179EA6E2842C5AB008D2010 /* Frameworks */,
+				F1201C072849FA3A0050DD22 /* Keyboard */,
+				F1201BC92849F42C0050DD22 /* Shared */,
+				F1201BD82849F42E0050DD22 /* macOS */,
+				F1201BD22849F42E0050DD22 /* Products */,
+				F1201BEB2849F49E0050DD22 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
-		F179EA5A2842C283008D2010 /* Products */ = {
+		F1201BC92849F42C0050DD22 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				F179EA592842C283008D2010 /* TonicDemo.app */,
+				F1201BCA2849F42C0050DD22 /* TonicDemoApp.swift */,
+				F1201BCB2849F42C0050DD22 /* ContentView.swift */,
+				F1201C012849F5900050DD22 /* ChordIdentifier.swift */,
+				F1201C022849F5900050DD22 /* MIDIController.swift */,
+				F1201BCC2849F42E0050DD22 /* Assets.xcassets */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
+		F1201BD22849F42E0050DD22 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F1201BD12849F42E0050DD22 /* TonicDemo.app */,
+				F1201BD72849F42E0050DD22 /* TonicDemo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		F179EA5B2842C283008D2010 /* TonicDemo */ = {
+		F1201BD82849F42E0050DD22 /* macOS */ = {
 			isa = PBXGroup;
 			children = (
-				F179EA752842C5F3008D2010 /* TonicDemo.entitlements */,
-				F179EA5C2842C283008D2010 /* TonicDemoApp.swift */,
-				F179EA5E2842C283008D2010 /* ContentView.swift */,
-				F12486752842F1F700174121 /* ChordIdentifier.swift */,
-				F12486732842F1B700174121 /* MIDIController.swift */,
-				F124866A2842EBEB00174121 /* PianoKeyboardView.swift */,
-				F179EA602842C284008D2010 /* Assets.xcassets */,
-				F179EA622842C284008D2010 /* Preview Content */,
+				F1201BD92849F42E0050DD22 /* macOS.entitlements */,
 			);
-			path = TonicDemo;
+			path = macOS;
 			sourceTree = "<group>";
 		};
-		F179EA622842C284008D2010 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				F179EA632842C284008D2010 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
-		F179EA6A2842C298008D2010 /* Packages */ = {
-			isa = PBXGroup;
-			children = (
-				F12486772842F8E900174121 /* Tonic */,
-			);
-			name = Packages;
-			sourceTree = "<group>";
-		};
-		F179EA6E2842C5AB008D2010 /* Frameworks */ = {
+		F1201BEB2849F49E0050DD22 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 			);
@@ -105,44 +122,70 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		F179EA582842C283008D2010 /* TonicDemo */ = {
+		F1201BD02849F42E0050DD22 /* TonicDemo (iOS) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = F179EA672842C284008D2010 /* Build configuration list for PBXNativeTarget "TonicDemo" */;
+			buildConfigurationList = F1201BE22849F42E0050DD22 /* Build configuration list for PBXNativeTarget "TonicDemo (iOS)" */;
 			buildPhases = (
-				F179EA552842C283008D2010 /* Sources */,
-				F179EA562842C283008D2010 /* Frameworks */,
-				F179EA572842C283008D2010 /* Resources */,
+				F1201BCD2849F42E0050DD22 /* Sources */,
+				F1201BCE2849F42E0050DD22 /* Frameworks */,
+				F1201BCF2849F42E0050DD22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F1201BF62849F5200050DD22 /* PBXTargetDependency */,
+			);
+			name = "TonicDemo (iOS)";
+			packageProductDependencies = (
+				F1201BEC2849F49E0050DD22 /* Keyboard */,
+				F1201BF72849F5240050DD22 /* Tonic */,
+				F1201BF92849F5280050DD22 /* MIDIKit */,
+			);
+			productName = "TonicDemo (iOS)";
+			productReference = F1201BD12849F42E0050DD22 /* TonicDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F1201BD62849F42E0050DD22 /* TonicDemo (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F1201BE52849F42E0050DD22 /* Build configuration list for PBXNativeTarget "TonicDemo (macOS)" */;
+			buildPhases = (
+				F1201BD32849F42E0050DD22 /* Sources */,
+				F1201BD42849F42E0050DD22 /* Frameworks */,
+				F1201BD52849F42E0050DD22 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = TonicDemo;
+			name = "TonicDemo (macOS)";
 			packageProductDependencies = (
-				F179EA732842C5AB008D2010 /* Tonic */,
-				F124866D2842EEE700174121 /* MIDIKit */,
-				F12486702842EF1D00174121 /* PianoKeyboard */,
+				F1201BE92849F4920050DD22 /* Keyboard */,
+				F1201BEF2849F4DC0050DD22 /* MIDIKit */,
+				F1201BF22849F5130050DD22 /* Tonic */,
 			);
-			productName = TonicDemo;
-			productReference = F179EA592842C283008D2010 /* TonicDemo.app */;
+			productName = "TonicDemo (macOS)";
+			productReference = F1201BD72849F42E0050DD22 /* TonicDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		F179EA512842C283008D2010 /* Project object */ = {
+		F1201BC52849F42C0050DD22 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1340;
 				LastUpgradeCheck = 1340;
 				TargetAttributes = {
-					F179EA582842C283008D2010 = {
-						CreatedOnToolsVersion = 13.4;
+					F1201BD02849F42E0050DD22 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+					F1201BD62849F42E0050DD22 = {
+						CreatedOnToolsVersion = 13.4.1;
 					};
 				};
 			};
-			buildConfigurationList = F179EA542842C283008D2010 /* Build configuration list for PBXProject "TonicDemo" */;
+			buildConfigurationList = F1201BC82849F42C0050DD22 /* Build configuration list for PBXProject "TonicDemo" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -150,49 +193,77 @@
 				en,
 				Base,
 			);
-			mainGroup = F179EA502842C283008D2010;
+			mainGroup = F1201BC42849F42C0050DD22;
 			packageReferences = (
-				F124866C2842EEE700174121 /* XCRemoteSwiftPackageReference "MIDIKit" */,
-				F124866F2842EF1D00174121 /* XCRemoteSwiftPackageReference "PianoKeyboard" */,
+				F1201BE82849F4920050DD22 /* XCRemoteSwiftPackageReference "Keyboard" */,
+				F1201BEE2849F4DC0050DD22 /* XCRemoteSwiftPackageReference "MIDIKit" */,
+				F1201BF12849F5130050DD22 /* XCRemoteSwiftPackageReference "Tonic" */,
 			);
-			productRefGroup = F179EA5A2842C283008D2010 /* Products */;
+			productRefGroup = F1201BD22849F42E0050DD22 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				F179EA582842C283008D2010 /* TonicDemo */,
+				F1201BD02849F42E0050DD22 /* TonicDemo (iOS) */,
+				F1201BD62849F42E0050DD22 /* TonicDemo (macOS) */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		F179EA572842C283008D2010 /* Resources */ = {
+		F1201BCF2849F42E0050DD22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F179EA642842C284008D2010 /* Preview Assets.xcassets in Resources */,
-				F179EA612842C284008D2010 /* Assets.xcassets in Resources */,
+				F1201BF42849F5200050DD22 /* TonicDemo.app in Resources */,
+				F1201BDE2849F42E0050DD22 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1201BD52849F42E0050DD22 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1201BDF2849F42E0050DD22 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		F179EA552842C283008D2010 /* Sources */ = {
+		F1201BCD2849F42E0050DD22 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F12486762842F1F700174121 /* ChordIdentifier.swift in Sources */,
-				F179EA5F2842C283008D2010 /* ContentView.swift in Sources */,
-				F124866B2842EBEB00174121 /* PianoKeyboardView.swift in Sources */,
-				F12486742842F1B700174121 /* MIDIController.swift in Sources */,
-				F179EA5D2842C283008D2010 /* TonicDemoApp.swift in Sources */,
+				F1201BDC2849F42E0050DD22 /* ContentView.swift in Sources */,
+				F1201BDA2849F42E0050DD22 /* TonicDemoApp.swift in Sources */,
+				F1201C052849F5900050DD22 /* MIDIController.swift in Sources */,
+				F1201C032849F5900050DD22 /* ChordIdentifier.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F1201BD32849F42E0050DD22 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1201BDD2849F42E0050DD22 /* ContentView.swift in Sources */,
+				F1201BDB2849F42E0050DD22 /* TonicDemoApp.swift in Sources */,
+				F1201C062849F5900050DD22 /* MIDIController.swift in Sources */,
+				F1201C042849F5900050DD22 /* ChordIdentifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		F1201BF62849F5200050DD22 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F1201BD62849F42E0050DD22 /* TonicDemo (macOS) */;
+			targetProxy = F1201BF52849F5200050DD22 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
-		F179EA652842C284008D2010 /* Debug */ = {
+		F1201BE02849F42E0050DD22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -242,17 +313,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		F179EA662842C284008D2010 /* Release */ = {
+		F1201BE12849F42E0050DD22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -296,101 +365,156 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
-				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		F179EA682842C284008D2010 /* Debug */ = {
+		F1201BE32849F42E0050DD22 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TonicDemo/TonicDemo.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TonicDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = W22K9JG3J6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aure.TonicDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.TonicDemo;
+				PRODUCT_NAME = TonicDemo;
+				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		F179EA692842C284008D2010 /* Release */ = {
+		F1201BE42849F42E0050DD22 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = TonicDemo/TonicDemo.entitlements;
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"TonicDemo/Preview Content\"";
 				DEVELOPMENT_TEAM = W22K9JG3J6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UIRequiresFullScreen = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				"IPHONEOS_DEPLOYMENT_TARGET[sdk=macosx*]" = 15.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.aure.TonicDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SUPPORTS_MACCATALYST = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.TonicDemo;
+				PRODUCT_NAME = TonicDemo;
+				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F1201BE62849F42E0050DD22 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W22K9JG3J6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.TonicDemo;
+				PRODUCT_NAME = TonicDemo;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		F1201BE72849F42E0050DD22 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = W22K9JG3J6;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.3;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = io.audiokit.TonicDemo;
+				PRODUCT_NAME = TonicDemo;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F179EA542842C283008D2010 /* Build configuration list for PBXProject "TonicDemo" */ = {
+		F1201BC82849F42C0050DD22 /* Build configuration list for PBXProject "TonicDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F179EA652842C284008D2010 /* Debug */,
-				F179EA662842C284008D2010 /* Release */,
+				F1201BE02849F42E0050DD22 /* Debug */,
+				F1201BE12849F42E0050DD22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		F179EA672842C284008D2010 /* Build configuration list for PBXNativeTarget "TonicDemo" */ = {
+		F1201BE22849F42E0050DD22 /* Build configuration list for PBXNativeTarget "TonicDemo (iOS)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				F179EA682842C284008D2010 /* Debug */,
-				F179EA692842C284008D2010 /* Release */,
+				F1201BE32849F42E0050DD22 /* Debug */,
+				F1201BE42849F42E0050DD22 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F1201BE52849F42E0050DD22 /* Build configuration list for PBXNativeTarget "TonicDemo (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F1201BE62849F42E0050DD22 /* Debug */,
+				F1201BE72849F42E0050DD22 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -398,7 +522,15 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F124866C2842EEE700174121 /* XCRemoteSwiftPackageReference "MIDIKit" */ = {
+		F1201BE82849F4920050DD22 /* XCRemoteSwiftPackageReference "Keyboard" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/audiokit/Keyboard";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		F1201BEE2849F4DC0050DD22 /* XCRemoteSwiftPackageReference "MIDIKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/orchetect/MIDIKit";
 			requirement = {
@@ -406,32 +538,48 @@
 				minimumVersion = 0.4.8;
 			};
 		};
-		F124866F2842EF1D00174121 /* XCRemoteSwiftPackageReference "PianoKeyboard" */ = {
+		F1201BF12849F5130050DD22 /* XCRemoteSwiftPackageReference "Tonic" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/garynewby/PianoKeyboard";
+			repositoryURL = "https://github.com/audulus/Tonic";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F124866D2842EEE700174121 /* MIDIKit */ = {
+		F1201BE92849F4920050DD22 /* Keyboard */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F124866C2842EEE700174121 /* XCRemoteSwiftPackageReference "MIDIKit" */;
+			package = F1201BE82849F4920050DD22 /* XCRemoteSwiftPackageReference "Keyboard" */;
+			productName = Keyboard;
+		};
+		F1201BEC2849F49E0050DD22 /* Keyboard */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1201BE82849F4920050DD22 /* XCRemoteSwiftPackageReference "Keyboard" */;
+			productName = Keyboard;
+		};
+		F1201BEF2849F4DC0050DD22 /* MIDIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1201BEE2849F4DC0050DD22 /* XCRemoteSwiftPackageReference "MIDIKit" */;
 			productName = MIDIKit;
 		};
-		F12486702842EF1D00174121 /* PianoKeyboard */ = {
+		F1201BF22849F5130050DD22 /* Tonic */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F124866F2842EF1D00174121 /* XCRemoteSwiftPackageReference "PianoKeyboard" */;
-			productName = PianoKeyboard;
-		};
-		F179EA732842C5AB008D2010 /* Tonic */ = {
-			isa = XCSwiftPackageProductDependency;
+			package = F1201BF12849F5130050DD22 /* XCRemoteSwiftPackageReference "Tonic" */;
 			productName = Tonic;
+		};
+		F1201BF72849F5240050DD22 /* Tonic */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1201BF12849F5130050DD22 /* XCRemoteSwiftPackageReference "Tonic" */;
+			productName = Tonic;
+		};
+		F1201BF92849F5280050DD22 /* MIDIKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F1201BEE2849F4DC0050DD22 /* XCRemoteSwiftPackageReference "MIDIKit" */;
+			productName = MIDIKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
-	rootObject = F179EA512842C283008D2010 /* Project object */;
+	rootObject = F1201BC52849F42C0050DD22 /* Project object */;
 }

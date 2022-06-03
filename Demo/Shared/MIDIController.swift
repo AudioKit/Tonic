@@ -3,11 +3,11 @@ import Foundation
 
 class MIDIController {
 
-    let midiManager = MIDI.IO.Manager(clientName: "TriadGameMIDIManager",
-                                      model: "Triad Game",
+    let midiManager = MIDI.IO.Manager(clientName: "TonicDemoMIDIManager",
+                                      model: "TonicDemo",
                                       manufacturer: "AudioKit")
 
-    var eventHandler: (Array<MIDI.Event>)->Void = { _ in }
+    var eventHandlers: [(Array<MIDI.Event>)->Void] = []
 
     init() {
         do {
@@ -16,8 +16,10 @@ class MIDIController {
             try midiManager.addInputConnection(toOutputs: .current(),
                                                tag: "inputConnections",
                                                receiveHandler: .events { [weak self] events in
-                    DispatchQueue.main.async {
-                        self?.eventHandler(events)
+                    DispatchQueue.main.async { [weak self] in
+                        for eventHandler in self!.eventHandlers {
+                            eventHandler(events)
+                        }
                     }
                 })
 

@@ -1,16 +1,20 @@
 import SwiftUI
+import Keyboard
 
 struct ContentView: View {
     @StateObject var chordIdentifier = ChordIdentifier()
     var midiController = MIDIController()
+    var keyboard = Keyboard(model: KeyboardModel(noteRange: 40...60))
     var body: some View {
         VStack {
             Text("\(chordIdentifier.chord?.description ?? "") \(chordIdentifier.inversionText)")
-            PianoKeyboardView(delegate: chordIdentifier)
+            keyboard
         }
         .padding()
         .onAppear {
-            midiController.eventHandler = chordIdentifier.eventHandler
+            midiController.eventHandlers.append( chordIdentifier.eventHandler)
+            midiController.eventHandlers.append(
+                keyboard.eventHandler)
         }
     }
 }
