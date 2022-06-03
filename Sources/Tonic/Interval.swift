@@ -90,3 +90,43 @@ public enum Interval: Int, CaseIterable {
         }
     }
 }
+
+extension Interval: CustomStringConvertible {
+    public var description: String {
+        switch self {
+
+        case .m2:
+            return "Minor Second"
+        case .M2:
+            return "Major Second"
+        case .m3:
+            return "Minor Third"
+        case .M3:
+            return "Major Third"
+        case .d4:
+            return "Diminished Fourth"
+        case .P4:
+            return "Perfect Fourth"
+        case .A4:
+            return "Augmented Fourth"
+        case .d5:
+            return "Diminished Fifth"
+        case .P5:
+            return "Perfect Fifth"
+        case .A5:
+            return "Augmented Fifth"
+        case .m6:
+            return "Minor Sixth"
+        case .M6:
+            return "Major Sixth"
+        case .A6:
+            return "Augmented Sixth"
+        case .m7:
+            return "Minor Seventh"
+        case .M7:
+            return "Major Seventh"
+        }
+    }
+
+
+}
