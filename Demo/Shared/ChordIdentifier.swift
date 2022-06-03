@@ -1,22 +1,47 @@
 import Combine
-import MIDIKit
 import Keyboard
 import Tonic
 
 class ChordIdentifier: ObservableObject {
 
+    func noteOn(pitch: Pitch) {
+        pitchSet.add(pitch)
+    }
+
+    func noteOff(pitch: Pitch) {
+        pitchSet.remove(pitch)
+    }
+
     var inversionText: String {
         if let c = chord {
-            return ["Root Position", "1st Inversion", "2nd Inversion"][c.inversion]
+            return ["Root Position", "1st Inversion", "2nd Inversion", "3rd Inversion"][c.inversion]
         }
         return ""
 
     }
 
-    @Published var chord: Chord?
+    var chord: Chord? {
+        didSet {
+
+            if let chord = chord {
+                result = "\(chord.description) \(inversionText)"
+            }
+
+        }
+    }
+
+    @Published var result: String = " "
 
     var pitchSet: PitchSet = PitchSet() {
         didSet {
+            if pitchSet.count == 0 {
+                result = " "
+            }
+            if pitchSet.count == 1 {
+                result = "Single Note: " + pitchSet.first!.note(in: .C).description
+                return
+            }
+
             let keys: [Key] = [.C, .G, .F, .D, .Bb, .A, .Eb, .E, .Ab, .B, .Db]
             for key in keys {
                 if let c = pitchSet.chord(in: key), c != chord {
@@ -29,16 +54,7 @@ class ChordIdentifier: ObservableObject {
             chord = nil
         }
     }
-    func eventHandler(events: [MIDIKit.MIDI.Event]) {
-        for event in events {
-            if event.isChannelVoice(ofType: .noteOn) {
-                pitchSet.add(Pitch(Int8(event.midi1RawBytes[1])))
-            }
-            if event.isChannelVoice(ofType: .noteOff) {
-                _ = pitchSet.remove(Pitch(Int8(event.midi1RawBytes[1])))
-            }
-        }
-    }
+
 
 
 }
