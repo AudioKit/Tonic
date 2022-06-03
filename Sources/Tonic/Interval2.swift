@@ -47,19 +47,32 @@ public struct Interval2: Codable {
     public var quality: Quality
     /// Degree of the interval.
     public var degree: Int
+
     /// Semitones interval affect on a pitch.
-    public var semitones: Int
+    public var semitones: Int? {
+        guard degree <= 15 else { return nil }
+        switch quality {
+        case .diminished:
+            return [nil, -1, 0, 2, 4, 6, 7, 9, 11, 12, 14, 16, 18, 19, 21, 23][degree]
+        case .perfect:
+            return [nil, 0, nil, nil, 5, 7, nil, nil, 12, nil, nil, 17, 19, nil, nil, 24][degree]
+        case .minor:
+            return [nil, nil, 1, 3, nil, nil, 8, 10, nil, 13, 15, nil, nil, 20, 22, nil, nil][degree]
+        case .major:
+            return [nil, nil, 2, 4, nil, nil, 9, 11, nil, 14, 16, nil, nil, 21, 23, nil, nil][degree]
+        case .augmented:
+            return [nil, 1, 3, 5, 6, 8, 10, 12, 13, 15, 17, 18, 20, 22, 24, 25, nil][degree]
+        }
+    }
 
     /// Initilizes the interval with its quality, degree and semitones.
     ///
     /// - Parameters:
     ///   - quality: Quality of the interval.
     ///   - degree: Degree of the interval.
-    ///   - semitones: Semitones of the interval.
-    public init(quality: Quality, degree: Int, semitones: Int) {
+    public init(quality: Quality, degree: Int) {
         self.quality = quality
         self.degree = degree
-        self.semitones = semitones
     }
 
 
