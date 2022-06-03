@@ -54,7 +54,7 @@ class ChordIdentifier: ObservableObject {
 
             let keys: [Key] = [.C, .G, .F, .D, .Bb, .A, .Eb, .E, .Ab, .B, .Db]
             for key in keys {
-                if let c = pitchSet.chord(in: key), c != chord {
+                if let c = pitchSet.chord(in: key) {
                     chord = c
                     return
                 }

@@ -70,5 +70,10 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(secondInversion.inversion, 2)
         XCTAssertEqual(secondInversion.description, "Am")
     }
+
+    func testTriadsWithRedundantNotes() {
+        let chord = Chord(notes:  [.C, .E, .G, Note(.C, octave: 5)])!
+        XCTAssertEqual(chord.description, "C")
+    }
 }
 
