@@ -42,4 +42,9 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(set.first, Pitch(64))
     }
 
+    func testPitchRange() {
+        let range = (Pitch(60) ... Pitch(64))
+        XCTAssertEqual(range.lowerBound, Pitch(60))
+    }
+
 }

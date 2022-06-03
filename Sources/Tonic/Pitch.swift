@@ -50,3 +50,8 @@ extension Pitch: IntRepresentable {
 
 }
 
+extension Pitch: Comparable {
+    public static func < (lhs: Pitch, rhs: Pitch) -> Bool {
+        lhs.midiNoteNumber < rhs.midiNoteNumber
+    }
+}
