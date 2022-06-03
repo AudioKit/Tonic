@@ -45,9 +45,13 @@ class ChordIdentifier: ObservableObject {
             }
 
             if pitchSet.count == 2 {
-                result = "Two Notes: " +
-                pitchSet.array[0].note(in: .C).description + ", " +
-                pitchSet.array[1].note(in: .C).description
+                let note1 = pitchSet.array[0].note(in: .C)
+                let note2 = pitchSet.array[1].note(in: .C)
+                var intervalString = ""
+                if let interval = Interval.betweenNotes(note1, note2) {
+                    intervalString = interval.description
+                }
+                result = "Two Notes: " + intervalString + " " + note1 .description + ", " + note2.description
 
                 return
             }
