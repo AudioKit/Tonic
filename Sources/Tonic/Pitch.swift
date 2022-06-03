@@ -55,3 +55,13 @@ extension Pitch: Comparable {
         lhs.midiNoteNumber < rhs.midiNoteNumber
     }
 }
+
+extension Pitch: Strideable {
+    public func distance(to other: Pitch) -> Int8 {
+        semitones(to: other)
+    }
+
+    public func advanced(by n: Int8) -> Pitch {
+        Pitch(midiNoteNumber + n)
+    }
+}
