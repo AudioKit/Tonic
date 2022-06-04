@@ -14,7 +14,7 @@ class ChordIdentifier: ObservableObject {
 
     var inversionText: String {
         if let c = chord {
-            return ["Root Position", "1st Inversion", "2nd Inversion", "3rd Inversion", "4th Inversion"][c.inversion]
+            return ["Root Position", "1st Inversion", "2nd Inversion", "3rd Inversion", "4th Inversion", "5th Inversion"][c.inversion]
         }
         return ""
 
