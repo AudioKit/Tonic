@@ -84,15 +84,16 @@ public struct Note: Equatable, Hashable {
     public func shiftDown(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         var newLetterIndex = (noteClass.letter.rawValue - (shift.degree - 1))
-        var newOctave = octave
+        let newOctave = (Int(pitch.midiNoteNumber) - shift.semitones) / 12 - 1
+
         while newLetterIndex < 0 {
             newLetterIndex += 7
-            newOctave -= 1
         }
+        
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         for accidental in Accidental.allCases {
             newNote = Note(newLetter, accidental: accidental, octave: newOctave)
-            if newNote.noteNumber == Int8(noteNumber) - Int8(shift.semitones) {
+            if (newNote.noteNumber % 12) == ((Int(noteNumber) - shift.semitones) % 12) {
                 return newNote
             }
         }
@@ -103,10 +104,10 @@ public struct Note: Equatable, Hashable {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
-        let newOctave = octave + (newLetterIndex >= Letter.allCases.count ? 1 : 0)
+        let newOctave = (Int(pitch.midiNoteNumber) + shift.semitones) / 12 - 1
         for accidental in Accidental.allCases {
             newNote = Note(newLetter, accidental: accidental, octave: newOctave)
-            if newNote.noteNumber == Int8(noteNumber) + Int8(shift.semitones) {
+            if (newNote.noteNumber % 12) == ((Int(noteNumber) + shift.semitones) % 12) {
                 return newNote
             }
         }
