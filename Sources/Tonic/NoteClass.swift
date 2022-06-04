@@ -5,8 +5,8 @@ public typealias NoteClassSet = BitSetAdapter<NoteClass, BitSet64>
 /// A note letter and accidental which spell a note. This leaves out the octave of the note.
 public struct NoteClass: Equatable, Hashable {
 
-    var letter: Letter
-    var accidental: Accidental
+    public var letter: Letter
+    public var accidental: Accidental
 
     private static let canonicalOctave = 4
     public var canonicalNote: Note {
