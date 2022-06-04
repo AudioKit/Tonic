@@ -22,10 +22,10 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text(chordIdentifier.result)
-            Keyboard(settings: KeyboardSettings(
-                pitchRange: Note(.C, octave: 2).pitch ... Note(.C, octave: 5).pitch,
-                latching: true,
-                externalPitchSet: chordIdentifier.pitchSet),
+            Keyboard(settings: KeyboardSettings(pitchRange: Note(.C, octave: 2).pitch ... Note(.C, octave: 5).pitch,
+                                                latching: true,
+                                                externalPitchSet: chordIdentifier.pitchSet,
+                                                noteOnColors: KeyboardColors.newtonian),
                      noteOn: chordIdentifier.noteOn,
                      noteOff: chordIdentifier.noteOff)
         }
