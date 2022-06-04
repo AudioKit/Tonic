@@ -1,41 +1,34 @@
 {
-  "pins" : [
-    {
-      "identity" : "keyboard",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/audiokit/Keyboard",
-      "state" : {
-        "branch" : "main",
-        "revision" : "8edaf6ae79d03e7379d7ce20c64cfab081cb2893"
+  "object": {
+    "pins": [
+      {
+        "package": "Keyboard",
+        "repositoryURL": "https://github.com/audiokit/Keyboard",
+        "state": {
+          "branch": "main",
+          "revision": "8edaf6ae79d03e7379d7ce20c64cfab081cb2893",
+          "version": null
+        }
+      },
+      {
+        "package": "MIDIKit",
+        "repositoryURL": "https://github.com/orchetect/MIDIKit",
+        "state": {
+          "branch": null,
+          "revision": "747439420f604f69ff085ed2f71873afa433a940",
+          "version": "0.4.8"
+        }
+      },
+      {
+        "package": "SwiftRadix",
+        "repositoryURL": "https://github.com/orchetect/SwiftRadix",
+        "state": {
+          "branch": null,
+          "revision": "467ea909bce637049fe2b6ccf1494886efcdf1e8",
+          "version": "1.1.0"
+        }
       }
-    },
-    {
-      "identity" : "midikit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/orchetect/MIDIKit",
-      "state" : {
-        "revision" : "747439420f604f69ff085ed2f71873afa433a940",
-        "version" : "0.4.8"
-      }
-    },
-    {
-      "identity" : "swiftradix",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/orchetect/SwiftRadix",
-      "state" : {
-        "revision" : "467ea909bce637049fe2b6ccf1494886efcdf1e8",
-        "version" : "1.1.0"
-      }
-    },
-    {
-      "identity" : "tonic",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/audulus/Tonic",
-      "state" : {
-        "branch" : "main",
-        "revision" : "a4542c846a29e9aeeb34ebb30c02b3b9c45bbf5d"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }

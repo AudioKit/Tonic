@@ -45,6 +45,7 @@
 		F1201BD92849F42E0050DD22 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		F1201C012849F5900050DD22 /* ChordIdentifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChordIdentifier.swift; sourceTree = "<group>"; };
 		F1201C022849F5900050DD22 /* MIDIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MIDIController.swift; sourceTree = "<group>"; };
+		F1201C08284B48890050DD22 /* Tonic */ = {isa = PBXFileReference; lastKnownFileType = wrapper; name = Tonic; path = ..; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +75,7 @@
 		F1201BC42849F42C0050DD22 = {
 			isa = PBXGroup;
 			children = (
+				F1201C08284B48890050DD22 /* Tonic */,
 				F1201BC92849F42C0050DD22 /* Shared */,
 				F1201BD82849F42E0050DD22 /* macOS */,
 				F1201BD22849F42E0050DD22 /* Products */,
