@@ -34,32 +34,42 @@ class ChordTests: XCTestCase {
                        ["vi", "vii°", "I", "ii", "iii", "IV", "V"])
     }
 
-    func testNaming() {
+    func testTriadNaming() {
+        let Cs = Chord(notes: [.Cs, .Es, .Gs])
+        XCTAssertEqual(Cs?.description, "C♯")
 
-        let Cs = Chord(notes: [.Cs, .Es, .Gs])!
-        XCTAssertEqual(Cs.description, "C♯")
+        let Csm = Chord(notes: [.Cs, .E, .Gs])
+        XCTAssertEqual(Csm?.description, "C♯m")
 
-        let Csm = Chord(notes: [.Cs, .E, .Gs])!
-        XCTAssertEqual(Csm.description, "C♯m")
+        let Db = Chord(notes: [.Db, .F, .Ab])
+        XCTAssertEqual(Db?.description, "D♭")
+    }
 
-        let Db = Chord(notes: [.Db, .F, .Ab])!
-        XCTAssertEqual(Db.description, "D♭")
+    func testSeventhNaming() {
+        let Am7 = Chord(notes: [.C, .E, .G, .A])
+        XCTAssertEqual(Am7?.description, "Am7")
 
-        let Am7 = Chord(notes: [.C, .E, .G, .A])!
-        XCTAssertEqual(Am7.description, "Am7")
+        let C7 = Chord(notes: [.C, .E, .G, .Bb])
+        XCTAssertEqual(C7?.description, "C7")
 
-        let C7 = Chord(notes: [.C, .E, .G, .Bb])!
-        XCTAssertEqual(C7.description, "C7")
+        let Cmaj7 = Chord(notes: [.C, .E, .G, .B])
+        XCTAssertEqual(Cmaj7?.description, "Cmaj7")
+    }
 
-        let Cmaj7 = Chord(notes: [.C, .E, .G, .B])!
-        XCTAssertEqual(Cmaj7.description, "Cmaj7")
+    func testNinthNaming() {
+        let Cadd9 = Chord(notes: [.C, .E, .G, .D])
+        XCTAssertEqual(Cadd9?.description, "Cadd9")
 
-        let Cadd9 = Chord(notes: [.C, .E, .G, .D])!
-        XCTAssertEqual(Cadd9.description, "Cadd9")
+        let C69 = Chord(notes: [.C, .E, .G, .A, .D])
+        XCTAssertEqual(C69?.description, "C6/9")
+    }
 
-        let C69 = Chord(notes: [.C, .E, .G, .A, .D])!
-        XCTAssertEqual(C69.description, "C6/9")
+    func testEleventhNaming() {
+        let Cmaj11 = Chord(notes: [.C, .E, .G, .B, .D, .F])
+        XCTAssertEqual(Cmaj11?.description, "Cmaj11")
 
+        let G11 = Chord(notes: [.G, .B, .D, .F, .A, .C])
+        XCTAssertEqual(G11?.description, "G11")
 
     }
 
