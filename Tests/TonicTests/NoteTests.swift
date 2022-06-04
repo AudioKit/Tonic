@@ -65,6 +65,12 @@ final class NoteTests: XCTestCase {
 
         let asharp = Note(.C).shiftUp(.A6)
         XCTAssertEqual(asharp!.description, "A♯4")
+
+        let c6 = Note(.G).shiftUp(.P11)
+        XCTAssertEqual(c6!.description, "C6")
+        
+        let g = Note(.C, octave: 6).shiftDown(.P11)
+        XCTAssertEqual(g!.description, "G4")
     }
 
     func testNoteShiftLimits() {
