@@ -36,8 +36,6 @@ public class ChordTable {
             ChordTable.generateChords(type: chordType, &r)
         }
 
-        print("generated \(r.count) triads")
-
         return r
     }
 
