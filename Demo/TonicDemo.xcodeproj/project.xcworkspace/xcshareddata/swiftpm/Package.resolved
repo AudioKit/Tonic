@@ -6,7 +6,7 @@
       "location" : "https://github.com/audiokit/Keyboard",
       "state" : {
         "branch" : "main",
-        "revision" : "07f4d92103fabdbc8623c6daba8871364289b695"
+        "revision" : "8edaf6ae79d03e7379d7ce20c64cfab081cb2893"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/audulus/Tonic",
       "state" : {
         "branch" : "main",
-        "revision" : "17eb8493473f905a87a4ae44a8a1c4d0df912ce4"
+        "revision" : "a4542c846a29e9aeeb34ebb30c02b3b9c45bbf5d"
       }
     }
   ],
