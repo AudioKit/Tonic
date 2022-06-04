@@ -24,6 +24,7 @@ struct ContentView: View {
             Text(chordIdentifier.result)
             Keyboard(settings: KeyboardSettings(
                 pitchRange: Note(.C, octave: 2).pitch ... Note(.C, octave: 5).pitch,
+                latching: true,
                 externalPitchSet: chordIdentifier.pitchSet),
                      noteOn: chordIdentifier.noteOn,
                      noteOff: chordIdentifier.noteOff)
