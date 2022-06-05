@@ -21,7 +21,6 @@ struct ContentView: View {
 
     func text(pitch: Pitch) -> String {
         if let chord = chordIdentifier.chord {
-            print(chordIdentifier.pitchSet.array, pitch)
             if chordIdentifier.pitchSet.array.map({ $0.midiNoteNumber % 12 }).contains(pitch.midiNoteNumber % 12) {
                 var note = pitch.note(in: Key(root: chord.root)).noteClass.canonicalNote
                 let root = chord.root.canonicalNote
