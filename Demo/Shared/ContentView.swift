@@ -23,7 +23,7 @@ struct ContentView: View {
         if let chord = chordIdentifier.chord {
             print(chordIdentifier.pitchSet.array, pitch)
             if chordIdentifier.pitchSet.array.map({ $0.midiNoteNumber % 12 }).contains(pitch.midiNoteNumber % 12) {
-                var note = pitch.note(in: .C).noteClass.canonicalNote
+                var note = pitch.note(in: Key(root: chord.root)).noteClass.canonicalNote
                 let root = chord.root.canonicalNote
                 if root.noteNumber > note.noteNumber {
                     note = Note(note.letter, accidental: note.accidental, octave: note.octave + 1)
