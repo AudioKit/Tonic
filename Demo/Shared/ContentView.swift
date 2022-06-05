@@ -21,13 +21,17 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text(chordIdentifier.result)
-            Keyboard(settings: KeyboardSettings(pitchRange: Note(.C, octave: 2).pitch ... Note(.C, octave: 5).pitch,
-                                                latching: true,
-                                                externalPitchSet: chordIdentifier.pitchSet,
-                                                noteOnColors: KeyboardColors.newtonian),
-                     noteOn: chordIdentifier.noteOn,
-                     noteOff: chordIdentifier.noteOff)
+            Text(chordIdentifier.result).font(.largeTitle)
+            PianoKeyboard(pitchRange: Note(.C, accidental: .sharp, octave: 2).pitch ... Note(.C, accidental: .sharp, octave: 5).pitch,
+                          latching: true,
+                          noteOn: chordIdentifier.noteOn,
+                          noteOff: chordIdentifier.noteOff) { pitch, model in
+                KeyboardKey(pitch: pitch,
+                            model: model,
+                            text: pitch.note(in: .C).description,
+                            color: KeyboardColors.newtonian[Int(pitch.intValue) % 12],
+                            isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
+            }
         }
         .padding()
         .onAppear {
