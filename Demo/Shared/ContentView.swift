@@ -47,8 +47,8 @@ struct ContentView: View {
                     KeyboardKey(pitch: pitch,
                                 model: model,
                                 text: text(pitch: pitch),
-                                color: KeyboardColors.newtonian[Int(pitch.intValue) % 12],
-                                isActivatedExternally: chordIdentifier.pitchSet.array.map({ $0.midiNoteNumber % 12}).contains(pitch.midiNoteNumber % 12))
+                                color: KeyboardColors.newtonian[Int(pitch.pitchClass)],
+                                isActivatedExternally: chordIdentifier.pitchSet.contains(pitchClass: pitch.pitchClass))
                 }
             }.padding(50)
 
@@ -59,7 +59,7 @@ struct ContentView: View {
                 KeyboardKey(pitch: pitch,
                             model: model,
                             text: chordIdentifier.pitchSet.contains(pitch) ? pitch.note(in: .C).description : (pitch.note(in: .C).noteClass.description == "C" ? "C\(pitch.note(in: .C).octave)" : ""),
-                            color: KeyboardColors.newtonian[Int(pitch.intValue) % 12],
+                            color: KeyboardColors.newtonian[Int(pitch.pitchClass)],
                             isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
             }
                           .frame(height: 100)
