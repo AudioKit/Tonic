@@ -94,6 +94,32 @@ public enum Interval: Int, CaseIterable {
         }
         return nil
     }
+
+    public var abbreviation: String {
+        switch self {
+        case .m2:  return "m2"
+        case .M2:  return "M2"
+        case .m3:  return "m3"
+        case .M3:  return "M3"
+        case .d4:  return "d4"
+        case .P4:  return "P4"
+        case .A4:  return "A4"
+        case .d5:  return "d5"
+        case .P5:  return "P5"
+        case .A5:  return "A5"
+        case .m6:  return "m6"
+        case .M6:  return "M6"
+        case .A6:  return "A6"
+        case .m7:  return "m7"
+        case .M7:  return "M7"
+        case .m9:  return "m9"
+        case .M9:  return "M9"
+        case .A9:  return "A9"
+        case .d11: return "d11"
+        case .P11: return "P11"
+        case .A11: return "A11"
+        }
+    }
 }
 
 extension Interval: CustomStringConvertible {
