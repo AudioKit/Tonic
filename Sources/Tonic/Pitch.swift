@@ -16,7 +16,7 @@ public extension PitchSet {
 /// as opposed to using e.g. a fundamental frequency.
 public struct Pitch: Equatable, Hashable {
 
-    var midiNoteNumber: Int8
+    public var midiNoteNumber: Int8
 
     public init(_ midiNoteNumber: Int8) {
         self.midiNoteNumber = midiNoteNumber
