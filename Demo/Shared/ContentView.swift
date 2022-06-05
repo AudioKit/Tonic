@@ -40,29 +40,30 @@ struct ContentView: View {
         VStack {
             VStack() {
                 Text(chordIdentifier.result).font(.largeTitle)
-                PianoKeyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
-                              latching: true,
-                              noteOn: chordIdentifier.noteOn,
-                              noteOff: chordIdentifier.noteOff) { pitch, model in
+                Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
+                         latching: true,
+                         noteOn: chordIdentifier.noteOn,
+                         noteOff: chordIdentifier.noteOff) { pitch, isActivated in
                     KeyboardKey(pitch: pitch,
-                                model: model,
+                                isActivated: isActivated,
                                 text: text(pitch: pitch),
                                 color: KeyboardColors.newtonian[Int(pitch.pitchClass)],
                                 isActivatedExternally: chordIdentifier.pitchSet.contains(pitchClass: pitch.pitchClass))
                 }
             }.padding(50)
 
-            IsomorphicKeyboard(pitchRange: Note(.E, octave: 2).pitch ... Note(.E, octave: 6).pitch,
-                          latching: true,
-                          noteOn: chordIdentifier.noteOn,
-                          noteOff: chordIdentifier.noteOff) { pitch, model in
+            Keyboard(pitchRange: Note(.E, octave: 2).pitch ... Note(.E, octave: 6).pitch,
+                     latching: true,
+                     layout: .isomorphic,
+                     noteOn: chordIdentifier.noteOn,
+                     noteOff: chordIdentifier.noteOff) { pitch, isActivated in
                 KeyboardKey(pitch: pitch,
-                            model: model,
+                            isActivated: isActivated,
                             text: chordIdentifier.pitchSet.contains(pitch) ? pitch.note(in: .C).description : (pitch.note(in: .C).noteClass.description == "C" ? "C\(pitch.note(in: .C).octave)" : ""),
                             color: KeyboardColors.newtonian[Int(pitch.pitchClass)],
                             isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
             }
-                          .frame(height: 100)
+                     .frame(height: 100)
         }
         .padding()
         .onAppear {
