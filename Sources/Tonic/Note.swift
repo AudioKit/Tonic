@@ -9,8 +9,6 @@ public struct Note: Equatable, Hashable {
     public var letter: Letter { noteClass.letter }
     public var accidental: Accidental { noteClass.accidental }
 
-    public var description: String { "\(noteClass)\(octave)"}
-
     /// Range from -1 to 7
     public var octave: Int = 4
 
@@ -136,5 +134,11 @@ extension Note: IntRepresentable {
     /// Global index of the note for use in a NoteSet
     public var intValue: Int {
         (octave+1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue)+2)
+    }
+}
+
+extension Note: CustomStringConvertible {
+    public var description: String {
+        "\(noteClass)\(octave)"
     }
 }
