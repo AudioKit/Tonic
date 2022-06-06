@@ -38,7 +38,6 @@ public struct Key: Equatable {
                 primaryTriads.append(Chord(chord.root, type: chord.type))
             }
         }
-        assert(primaryTriads.count == 7)
 
 
         let primaryTriadsStartingWithC = primaryTriads.sorted(by: {$0.root.letter < $1.root.letter})
