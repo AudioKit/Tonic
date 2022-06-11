@@ -2,14 +2,15 @@ import XCTest
 @testable import Tonic
 
 final class IntervalTests: XCTestCase {
-    func testInterval() {
+    func testIntervalBetween() {
+        print(Note.D - Note.C)
         XCTAssertEqual(Interval.betweenNotes(.C, .D), .M2)
         XCTAssertEqual(Interval.betweenNotes(.C, .G), .P5)
         XCTAssertEqual(Interval.betweenNotes(.G, .C), .P5)
         XCTAssertEqual(Interval.betweenNotes(.C, .Fb), .d4)
     }
 
-    func testInterval2() {
+    func testInterval2Between() {
         XCTAssertEqual(Interval2.betweenNotes(.C, .D), .M2)
         XCTAssertEqual(Interval2.betweenNotes(.C, .G), .P5)
         XCTAssertEqual(Interval2.betweenNotes(.G, .C), .P5)

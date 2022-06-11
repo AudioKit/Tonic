@@ -82,9 +82,7 @@ public struct Chord: Equatable {
 }
 
 extension Chord: CustomStringConvertible {
-    /// Try to give this chord a name
     public var description: String {
         return "\(root)\(type)"
     }
-
 }
