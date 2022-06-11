@@ -1,6 +1,9 @@
 import Foundation
 
-/// The names for the "white key" notes.
+/// The alphabet used to spell all traditional music notes.
+///
+/// These letters can be modified by adding an ``Accidental`` to describe any ``NoteClass``.
+/// And by specificying an octave, you can create any ``Note``.
 public enum Letter: Int, CaseIterable, Equatable, Hashable {
     case C, D, E, F, G, A, B
 
