@@ -1,17 +1,30 @@
 import Foundation
 
-/// A scale with a root note (tonic).
+/// The key is the set of notes that are played in a composition, or portion of a composition.
+///
+/// A key is composed of a Root ``Note``, and a ``Scale``.
 public struct Key: Equatable {
+
+    /// The primary note class of the key, also known as the tonic
     public let root: NoteClass
+
+    /// The intervallic relations from the root note to all other notes in the key
     public let scale: Scale
+
+    /// A note set containing all the notes in the key
     public let noteSet: NoteSet
 
-    /// All the traditional triads
+    /// All the traditional triads representable root, third, and fifth from each note in the key
     public let primaryTriads: [Chord]
 
     /// All chords that fit in the key
     public let chords: [Chord]
 
+
+    /// Initialize the key
+    /// - Parameters:
+    ///   - root: The primary note class of the key, also known as the tonic
+    ///   - scale: The intervallic relations from the root note to all other notes in the key
     public init(root: NoteClass, scale: Scale = .major) {
         self.root = root
         self.scale = scale
@@ -48,6 +61,7 @@ public struct Key: Equatable {
 
     }
 
+    /// The type of accidental to use in this key
     public var preferredAccidental: Accidental {
         if root.accidental == .sharp  {
             return .sharp
