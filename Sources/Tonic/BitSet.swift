@@ -72,7 +72,9 @@ public struct BitSet64: BitSet, OptionSet {
     }
 }
 
-/// Bit set made by combining bit sets. By building up bit sets using generics, we avoid extra
+/// Bit set made by combining bit sets.
+///
+/// By building up bit sets using generics, we avoid extra
 /// allocation that would occur if we used arrays.
 public struct BitSet2x<B: BitSet>: BitSet {
     public var high = B()
