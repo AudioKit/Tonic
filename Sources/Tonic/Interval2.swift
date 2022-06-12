@@ -80,6 +80,13 @@ public struct Interval2: Codable {
         return "\(quality.notation)\(degree)"
     }
 
+    /// Calculate the interval between two notes.
+    ///
+    /// Interval is currently only a positive distance, so it doesn't matter which is the lower note.
+    /// - Parameters:
+    ///   - note1: First Note
+    ///   - note2: Second Note
+    /// - Returns: Interval2
     public static func betweenNotes(_ note1: Note, _ note2: Note) -> Interval2? {
         var n1 = note1
         var n2 = note2
