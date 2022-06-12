@@ -20,20 +20,25 @@ public extension PitchSet {
 /// as opposed to using e.g. a fundamental frequency.
 public struct Pitch: Equatable, Hashable {
 
+    /// MIDI Note Number 0-127
     public var midiNoteNumber: Int8
 
+    /// Initialize from a MIDI Note Number
+    /// - Parameter midiNoteNumber: MIDI Note Number 0-127
     public init(_ midiNoteNumber: Int8) {
         self.midiNoteNumber = midiNoteNumber
     }
 
     /// If we have a Key, we can turn a Pitch into a Note.
+    /// - Parameter key: Key to find the note in
     public func note(in key: Key) -> Note {
         Note(pitch: self, key: key)
     }
 
     /// Returns the distance between Pitches in semitones.
-    public func semitones(to: Pitch) -> Int8 {
-        abs(midiNoteNumber - to.midiNoteNumber)
+    /// - Parameter to: Pitch to which you want to know the distance
+    public func semitones(to next: Pitch) -> Int8 {
+        abs(midiNoteNumber - next.midiNoteNumber)
     }
 
     /// Equivalence classes of pitches modulo octave.

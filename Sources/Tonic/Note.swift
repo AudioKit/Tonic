@@ -5,18 +5,34 @@ public struct Note: Equatable, Hashable {
     /// Base name for the note
     public var noteClass: NoteClass = NoteClass(.C, accidental: .natural)
 
-    /// Convenience accessors
+    /// Convenience accessor for the letter of the note
     public var letter: Letter { noteClass.letter }
+
+    /// Convenience accessor for the accidental of the note
     public var accidental: Accidental { noteClass.accidental }
 
     /// Range from -1 to 7
     public var octave: Int = 4
 
+    /// Initialize the note
+    ///
+    /// Note that the octave ranges from C to C so a Cb4 is
+    /// eleven semitones above C4 or one semitone below a C5
+    /// - Parameters:
+    ///   - letter: Letter of the note
+    ///   - accidental: Accidental shift
+    ///   - octave: Which octave the note appears in
     public init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 4) {
         noteClass = NoteClass(letter, accidental: accidental)
         self.octave = octave
     }
 
+    /// Initaliize the note from a pitch, given the key
+    ///
+    /// Tonic will find best note matching the pitch in the given key.
+    /// - Parameters:
+    ///   - pitch: Pitch, or essentially the midi note number of a note
+    ///   - key: Key in which to search for the appropriate note
     public init(pitch: Pitch, key: Key = .C) {
         octave = Int(Double(pitch.midiNoteNumber) / 12) - 1
 
@@ -51,7 +67,9 @@ public struct Note: Equatable, Hashable {
 
 
     }
-    
+
+    /// Initialize from raw value
+    /// - Parameter index: integer represetnation
     public init(index: Int) {
         octave = (index / 35) - 1
         let letter = Letter(rawValue: (index % 35) / 5)!
@@ -69,6 +87,7 @@ public struct Note: Equatable, Hashable {
         return Int8(note)
     }
 
+    /// The pitch for the note
     public var pitch: Pitch {
         return Pitch(noteNumber)
     }
@@ -78,10 +97,17 @@ public struct Note: Equatable, Hashable {
         Note(pitch: pitch, key: key).noteClass
     }
 
+
+    /// Calculate the distance in semitones to another note
+    /// - Parameter next: note to which you want to know the distance
+    /// - Returns: Number of semitones to the next note
     public func semitones(to next: Note) -> Int8 {
         pitch.semitones(to: next.pitch)
     }
 
+    /// Shift the note down by an interval
+    /// - Parameter shift: The interval by which to shift
+    /// - Returns: New note the correct distance away
     public func shiftDown(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         var newLetterIndex = (noteClass.letter.rawValue - (shift.degree - 1))
@@ -101,6 +127,9 @@ public struct Note: Equatable, Hashable {
         return nil
     }
 
+    /// Shift the note up by an interval
+    /// - Parameter shift: The interval by which to shift
+    /// - Returns: New note the correct distance away
     public func shiftUp(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
@@ -138,6 +167,7 @@ extension Note: IntRepresentable {
 }
 
 extension Note: CustomStringConvertible {
+    /// String representation of the note, including octave
     public var description: String {
         "\(noteClass)\(octave)"
     }
