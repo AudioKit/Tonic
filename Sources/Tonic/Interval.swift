@@ -1,28 +1,73 @@
 import Foundation
 
-/// A name for a distance between notes. Some Intervals refer to the same difference in pitch.
+/// The distance between two notes.
+///
+/// An interval distance is measured in degree (number of letters away) and
+/// quality of the interval (essentialy number of semitones away).
+/// Some Intervals refer to the same difference in pitch.
 public enum Interval: Int, CaseIterable {
+    /// Minor Second
     case m2
+
+    /// Major Second
     case M2
+
+    /// Minor Third
     case m3
+
+    /// Major Third
     case M3
-    case P4
-    case d5
-    case P5
-    case m6
-    case M6
-    case m7
-    case M7
-    case m9
-    case M9
-    case d11
-    case P11
-    case A11
+
+    /// Diminished Fourth
     case d4
+
+    /// Perfect Fourth
+    case P4
+
+    /// Augmented Fourth
     case A4
+
+    /// Diminished Fifth
+    case d5
+
+    /// Perfect Fifth
+    case P5
+
+    /// Augmented Fifth
     case A5
+
+    /// Minor Sixth
+    case m6
+
+    /// Major Sixth
+    case M6
+
+    /// Augmented Sixth
     case A6
+
+    /// Minor Seventh
+    case m7
+
+    /// Major Seventh
+    case M7
+
+    /// Minor Ninth
+    case m9
+
+    /// Major Ninth
+    case M9
+
+    /// Augmented Ninth
     case A9
+
+    /// Diminished Eleventh
+    case d11
+
+    /// Perfect Eleveth
+    case P11
+    
+    /// Augmented Eleventh
+    case A11
 
     var semitones: Int {
         switch self {
@@ -77,6 +122,14 @@ public enum Interval: Int, CaseIterable {
         }
     }
 
+
+    /// Calculate the interval between two notes.
+    ///
+    /// Interval is currently only a positive distance, so it doesn't matter which is the lower note.
+    /// - Parameters:
+    ///   - note1: First Note
+    ///   - note2: Second Note
+    /// - Returns: Interval
     public static func betweenNotes(_ note1: Note, _ note2: Note) -> Interval? {
         var n1 = note1
         var n2 = note2
@@ -95,6 +148,7 @@ public enum Interval: Int, CaseIterable {
         return nil
     }
 
+    /// Short version of the interval name
     public var abbreviation: String {
         switch self {
         case .m2:  return "m2"
@@ -123,6 +177,7 @@ public enum Interval: Int, CaseIterable {
 }
 
 extension Interval: CustomStringConvertible {
+    /// Longer Description of the Interval name
     public var description: String {
         switch self {
         case .m2:  return "Minor Second"
