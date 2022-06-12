@@ -1,7 +1,7 @@
 import Foundation
 
 /// A table of note sets so we can look up chord names.
-public class ChordTable {
+class ChordTable {
 
     static let shared = ChordTable()
 

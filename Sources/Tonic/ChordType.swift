@@ -1,30 +1,80 @@
 import Foundation
 
+/// Chord type as defined by a set of intervals from a root note class
 public enum ChordType: Int, CaseIterable {
+    /// Major Triad: Major Third, Perfect Fifth
     case majorTriad
+
+    /// Minor Triad: Minor Third, Perfect Fifth
     case minorTriad
+
+    /// Diminished Triad: Minor Third, Diminished Fifth
     case diminishedTriad
+
+    /// Augmented Triad: Major Third, Augmented Fifth
     case augmentedTriad
+
+    /// Suspended Triad: Perfect Fourth, Perfect Fifth
     case suspendedTriad
+
+    /// Minor Sixth: Minor Third, Perfect Fifth, Major Sixth
     case minorSixth
+
+    /// Dominant Seventh: Major Third, Perfect Fifth, Minor Seventh
     case dominantSeventh
+
+    /// Major Seventh: Major Third, Perfect Fifth, Major Seventh
     case majorSeventh
+
+    /// Minor Seventh: Minor Third, Perfect Fifth, Minor Seventh
     case minorSeventh
+
+    /// Minor Major Seventh: Minor Third, Perfect Fifth, Major Seventh
     case minorMajorSeventh
+
+    /// Dominant Ninth: Major Third, Perfect Fifth, Minor Seventh, Major Ninth
     case dominantNinth
+
+    /// Flat Ninth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth
     case flatNinth
+
+    /// Sharp Ninth: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth
     case sharpNinth
+
+    /// Major Ninth: Major Third, Perfect Fifth, Major Seventh, Major Ninth
     case majorNinth
+
+    /// Minor Ninth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth
     case minorNinth
+
+    /// Major Add Nine: Major Third, Perfect Fifth, Major Ninth
     case majorAddNine
+
+    /// Minor Add Nine: Minor Third, Perfect Fifth, Major Ninth
     case minorAddNine
+
+    /// Six Over Nine: Major Third, Perfect Fifth, Major Sixth, Major Ninth
     case sixOverNine
+
+    /// Major Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh
     case majorEleventh
+
+    /// Dominant Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh
     case dominantEleventh
+
+    /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh
     case minorEleventh
+
+    /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh
     case majorNinthSharpEleventh
+
+    /// Dominant Flat Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh
     case dominantFlatNinthSharpEleventh
+
+    /// Dominant Sharp Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Augmented Eleventh
     case dominantSharpNinthSharpEleventh
+
+    /// Minor Seventh Flat Ninth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh
     case minorSeventhFlatNinthAddEleventh
 
 
@@ -62,6 +112,7 @@ public enum ChordType: Int, CaseIterable {
 
 extension ChordType: CustomStringConvertible{
 
+    /// Adornment to the Root NoteClass (letter+accidental) that defines the chord type
     public var description: String {
         switch self {
         case .majorTriad:                       return ""
