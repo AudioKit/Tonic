@@ -18,14 +18,8 @@ public enum Interval: Int, CaseIterable {
     /// Major Third
     case M3
 
-    /// Diminished Fourth
-    case d4
-
     /// Perfect Fourth
     case P4
-
-    /// Augmented Fourth
-    case A4
 
     /// Diminished Fifth
     case d5
@@ -33,17 +27,11 @@ public enum Interval: Int, CaseIterable {
     /// Perfect Fifth
     case P5
 
-    /// Augmented Fifth
-    case A5
-
     /// Minor Sixth
     case m6
 
     /// Major Sixth
     case M6
-
-    /// Augmented Sixth
-    case A6
 
     /// Minor Seventh
     case m7
@@ -57,9 +45,6 @@ public enum Interval: Int, CaseIterable {
     /// Major Ninth
     case M9
 
-    /// Augmented Ninth
-    case A9
-
     /// Diminished Eleventh
     case d11
 
@@ -68,6 +53,22 @@ public enum Interval: Int, CaseIterable {
     
     /// Augmented Eleventh
     case A11
+
+
+    /// Diminished Fourth
+    case d4
+
+    /// Augmented Fourth
+    case A4
+
+    /// Augmented Sixth
+    case A6
+
+    /// Augmented Fifth
+    case A5
+
+    /// Augmented Ninth
+    case A9
 
     var semitones: Int {
         switch self {
@@ -148,8 +149,12 @@ public enum Interval: Int, CaseIterable {
         return nil
     }
 
+
+}
+
+extension Interval: CustomStringConvertible {
     /// Short version of the interval name
-    public var abbreviation: String {
+    public var description: String {
         switch self {
         case .m2:  return "m2"
         case .M2:  return "M2"
@@ -174,11 +179,9 @@ public enum Interval: Int, CaseIterable {
         case .A11: return "A11"
         }
     }
-}
 
-extension Interval: CustomStringConvertible {
     /// Longer Description of the Interval name
-    public var description: String {
+    public var longDescription: String {
         switch self {
         case .m2:  return "Minor Second"
         case .M2:  return "Major Second"
