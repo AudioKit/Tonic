@@ -37,6 +37,12 @@ class BitSetTests: XCTestCase {
 
         let diff = set0.symmetricDifference(set1)
         XCTAssertEqual(diff.count, 2)
+
+        XCTAssertEqual(set0.remove(0), 0)
+        XCTAssertEqual(set0.remove(0), nil)
+
+        XCTAssertEqual(set0.update(with: 0), nil)
+        XCTAssertEqual(set0.update(with: 0), 0)
     }
 
 }
