@@ -21,10 +21,10 @@ class BitSetTests: XCTestCase {
 
     func testBitSet_SetAlgebra() {
         var set0 = BitSet512()
-        set0.add(bit: 0)
+        XCTAssertTrue(set0.insert(0).0)
 
         var set1 = BitSet512()
-        set1.add(bit: 1)
+        XCTAssertTrue(set1.insert(1).0)
 
         XCTAssertTrue(set0.contains(0))
         XCTAssertTrue(set1.contains(1))
