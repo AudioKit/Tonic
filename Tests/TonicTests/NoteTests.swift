@@ -98,4 +98,14 @@ final class NoteTests: XCTestCase {
         }
 
     }
+
+    func testNoteSet() {
+        var set0 = NoteSet()
+        var set1 = NoteSet()
+        set0.add(Note.C)
+        set1.add(Note.D)
+
+        let u = set0.union(set1)
+        XCTAssertEqual(u.count, 2)
+    }
 }
