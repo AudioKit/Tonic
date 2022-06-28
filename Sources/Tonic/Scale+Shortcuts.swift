@@ -4,139 +4,139 @@ extension Scale {
 
     // Borrowed from Cem Olcay's MusicTheory: https://github.com/cemolcay/MusicTheory/blob/master/Sources/MusicTheory/ScaleType.swift
 
-    /// Major scale.
+    /// Major scale
     public static let major = Scale(intervals: Scale.ionian.intervals, description: "Major")
 
-    /// Minor scale.
+    /// Minor scale
     public static let minor = Scale(intervals: Scale.aeolian.intervals, description: "Minor")
 
-    /// Harmonic minor scale.
+    /// Harmonic minor scale
     public static let harmonicMinor = Scale(intervals: [.M2, .m3, .P4, .P5, .m6, .M7], description: "Harmonic Minor")
 
-    /// Melodic minor scale.
+    /// Melodic minor scale
     public static let melodicMinor = Scale(intervals: [.M2, .m3, .P4, .P5, .M6, .M7], description: "Melodic Minor")
 
-    /// Pentatonic major scale.
+    /// Pentatonic major scale
     public static let pentatonicMajor = Scale(intervals: [.M2, .M3, .P5, .M6], description: "Pentatonic Major")
 
-    /// Pentatonic minor scale.
+    /// Pentatonic minor scale
     public static let pentatonicMinor = Scale(intervals: [.m3, .P4, .P5, .m7], description: "Pentatonic Minor")
 
-    /// Pentatonic blues scale.
+    /// Pentatonic blues scale
     public static let blues = Scale(intervals: [.m3, .P4, .d5, .P5, .m7], description: "Pentatonic Blues")
 
-    /// Pentatonic neutral scale.
+    /// Pentatonic neutral scale
     public static let pentatonicNeutral = Scale(intervals: [.M2, .P4, .P5, .m7], description: "Pentatonic Neutral")
 
-    /// Ionian scale.
+    /// Ionian scale
     public static let ionian = Scale(intervals: [.M2, .M3, .P4, .P5, .M6, .M7], description: "Ionian")
 
-    /// Aeolian scale.
+    /// Aeolian scale
     public static let aeolian = Scale(intervals: [.M2, .m3, .P4, .P5, .m6, .m7], description: "Aeolian")
 
-    /// Dorian scale.
+    /// Dorian scale
     public static let dorian = Scale(intervals: [.M2, .m3, .P4, .P5, .M6, .m7], description: "Dorian")
 
-    /// Mixolydian scale.
+    /// Mixolydian scale
     public static let mixolydian = Scale(intervals: [.M2, .M3, .P4, .P5, .M6, .m7], description: "Mixolydian")
 
-    /// Phrygian scale.
+    /// Phrygian scale
     public static let phrygian = Scale(intervals: [.m2, .m3, .P4, .P5, .m6, .m7], description: "Phrygian")
 
-    /// Lydian scale.
+    /// Lydian scale
     public static let lydian = Scale(intervals: [.M2, .M3, .A4, .P5, .M6, .M7], description: "Lydian")
 
-    /// Locrian scale.
+    /// Locrian scale
     public static let locrian = Scale(intervals: [.m2, .m3, .P4, .d5, .m6, .m7], description: "Locrian")
 
-    /// Half diminished scale.
+    /// Half diminished scale
     public static let halfDiminished = Scale(intervals: [.m2, .m3, .M3, .d5, .P5, .M6, .m7], description: "Half Diminished")
 
-    /// Whole diminished scale.
+    /// Whole diminished scale
     public static let wholeDiminished = Scale(intervals: [.M2, .m3, .P4, .d5, .m6, .M6, .M7], description: "Whole Diminished")
 
-    /// Whole scale.
+    /// Whole scale
     public static let whole = Scale(intervals: [.M2, .M3, .d5, .m6, .m7], description: "Whole")
 
-    /// Augmented scale.
+    /// Augmented scale
     public static let augmented = Scale(intervals: [.m3, .M3, .P5, .m6, .M7], description: "Augmented")
 
-    /// Chromatic scale.
+    /// Chromatic scale
     public static let chromatic = Scale(intervals: [.m2, .M2, .m3, .M3, .P4, .d5, .P5, .m6, .M6, .m7, .M7], description: "Chromatic")
 
-    /// Roumanian minor scale.
+    /// Roumanian minor scale
     public static let romanianMinor = Scale(intervals: [.M2, .m3, .d5, .P5, .M6, .m7], description: "Romanian Minor")
 
-    /// Spanish gypsy scale.
+    /// Spanish gypsy scale
     public static let spanishGypsy = Scale(intervals: [.m2, .M3, .P4, .P5, .m6, .m7], description: "Spanish Gypsy")
 
-    /// Diatonic scale.
+    /// Diatonic scale
     public static let diatonic = Scale(intervals: [.M2, .M3, .P5, .M6], description: "Diatonic")
 
-    /// Dobule harmonic scale.
+    /// Dobule harmonic scale
     public static let doubleHarmonic = Scale(intervals: [.m2, .M3, .P4, .P5, .m6, .M7], description: "Double Harmonic")
 
-    /// Eight tone spanish scale.
+    /// Eight tone spanish scale
     public static let eightToneSpanish = Scale(intervals: [.m2, .m3, .M3, .P4, .d5, .m6, .m7], description: "Eight Tone Spanish")
 
-    /// Enigmatic scale.
+    /// Enigmatic scale
     public static let enigmatic = Scale(intervals: [.m2, .M3, .A4, .A5, .A6, .M7], description: "Enigmatic")
 
-    /// Leading whole tone scale.
+    /// Leading whole tone scale
     public static let leadingWholeTone = Scale(intervals: [.M2, .M3, .d5, .m6, .M6, .m7], description: "Leading Whole Tone")
 
-    /// Lydian augmented scale.
+    /// Lydian augmented scale
     public static let lydianAugmented = Scale(intervals: [.M2, .M3, .A4, .A5, .M6, .M7], description: "Lydian Augmented")
 
-    /// Neopolitan major scale.
+    /// Neopolitan major scale
     public static let neopolitanMajor = Scale(intervals: [.m2, .m3, .P4, .P5, .M6, .M7], description: "Neopolitan Major")
 
-    /// Neopolitan minor scale.
+    /// Neopolitan minor scale
     public static let neopolitanMinor = Scale(intervals: [.m2, .m3, .P4, .P5, .m6, .m7], description: "Neopolitan Minor")
 
-    /// Pelog scale.
+    /// Pelog scale
     public static let pelog = Scale(intervals: [.m2, .m3, .d5, .m7, .M7], description: "Pelog")
 
-    /// Prometheus scale.
+    /// Prometheus scale
     public static let prometheus = Scale(intervals: [.M2, .M3, .A4, .M6, .m7], description: "Prometheus")
 
-    /// Prometheus neopolitan scale.
+    /// Prometheus neopolitan scale
     public static let prometheusNeopolitan = Scale(intervals: [.m2, .M3, .d5, .M6, .m7], description: "Prometheus Neopolitan")
 
-    /// Six tone symmetrical scale.
+    /// Six tone symmetrical scale
     public static let sixToneSymmetrical = Scale(intervals: [.m2, .M3, .P4, .m6, .M6], description: "Six Tone Symmetrical")
 
-    /// Super locrian scale.
+    /// Super locrian scale
     public static let superLocrian = Scale(intervals: [.m2, .m3, .M3, .d5, .m6, .m7], description: "Super Locrian")
 
-    /// Lydian minor scale.
+    /// Lydian minor scale
     public static let lydianMinor = Scale(intervals: [.M2, .M3, .d5, .P5, .m6, .m7], description: "Lydian Minor")
 
-    /// Lydian diminished scale.
+    /// Lydian diminished scale
     public static let lydianDiminished = Scale(intervals: [.M2, .m3, .d5, .P5, .m6, .m7], description: "Lydian Diminished")
 
-    /// Nine tone scale.
+    /// Nine tone scale
     public static let nineTone = Scale(intervals: [.M2, .m3, .M3, .d5, .P5, .m6, .M6, .M7], description: "Nine Tone")
 
-    /// Auxiliary diminished scale.
+    /// Auxiliary diminished scale
     public static let auxiliaryDiminished = Scale(intervals: [.M2, .m3, .P4, .d5, .m6, .M6, .M7], description: "Auxiliary Diminished")
 
-    /// Auxiliary augmaneted scale.
+    /// Auxiliary augmaneted scale
     public static let auxiliaryAugmented = Scale(intervals: [.M2, .M3, .d5, .m6, .m7], description: "Auxiliary Augmented")
 
-    /// Auxiliary diminished blues scale.
+    /// Auxiliary diminished blues scale
     public static let auxiliaryDimBlues = Scale(intervals: [.m2, .m3, .M3, .d5, .P5, .M6, .m7], description: "Auxiliary Diminished Blues")
 
-    /// Major locrian scale.
+    /// Major locrian scale
     public static let majorLocrian = Scale(intervals: [.M2, .M3, .P4, .d5, .m6, .m7], description: "Major Locrian")
 
-    /// Overtone scale.
+    /// Overtone scale
     public static let overtone = Scale(intervals: [.M2, .M3, .d5, .P5, .M6, .m7], description: "Overtone")
 
-    /// Diminished whole tone scale.
+    /// Diminished whole tone scale
     public static let diminishedWholeTone = Scale(intervals: [.m2, .m3, .M3, .d5, .m6, .m7], description: "Diminished Whole Tone")
 
-    /// Dominant seventh scale.
+    /// Dominant seventh scale
     public static let dominant7th = Scale(intervals: [.M2, .M3, .P4, .P5, .M6, .m7], description: "Dominant 7th")
 
     /// Altered scale
