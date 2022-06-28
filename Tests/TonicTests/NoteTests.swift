@@ -105,7 +105,12 @@ final class NoteTests: XCTestCase {
         set0.add(Note.C)
         set1.add(Note.D)
 
+        XCTAssertTrue(set0.contains(Note.C))
+
         let u = set0.union(set1)
         XCTAssertEqual(u.count, 2)
+
+        set0.rm(Note.C)
+        XCTAssertTrue(set0.array.isEmpty)
     }
 }
