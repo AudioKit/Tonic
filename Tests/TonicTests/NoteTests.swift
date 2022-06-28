@@ -106,6 +106,7 @@ final class NoteTests: XCTestCase {
         set1.add(Note.D)
 
         XCTAssertTrue(set0.contains(Note.C))
+        XCTAssertEqual(set0.first, Note.C)
 
         let u = set0.union(set1)
         XCTAssertEqual(u.count, 2)
