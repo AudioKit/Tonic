@@ -1,7 +1,7 @@
 import Foundation
 
 /// Interface to bit sets used to represent sets of pitches and sets of notes.
-public protocol BitSet: Hashable, SetAlgebra {
+public protocol BitSet: Hashable {
     init()
     func isSet(bit: Int) -> Bool
     mutating func add(bit: Int)
@@ -10,6 +10,10 @@ public protocol BitSet: Hashable, SetAlgebra {
     var first: Int? { get }
     var count: Int { get }
     var totalBits: Int { get }
+    func isSubset(of other: Self) -> Bool
+    func union(_ other: __owned Self) -> Self
+    func intersection(_ other: Self) -> Self
+    func symmetricDifference(_ other: __owned Self) -> Self
 }
 
 /// Bit set from a single UInt64.
@@ -69,6 +73,10 @@ public struct BitSet64: BitSet, OptionSet {
     @inline(__always)
     public var totalBits: Int {
         64
+    }
+
+    public func isSubset(of other: Self) -> Bool {
+        return (rawValue & other.rawValue) == rawValue
     }
 }
 
@@ -156,6 +164,10 @@ public struct BitSet2x<B: BitSet>: BitSet {
         isSet(bit: member)
     }
 
+    public func isSubset(of other: Self) -> Bool {
+        return low.isSubset(of: other.low) ? high.isSubset(of: other.high) : false
+    }
+
     public func union(_ other: __owned BitSet2x<B>) -> BitSet2x<B> {
         Self(low: low.union(other.low), high: high.union(other.high))
     }
@@ -166,45 +178,6 @@ public struct BitSet2x<B: BitSet>: BitSet {
 
     public func symmetricDifference(_ other: __owned BitSet2x<B>) -> BitSet2x<B> {
         Self(low: low.symmetricDifference(other.low), high: high.symmetricDifference(other.high))
-    }
-
-    public mutating func insert(_ newMember: __owned Int) -> (inserted: Bool, memberAfterInsert: Int) {
-        if contains(newMember) {
-            return (false, newMember)
-        }
-        add(bit: newMember)
-        return (true, newMember)
-    }
-
-    public mutating func remove(_ member: Int) -> Int? {
-        if contains(member) {
-            rm(bit: member)
-            return member
-        }
-        return nil
-    }
-
-    public mutating func update(with newMember: __owned Int) -> Int? {
-        if contains(newMember) {
-            return newMember
-        }
-        add(bit: newMember)
-        return nil
-    }
-
-    public mutating func formUnion(_ other: __owned BitSet2x<B>) {
-        low.formUnion(other.low)
-        high.formUnion(other.high)
-    }
-
-    public mutating func formIntersection(_ other: BitSet2x<B>) {
-        low.formIntersection(other.low)
-        high.formIntersection(other.high)
-    }
-
-    public mutating func formSymmetricDifference(_ other: __owned BitSet2x<B>) {
-        low.formSymmetricDifference(other.low)
-        high.formSymmetricDifference(other.high)
     }
 
 }
@@ -218,7 +191,7 @@ public protocol IntRepresentable {
     var intValue: Int { get }
 }
 
-public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebra {
+public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
 
     public var bits: B
 
@@ -275,6 +248,16 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
         bits.totalBits
     }
 
+    public var array: [T] {
+        var r: [T] = []
+        forEach { r.append($0) }
+        return r
+    }
+
+    public func isSubset(of other: Self) -> Bool {
+        return bits.isSubset(of: other.bits)
+    }
+
     public func union(_ other: __owned BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
         Self(bits: bits.union(other.bits))
     }
@@ -285,43 +268,6 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, SetAlgebr
 
     public func symmetricDifference(_ other: __owned BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
         Self(bits: bits.symmetricDifference(other.bits))
-    }
-
-    public mutating func insert(_ newMember: __owned T) -> (inserted: Bool, memberAfterInsert: T) {
-        let (inserted, memberAfterInsert) = bits.insert(newMember.intValue as! B.Element)
-        return (inserted, T(intValue: memberAfterInsert as! Int))
-    }
-
-    @discardableResult public mutating func remove(_ member: T) -> T? {
-        if let prev = bits.remove(member.intValue as! B.Element) {
-            return T(intValue: prev as! Int)
-        }
-        return nil
-    }
-
-    public mutating func update(with newMember: __owned T) -> T? {
-        if let prev = bits.update(with: newMember.intValue as! B.Element) {
-            return T(intValue: prev as! Int)
-        }
-        return nil
-    }
-
-    public mutating func formUnion(_ other: __owned BitSetAdapter<T, B>) {
-        bits.formUnion(other.bits)
-    }
-
-    public mutating func formIntersection(_ other: BitSetAdapter<T, B>) {
-        bits.formIntersection(other.bits)
-    }
-
-    public mutating func formSymmetricDifference(_ other: __owned BitSetAdapter<T, B>) {
-        bits.formSymmetricDifference(other.bits)
-    }
-
-    public var array: [T] {
-        var r: [T] = []
-        forEach { r.append($0) }
-        return r
     }
 
 }

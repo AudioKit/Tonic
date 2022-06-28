@@ -21,10 +21,10 @@ class BitSetTests: XCTestCase {
 
     func testBitSet_SetAlgebra() {
         var set0 = BitSet512()
-        XCTAssertTrue(set0.insert(0).0)
+        set0.add(bit: 0)
 
         var set1 = BitSet512()
-        XCTAssertTrue(set1.insert(1).0)
+        set1.add(bit: 1)
 
         XCTAssertTrue(set0.contains(0))
         XCTAssertTrue(set1.contains(1))
@@ -38,11 +38,7 @@ class BitSetTests: XCTestCase {
         let diff = set0.symmetricDifference(set1)
         XCTAssertEqual(diff.count, 2)
 
-        XCTAssertEqual(set0.remove(0), 0)
-        XCTAssertEqual(set0.remove(0), nil)
+        XCTAssertFalse(set0.isSubset(of: set1))
 
-        XCTAssertEqual(set0.update(with: 0), nil)
-        XCTAssertEqual(set0.update(with: 0), 0)
     }
-
 }
