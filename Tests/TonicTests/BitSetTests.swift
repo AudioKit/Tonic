@@ -40,5 +40,11 @@ class BitSetTests: XCTestCase {
 
         XCTAssertFalse(set0.isSubset(of: set1))
 
+        set0.add(bit: 511)
+        XCTAssertTrue(set0.contains(511))
+
+        let empty = BitSet512()
+        XCTAssertNil(empty.first)
+
     }
 }

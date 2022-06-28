@@ -102,9 +102,8 @@ public struct BitSet2x<B: BitSet>: BitSet {
     public func isSet(bit: Int) -> Bool {
         if bit < low.totalBits {
             return low.isSet(bit: bit)
-        } else {
-            return high.isSet(bit: bit - low.totalBits)
         }
+        return high.isSet(bit: bit - low.totalBits)
     }
 
     @inlinable

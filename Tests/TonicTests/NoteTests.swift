@@ -113,5 +113,8 @@ final class NoteTests: XCTestCase {
 
         set0.rm(Note.C)
         XCTAssertTrue(set0.array.isEmpty)
+
+        let empty = NoteSet()
+        XCTAssertNil(empty.first)
     }
 }
