@@ -242,12 +242,6 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
         bits.count
     }
 
-    @inlinable
-    @inline(__always)
-    public var totalBits: Int {
-        bits.totalBits
-    }
-
     public var array: [T] {
         var r: [T] = []
         forEach { r.append($0) }
