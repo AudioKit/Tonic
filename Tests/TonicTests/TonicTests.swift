@@ -40,6 +40,10 @@ final class TonicTests: XCTestCase {
         var set = PitchSet()
         set.add(Pitch(64))
         XCTAssertEqual(set.first, Pitch(64))
+
+        let set2 = PitchSet(pitches: [Pitch(64)])
+
+        XCTAssert(set.subtracting(set2).count == 0)
     }
 
     func testPitchRange() {

@@ -46,5 +46,8 @@ class BitSetTests: XCTestCase {
         let empty = BitSet512()
         XCTAssertNil(empty.first)
 
+        let set2 = union.subtracting(set0)
+        XCTAssertEqual(set1, set2)
+
     }
 }
