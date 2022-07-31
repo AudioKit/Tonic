@@ -3,6 +3,12 @@ import Foundation
 public typealias PitchSet = BitSetAdapter<Pitch, BitSet128>
 
 public extension PitchSet {
+    init(pitches: [Pitch]) {
+        self.init()
+        for pitch in pitches {
+            add(pitch)
+        }
+    }
     func chord(in key: Key) -> Chord? {
         var notes = NoteSet()
         forEach { notes.add($0.note(in: key))}
