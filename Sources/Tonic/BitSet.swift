@@ -14,6 +14,7 @@ public protocol BitSet: Hashable {
     func union(_ other: __owned Self) -> Self
     func intersection(_ other: Self) -> Self
     func symmetricDifference(_ other: __owned Self) -> Self
+    func subtracting(_ other: Self) -> Self
 }
 
 /// Bit set from a single UInt64.
@@ -179,6 +180,10 @@ public struct BitSet2x<B: BitSet>: BitSet {
         Self(low: low.symmetricDifference(other.low), high: high.symmetricDifference(other.high))
     }
 
+    public func subtracting(_ other: BitSet2x<B>) -> BitSet2x<B> {
+        Self(low: low.subtracting(other.low), high: high.subtracting(other.high))
+    }
+
 }
 
 public typealias BitSet128 = BitSet2x<BitSet64>
@@ -261,6 +266,10 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
 
     public func symmetricDifference(_ other: __owned BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
         Self(bits: bits.symmetricDifference(other.bits))
+    }
+
+    public func subtracting(_ other: BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
+        Self(bits: bits.subtracting(other.bits))
     }
 
 }
