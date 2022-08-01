@@ -221,7 +221,7 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
 
     @inlinable
     @inline(__always)
-    public mutating func rm(_ member: T) {
+    public mutating func remove(_ member: T) {
         bits.rm(bit: member.intValue)
     }
 

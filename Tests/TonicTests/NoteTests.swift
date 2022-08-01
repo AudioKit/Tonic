@@ -111,7 +111,7 @@ final class NoteTests: XCTestCase {
         let u = set0.union(set1)
         XCTAssertEqual(u.count, 2)
 
-        set0.rm(Note.C)
+        set0.remove(Note.C)
         XCTAssertTrue(set0.array.isEmpty)
 
         let empty = NoteSet()
