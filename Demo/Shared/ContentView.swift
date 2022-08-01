@@ -11,17 +11,17 @@ struct ContentView: View {
     func eventHandler(events: [MIDIKit.MIDI.Event]) {
         for event in events {
             if event.isChannelVoice(ofType: .noteOn) {
-                chordIdentifier.noteOn(pitch: Pitch(Int8(event.midi1RawBytes[1])))
+                chordIdentifier.noteOn(pitch: Pitch(Int8(event.midi1RawBytes()[1])))
             }
             if event.isChannelVoice(ofType: .noteOff) {
-                chordIdentifier.noteOff(pitch: Pitch(Int8(event.midi1RawBytes[1])))
+                chordIdentifier.noteOff(pitch: Pitch(Int8(event.midi1RawBytes()[1])))
             }
         }
     }
 
     func text(pitch: Pitch) -> String {
         if let chord = chordIdentifier.chord {
-            if chordIdentifier.pitchSet.array.map({ $0.midiNoteNumber % 12 }).contains(pitch.midiNoteNumber % 12) {
+            if chordIdentifier.pitchSet.array.map({ $0.midiNoteNumber }).contains(pitch.midiNoteNumber) {
                 var note = pitch.note(in: Key(root: chord.root)).noteClass.canonicalNote
                 let root = chord.root.canonicalNote
                 if root.noteNumber > note.noteNumber {
@@ -29,7 +29,7 @@ struct ContentView: View {
                 }
                 
                 let interval = Interval.betweenNotes(root, note)
-                return interval?.abbreviation ?? "R"
+                return interval?.description ?? "R"
                 
             }
         }
@@ -48,7 +48,7 @@ struct ContentView: View {
                                 isActivated: isActivated,
                                 text: text(pitch: pitch),
                                 color: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
-                                isActivatedExternally: chordIdentifier.pitchSet.contains(pitchClass: pitch.pitchClass))
+                                isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
                 }
             }.padding(50)
 

@@ -13,7 +13,7 @@ class MIDIController {
         do {
             MIDI.IO.setNetworkSession(policy: .anyone)
             try midiManager.start()
-            try midiManager.addInputConnection(toOutputs: .current(),
+            try midiManager.addInputConnection(toOutputs: .currentInputs(),
                                                tag: "inputConnections",
                                                receiveHandler: .events { [weak self] events in
                     DispatchQueue.main.async { [weak self] in
