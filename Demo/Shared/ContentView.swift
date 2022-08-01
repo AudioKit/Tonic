@@ -38,7 +38,7 @@ struct ContentView: View {
 
     var body: some View {
         ZStack {
-            Color.black
+            Color.gray
             VStack {
                 VStack() {
                     Text(chordIdentifier.result).font(.largeTitle)
