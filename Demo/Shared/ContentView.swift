@@ -37,37 +37,40 @@ struct ContentView: View {
     }
 
     var body: some View {
-        VStack {
-            VStack() {
-                Text(chordIdentifier.result).font(.largeTitle)
-                Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
+        ZStack {
+            Color.black
+            VStack {
+                VStack() {
+                    Text(chordIdentifier.result).font(.largeTitle)
+                    Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
+                             latching: true,
+                             noteOn: chordIdentifier.noteOn,
+                             noteOff: chordIdentifier.noteOff) { pitch, isActivated in
+                        KeyboardKey(pitch: pitch,
+                                    isActivated: isActivated,
+                                    text: text(pitch: pitch),
+                                    color: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
+                                    isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
+                    }
+                }.padding(50)
+                
+                Keyboard(pitchRange: Note(.E, octave: 2).pitch ... Note(.E, octave: 6).pitch,
                          latching: true,
+                         layout: .isomorphic,
                          noteOn: chordIdentifier.noteOn,
                          noteOff: chordIdentifier.noteOff) { pitch, isActivated in
                     KeyboardKey(pitch: pitch,
                                 isActivated: isActivated,
-                                text: text(pitch: pitch),
+                                text: chordIdentifier.pitchSet.contains(pitch) ? pitch.note(in: .C).description : (pitch.note(in: .C).noteClass.description == "C" ? "C\(pitch.note(in: .C).octave)" : ""),
                                 color: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
                                 isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
                 }
-            }.padding(50)
-
-            Keyboard(pitchRange: Note(.E, octave: 2).pitch ... Note(.E, octave: 6).pitch,
-                     latching: true,
-                     layout: .isomorphic,
-                     noteOn: chordIdentifier.noteOn,
-                     noteOff: chordIdentifier.noteOff) { pitch, isActivated in
-                KeyboardKey(pitch: pitch,
-                            isActivated: isActivated,
-                            text: chordIdentifier.pitchSet.contains(pitch) ? pitch.note(in: .C).description : (pitch.note(in: .C).noteClass.description == "C" ? "C\(pitch.note(in: .C).octave)" : ""),
-                            color: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
-                            isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
+                         .frame(height: 100)
             }
-                     .frame(height: 100)
-        }
-        .padding()
-        .onAppear {
-            midiController.eventHandlers.append(eventHandler)
+            .padding()
+            .onAppear {
+                midiController.eventHandlers.append(eventHandler)
+            }
         }
     }
 }
