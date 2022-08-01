@@ -41,7 +41,7 @@ struct ContentView: View {
             Color.gray
             VStack {
                 VStack() {
-                    Text(chordIdentifier.result).font(.largeTitle)
+                    Text(chordIdentifier.chordName).font(.largeTitle)
                     Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
                              latching: true,
                              noteOn: chordIdentifier.noteOn,
