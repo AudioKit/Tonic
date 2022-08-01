@@ -36,6 +36,7 @@ class ChordIdentifier: ObservableObject {
 
     var pitchSet: PitchSet = PitchSet() {
         didSet {
+            chord = nil
             if pitchSet.count == 0 {
                 result = " "
             }
@@ -52,7 +53,6 @@ class ChordIdentifier: ObservableObject {
                     intervalString = interval.description
                 }
                 result = "Two Notes: " + intervalString + " " + note1 .description + ", " + note2.description
-
                 return
             }
 
@@ -64,7 +64,7 @@ class ChordIdentifier: ObservableObject {
                 }
             }
             // Failed to detect a chord
-            chord = nil
+            result = " "
         }
     }
 
