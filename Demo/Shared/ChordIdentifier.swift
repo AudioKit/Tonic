@@ -33,6 +33,7 @@ class ChordIdentifier: ObservableObject {
     }
 
     @Published var result: String = " "
+    var detectedKey: Key = .C
 
     var pitchSet: PitchSet = PitchSet() {
         didSet {
@@ -60,6 +61,7 @@ class ChordIdentifier: ObservableObject {
             for key in keys {
                 if let c = pitchSet.chord(in: key) {
                     chord = c
+                    detectedKey = key
                     return
                 }
             }

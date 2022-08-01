@@ -22,7 +22,7 @@ struct ContentView: View {
     func text(pitch: Pitch) -> String {
         if let chord = chordIdentifier.chord {
             if chordIdentifier.pitchSet.array.map({ $0.midiNoteNumber }).contains(pitch.midiNoteNumber) {
-                var note = pitch.note(in: Key(root: chord.root)).noteClass.canonicalNote
+                var note = pitch.note(in: chordIdentifier.detectedKey).noteClass.canonicalNote
                 let root = chord.root.canonicalNote
                 if root.noteNumber > note.noteNumber {
                     note = Note(note.letter, accidental: note.accidental, octave: note.octave + 1)
