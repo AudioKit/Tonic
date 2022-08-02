@@ -1,5 +1,7 @@
 # Tonic
 
+<img src="demo.png" alt="Demo" />
+
 Swift library for music theory, currently focused on chords/harmony.
 
 Tonic answers musical questions, such as:

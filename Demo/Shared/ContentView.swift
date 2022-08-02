@@ -4,6 +4,7 @@ import MIDIKit
 import Tonic
 
 struct ContentView: View {
+    @Environment(\.colorScheme) var colorScheme
 
     @StateObject var chordIdentifier = ChordIdentifier()
     var midiController = MIDIController()
@@ -37,40 +38,25 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack {
-            Color.gray
-            VStack {
-                VStack() {
-                    Text(chordIdentifier.chordName).font(.largeTitle)
-                    Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
-                             latching: true,
-                             noteOn: chordIdentifier.noteOn,
-                             noteOff: chordIdentifier.noteOff) { pitch, isActivated in
-                        KeyboardKey(pitch: pitch,
-                                    isActivated: isActivated,
-                                    text: text(pitch: pitch),
-                                    color: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
-                                    isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
-                    }
-                }.padding(50)
-                
-                Keyboard(pitchRange: Note(.E, octave: 2).pitch ... Note(.E, octave: 6).pitch,
+        VStack {
+            VStack() {
+                Text(chordIdentifier.chordName).font(.largeTitle)
+                Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
                          latching: true,
-                         layout: .isomorphic,
                          noteOn: chordIdentifier.noteOn,
                          noteOff: chordIdentifier.noteOff) { pitch, isActivated in
                     KeyboardKey(pitch: pitch,
                                 isActivated: isActivated,
-                                text: chordIdentifier.pitchSet.contains(pitch) ? pitch.note(in: .C).description : (pitch.note(in: .C).noteClass.description == "C" ? "C\(pitch.note(in: .C).octave)" : ""),
+                                text: text(pitch: pitch),
                                 color: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
                                 isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
                 }
-                         .frame(height: 100)
-            }
-            .padding()
-            .onAppear {
-                midiController.eventHandlers.append(eventHandler)
-            }
+            }.padding(50)
+        }
+        .padding()
+        .background(colorScheme == .dark ? Color.black : Color.gray)
+        .onAppear {
+            midiController.eventHandlers.append(eventHandler)
         }
     }
 }
