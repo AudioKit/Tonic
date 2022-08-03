@@ -19,3 +19,15 @@ jobs:
         run: |
           set -euo pipefail
           swift test
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Install Swift on Linux
+        uses: sersoft-gmbh/swifty-linux-action@v2
+      - name: Check out Tonic 
+        uses: actions/checkout@v2
+      - name: Test tonic 
+        run: |
+          set -euo pipefail
+          swift test
