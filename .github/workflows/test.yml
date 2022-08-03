@@ -34,11 +34,11 @@ jobs:
           set -euo pipefail
           swift test
 
-  build-windows:
-    runs-on: windows-2019
-
-    steps:
-      - uses: actions/checkout@v2
-      - uses: MaxDesiatov/swift-windows-action@v1
-        with:
-          swift-version: 5.6.1
+#  build-windows:
+#    runs-on: windows-2019
+#
+#    steps:
+#      - uses: actions/checkout@v2
+#      - uses: MaxDesiatov/swift-windows-action@v1
+#        with:
+#          swift-version: 5.6.1
