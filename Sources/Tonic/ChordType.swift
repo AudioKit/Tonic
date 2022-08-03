@@ -64,10 +64,22 @@ public enum ChordType: Int, CaseIterable {
 
     /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh
     case minorEleventh
+    
+    /// Minor Seventh Flat Fifth: Major Third, Diminished Fifth, Major Seventh
+    case majorSeventhFlatFifth
+    
+    /// Minor Seventh Sharp Fifth: Major Third, Augmented Fifth, Major Seventh
+    case minorSeventhSharpFifth
 
     /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh
     case majorNinthSharpEleventh
 
+    /// Dominant Flat Fifth: Major Third, Diminished Fifth, Minor Seventh
+    case dominantFlatFifth
+    
+    /// Dominant Sharp Fifth: Major Third, Augmented Fifth, Minor Seventh
+    case dominantSharpFifth
+    
     /// Dominant Flat Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh
     case dominantFlatNinthSharpEleventh
 
@@ -101,8 +113,12 @@ public enum ChordType: Int, CaseIterable {
         case .majorEleventh:                    return [.M3, .P5, .M7, .M9, .P11]
         case .dominantEleventh:                 return [.M3, .P5, .m7, .M9, .P11]
         case .minorEleventh:                    return [.m3, .P5, .m7, .M9, .P11]
+        case .majorSeventhFlatFifth:            return [.M3, .d5, .M7]
+        case .minorSeventhSharpFifth:           return [.M3, .A5, .M7]
         case .majorNinthSharpEleventh:          return [.M3, .P5, .M7, .M9, .A11]
         case .dominantFlatNinthSharpEleventh:   return [.M3, .P5, .m7, .m9, .A11]
+        case .dominantFlatFifth:                return [.M3, .d5, .m7]
+        case .dominantSharpFifth:               return [.M3, .A5, .m7]
         case .dominantSharpNinthSharpEleventh:  return [.M3, .P5, .m7, .A9, .A11]
         case .minorSeventhFlatNinthAddEleventh: return [.m3, .P5, .m7, .m9, .P11]
         }
@@ -136,9 +152,13 @@ extension ChordType: CustomStringConvertible{
         case .majorEleventh:                    return "maj11"
         case .dominantEleventh:                 return "11"
         case .minorEleventh:                    return "m11"
+        case .majorSeventhFlatFifth:            return "Maj7♭5"
+        case .minorSeventhSharpFifth:           return "Maj7♯5"
         case .majorNinthSharpEleventh:          return "maj9♯11"
-        case .dominantFlatNinthSharpEleventh:   return "7b9#11"
-        case .dominantSharpNinthSharpEleventh:  return "7#9#11"
+        case .dominantFlatFifth:                return "7♭5"
+        case .dominantSharpFifth:               return "7♯5"
+        case .dominantFlatNinthSharpEleventh:   return "7b9♯11"
+        case .dominantSharpNinthSharpEleventh:  return "7♯9♯11"
         case .minorSeventhFlatNinthAddEleventh: return "m7b9(add11)"
         }
     }
