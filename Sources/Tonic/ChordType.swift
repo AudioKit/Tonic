@@ -157,9 +157,9 @@ extension ChordType: CustomStringConvertible{
         case .majorNinthSharpEleventh:          return "maj9♯11"
         case .dominantFlatFifth:                return "7♭5"
         case .dominantSharpFifth:               return "7♯5"
-        case .dominantFlatNinthSharpEleventh:   return "7b9♯11"
+        case .dominantFlatNinthSharpEleventh:   return "7♭9♯11"
         case .dominantSharpNinthSharpEleventh:  return "7♯9♯11"
-        case .minorSeventhFlatNinthAddEleventh: return "m7b9(add11)"
+        case .minorSeventhFlatNinthAddEleventh: return "m7♭9(add11)"
         }
     }
 
