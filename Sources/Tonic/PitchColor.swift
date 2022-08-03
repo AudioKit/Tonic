@@ -1,3 +1,6 @@
+
+// CoreGraphics is not available on Linux.
+#if os(macOS) || os(iOS)
 import CoreGraphics
 
 /// Pitch represented as color.
@@ -36,4 +39,4 @@ public struct PitchColor {
     }
 
 }
-
+#endif
