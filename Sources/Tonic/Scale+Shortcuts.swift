@@ -73,7 +73,7 @@ extension Scale {
     /// Diatonic scale
     public static let diatonic = Scale(intervals: [.M2, .M3, .P5, .M6], description: "Diatonic")
 
-    /// Dobule harmonic scale
+    /// Double harmonic scale
     public static let doubleHarmonic = Scale(intervals: [.m2, .M3, .P4, .P5, .m6, .M7], description: "Double Harmonic")
 
     /// Eight tone spanish scale
@@ -157,11 +157,11 @@ extension Scale {
     /// Chinese scale
     public static let chinese = Scale(intervals: [.M3, .d5, .P5, .M7], description: "Chinese")
 
-    /// Dorian #4 scale
-    public static let dorianSharp4 = Scale(intervals: [.M2, .m3, .d5, .P5, .M6, .m7], description: "Dorian #4")
+    /// Dorian ♯4 scale
+    public static let dorianSharp4 = Scale(intervals: [.M2, .m3, .d5, .P5, .M6, .m7], description: "Dorian ♯4")
 
-    /// Dorian b2 scale
-    public static let dorianFlat2 = Scale(intervals: [.m2, .m3, .P4, .P5, .M6, .m7], description: "Dorian b2")
+    /// Dorian ♭2 scale
+    public static let dorianFlat2 = Scale(intervals: [.m2, .m3, .P4, .P5, .M6, .m7], description: "Dorian ♭2")
 
     /// Hindu scale
     public static let hindu = Scale(intervals: [.M2, .M3, .P4, .P5, .m6, .m7], description: "Hindu")
@@ -190,17 +190,17 @@ extension Scale {
     /// Locrian 6 scale
     public static let locrian6 = Scale(intervals: [.m2, .m3, .P4, .d5, .M6, .m7], description: "Locrian 6")
 
-    /// Lydian #2 scale
-    public static let lydianSharp2 = Scale(intervals: [.m3, .M3, .d5, .P5, .M6, .M7], description: "Lydian #2")
+    /// Lydian ♯2 scale
+    public static let lydianSharp2 = Scale(intervals: [.m3, .M3, .d5, .P5, .M6, .M7], description: "Lydian ♯2")
 
-    /// Lydian b7 scale
-    public static let lydianFlat7 = Scale(intervals: [.M2, .M3, .d5, .P5, .M6, .m7], description: "Lydian b7")
+    /// Lydian ♭7 scale
+    public static let lydianFlat7 = Scale(intervals: [.M2, .M3, .d5, .P5, .M6, .m7], description: "Lydian ♭7")
 
     /// Phrygian Major scale
     public static let phrygianMajor = Scale(intervals: [.m2, .M3, .P4, .P5, .m6, .m7], description: "Phrygian Major")
 
-    /// Mixolydian b6 scale
-    public static let mixolydianFlat6 = Scale(intervals: [.M2, .M3, .P4, .P5, .m6, .m7], description: "Mixolydian b6")
+    /// Mixolydian ♭6 scale
+    public static let mixolydianFlat6 = Scale(intervals: [.M2, .M3, .P4, .P5, .m6, .m7], description: "Mixolydian ♭6")
 
     /// Mohammedan scale
     public static let mohammedan = Scale(intervals: [.M2, .m3, .P4, .P5, .m6, .M7], description: "Mohammedan")
@@ -274,32 +274,32 @@ extension Scale {
     /// Jazz melodic minor scale
     public static let jazzMelodicMinor = Scale(intervals: [.M2, .m3, .P4, .P5, .M6, .M7], description: "Jazz Melodic Minor")
 
-    /// Lydian augmented #6 scale
-    public static let lydianAugmentedSharp6 = Scale(intervals: [.M2, .M3, .d5, .m6, .m7, .M7], description: "Lydian Augmented #6")
+    /// Lydian augmented ♯6 scale
+    public static let lydianAugmentedSharp6 = Scale(intervals: [.M2, .M3, .d5, .m6, .m7, .M7], description: "Lydian Augmented ♯6")
 
-    /// Lydian augmented #2 scale
-    public static let lydianAugmentedSharp2 = Scale(intervals: [.m3, .M3, .d5, .m6, .M6, .M7], description: "Lydian Augmented #2")
+    /// Lydian augmented ♯2 scale
+    public static let lydianAugmentedSharp2 = Scale(intervals: [.m3, .M3, .d5, .m6, .M6, .M7], description: "Lydian Augmented ♯2")
 
-    /// Dorian b5 scale
-    public static let dorianFlat5 = Scale(intervals: [.M2, .m3, .P4, .d5, .M6, .m7], description: "Dorian b5")
+    /// Dorian ♭5 scale
+    public static let dorianFlat5 = Scale(intervals: [.M2, .m3, .P4, .d5, .M6, .m7], description: "Dorian ♭5")
 
-    /// Phrygian b4 scale
-    public static let phrygianFlat4 = Scale(intervals: [.m2, .m3, .M3, .P5, .m6, .m7], description: "Phrygian b4")
+    /// Phrygian ♭4 scale
+    public static let phrygianFlat4 = Scale(intervals: [.m2, .m3, .M3, .P5, .m6, .m7], description: "Phrygian ♭4")
 
-    /// Lydian b3 scale
-    public static let lydianFlat3 = Scale(intervals: [.M2, .m3, .d5, .P5, .M6, .M7], description: "Lydian b3")
+    /// Lydian ♭3 scale
+    public static let lydianFlat3 = Scale(intervals: [.M2, .m3, .d5, .P5, .M6, .M7], description: "Lydian ♭3")
 
-    /// Lydian b6 scale
-    public static let lydianFlat6 = Scale(intervals: [.M2, .M3, .d5, .P5, .m6, .m7], description: "Lydian b6")
+    /// Lydian ♭6 scale
+    public static let lydianFlat6 = Scale(intervals: [.M2, .M3, .d5, .P5, .m6, .m7], description: "Lydian ♭6")
 
-    /// Lydian #6 scale
-    public static let lydianSharp6 = Scale(intervals: [.M2, .M3, .d5, .P5, .m7, .M7], description: "Lydian #6")
+    /// Lydian ♯6 scale
+    public static let lydianSharp6 = Scale(intervals: [.M2, .M3, .d5, .P5, .m7, .M7], description: "Lydian ♯6")
 
-    /// Lydian #2 #6 scale
-    public static let lydianSharp2Sharp6 = Scale(intervals: [.m3, .M3, .d5, .P5, .m7, .M7], description: "Lydian #2 #6")
+    /// Lydian ♯2 ♯6 scale
+    public static let lydianSharp2Sharp6 = Scale(intervals: [.m3, .M3, .d5, .P5, .m7, .M7], description: "Lydian ♯2 ♯6")
 
-    /// Mixolydian b2 scale
-    public static let mixolydianFlat2 = Scale(intervals: [.m2, .M3, .P4, .P5, .M6, .m7], description: "Mixolydian b2")
+    /// Mixolydian ♭2 scale
+    public static let mixolydianFlat2 = Scale(intervals: [.m2, .M3, .P4, .P5, .M6, .m7], description: "Mixolydian ♭2")
 
     /// Mixolydian augmented scale
     public static let mixolydianAugmented = Scale(intervals: [.M2, .M3, .P4, .m6, .M6, .m7], description: "Mixolydian Augmented")
@@ -307,20 +307,20 @@ extension Scale {
     /// Locrian diminished scale
     public static let locrianDiminished = Scale(intervals: [.m2, .m3, .P4, .d5, .m6, .M6], description: "Locrian Diminished")
 
-    /// Locrian diminished bb3 scale
-    public static let locrianDiminishedFlatFlat3 = Scale(intervals: [.m2, .P4, .d5, .m6, .M6], description: "Locrian Diminished bb3")
+    /// Locrian diminished ♭♭3 scale
+    public static let locrianDiminishedFlatFlat3 = Scale(intervals: [.m2, .P4, .d5, .m6, .M6], description: "Locrian Diminished ♭♭3")
 
-    /// Ionian #2 scale
-    public static let ionianSharp2 = Scale(intervals: [.m3, .M3, .P4, .P5, .M6, .M7], description: "Ionian #2")
+    /// Ionian ♯2 scale
+    public static let ionianSharp2 = Scale(intervals: [.m3, .M3, .P4, .P5, .M6, .M7], description: "Ionian ♯2")
 
-    /// Super locrian Diminished bb3 scale
-    public static let superLocrianDiminshedFlatFlat3 = Scale(intervals: [.m2, .M2, .M3, .d5, .m6, .M6], description: "Super Locrian Diminished bb3")
+    /// Super locrian Diminished ♭♭3 scale
+    public static let superLocrianDiminshedFlatFlat3 = Scale(intervals: [.m2, .M2, .M3, .d5, .m6, .M6], description: "Super Locrian Diminished ♭♭3")
 
     /// Ultraphrygian scale
     public static let ultraphrygian = Scale(intervals: [.m2, .m3, .M3, .P5, .m6, .M6], description: "Ultraphrygian")
 
-    /// Ionian Augmented #2 scale
-    public static let ionianAugmentedSharp2 = Scale(intervals: [.m3, .M3, .P4, .m6, .M6, .M7], description: "Ionian Augmented #2")
+    /// Ionian Augmented ♯2 scale
+    public static let ionianAugmentedSharp2 = Scale(intervals: [.m3, .M3, .P4, .m6, .M6, .M7], description: "Ionian Augmented ♯2")
 
     /// Major blues hexatonic scale
     public static let majorBluesHexatonic = Scale(intervals: [.M2, .m3, .M3, .P5, .M6], description: "Major Blues Hexatonic")
