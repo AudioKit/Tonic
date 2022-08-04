@@ -1,5 +1,5 @@
 import XCTest
-@testable import Tonic
+import Tonic
 
 class ChordTests: XCTestCase {
 

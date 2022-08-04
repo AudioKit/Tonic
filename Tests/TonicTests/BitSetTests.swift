@@ -1,6 +1,6 @@
 
 import XCTest
-@testable import Tonic
+import Tonic
 
 class BitSetTests: XCTestCase {
 
