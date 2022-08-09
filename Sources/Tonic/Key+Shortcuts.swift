@@ -1,7 +1,6 @@
 import Foundation
 
 public extension Key {
-
     // MARK: - Major keys
 
     /// C♭ Major

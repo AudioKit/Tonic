@@ -9,9 +9,10 @@ public extension PitchSet {
             add(pitch)
         }
     }
+
     func chord(in key: Key) -> Chord? {
         var notes = NoteSet()
-        forEach { notes.add($0.note(in: key))}
+        forEach { notes.add($0.note(in: key)) }
         return Chord(noteSet: notes)
     }
 
@@ -25,7 +26,6 @@ public extension PitchSet {
 /// We want to use a notion of pitch that lends itself to combinatorial algorithms,
 /// as opposed to using e.g. a fundamental frequency.
 public struct Pitch: Equatable, Hashable {
-
     /// MIDI Note Number 0-127
     public var midiNoteNumber: Int8
 
@@ -54,15 +54,13 @@ public struct Pitch: Equatable, Hashable {
 }
 
 extension Pitch: IntRepresentable {
-
     public var intValue: Int {
         Int(midiNoteNumber)
     }
 
     public init(intValue: Int) {
-        self.midiNoteNumber = Int8(intValue)
+        midiNoteNumber = Int8(intValue)
     }
-
 }
 
 extension Pitch: Comparable {

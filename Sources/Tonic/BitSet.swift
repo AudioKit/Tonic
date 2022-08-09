@@ -6,7 +6,7 @@ public protocol BitSet: Hashable {
     func isSet(bit: Int) -> Bool
     mutating func add(bit: Int)
     mutating func rm(bit: Int)
-    func forEach(_ f: (Int) -> ())
+    func forEach(_ f: (Int) -> Void)
     var first: Int? { get }
     var count: Int { get }
     var totalBits: Int { get }
@@ -19,7 +19,6 @@ public protocol BitSet: Hashable {
 
 /// Bit set from a single UInt64.
 public struct BitSet64: BitSet, OptionSet {
-
     public var rawValue: UInt64 = 0
 
     public init() {}
@@ -48,9 +47,9 @@ public struct BitSet64: BitSet, OptionSet {
 
     @inlinable
     @inline(__always)
-    public func forEach(_ f: (Int) -> ()) {
+    public func forEach(_ f: (Int) -> Void) {
         if rawValue != 0 {
-            for bit in 0..<64 {
+            for bit in 0 ..< 64 {
                 if isSet(bit: bit) {
                     f(bit)
                 }
@@ -129,9 +128,9 @@ public struct BitSet2x<B: BitSet>: BitSet {
 
     @inlinable
     @inline(__always)
-    public func forEach(_ f: (Int) -> ()) {
+    public func forEach(_ f: (Int) -> Void) {
         low.forEach(f)
-        high.forEach({ f($0+low.totalBits) })
+        high.forEach { f($0 + low.totalBits) }
     }
 
     @inlinable
@@ -183,7 +182,6 @@ public struct BitSet2x<B: BitSet>: BitSet {
     public func subtracting(_ other: BitSet2x<B>) -> BitSet2x<B> {
         Self(low: low.subtracting(other.low), high: high.subtracting(other.high))
     }
-
 }
 
 public typealias BitSet128 = BitSet2x<BitSet64>
@@ -196,7 +194,6 @@ public protocol IntRepresentable {
 }
 
 public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
-
     public var bits: B
 
     public init() {
@@ -227,8 +224,8 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
 
     @inlinable
     @inline(__always)
-    public func forEach(_ f: (T) -> ()) {
-        bits.forEach( { f(T(intValue: $0)) } )
+    public func forEach(_ f: (T) -> Void) {
+        bits.forEach { f(T(intValue: $0)) }
     }
 
     @inlinable
@@ -271,5 +268,4 @@ public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
     public func subtracting(_ other: BitSetAdapter<T, B>) -> BitSetAdapter<T, B> {
         Self(bits: bits.subtracting(other.bits))
     }
-
 }

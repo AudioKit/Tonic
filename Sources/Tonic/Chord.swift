@@ -5,7 +5,6 @@ import Foundation
 /// A representation of a chord as a set of note classes, with a root note class,
 /// and an inversion defined by the lowest note in the chord.
 public struct Chord: Equatable {
-
     /// Root note class of the chord
     public let root: NoteClass
 
@@ -15,7 +14,6 @@ public struct Chord: Equatable {
     /// Which note in terms of degrees from the root appears as the lowest note.
     /// Third in the bottom => 1st Inversion, Fifth => 2nd Inversion, Seventh, 3rd Inversion, etc.
     public let inversion: Int
-
 
     /// Create a chord
     /// - Parameters:
@@ -49,12 +47,12 @@ public struct Chord: Equatable {
         noteSet.forEach { r.add($0.noteClass.canonicalNote) }
 
         if let info = ChordTable.shared.chords[r.hashValue] {
-            self.root = info.root
-            self.type = info.type
+            root = info.root
+            type = info.type
             if let firstNote = noteSet.array.first {
-                self.inversion = info.noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
+                inversion = info.noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
             } else {
-                self.inversion = 0
+                inversion = 0
             }
         } else {
             return nil
@@ -91,7 +89,6 @@ public struct Chord: Equatable {
         type.intervals.count == 2
     }
 
-
     /// The Roman Numeral notation for a chord, given a key.
     ///
     /// This initializer will fail if the chord does not appear in the given key.
@@ -110,8 +107,6 @@ public struct Chord: Equatable {
         }
         return nil
     }
-
-
 }
 
 extension Chord: CustomStringConvertible {

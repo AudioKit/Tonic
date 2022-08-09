@@ -1,8 +1,7 @@
-import XCTest
 import Tonic
+import XCTest
 
 final class NoteTests: XCTestCase {
-
     func testNoteOctave() {
         let c4 = Note.C
         XCTAssertEqual(c4.noteNumber, 60)
@@ -34,7 +33,7 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(cDoubleSharp.description, "C𝄪4")
     }
 
-    func testComparison(){
+    func testComparison() {
         XCTAssert(Note.C < Note.Cs)
     }
 
@@ -68,7 +67,7 @@ final class NoteTests: XCTestCase {
 
         let c6 = Note(.G).shiftUp(.P11)
         XCTAssertEqual(c6!.description, "C6")
-        
+
         let g = Note(.C, octave: 6).shiftDown(.P11)
         XCTAssertEqual(g!.description, "G4")
     }
@@ -88,15 +87,13 @@ final class NoteTests: XCTestCase {
     }
 
     func testNoteIntValue() {
-
         let lowest = Note(.C, octave: -1).intValue
         let highest = Note(pitch: Pitch(127), key: .C).intValue
 
-        for i in lowest..<highest {
+        for i in lowest ..< highest {
             let n = Note(intValue: i)
             XCTAssertEqual(n.intValue, i)
         }
-
     }
 
     func testNoteSet() {

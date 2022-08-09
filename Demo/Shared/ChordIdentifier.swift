@@ -3,7 +3,6 @@ import Keyboard
 import Tonic
 
 class ChordIdentifier: ObservableObject {
-
     func noteOn(pitch: Pitch) {
         pitchSet.add(pitch)
     }
@@ -11,9 +10,9 @@ class ChordIdentifier: ObservableObject {
     func noteOff(pitch: Pitch) {
         pitchSet.remove(pitch)
     }
-    
-    @Published var pitchSet: PitchSet = PitchSet()
-    
+
+    @Published var pitchSet: PitchSet = .init()
+
     var detectedKey: Key {
         let keys: [Key] = [.C, .G, .F, .D, .Bb, .A, .Eb, .E, .Ab, .B, .Db]
         for key in keys {
@@ -23,7 +22,7 @@ class ChordIdentifier: ObservableObject {
         }
         return .C
     }
-    
+
     var chord: Chord? {
         let keys: [Key] = [.C, .G, .F, .D, .Bb, .A, .Eb, .E, .Ab, .B, .Db]
         for key in keys {
@@ -33,9 +32,8 @@ class ChordIdentifier: ObservableObject {
         }
         return nil
     }
-    
+
     var chordName: String {
-        
         if pitchSet.count == 0 {
             return " "
         }
@@ -50,7 +48,7 @@ class ChordIdentifier: ObservableObject {
             if let interval = Interval.betweenNotes(note1, note2) {
                 intervalString = interval.description
             }
-            return "Two Notes: " + intervalString + " " + note1 .description + ", " + note2.description
+            return "Two Notes: " + intervalString + " " + note1.description + ", " + note2.description
         }
 
         let keys: [Key] = [.C, .G, .F, .D, .Bb, .A, .Eb, .E, .Ab, .B, .Db]
@@ -59,7 +57,7 @@ class ChordIdentifier: ObservableObject {
                 return "Known Chord: \(c.description) \(c.inversionText)"
             }
         }
-        
+
         // Failed to detect a chord
         return "Notes: " + pitchSet.array.map { $0.note(in: .C).description }.joined(separator: ", ")
     }
@@ -70,5 +68,3 @@ extension Chord {
         return ["Root Position", "1st Inversion", "2nd Inversion", "3rd Inversion", "4th Inversion", "5th Inversion"][inversion]
     }
 }
-
-

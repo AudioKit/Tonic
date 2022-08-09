@@ -4,10 +4,8 @@ import Foundation
 ///
 /// A semitone offset applied to a note that does not change the letter of the note, just the pitch.
 public enum Accidental: Int8, CaseIterable, Equatable, Hashable {
-
     static var count: Int { Accidental.allCases.count }
-    static var naturalIndex: Int { count / 2}
-
+    static var naturalIndex: Int { count / 2 }
 
     /// A double flat represented as "𝄫" lowers the note by a whole tone, or two semitones.
     case doubleFlat = -2
@@ -28,7 +26,7 @@ public enum Accidental: Int8, CaseIterable, Equatable, Hashable {
 extension Accidental: CustomStringConvertible {
     /// Proper characters to describe the accidental in a String.
     public var description: String {
-        ["𝄫", "♭", "", "♯", "𝄪"][Int(self.rawValue) + Accidental.naturalIndex]
+        ["𝄫", "♭", "", "♯", "𝄪"][Int(rawValue) + Accidental.naturalIndex]
     }
 }
 
@@ -36,5 +34,4 @@ extension Accidental: Comparable {
     public static func < (lhs: Accidental, rhs: Accidental) -> Bool {
         lhs.rawValue < rhs.rawValue
     }
-
 }

@@ -7,9 +7,8 @@ public struct Scale: OptionSet {
     public let description: String
 
     public var intervals: [Interval] {
-
         var result: [Interval] = []
-        for i in 0..<11 {
+        for i in 0 ..< 11 {
             if (rawValue >> i) & 1 != 0 {
                 result.append(Interval(rawValue: i)!)
             }
@@ -19,7 +18,7 @@ public struct Scale: OptionSet {
 
     public init(rawValue: Int) {
         self.rawValue = rawValue
-        self.description = ""
+        description = ""
     }
 
     public init(intervals: [Interval], description: String) {
@@ -28,6 +27,6 @@ public struct Scale: OptionSet {
         for interval in intervals {
             r |= (1 << interval.rawValue)
         }
-        self.rawValue = r
+        rawValue = r
     }
 }

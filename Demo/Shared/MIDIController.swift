@@ -1,13 +1,12 @@
-import MIDIKit
 import Foundation
+import MIDIKit
 
 class MIDIController {
-
     let midiManager = MIDI.IO.Manager(clientName: "TonicDemoMIDIManager",
                                       model: "TonicDemo",
                                       manufacturer: "AudioKit")
 
-    var eventHandlers: [(Array<MIDI.Event>)->Void] = []
+    var eventHandlers: [([MIDI.Event]) -> Void] = []
 
     init() {
         do {
@@ -16,17 +15,15 @@ class MIDIController {
             try midiManager.addInputConnection(toOutputs: .currentInputs(),
                                                tag: "inputConnections",
                                                receiveHandler: .events { [weak self] events in
-                    DispatchQueue.main.async { [weak self] in
-                        for eventHandler in self!.eventHandlers {
-                            eventHandler(events)
-                        }
-                    }
-                })
+                                                   DispatchQueue.main.async { [weak self] in
+                                                       for eventHandler in self!.eventHandlers {
+                                                           eventHandler(events)
+                                                       }
+                                                   }
+                                               })
 
         } catch {
             print("MIDI did not start. Error: \(error)")
         }
     }
-
-
 }

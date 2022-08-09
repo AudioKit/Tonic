@@ -4,7 +4,6 @@ import Foundation
 ///
 /// A key is composed of a Root ``Note``, and a ``Scale``.
 public struct Key: Equatable {
-
     /// The primary note class of the key, also known as the tonic
     public let root: NoteClass
 
@@ -19,7 +18,6 @@ public struct Key: Equatable {
 
     /// All chords that fit in the key
     public let chords: [Chord]
-
 
     /// Initialize the key
     /// - Parameters:
@@ -36,7 +34,7 @@ public struct Key: Equatable {
                 r.append(noteClass.canonicalNote)
             }
         }
-        self.noteSet = NoteSet(notes: r)
+        noteSet = NoteSet(notes: r)
 
         let table = ChordTable.shared
 
@@ -52,18 +50,16 @@ public struct Key: Equatable {
             }
         }
 
-
-        let primaryTriadsStartingWithC = primaryTriads.sorted(by: {$0.root.letter < $1.root.letter})
+        let primaryTriadsStartingWithC = primaryTriads.sorted(by: { $0.root.letter < $1.root.letter })
         let rootPosition = primaryTriadsStartingWithC.firstIndex(where: { $0.root == root }) ?? 0
         self.primaryTriads = Array(primaryTriadsStartingWithC.rotatingLeft(positions: rootPosition))
 
         self.chords = chords
-
     }
 
     /// The type of accidental to use in this key
     public var preferredAccidental: Accidental {
-        if root.accidental == .sharp  {
+        if root.accidental == .sharp {
             return .sharp
         }
         if root.accidental == .flat {
@@ -76,7 +72,6 @@ public struct Key: Equatable {
         }
         return .sharp
     }
-
 }
 
 extension RangeReplaceableCollection {

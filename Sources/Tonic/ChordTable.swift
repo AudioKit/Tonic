@@ -2,7 +2,6 @@ import Foundation
 
 /// A table of note sets so we can look up chord names.
 class ChordTable {
-
     static let shared = ChordTable()
 
     static func hash(_ noteClasses: [NoteClass]) -> Int {
@@ -41,4 +40,3 @@ class ChordTable {
 
     lazy var chords: [Int: Chord] = ChordTable.generateAllChords()
 }
-

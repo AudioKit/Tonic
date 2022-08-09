@@ -1,8 +1,7 @@
-import XCTest
 import Tonic
+import XCTest
 
 class KeyTests: XCTestCase {
-
     func testKeyNotes() {
         XCTAssertEqual(Key.C.noteSet.array.map { $0.noteClass.description },
                        ["C", "D", "E", "F", "G", "A", "B"])
@@ -42,5 +41,4 @@ class KeyTests: XCTestCase {
 
         XCTAssertEqual(Key.C.noteSet.symmetricDifference(Key.Cm.noteSet).array.map { $0.noteClass.description }, ["E♭", "E", "A♭", "A", "B♭", "B"])
     }
-
 }

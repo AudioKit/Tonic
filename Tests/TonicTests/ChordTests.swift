@@ -1,8 +1,7 @@
-import XCTest
 import Tonic
+import XCTest
 
 class ChordTests: XCTestCase {
-
     func testChords() {
         XCTAssertTrue(Chord.C.isTriad)
         XCTAssertEqual(Chord.Cs.description, "C♯")
@@ -70,11 +69,10 @@ class ChordTests: XCTestCase {
 
         let G11 = Chord(notes: [.G, .B, .D, .F, .A, .C])
         XCTAssertEqual(G11?.description, "G11")
-
     }
 
     func testInversions() {
-        let chord = Chord(notes:  [.C, .E, .G])!
+        let chord = Chord(notes: [.C, .E, .G])!
         XCTAssertEqual(chord.inversion, 0)
         XCTAssertTrue(chord.isTriad)
 
@@ -88,8 +86,7 @@ class ChordTests: XCTestCase {
     }
 
     func testTriadsWithRedundantNotes() {
-        let chord = Chord(notes:  [.C, .E, .G, Note(.C, octave: 5)])!
+        let chord = Chord(notes: [.C, .E, .G, Note(.C, octave: 5)])!
         XCTAssertEqual(chord.description, "C")
     }
 }
-

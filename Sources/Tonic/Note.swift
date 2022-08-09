@@ -3,7 +3,7 @@ import Foundation
 /// A pitch with a particular spelling.
 public struct Note: Equatable, Hashable {
     /// Base name for the note
-    public var noteClass: NoteClass = NoteClass(.C, accidental: .natural)
+    public var noteClass: NoteClass = .init(.C, accidental: .natural)
 
     /// Convenience accessor for the letter of the note
     public var letter: Letter { noteClass.letter }
@@ -64,8 +64,6 @@ public struct Note: Equatable, Hashable {
                 noteClass = NoteClass(letter, accidental: accidental)
             }
         }
-
-
     }
 
     /// Initialize from raw value
@@ -76,10 +74,10 @@ public struct Note: Equatable, Hashable {
         let accidental = Accidental(rawValue: Int8(index % 5) - 2)!
         noteClass = NoteClass(letter, accidental: accidental)
     }
-    
+
     /// MIDI Note 0-127 starting at C
     public var noteNumber: Int8 {
-        let octaveBounds = ((octave + 1) * 12)...((octave + 2) * 12)
+        let octaveBounds = ((octave + 1) * 12) ... ((octave + 2) * 12)
         var note = Int(noteClass.letter.baseNote) + Int(noteClass.accidental.rawValue)
         while !octaveBounds.contains(note) {
             note += 12
@@ -96,7 +94,6 @@ public struct Note: Equatable, Hashable {
     public func spelling(in key: Key) -> NoteClass {
         Note(pitch: pitch, key: key).noteClass
     }
-
 
     /// Calculate the distance in semitones to another note
     /// - Parameter next: note to which you want to know the distance
@@ -116,7 +113,7 @@ public struct Note: Equatable, Hashable {
         while newLetterIndex < 0 {
             newLetterIndex += 7
         }
-        
+
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         for accidental in Accidental.allCases {
             newNote = Note(newLetter, accidental: accidental, octave: newOctave)
@@ -152,7 +149,6 @@ extension Note: Comparable {
 }
 
 extension Note: IntRepresentable {
-
     public init(intValue: Int) {
         octave = (intValue / 35) - 1
         let letter = Letter(rawValue: (intValue % 35) / 5)!
@@ -162,7 +158,7 @@ extension Note: IntRepresentable {
 
     /// Global index of the note for use in a NoteSet
     public var intValue: Int {
-        (octave+1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue)+2)
+        (octave + 1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue) + 2)
     }
 }
 

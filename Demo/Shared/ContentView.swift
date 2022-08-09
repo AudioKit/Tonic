@@ -1,6 +1,6 @@
-import SwiftUI
 import Keyboard
 import MIDIKit
+import SwiftUI
 import Tonic
 
 struct ContentView: View {
@@ -28,10 +28,9 @@ struct ContentView: View {
                 if root.noteNumber > note.noteNumber {
                     note = Note(note.letter, accidental: note.accidental, octave: note.octave + 1)
                 }
-                
+
                 let interval = Interval.betweenNotes(root, note)
                 return interval?.description ?? "R"
-                
             }
         }
         return ""
@@ -39,7 +38,7 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            VStack() {
+            VStack {
                 Text(chordIdentifier.chordName).font(.largeTitle)
                 Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
                          latching: true,

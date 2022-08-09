@@ -64,10 +64,10 @@ public enum ChordType: Int, CaseIterable {
 
     /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh
     case minorEleventh
-    
+
     /// Minor Seventh Flat Fifth: Major Third, Diminished Fifth, Major Seventh
     case majorSeventhFlatFifth
-    
+
     /// Minor Seventh Sharp Fifth: Major Third, Augmented Fifth, Major Seventh
     case minorSeventhSharpFifth
 
@@ -76,10 +76,10 @@ public enum ChordType: Int, CaseIterable {
 
     /// Dominant Flat Fifth: Major Third, Diminished Fifth, Minor Seventh
     case dominantFlatFifth
-    
+
     /// Dominant Sharp Fifth: Major Third, Augmented Fifth, Minor Seventh
     case dominantSharpFifth
-    
+
     /// Dominant Flat Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh
     case dominantFlatNinthSharpEleventh
 
@@ -88,7 +88,6 @@ public enum ChordType: Int, CaseIterable {
 
     /// Minor Seventh Flat Ninth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh
     case minorSeventhFlatNinthAddEleventh
-
 
     var intervals: [Interval] {
         switch self {
@@ -123,11 +122,9 @@ public enum ChordType: Int, CaseIterable {
         case .minorSeventhFlatNinthAddEleventh: return [.m3, .P5, .m7, .m9, .P11]
         }
     }
-
 }
 
-extension ChordType: CustomStringConvertible{
-
+extension ChordType: CustomStringConvertible {
     /// Adornment to the Root NoteClass (letter+accidental) that defines the chord type
     public var description: String {
         switch self {
@@ -162,5 +159,4 @@ extension ChordType: CustomStringConvertible{
         case .minorSeventhFlatNinthAddEleventh: return "m7♭9(add11)"
         }
     }
-
 }

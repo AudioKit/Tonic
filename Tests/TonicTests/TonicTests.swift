@@ -1,8 +1,7 @@
-import XCTest
 import Tonic
+import XCTest
 
 final class TonicTests: XCTestCase {
-
     func testScales() {
         XCTAssertEqual(Scale.blues.intervals, [.m3, .P4, .d5, .P5, .m7])
         XCTAssertEqual(Scale.pentatonicMinor.intervals, [.m3, .P4, .P5, .m7])
@@ -18,7 +17,7 @@ final class TonicTests: XCTestCase {
 
     func testNoteSet() {
         var set = NoteSet()
-        for i in 0..<128 {
+        for i in 0 ..< 128 {
             set.add(Note(pitch: Pitch(Int8(i))))
         }
         XCTAssertEqual(set.count, 128)
@@ -50,5 +49,4 @@ final class TonicTests: XCTestCase {
         let range = (Pitch(60) ... Pitch(64))
         XCTAssertEqual(range.lowerBound, Pitch(60))
     }
-
 }

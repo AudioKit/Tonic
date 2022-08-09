@@ -1,8 +1,7 @@
-import XCTest
 import Tonic
+import XCTest
 
 final class ReadMeTests: XCTestCase {
-
     // What's the note for this pitch in this key?
     func testNoteForPitchInKey() {
         let midiNoteNumber: Int8 = 61
@@ -38,5 +37,4 @@ final class ReadMeTests: XCTestCase {
         let answer: [Note] = [.Eb, .E, .Ab, .A, .Bb, .B]
         XCTAssertEqual(differentNoteSet.array.sorted(), answer)
     }
-
 }

@@ -4,7 +4,6 @@ public typealias NoteClassSet = BitSetAdapter<NoteClass, BitSet64>
 
 /// A note letter and accidental which spell a note. This leaves out the octave of the note.
 public struct NoteClass: Equatable, Hashable {
-
     /// Letter of the note class
     public var letter: Letter
 
@@ -37,12 +36,11 @@ extension NoteClass: CustomStringConvertible {
 
 extension NoteClass: IntRepresentable {
     public init(intValue: Int) {
-        self.letter = Letter(rawValue: intValue / Accidental.count)!
-        self.accidental = Accidental(rawValue: Int8((intValue % Accidental.count) - Accidental.naturalIndex))!
+        letter = Letter(rawValue: intValue / Accidental.count)!
+        accidental = Accidental(rawValue: Int8((intValue % Accidental.count) - Accidental.naturalIndex))!
     }
 
     public var intValue: Int {
         Accidental.count * letter.rawValue + Int(accidental.rawValue) + Accidental.naturalIndex
     }
 }
-

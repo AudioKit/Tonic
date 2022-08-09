@@ -1,11 +1,10 @@
 
-import XCTest
 import Tonic
+import XCTest
 
 class BitSetTests: XCTestCase {
-
     func testBitSet() {
-        for i in 0..<512 {
+        for i in 0 ..< 512 {
             var set = BitSet512()
             set.add(bit: i)
             XCTAssertTrue(set.isSet(bit: i))
@@ -48,6 +47,5 @@ class BitSetTests: XCTestCase {
 
         let set2 = union.subtracting(set0)
         XCTAssertEqual(set1, set2)
-
     }
 }
