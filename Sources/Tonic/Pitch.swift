@@ -51,6 +51,10 @@ public struct Pitch: Equatable, Hashable {
     public var pitchClass: Int8 {
         midiNoteNumber % 12
     }
+
+    public func existsNaturally(in key: Key) -> Bool {
+        key.noteSet.array.map({ $0.noteClass }).contains(note(in: key).noteClass)
+    }
 }
 
 extension Pitch: IntRepresentable {
