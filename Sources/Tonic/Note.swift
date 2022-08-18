@@ -144,7 +144,7 @@ public struct Note: Equatable, Hashable {
 
 extension Note: Comparable {
     public static func < (lhs: Note, rhs: Note) -> Bool {
-        (lhs.letter, lhs.accidental, lhs.octave) < (rhs.letter, rhs.accidental, rhs.octave)
+        lhs.pitch < rhs.pitch
     }
 }
 
