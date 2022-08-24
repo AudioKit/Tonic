@@ -7,6 +7,9 @@ final class TonicTests: XCTestCase {
         XCTAssertEqual(Scale.pentatonicMinor.intervals, [.P1, .m3, .P4, .P5, .m7])
         XCTAssertEqual(Scale.major.intervals, [.P1, .M2, .M3, .P4, .P5, .M6, .M7])
         XCTAssertEqual(Scale.minor.intervals, [.P1, .M2, .m3, .P4, .P5, .m6, .m7])
+        XCTAssertEqual(Scale.lydian.intervals, [.P1, .M2, .M3, .A4, .P5, .M6, .M7])
+        XCTAssertEqual(Scale.enigmatic.intervals, [.P1, .m2, .M3, .A4, .A5, .A6, .M7])
+        XCTAssertEqual(Scale.locrian.intervals, [.P1, .m2, .m3, .P4, .d5, .m6, .m7])
         XCTAssertEqual(Scale.chromatic.intervals, [.P1, .m2, .M2, .m3, .M3, .P4, .d5, .P5, .m6, .M6, .m7, .M7])
 
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.blues))
