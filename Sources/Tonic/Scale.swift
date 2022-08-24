@@ -8,7 +8,7 @@ public struct Scale: OptionSet, Hashable {
 
     public var intervals: [Interval] {
         var result: [Interval] = []
-        for i in 0 ..< 12 {
+        for i in 0 ..< Interval.allCases.count {
             if (rawValue >> i) & 1 != 0 {
                 result.append(Interval(rawValue: i)!)
             }

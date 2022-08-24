@@ -2,6 +2,7 @@ import Tonic
 import XCTest
 
 final class TonicTests: XCTestCase {
+
     func testScales() {
         XCTAssertEqual(Scale.blues.intervals, [.P1, .m3, .P4, .d5, .P5, .m7])
         XCTAssertEqual(Scale.pentatonicMinor.intervals, [.P1, .m3, .P4, .P5, .m7])
