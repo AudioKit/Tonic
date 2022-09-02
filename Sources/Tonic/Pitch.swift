@@ -1,3 +1,5 @@
+// Copyright AudioKit. All Rights Reserved. Revision History at http://github.com/AudioKit/Tonic/
+
 import Foundation
 
 public typealias PitchSet = BitSetAdapter<Pitch, BitSet128>

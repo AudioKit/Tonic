@@ -1,3 +1,5 @@
+// Copyright AudioKit. All Rights Reserved. Revision History at http://github.com/AudioKit/Tonic/
+
 import Foundation
 
 /// A table of note sets so we can look up chord names.

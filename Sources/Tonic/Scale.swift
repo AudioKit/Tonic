@@ -1,3 +1,5 @@
+// Copyright AudioKit. All Rights Reserved. Revision History at http://github.com/AudioKit/Tonic/
+
 import Foundation
 
 /// A set of intervals from the root (tonic).

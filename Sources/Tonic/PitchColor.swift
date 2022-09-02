@@ -1,3 +1,4 @@
+// Copyright AudioKit. All Rights Reserved. Revision History at http://github.com/AudioKit/Tonic/
 
 // CoreGraphics is not available on Linux.
 #if os(macOS) || os(iOS)
