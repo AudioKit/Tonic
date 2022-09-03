@@ -34,6 +34,21 @@ jobs:
           set -euo pipefail
           swift test
 
+  demo:
+    strategy:
+      matrix:
+        xcode_version: ['13.4']
+    runs-on: macos-12
+    env:
+      DEVELOPER_DIR: /Applications/Xcode_${{ matrix.xcode_version }}.app
+    steps:
+      - name: Check out Tonic
+        uses: actions/checkout@v2
+      - name: Build TonicDemo
+        run: |
+          set -euo pipefail
+          xcodebuild -project Demo/TonicDemo.xcodeproj -sdk iphonesimulator -scheme TonicDemo -arch x86_64 ONLY_ACTIVE_ARCH=YES CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" clean build | xcpretty -c
+
 #  build-windows:
 #    runs-on: windows-2019
 #
