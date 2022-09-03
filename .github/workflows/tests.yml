@@ -12,7 +12,7 @@ jobs:
     name: Test
     uses: AudioKit/ci/.github/workflows/swift_test.yml@main
     with:
-      scheme: Flow
+      scheme: Tonic
       platforms: iOS macOS tvOS watchOS Linux
       swift-versions: 5.3 5.4 5.5 5.6
 
