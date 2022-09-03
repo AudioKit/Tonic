@@ -6,7 +6,7 @@ let package = Package(
     name: "Tonic",
     products: [.library(name: "Tonic", targets: ["Tonic"])],
     targets: [
-        .target(name: "Tonic", exclude: ["Tonic.docc"]),
+        .target(name: "Tonic", resources: [.process("Tonic.docc")]),
         .testTarget(name: "TonicTests", dependencies: ["Tonic"]),
     ]
 )
