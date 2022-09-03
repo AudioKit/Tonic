@@ -39,3 +39,11 @@ jobs:
           project: Demo/TonicDemo.xcodeproj
           scheme: ${{ matrix.scheme }}
           xcode_version: ${{ matrix.xcode_version }}
+
+  # Send notification to Discord on failure.
+  send_notification:
+    name: Send Notification
+    uses: AudioKit/ci/.github/workflows/send_notification.yml@main
+    needs: [swift_test, build_demo]
+    if: ${{ failure() && github.ref == 'refs/heads/main' }}
+    secrets: inherit
