@@ -41,6 +41,10 @@ These questions are all tested in our unit tests explicitly.
 - **Strong typing**. Use types to prevent errors (e.g. `Pitch` instead of `UInt8`).
 - **Good performance**. Tonic uses bit sets to represent pitch sets and note sets.
 
+## Documentation
+
+The documentation is host on the [AudioKit.io Website](https://www.audiokit.io/Tonic/). The package includes a demo project as well.
+
 ## Install
 
 Install using Swift Package Manager.
