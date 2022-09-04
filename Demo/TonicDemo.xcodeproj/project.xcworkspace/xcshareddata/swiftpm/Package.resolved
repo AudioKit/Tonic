@@ -1,32 +1,34 @@
 {
-  "pins" : [
-    {
-      "identity" : "keyboard",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/audiokit/Keyboard",
-      "state" : {
-        "branch" : "main",
-        "revision" : "83aac2b98e1a763f7c37954a28c794a28b1ffcb3"
+  "object": {
+    "pins": [
+      {
+        "package": "Keyboard",
+        "repositoryURL": "https://github.com/audiokit/Keyboard",
+        "state": {
+          "branch": "main",
+          "revision": "a19fd275871cbaa4f80b87e5566c1c1fc0560d7b",
+          "version": null
+        }
+      },
+      {
+        "package": "MIDIKit",
+        "repositoryURL": "https://github.com/orchetect/MIDIKit",
+        "state": {
+          "branch": null,
+          "revision": "80baa7a57debd6982389f03bb7c8634c291df7ef",
+          "version": "0.6.1"
+        }
+      },
+      {
+        "package": "TimecodeKit",
+        "repositoryURL": "https://github.com/orchetect/TimecodeKit",
+        "state": {
+          "branch": null,
+          "revision": "4159255c40aca9b99b327a1cf6a0ae75d4487e3c",
+          "version": "1.3.1"
+        }
       }
-    },
-    {
-      "identity" : "midikit",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/orchetect/MIDIKit",
-      "state" : {
-        "revision" : "855b9ec1e17fede33dd8eee91374652ea6ee1f83",
-        "version" : "0.5.2"
-      }
-    },
-    {
-      "identity" : "swiftradix",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/orchetect/SwiftRadix",
-      "state" : {
-        "revision" : "467bf8936f1a1ab5cb65b8976645a9b1dd385882",
-        "version" : "1.2.0"
-      }
-    }
-  ],
-  "version" : 2
+    ]
+  },
+  "version": 1
 }

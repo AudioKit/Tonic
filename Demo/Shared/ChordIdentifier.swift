@@ -1,9 +1,10 @@
 import Combine
 import Keyboard
 import Tonic
+import CoreGraphics
 
 class ChordIdentifier: ObservableObject {
-    func noteOn(pitch: Pitch) {
+    func noteOn(pitch: Pitch, position: CGPoint = .zero) {
         pitchSet.add(pitch)
     }
 

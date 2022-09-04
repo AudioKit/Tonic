@@ -9,7 +9,7 @@ struct ContentView: View {
     @StateObject var chordIdentifier = ChordIdentifier()
     var midiController = MIDIController()
 
-    func eventHandler(events: [MIDIKit.MIDI.Event]) {
+    func eventHandler(events: [MIDIEvent]) {
         for event in events {
             if event.isChannelVoice(ofType: .noteOn) {
                 chordIdentifier.noteOn(pitch: Pitch(Int8(event.midi1RawBytes()[1])))
@@ -40,14 +40,14 @@ struct ContentView: View {
         VStack {
             VStack {
                 Text(chordIdentifier.chordName).font(.largeTitle)
-                Keyboard(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch,
+                Keyboard(layout: .piano(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch),
                          latching: true,
                          noteOn: chordIdentifier.noteOn,
                          noteOff: chordIdentifier.noteOff) { pitch, isActivated in
                     KeyboardKey(pitch: pitch,
                                 isActivated: isActivated,
                                 text: text(pitch: pitch),
-                                color: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
+                                pressedColor: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
                                 isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
                 }
             }.padding(50)
