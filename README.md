@@ -1,9 +1,10 @@
 # Tonic
 
-<img src="demo.png" alt="Demo" />
-
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FAudioKit%2FTonic%2Fbadge%3Ftype%3Dswift-versions)](https://swiftpackageindex.com/AudioKit/Tonic)
 [![](https://img.shields.io/endpoint?url=https%3A%2F%2Fswiftpackageindex.com%2Fapi%2Fpackages%2FAudioKit%2FTonic%2Fbadge%3Ftype%3Dplatforms)](https://swiftpackageindex.com/AudioKit/Tonic)
+
+<img src="Sources/Tonic/Tonic.docc/Resources/demo.png" alt="Demo" />
+
 
 Swift library for music theory, currently focused on chords/harmony.
 

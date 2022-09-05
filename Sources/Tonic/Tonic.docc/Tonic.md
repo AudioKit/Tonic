@@ -4,6 +4,10 @@ Swift library for music theory, currently focused on chords/harmony.
 
 ## Overview
 
+Code is hosted on Github: [](https://github.com/AudioKit/Tonic/)
+
+![Demo Screenshot](demo)
+
 Tonic answers musical questions, such as:
 
 - What's the note for this pitch in this key? 
