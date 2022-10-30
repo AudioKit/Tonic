@@ -27,6 +27,8 @@ class KeyTests: XCTestCase {
                        ["C♯", "D♯m", "E♯m", "F♯", "G♯", "A♯m", "B♯°"])
         XCTAssertEqual(Key.Cb.primaryTriads.map { $0.description },
                        ["C♭", "D♭m", "E♭m", "F♭", "G♭", "A♭m", "B♭°"])
+        XCTAssertEqual(Key(root: .C, scale: .harmonicMinor).primaryTriads.map { $0.description },
+                       ["Cm", "D°", "E♭⁺", "Fm", "G", "A♭", "B°"])
     }
 
     func testKeyChords() {
