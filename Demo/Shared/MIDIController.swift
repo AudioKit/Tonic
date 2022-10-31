@@ -12,16 +12,18 @@ class MIDIController {
         do {
             setMIDINetworkSession(policy: .anyone)
             try midiManager.start()
-            try midiManager.addInputConnection(toOutputs: .currentInputs(),
+            try midiManager.addInputConnection(toOutputs: [],
                                                tag: "inputConnections",
+                                               mode: .allEndpoints,
+                                               filter: .owned(),
                                                receiver: .events { [weak self] events in
-                                                   DispatchQueue.main.async { [weak self] in
-                                                       for eventHandler in self!.eventHandlers {
-                                                           eventHandler(events)
-                                                       }
-                                                   }
-                                               })
-
+                DispatchQueue.main.async { [weak self] in
+                    for eventHandler in self!.eventHandlers {
+                        eventHandler(events)
+                    }
+                }
+            })
+            
         } catch {
             print("MIDI did not start. Error: \(error)")
         }

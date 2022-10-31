@@ -11,11 +11,13 @@ struct ContentView: View {
 
     func eventHandler(events: [MIDIEvent]) {
         for event in events {
-            if event.isChannelVoice(ofType: .noteOn) {
-                chordIdentifier.noteOn(pitch: Pitch(Int8(event.midi1RawBytes()[1])))
-            }
-            if event.isChannelVoice(ofType: .noteOff) {
-                chordIdentifier.noteOff(pitch: Pitch(Int8(event.midi1RawBytes()[1])))
+            switch event {
+            case let .noteOn(payload):
+                chordIdentifier.noteOn(pitch: Pitch(Int8(payload.note.number)))
+            case let .noteOff(payload):
+                chordIdentifier.noteOff(pitch: Pitch(Int8(payload.note.number)))
+            default:
+                break
             }
         }
     }

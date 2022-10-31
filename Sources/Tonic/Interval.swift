@@ -74,6 +74,7 @@ public enum Interval: Int, CaseIterable {
     /// Augmented Eleventh
     case A11
 
+    /// Number of semitones the interval spans
     var semitones: Int {
         switch self {
         case .P1: return 0
@@ -101,6 +102,7 @@ public enum Interval: Int, CaseIterable {
         }
     }
 
+    /// Number of letters the interval spans
     var degree: Int {
         switch self {
         case .P1: return 1
