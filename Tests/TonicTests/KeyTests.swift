@@ -32,6 +32,9 @@ class KeyTests: XCTestCase {
     func testScalePrimaryTriads() {
         XCTAssertEqual(Key(root: .C, scale: .harmonicMinor).primaryTriads.map { $0.description },
                        ["Cm", "D°", "E♭⁺", "Fm", "G", "A♭", "B°"])
+
+        XCTAssertEqual(Key(root: .Db, scale: .phrygian).primaryTriads.map { $0.description },
+                       ["D♭m", "E𝄫", "F♭", "G♭m", "A♭°", "B𝄫", "C♭m"])
     }
 
     func testKeyChords() {

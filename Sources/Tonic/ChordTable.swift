@@ -15,7 +15,7 @@ class ChordTable {
     }
 
     static func generateChords(type: ChordType, _ r: inout [Int: Chord]) {
-        let accidentals: [Accidental] = [.flat, .natural, .sharp]
+        let accidentals: [Accidental] = [.doubleFlat, .flat, .natural, .sharp, .doubleSharp]
         for accidental in accidentals {
             for letter in Letter.allCases {
                 let root = NoteClass(letter, accidental: accidental)
