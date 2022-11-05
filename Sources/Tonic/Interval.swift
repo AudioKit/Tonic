@@ -75,7 +75,7 @@ public enum Interval: Int, CaseIterable {
     case A11
 
     /// Number of semitones the interval spans
-    var semitones: Int {
+    public var semitones: Int {
         switch self {
         case .P1: return 0
         case .m2: return 1
