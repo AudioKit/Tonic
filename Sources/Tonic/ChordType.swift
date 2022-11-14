@@ -91,7 +91,7 @@ public enum ChordType: Int, CaseIterable {
     /// Minor Seventh Flat Ninth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh
     case minorSeventhFlatNinthAddEleventh
 
-    var intervals: [Interval] {
+    public var intervals: [Interval] {
         switch self {
         case .majorTriad:                       return [.M3, .P5]
         case .minorTriad:                       return [.m3, .P5]
