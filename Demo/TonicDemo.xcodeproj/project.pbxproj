@@ -546,7 +546,7 @@
 		};
 		F1201BF12849F5130050DD22 /* XCRemoteSwiftPackageReference "Tonic" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/audulus/Tonic";
+			repositoryURL = "https://github.com/audiokit/Tonic";
 			requirement = {
 				branch = main;
 				kind = branch;
