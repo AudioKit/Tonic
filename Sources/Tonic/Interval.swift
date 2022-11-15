@@ -95,9 +95,9 @@ public enum Interval: Int, CaseIterable {
         case .P5: return 7
         case .A5: return 8
         case .m6: return 8
+        case .d7: return 9
         case .M6: return 9
         case .A6: return 10
-        case .d7: return 9
         case .m7: return 10
         case .M7: return 11
         case .m9: return 13
