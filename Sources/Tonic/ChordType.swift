@@ -18,16 +18,16 @@ public enum ChordType: Int, CaseIterable {
 
     /// Suspended Triad: Perfect Fourth, Perfect Fifth
     case suspendedTriad
-    
+
     /// Sixth: Major Third, Perfect Fifth, Major Sixth
     case sixth
 
     /// Minor Sixth: Minor Third, Perfect Fifth, Major Sixth
     case minorSixth
-    
+
     /// Half Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh
     case halfDiminishedSeventh
-    
+
     /// Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh
     case diminishedSeventh
 
@@ -42,7 +42,7 @@ public enum ChordType: Int, CaseIterable {
 
     /// Minor Major Seventh: Minor Third, Perfect Fifth, Major Seventh
     case minorMajorSeventh
-    
+
     /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth
     case halfDiminishedNinth
 
@@ -60,7 +60,7 @@ public enum ChordType: Int, CaseIterable {
 
     /// Minor Ninth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth
     case minorNinth
-    
+
     /// Minor Flat Ninth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth
     case minorFlatNinth
 
@@ -105,10 +105,10 @@ public enum ChordType: Int, CaseIterable {
 
     /// Minor Seventh Flat Ninth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh
     case minorSeventhFlatNinthAddEleventh
-    
+
     /// Major Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Perfect Thirteenth
     case majorThirteenth
-    
+
     /// Minor Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Perfect Thirteenth
     case minorThirteenth
 

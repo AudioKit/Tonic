@@ -49,7 +49,7 @@ public enum Interval: Int, CaseIterable {
 
     /// Augmented Sixth
     case A6
-    
+
     /// Diminished Seventh
     case d7
 
@@ -76,7 +76,7 @@ public enum Interval: Int, CaseIterable {
 
     /// Augmented Eleventh
     case A11
-    
+
     /// Perfect Thirteenth
     case P13
 
