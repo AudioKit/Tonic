@@ -16,12 +16,12 @@ final class ReadMeTests: XCTestCase {
 
     // What chords are in this key?
     func testChordsInKey() {
-        XCTAssertEqual(Key.Cm.chords.count, 38)
+        XCTAssertEqual(Key.Cm.chords.count, 41)
     }
 
     // What chords in this key contain this note?
     func testChordsInKeyContainNote() {
-        XCTAssertEqual(Key.C.chords.filter { $0.noteClasses.contains(.C) }.count, 23)
+        XCTAssertEqual(Key.C.chords.filter { $0.noteClasses.contains(.C) }.count, 25)
     }
 
     // What notes do these keys have in common?

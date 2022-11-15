@@ -53,6 +53,12 @@ class ChordTests: XCTestCase {
 
         let Cmaj7 = Chord(notes: [.C, .E, .G, .B])
         XCTAssertEqual(Cmaj7?.description, "Cmaj7")
+        
+        let ChalfDim7 = Chord(notes: [.C, .Eb, .Gb, .Bb])
+        XCTAssertEqual(ChalfDim7?.description, "C(1/2)°7")
+        
+        let Adim7 = Chord(notes: [.A, .C, .Eb, .Gb])
+        XCTAssertEqual(Adim7?.description, "A°7")
     }
 
     func testNinthNaming() {
@@ -69,6 +75,11 @@ class ChordTests: XCTestCase {
 
         let G11 = Chord(notes: [.G, .B, .D, .F, .A, .C])
         XCTAssertEqual(G11?.description, "G11")
+    }
+    
+    func testThirteenthNaming() {
+        let Dm13 = Chord(notes: [.D, .F, .A, .C, .E, .G, .B])
+        XCTAssertEqual(Dm13?.description, "Dm13")
     }
 
     func testInversions() {
