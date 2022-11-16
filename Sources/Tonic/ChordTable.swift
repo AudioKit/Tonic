@@ -65,7 +65,7 @@ public class ChordTable {
         return returnChords
     }
 
-    /// All chords include enharmonic (same NoteSet) - Use faster "chords" alternative when enharmonic chords are not needed
+    /// All chords include enharmonic (same NoteSet) - Use "chords" alternative when enharmonic chords are not needed
     lazy var chordsIncludingEnharmonic: [Chord] = ChordTable.generateAllChordsIncludingEnharmonic()
 
     /// Returns all of the chord options (enharmonic chords) for a set a notes (slow but effective)

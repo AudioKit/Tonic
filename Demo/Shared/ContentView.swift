@@ -44,7 +44,7 @@ struct ContentView: View {
             ChordTextView(chord: $chordIdentifier.chord,
                           potentialChords: chordIdentifier.potentialChords,
                           genericPitchSetDescription: chordIdentifier.genericPitchSetDescription)
-            
+
             Keyboard(layout: .piano(pitchRange: Note(.C, octave: -1).pitch ... Note(.B, octave: 0).pitch),
                      latching: true,
                      noteOn: chordIdentifier.noteOn,
@@ -62,7 +62,7 @@ struct ContentView: View {
             midiController.eventHandlers.append(eventHandler)
         }
     }
-    
+
     struct ChordTextView: View {
         @Binding var chord: Chord?
         let potentialChords: [Chord]
@@ -73,8 +73,7 @@ struct ContentView: View {
                 if potentialChords.count == 0 {
                     Text(genericPitchSetDescription).font(.largeTitle)
                         .padding(5)
-                }
-                else if potentialChords.count == 1 {
+                } else if potentialChords.count == 1 {
                     if let chord = chord {
                         Text("Chord: \(chord.description + " " + chord.inversionText)").font(.largeTitle)
                             .padding(5)

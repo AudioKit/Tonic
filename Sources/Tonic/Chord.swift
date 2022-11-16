@@ -105,7 +105,7 @@ public struct Chord: Equatable {
         }
         return nil
     }
-    
+
     /// Chord Inversion value - compares the array of noteClasses with a noteSet
     ///
     /// - Parameter noteSet: Array of chord notes in a chosen order
