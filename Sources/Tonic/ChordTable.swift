@@ -3,8 +3,8 @@
 import Foundation
 
 /// A table of note sets so we can look up chord names.
-class ChordTable {
-    static let shared = ChordTable()
+public class ChordTable {
+    public static let shared = ChordTable()
 
     static func hash(_ noteClasses: [NoteClass]) -> Int {
         var r = NoteSet()
@@ -41,4 +41,47 @@ class ChordTable {
     }
 
     lazy var chords: [Int: Chord] = ChordTable.generateAllChords()
+
+    static func generateAllChordsIncludingEnharmonic() -> [Chord] {
+        var returnChords: [Chord] = []
+
+        let accidentals: [Accidental] = [.doubleFlat, .flat, .natural, .sharp, .doubleSharp]
+        for chordType in ChordType.allCases {
+            for accidental in accidentals {
+                for letter in Letter.allCases {
+                    let root = NoteClass(letter, accidental: accidental)
+                    let chord = Chord(root, type: chordType)
+
+                    if chord.noteClasses.count <= chord.type.intervals.count {
+                        // chord is not valid
+                        continue
+                    }
+
+                    returnChords.append(chord)
+                }
+            }
+        }
+        print("generated \(returnChords.count) chords")
+        return returnChords
+    }
+
+    /// All chords include enharmonic (same NoteSet) - Use faster "chords" alternative when enharmonic chords are not needed
+    lazy var chordsIncludingEnharmonic: [Chord] = ChordTable.generateAllChordsIncludingEnharmonic()
+
+    /// Returns all of the chord options (enharmonic chords) for a set a notes (slow but effective)
+    ///
+    /// - Parameter noteSet: Array of chord notes in a chosen order
+    /// - Returns: array of enharmonic chords that could describe the NoteSet
+    public func getAllChordsForNoteSet(_ noteSet: NoteSet) -> [Chord] {
+        var returnedChords = [Chord]()
+        for chord in chordsIncludingEnharmonic {
+            if noteSet.noteClassSet.hashValue == chord.noteClassSet.hashValue {
+                // chord comes in as root position, so we still need the inversion value
+                let inversion = Chord.getInversion(noteSet: noteSet, noteClasses: chord.noteClasses)
+                let chordWithInversion = Chord(chord.root, type: chord.type, inversion: inversion)
+                returnedChords.append(chordWithInversion)
+            }
+        }
+        return returnedChords
+    }
 }
