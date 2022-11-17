@@ -106,7 +106,7 @@ class ChordIdentifier: ObservableObject {
         pitchSet.add(Pitch.init(48))
         pitchSet.add(Pitch.init(52))
         pitchSet.add(Pitch.init(56))
-        let _ = text(pitch: .init(48))
+        _ = text(pitch: .init(48))
         pitchSet.remove(Pitch.init(48))
         pitchSet.remove(Pitch.init(52))
         pitchSet.remove(Pitch.init(56))
