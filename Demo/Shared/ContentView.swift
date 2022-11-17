@@ -22,23 +22,6 @@ struct ContentView: View {
         }
     }
 
-    // this function is slow on first call when chord is not nil and causes a UI hang
-    func text(pitch: Pitch) -> String {
-        if let chord = chordIdentifier.chord {
-            if chordIdentifier.pitchSet.array.map({ $0.midiNoteNumber }).contains(pitch.midiNoteNumber) {
-                var note = pitch.note(in: chordIdentifier.detectedKey).noteClass.canonicalNote
-                let root = chord.root.canonicalNote
-                if root.noteNumber > note.noteNumber {
-                    note = Note(note.letter, accidental: note.accidental, octave: note.octave + 1)
-                }
-
-                let interval = Interval.betweenNotes(root, note)
-                return interval?.description ?? "R"
-            }
-        }
-        return ""
-    }
-
     var body: some View {
         VStack {
             ChordTextView(chord: $chordIdentifier.chord,
@@ -51,7 +34,7 @@ struct ContentView: View {
                      noteOff: chordIdentifier.noteOff) { pitch, isActivated in
                 KeyboardKey(pitch: pitch,
                             isActivated: isActivated,
-                            text: text(pitch: pitch),
+                            text: chordIdentifier.text(pitch: pitch),
                             pressedColor: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
                             isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
             }

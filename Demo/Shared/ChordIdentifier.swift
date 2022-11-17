@@ -4,6 +4,26 @@ import Keyboard
 import Tonic
 
 class ChordIdentifier: ObservableObject {
+    
+    init() { addThenRemovePitchSetForTriad() }
+    
+    // this function is slow on first call with a chord and causes a UI hang
+    func text(pitch: Pitch) -> String {
+        if let chord = chord {
+            if pitchSet.array.map({ $0.midiNoteNumber }).contains(pitch.midiNoteNumber) {
+                var note = pitch.note(in: detectedKey).noteClass.canonicalNote
+                let root = chord.root.canonicalNote
+                if root.noteNumber > note.noteNumber {
+                    note = Note(note.letter, accidental: note.accidental, octave: note.octave + 1)
+                }
+
+                let interval = Interval.betweenNotes(root, note)
+                return interval?.description ?? "R"
+            }
+        }
+        return ""
+    }
+    
     func noteOn(pitch: Pitch, position: CGPoint = .zero) {
         pitchSet.add(pitch)
     }
@@ -84,6 +104,17 @@ class ChordIdentifier: ObservableObject {
         } else {
             return nil
         }
+    }
+    
+    // just used to create a chord and remove it (this prevents a UI hang)
+    private func addThenRemovePitchSetForTriad() {
+        pitchSet.add(Pitch.init(48))
+        pitchSet.add(Pitch.init(52))
+        pitchSet.add(Pitch.init(56))
+        let _ = text(pitch: .init(48))
+        pitchSet.remove(Pitch.init(48))
+        pitchSet.remove(Pitch.init(52))
+        pitchSet.remove(Pitch.init(56))
     }
 }
 
