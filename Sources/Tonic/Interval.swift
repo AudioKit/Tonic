@@ -50,6 +50,9 @@ public enum Interval: Int, CaseIterable {
     /// Augmented Sixth
     case A6
 
+    /// Diminished Seventh
+    case d7
+
     /// Minor Seventh
     case m7
 
@@ -68,11 +71,14 @@ public enum Interval: Int, CaseIterable {
     /// Diminished Eleventh
     case d11
 
-    /// Perfect Eleveth
+    /// Perfect Eleventh
     case P11
 
     /// Augmented Eleventh
     case A11
+
+    /// Perfect Thirteenth
+    case P13
 
     /// Number of semitones the interval spans
     public var semitones: Int {
@@ -89,6 +95,7 @@ public enum Interval: Int, CaseIterable {
         case .P5: return 7
         case .A5: return 8
         case .m6: return 8
+        case .d7: return 9
         case .M6: return 9
         case .A6: return 10
         case .m7: return 10
@@ -99,6 +106,7 @@ public enum Interval: Int, CaseIterable {
         case .d11: return 16
         case .P11: return 17
         case .A11: return 18
+        case .P13: return 21
         }
     }
 
@@ -119,6 +127,7 @@ public enum Interval: Int, CaseIterable {
         case .m6: return 6
         case .M6: return 6
         case .A6: return 6
+        case .d7: return 7
         case .m7: return 7
         case .M7: return 7
         case .m9: return 9
@@ -127,6 +136,7 @@ public enum Interval: Int, CaseIterable {
         case .d11: return 11
         case .P11: return 11
         case .A11: return 11
+        case .P13: return 13
         }
     }
 
@@ -174,6 +184,7 @@ extension Interval: CustomStringConvertible {
         case .m6: return "m6"
         case .M6: return "M6"
         case .A6: return "A6"
+        case .d7: return "d7"
         case .m7: return "m7"
         case .M7: return "M7"
         case .m9: return "m9"
@@ -182,6 +193,7 @@ extension Interval: CustomStringConvertible {
         case .d11: return "d11"
         case .P11: return "P11"
         case .A11: return "A11"
+        case .P13: return "P13"
         }
     }
 
@@ -202,14 +214,16 @@ extension Interval: CustomStringConvertible {
         case .m6: return "Minor Sixth"
         case .M6: return "Major Sixth"
         case .A6: return "Augmented Sixth"
+        case .d7: return "Diminished Seventh"
         case .m7: return "Minor Seventh"
         case .M7: return "Major Seventh"
         case .m9: return "Minor Ninth"
         case .M9: return "Major Ninth"
         case .A9: return "Augmented Ninth"
         case .d11: return "Diminished Eleventh"
-        case .P11: return "Perfect Eleveth"
+        case .P11: return "Perfect Eleventh"
         case .A11: return "Augmented Eleventh"
+        case .P13: return "Perfect Thirteenth"
         }
     }
 }

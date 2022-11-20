@@ -44,6 +44,12 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(Db?.description, "D♭")
     }
 
+    func testSixthNaming() {
+        let noteSet6 = NoteSet(notes: [.C, .E, .G, .A])
+        let chords = ChordTable.shared.getAllChordsForNoteSet(noteSet6)
+        XCTAssertTrue(chords.contains(where: { $0.description == "C6" }))
+    }
+
     func testSeventhNaming() {
         let Am7 = Chord(notes: [.C, .E, .G, .A])
         XCTAssertEqual(Am7?.description, "Am7")
@@ -53,6 +59,12 @@ class ChordTests: XCTestCase {
 
         let Cmaj7 = Chord(notes: [.C, .E, .G, .B])
         XCTAssertEqual(Cmaj7?.description, "Cmaj7")
+
+        let ChalfDim7 = Chord(notes: [.C, .Eb, .Gb, .Bb])
+        XCTAssertEqual(ChalfDim7?.description, "C(1/2)°7")
+
+        let Adim7 = Chord(notes: [.A, .C, .Eb, .Gb])
+        XCTAssertEqual(Adim7?.description, "A°7")
     }
 
     func testNinthNaming() {
@@ -69,6 +81,13 @@ class ChordTests: XCTestCase {
 
         let G11 = Chord(notes: [.G, .B, .D, .F, .A, .C])
         XCTAssertEqual(G11?.description, "G11")
+    }
+
+    func testThirteenthNaming() {
+        let noteSet13 = NoteSet(notes: [.D, .F, .A, .C, .E, .G, .B])
+        let chords = ChordTable.shared.getAllChordsForNoteSet(noteSet13)
+        XCTAssertTrue(chords.contains(where: { $0.description == "Cmaj13" }))
+        XCTAssertTrue(chords.contains(where: { $0.description == "Dm13" }))
     }
 
     func testInversions() {

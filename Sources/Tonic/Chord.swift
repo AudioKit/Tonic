@@ -51,11 +51,7 @@ public struct Chord: Equatable {
         if let info = ChordTable.shared.chords[r.hashValue] {
             root = info.root
             type = info.type
-            if let firstNote = noteSet.array.first {
-                inversion = info.noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
-            } else {
-                inversion = 0
-            }
+            inversion = Chord.getInversion(noteSet: noteSet, noteClasses: info.noteClasses)
         } else {
             return nil
         }
@@ -108,6 +104,19 @@ public struct Chord: Equatable {
             }
         }
         return nil
+    }
+
+    /// Chord Inversion value - compares the array of noteClasses with a noteSet
+    ///
+    /// - Parameter noteSet: Array of chord notes in a chosen order
+    /// - Parameter noteClasses: Array of noteClasses for a given chord
+    /// - Returns: inversion integer value
+    static func getInversion(noteSet: NoteSet, noteClasses: [NoteClass]) -> Int {
+        if let firstNote = noteSet.array.first {
+            return noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
+        } else {
+            return 0
+        }
     }
 }
 
