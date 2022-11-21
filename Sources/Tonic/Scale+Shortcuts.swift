@@ -198,7 +198,10 @@ public extension Scale {
     static let lydianFlat7 = Scale(intervals: [.P1, .M2, .M3, .d5, .P5, .M6, .m7], description: "Lydian ♭7")
 
     /// Phrygian Major scale
-    static let phrygianMajor = Scale(intervals: [.P1, .m2, .M3, .P4, .P5, .m6, .m7], description: "Phrygian Major")
+    static let phrygianMajor = Scale(intervals: [.P1, .m2, .M3, .P4, .P5, .m6, .M7], description: "Phrygian Major")
+
+    /// Phrygian Dominant scale
+    static let phrygianDominant = Scale(intervals: [.P1, .m2, .M3, .P4, .P5, .m6, .m7], description: "Phrygian Dominant")
 
     /// Mixolydian ♭6 scale
     static let mixolydianFlat6 = Scale(intervals: [.P1, .M2, .M3, .P4, .P5, .m6, .m7], description: "Mixolydian ♭6")
