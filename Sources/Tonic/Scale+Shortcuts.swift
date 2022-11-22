@@ -12,7 +12,7 @@ public extension Scale {
     static let minor = Scale(intervals: Scale.aeolian.intervals, description: "Minor")
 
     /// Harmonic minor scale
-    static let harmonicMinor = Scale(intervals: [.P1, .P1, .M2, .m3, .P4, .P5, .m6, .M7], description: "Harmonic Minor")
+    static let harmonicMinor = Scale(intervals: [.P1, .M2, .m3, .P4, .P5, .m6, .M7], description: "Harmonic Minor")
 
     /// Melodic minor scale
     static let melodicMinor = Scale(intervals: [.P1, .M2, .m3, .P4, .P5, .M6, .M7], description: "Melodic Minor")
@@ -197,9 +197,6 @@ public extension Scale {
     /// Lydian ♭7 scale
     static let lydianFlat7 = Scale(intervals: [.P1, .M2, .M3, .d5, .P5, .M6, .m7], description: "Lydian ♭7")
 
-    /// Phrygian Major scale
-    static let phrygianMajor = Scale(intervals: [.P1, .m2, .M3, .P4, .P5, .m6, .M7], description: "Phrygian Major")
-
     /// Phrygian Dominant scale
     static let phrygianDominant = Scale(intervals: [.P1, .m2, .M3, .P4, .P5, .m6, .m7], description: "Phrygian Dominant")
 
@@ -363,7 +360,7 @@ extension Scale: CaseIterable {
             .mixolydianFlat2,
             .mixolydianFlat6,
             .phrygian,
-            .phrygianMajor,
+            .phrygianDominant,
             .phrygianFlat4,
             .ultraphrygian,
             .lydian,
