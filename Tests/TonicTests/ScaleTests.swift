@@ -13,6 +13,9 @@ final class ScaleTests: XCTestCase {
         XCTAssertEqual(Scale.locrian.intervals, [.P1, .m2, .m3, .P4, .d5, .m6, .m7])
         XCTAssertEqual(Scale.chromatic.intervals, [.P1, .m2, .M2, .m3, .M3, .P4, .d5, .P5, .m6, .M6, .m7, .M7])
 
+        XCTAssertEqual(Scale.harmonicMinor.intervals, [.P1, .M2, .m3, .P4, .P5, .m6, .M7])
+        XCTAssertEqual(Scale.phrygianDominant.intervals, [.P1, .m2, .M3, .P4, .P5, .m6, .m7])
+
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.blues))
         XCTAssertTrue(Scale.pentatonicMinor.isSubset(of: Scale.minor))
         XCTAssertFalse(Scale.blues.isSubset(of: Scale.minor))
