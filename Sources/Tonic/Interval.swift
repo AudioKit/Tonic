@@ -80,6 +80,9 @@ public enum Interval: Int, CaseIterable {
     /// Perfect Thirteenth
     case P13
 
+    /// Diminished Thirteenth
+    case d13
+
     /// Number of semitones the interval spans
     public var semitones: Int {
         switch self {
@@ -106,6 +109,7 @@ public enum Interval: Int, CaseIterable {
         case .d11: return 16
         case .P11: return 17
         case .A11: return 18
+        case .d13: return 20
         case .P13: return 21
         }
     }
@@ -136,6 +140,7 @@ public enum Interval: Int, CaseIterable {
         case .d11: return 11
         case .P11: return 11
         case .A11: return 11
+        case .d13: return 13
         case .P13: return 13
         }
     }
@@ -193,6 +198,7 @@ extension Interval: CustomStringConvertible {
         case .d11: return "d11"
         case .P11: return "P11"
         case .A11: return "A11"
+        case .d13: return "d13"
         case .P13: return "P13"
         }
     }
@@ -223,6 +229,7 @@ extension Interval: CustomStringConvertible {
         case .d11: return "Diminished Eleventh"
         case .P11: return "Perfect Eleventh"
         case .A11: return "Augmented Eleventh"
+        case .d13: return "Diminished Thirteenth"
         case .P13: return "Perfect Thirteenth"
         }
     }
