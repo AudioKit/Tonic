@@ -81,7 +81,7 @@ class ChordTests: XCTestCase {
 
         let G11 = Chord(notes: [.G, .B, .D, .F, .A, .C])
         XCTAssertEqual(G11?.description, "G11")
-        
+
         let BhalfDiminished11NoteSet = NoteSet(notes: [.B, .D, .F, .A, .C, .E])
         let chords = ChordTable.shared.getAllChordsForNoteSet(BhalfDiminished11NoteSet)
         XCTAssertTrue(chords.contains(where: { $0.description == "B(1/2)°11" }))
