@@ -82,6 +82,9 @@ public enum ChordType: Int, CaseIterable {
     /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh
     case minorEleventh
 
+    /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh
+    case halfDiminishedEleventh
+
     /// Minor Seventh Flat Fifth: Major Third, Diminished Fifth, Major Seventh
     case majorSeventhFlatFifth
 
@@ -112,6 +115,21 @@ public enum ChordType: Int, CaseIterable {
     /// Minor Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Perfect Thirteenth
     case minorThirteenth
 
+    /// Minor Seventh Flat Ninth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Diminished Thirteenth
+    case minorFlatThirteenthFlatNinth
+
+    /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, Perfect Thirteenth
+    case majorThirteenthSharpEleventh
+
+    /// Dominant Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Perfect Thirteenth
+    case dominantThirteenth
+
+    /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Diminished Thirteenth
+    case minorEleventhFlatThirteenth
+
+    /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Diminished Thirteenth
+    case halfDiminishedFlatThirteenth
+
     public var intervals: [Interval] {
         switch self {
         case .majorTriad:                       return [.M3, .P5]
@@ -140,6 +158,7 @@ public enum ChordType: Int, CaseIterable {
         case .majorEleventh:                    return [.M3, .P5, .M7, .M9, .P11]
         case .dominantEleventh:                 return [.M3, .P5, .m7, .M9, .P11]
         case .minorEleventh:                    return [.m3, .P5, .m7, .M9, .P11]
+        case .halfDiminishedEleventh:           return [.m3, .d5, .m7, .m9, .P11]
         case .majorSeventhFlatFifth:            return [.M3, .d5, .M7]
         case .minorSeventhSharpFifth:           return [.M3, .A5, .M7]
         case .majorNinthSharpEleventh:          return [.M3, .P5, .M7, .M9, .A11]
@@ -150,6 +169,11 @@ public enum ChordType: Int, CaseIterable {
         case .minorSeventhFlatNinthAddEleventh: return [.m3, .P5, .m7, .m9, .P11]
         case .majorThirteenth:                  return [.M3, .P5, .M7, .M9, .P11, .P13]
         case .minorThirteenth:                  return [.m3, .P5, .m7, .M9, .P11, .P13]
+        case .minorFlatThirteenthFlatNinth:     return [.m3, .P5, .m7, .m9, .P11, .d13]
+        case .majorThirteenthSharpEleventh:     return [.M3, .P5, .M7, .M9, .A11, .P13]
+        case .dominantThirteenth:               return [.M3, .P5, .m7, .M9, .P11, .P13]
+        case .minorEleventhFlatThirteenth:      return [.m3, .P5, .m7, .M9, .P11, .d13]
+        case .halfDiminishedFlatThirteenth:     return [.m3, .d5, .m7, .m9, .P11, .d13]
         }
     }
 }
@@ -184,6 +208,7 @@ extension ChordType: CustomStringConvertible {
         case .majorEleventh:                    return "maj11"
         case .dominantEleventh:                 return "11"
         case .minorEleventh:                    return "m11"
+        case .halfDiminishedEleventh:           return "(1/2)°11"
         case .majorSeventhFlatFifth:            return "Maj7♭5"
         case .minorSeventhSharpFifth:           return "Maj7♯5"
         case .majorNinthSharpEleventh:          return "maj9♯11"
@@ -194,6 +219,11 @@ extension ChordType: CustomStringConvertible {
         case .minorSeventhFlatNinthAddEleventh: return "m7♭9(add11)"
         case .majorThirteenth:                  return "maj13"
         case .minorThirteenth:                  return "m13"
+        case .minorFlatThirteenthFlatNinth:     return "m♭13♭9"
+        case .majorThirteenthSharpEleventh:     return "maj13♯11"
+        case .dominantThirteenth:               return "13"
+        case .minorEleventhFlatThirteenth:      return "m11♭13"
+        case .halfDiminishedFlatThirteenth:     return "(1/2)°♭13"
         }
     }
 }
