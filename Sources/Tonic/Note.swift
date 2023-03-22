@@ -80,11 +80,11 @@ public struct Note: Equatable, Hashable {
     /// MIDI Note 0-127 starting at C
     public var noteNumber: Int8 {
         let octaveBounds = ((octave + 1) * 12) ... ((octave + 2) * 12)
-        var note = Int(noteClass.letter.baseNote) + Int(noteClass.accidental.rawValue)
+        var note = Int(noteClass.letter.baseNote)
         while !octaveBounds.contains(note) {
             note += 12
         }
-        return Int8(note)
+        return Int8(note) + noteClass.accidental.rawValue
     }
 
     /// The pitch for the note

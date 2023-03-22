@@ -7,9 +7,28 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(c4.noteNumber, 60)
         XCTAssertEqual(c4.description, "C4")
 
+        let cb4 = Note(.C, accidental: .flat, octave: 4)
+        XCTAssertEqual(cb4.noteNumber, 59)
+        XCTAssertEqual(cb4.description, "C♭4")
+
         let c5 = Note(.C, octave: 5)
         XCTAssertEqual(c5.noteNumber, 72)
         XCTAssertEqual(c5.description, "C5")
+    }
+
+    // From: https://github.com/AudioKit/Tonic/issues/16
+    //
+    // AMERICAN STANDARD PITCH NOTATION (ASPN)
+    // https://viva.pressbooks.pub/openmusictheory/chapter/aspn/
+    // "Accidentals applied to a note do not have an effect on its ASPN number. For example, B♯3 and C4 have different octave numbers despite being enharmonically equivalent, because the B♯ is still considered part of the lower octave."
+    func testThatOctaveRefersToAccidentalLessBaseNote() {
+        let bs3 = Note(.B, accidental: .sharp, octave: 3)
+        XCTAssertEqual(bs3.noteNumber, 60)
+        XCTAssertEqual(bs3.description, "B♯3")
+
+        let cb4 = Note(.C, accidental: .flat, octave: 4)
+        XCTAssertEqual(cb4.noteNumber, 59)
+        XCTAssertEqual(cb4.description, "C♭4")
     }
 
     func testNoteSpelling() {
