@@ -126,3 +126,19 @@ extension Chord: CustomStringConvertible {
         return "\(root)\(type)"
     }
 }
+
+extension Chord {
+    
+    public static func getRankedChords(from notes: [Note]) -> [Chord] {
+        let potentialChords = ChordTable.shared.getAllChordsForNoteSet(NoteSet(notes: notes))
+        let orderedNotes = notes.sorted(by: { f, s in  f.noteNumber < s.noteNumber })
+        var ranks: [(Int, Chord)] = []
+        for chord in potentialChords {
+            let rank = orderedNotes.firstIndex(where: { $0.noteClass == chord.root })
+            ranks.append((rank ?? 0, chord))
+        }
+        let sortedRanks = ranks.sorted(by: { $0.0 < $1.0 })
+            
+        return sortedRanks.map({ $0.1 })
+    }
+}

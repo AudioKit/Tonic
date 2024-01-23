@@ -116,4 +116,29 @@ class ChordTests: XCTestCase {
         let chord = Chord(notes: [.C, .E, .G, Note(.C, octave: 5)])!
         XCTAssertEqual(chord.description, "C")
     }
+    
+    func testEnharmonicSuspensions() {
+        // Here we show how it is problematic to use a chord initializer if you worry about
+        // enharmonic chords
+        
+        let cSus2 = Chord(notes: [.C, .D, .G])!
+        let gSus4 = Chord(notes: [.C, .D, Note(.G, octave: 3)])!
+        
+        // See how both of these are returning the same chord
+        XCTAssertEqual(cSus2.description, "Gsus4")
+        XCTAssertEqual(gSus4.description, "Gsus4")
+        
+        // To deal with this, you have to tell Tonic that you want an array of potential chords
+        let gChords = Chord.getRankedChords(from: [.C, .D, Note(.G, octave: 3)])
+        
+        // What we want is for this to list "Gsus4 first and Csus2 second whereas
+        let cChords = Chord.getRankedChords(from: [.C, .D, .G])
+        
+        // should return the same array, in reversed order
+        XCTAssertEqual(gChords.map { $0.description }, ["Gsus4", "Csus2"])
+        XCTAssertEqual(cChords.map { $0.description }, ["Csus2", "Gsus4"])
+        
+        
+        
+    }
 }

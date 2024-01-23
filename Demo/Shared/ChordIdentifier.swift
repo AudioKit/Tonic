@@ -6,10 +6,16 @@ import Tonic
 class ChordIdentifier: ObservableObject {
     func noteOn(pitch: Pitch, position: CGPoint = .zero) {
         pitchSet.add(pitch)
+        notes.append(Note(pitch: pitch))
     }
-
+    
     func noteOff(pitch: Pitch) {
         pitchSet.remove(pitch)
+        notes.removeAll(where: {$0.pitch == pitch})
+    }
+    
+    @Published var notes: [Note] = [] {
+        didSet { potentialChords = getPotentialChords() }
     }
 
     @Published var pitchSet: PitchSet = .init() {
@@ -90,7 +96,8 @@ class ChordIdentifier: ObservableObject {
     }
 
     private func getPotentialChords() -> [Chord] {
-        return ChordTable.shared.getAllChordsForNoteSet(noteSet)
+        return Chord.getRankedChords(from: notes)
+        //return ChordTable.shared.getAllChordsForNoteSet(noteSet)
     }
 
     private func getDefaultChord() -> Chord? {
