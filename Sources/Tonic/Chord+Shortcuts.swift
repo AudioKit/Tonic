@@ -97,26 +97,47 @@ public extension Chord {
 
     // MARK: - Natural Suspended chords
 
-    /// C Suspended - Csus (Csus4)
-    static var Csus = Chord(.C, type: .suspendedTriad)
+    /// C Suspended Fourth - Csus4
+    static var Csus = Chord(.C, type: .suspendedFourthTriad)
 
-    /// D Suspended - Dsus (Dsus4)
-    static var Dsus = Chord(.D, type: .suspendedTriad)
+    /// D Suspended Fourth - Dsus4
+    static var Dsus = Chord(.D, type: .suspendedFourthTriad)
 
-    /// E Suspended - Esus (Esus4)
-    static var Esus = Chord(.E, type: .suspendedTriad)
+    /// E Suspended Fourth - Esus4
+    static var Esus = Chord(.E, type: .suspendedFourthTriad)
 
-    /// F Suspended - Fsus (Fsus4)
-    static var Fsus = Chord(.F, type: .suspendedTriad)
+    /// F Suspended Fourth - Fsus4
+    static var Fsus = Chord(.F, type: .suspendedFourthTriad)
 
-    /// G Suspended - Gsus (Gsus4)
-    static var Gsus = Chord(.G, type: .suspendedTriad)
+    /// G Suspended Fourth - Gsus4
+    static var Gsus = Chord(.G, type: .suspendedFourthTriad)
 
-    /// A Suspended - Asus (Asus4)
-    static var Asus = Chord(.A, type: .suspendedTriad)
+    /// A Suspended Fourth - Asus4
+    static var Asus4 = Chord(.A, type: .suspendedFourthTriad)
 
-    /// B Suspended - Bsus (Bsus4)
-    static var Bsus = Chord(.B, type: .suspendedTriad)
+    /// B Suspended Fourth - Bsus4
+    static var Bsus4 = Chord(.B, type: .suspendedFourthTriad)
+
+    /// C Suspended Second - Csus2
+    static var Csus2 = Chord(.C, type: .suspendedSecondTriad)
+
+    /// D Suspended Second - Dsus2
+    static var Dsus2 = Chord(.D, type: .suspendedSecondTriad)
+
+    /// E Suspended Second - Esus2
+    static var Esus2 = Chord(.E, type: .suspendedSecondTriad)
+
+    /// F Suspended Second - Fsus2
+    static var Fsus2 = Chord(.F, type: .suspendedSecondTriad)
+
+    /// G Suspended Second - Gsus2
+    static var Gsus2 = Chord(.G, type: .suspendedSecondTriad)
+
+    /// A Suspended Second - Asus2
+    static var Asus2 = Chord(.A, type: .suspendedSecondTriad)
+
+    /// B Suspended Second - Bsus2
+    static var Bsus2 = Chord(.B, type: .suspendedSecondTriad)
 
     // MARK: - Sharp Major chords
 
@@ -189,26 +210,47 @@ public extension Chord {
 
     // MARK: - Sharp Suspended chords
 
-    /// C♯ Susended - C♯sus (C♯sus4)
-    static var Cssus = Chord(.Cs, type: .suspendedTriad)
+    /// C♯ Suspended Fourth - C♯sus4
+    static var Cssus4 = Chord(.Cs, type: .suspendedFourthTriad)
 
-    /// D♯ Susended - D♯sus (D♯sus4)
-    static var Dssus = Chord(.Ds, type: .suspendedTriad)
+    /// D♯ Suspended Fourth - D♯sus4
+    static var Dssus4 = Chord(.Ds, type: .suspendedFourthTriad)
 
-    /// E♯ Susended - E♯sus (E♯sus4)
-    static var Essus = Chord(.Es, type: .suspendedTriad)
+    /// E♯ Suspended Fourth - E♯sus4
+    static var Essus4 = Chord(.Es, type: .suspendedFourthTriad)
 
-    /// F♯ Susended - F♯sus (F♯sus4)
-    static var Fssus = Chord(.Fs, type: .suspendedTriad)
+    /// F♯ Suspended Fourth - F♯sus4
+    static var Fssus4 = Chord(.Fs, type: .suspendedFourthTriad)
 
-    /// G♯ Susended - G♯sus (G♯sus4)
-    static var Gssus = Chord(.Gs, type: .suspendedTriad)
+    /// G♯ Suspended Fourth - G♯sus4
+    static var Gssus4 = Chord(.Gs, type: .suspendedFourthTriad)
 
-    /// A♯ Susended - A♯sus (A♯sus4)
-    static var Assus = Chord(.As, type: .suspendedTriad)
+    /// A♯ Suspended Fourth - A♯sus4
+    static var Assus4 = Chord(.As, type: .suspendedFourthTriad)
 
-    /// B♯ Susended - B♯sus (B♯sus4)
-    static var Bssus = Chord(.Bs, type: .suspendedTriad)
+    /// B♯ Suspended Fourth - B♯sus4
+    static var Bssus4 = Chord(.Bs, type: .suspendedFourthTriad)
+
+    /// C♯ Suspended Second - C♯sus2
+    static var Cssus2 = Chord(.Cs, type: .suspendedSecondTriad)
+
+    /// D♯ Suspended Second - D♯sus2
+    static var Dssus2 = Chord(.Ds, type: .suspendedSecondTriad)
+
+    /// E♯ Suspended Second - E♯sus2
+    static var Essus2 = Chord(.Es, type: .suspendedSecondTriad)
+
+    /// F♯ Suspended Second - F♯sus2
+    static var Fssus2 = Chord(.Fs, type: .suspendedSecondTriad)
+
+    /// G♯ Suspended Second - G♯sus2
+    static var Gssus2 = Chord(.Gs, type: .suspendedSecondTriad)
+
+    /// A♯ Suspended Second - A♯sus2
+    static var Assus2 = Chord(.As, type: .suspendedSecondTriad)
+
+    /// B♯ Suspended Second - B♯sus2
+    static var Bssus2 = Chord(.Bs, type: .suspendedSecondTriad)
 
     // MARK: - Flat Major chords
 
@@ -281,24 +323,45 @@ public extension Chord {
 
     // MARK: - Flat Suspended chords
 
-    /// C♭ Suspended - C♭sus (C♭sus4)
-    static var Cbsus = Chord(.Cb, type: .suspendedTriad)
+    /// C♭ Suspended Fourth - C♭sus4
+    static var Cbsus4 = Chord(.Cb, type: .suspendedFourthTriad)
 
-    /// D♭ Suspended - D♭sus (D♭sus4)
-    static var Dbsus = Chord(.Db, type: .suspendedTriad)
+    /// D♭ Suspended Fourth - D♭sus4
+    static var Dbsus4 = Chord(.Db, type: .suspendedFourthTriad)
 
-    /// E♭ Suspended - E♭sus (E♭sus4)
-    static var Ebsus = Chord(.Eb, type: .suspendedTriad)
+    /// E♭ Suspended Fourth - E♭sus4
+    static var Ebsus4 = Chord(.Eb, type: .suspendedFourthTriad)
 
-    /// F♭ Suspended - F♭sus (F♭sus4)
-    static var Fbsus = Chord(.Fb, type: .suspendedTriad)
+    /// F♭ Suspended Fourth - F♭sus4
+    static var Fbsus4 = Chord(.Fb, type: .suspendedFourthTriad)
 
-    /// G♭ Suspended - G♭sus (G♭sus4)
-    static var Gbsus = Chord(.Gb, type: .suspendedTriad)
+    /// G♭ Suspended Fourth - G♭sus4
+    static var Gbsus4 = Chord(.Gb, type: .suspendedFourthTriad)
 
-    /// A♭ Suspended - A♭sus (A♭sus4)
-    static var Absus = Chord(.Ab, type: .suspendedTriad)
+    /// A♭ Suspended Fourth - A♭sus4
+    static var Absus4 = Chord(.Ab, type: .suspendedFourthTriad)
 
-    /// B♭ Suspended - B♭sus (B♭sus4)
-    static var Bbsus = Chord(.Bb, type: .suspendedTriad)
+    /// B♭ Suspended Fourth - B♭sus4
+    static var Bbsus4 = Chord(.Bb, type: .suspendedFourthTriad)
+
+    /// C♭ Suspended Fourth - C♭sus2
+    static var Cbsus2 = Chord(.Cb, type: .suspendedSecondTriad)
+
+    /// D♭ Suspended Fourth - D♭sus2
+    static var Dbsus2 = Chord(.Db, type: .suspendedSecondTriad)
+
+    /// E♭ Suspended Fourth - E♭sus2
+    static var Ebsus2 = Chord(.Eb, type: .suspendedSecondTriad)
+
+    /// F♭ Suspended Fourth - F♭sus2
+    static var Fbsus2 = Chord(.Fb, type: .suspendedSecondTriad)
+
+    /// G♭ Suspended Fourth - G♭sus2
+    static var Gbsus2 = Chord(.Gb, type: .suspendedSecondTriad)
+
+    /// A♭ Suspended Fourth - A♭sus2
+    static var Absus2 = Chord(.Ab, type: .suspendedSecondTriad)
+
+    /// B♭ Suspended Fourth - B♭sus2
+    static var Bbsus2 = Chord(.Bb, type: .suspendedSecondTriad)
 }
