@@ -16,8 +16,11 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(Chord.Aaug.description, "A⁺")
         XCTAssertEqual(Chord(.Db, type: .augmentedTriad).description, "D♭⁺")
 
-        XCTAssertEqual(Chord.Asus.description, "Asus")
-        XCTAssertEqual(Chord.Bsus.description, "Bsus")
+        XCTAssertEqual(Chord.Asus4.description, "Asus4")
+        XCTAssertEqual(Chord.Bsus4.description, "Bsus4")
+
+        XCTAssertEqual(Chord.Asus2.description, "Asus2")
+        XCTAssertEqual(Chord.Bsus2.description, "Bsus2")
     }
 
     func testRomanNumerals() {

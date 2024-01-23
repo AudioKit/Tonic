@@ -16,8 +16,11 @@ public enum ChordType: Int, CaseIterable {
     /// Augmented Triad: Major Third, Augmented Fifth
     case augmentedTriad
 
-    /// Suspended Triad: Perfect Fourth, Perfect Fifth
-    case suspendedTriad
+    /// Suspended 2 Triad: Major Second, Perfect Fifth
+    case suspendedSecondTriad
+
+    /// Suspended 4 Triad: Perfect Fourth, Perfect Fifth
+    case suspendedFourthTriad
 
     /// Sixth: Major Third, Perfect Fifth, Major Sixth
     case sixth
@@ -136,7 +139,8 @@ public enum ChordType: Int, CaseIterable {
         case .minorTriad:                       return [.m3, .P5]
         case .diminishedTriad:                  return [.m3, .d5]
         case .augmentedTriad:                   return [.M3, .A5]
-        case .suspendedTriad:                   return [.P4, .P5]
+        case .suspendedSecondTriad:             return [.M2, .P5]
+        case .suspendedFourthTriad:             return [.P4, .P5]
         case .sixth:                            return [.M3, .P5, .M6]
         case .minorSixth:                       return [.m3, .P5, .M6]
         case .halfDiminishedSeventh:            return [.m3, .d5, .m7]
@@ -186,7 +190,8 @@ extension ChordType: CustomStringConvertible {
         case .minorTriad:                       return "m"
         case .diminishedTriad:                  return "°"
         case .augmentedTriad:                   return "⁺"
-        case .suspendedTriad:                   return "sus"
+        case .suspendedSecondTriad:             return "sus2"
+        case .suspendedFourthTriad:             return "sus4"
         case .sixth:                            return "6"
         case .minorSixth:                       return "m6"
         case .halfDiminishedSeventh:            return "(1/2)°7"
