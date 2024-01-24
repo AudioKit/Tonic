@@ -98,19 +98,19 @@ public extension Chord {
     // MARK: - Natural Suspended chords
 
     /// C Suspended Fourth - Csus4
-    static var Csus = Chord(.C, type: .suspendedFourthTriad)
+    static var Csus4 = Chord(.C, type: .suspendedFourthTriad)
 
     /// D Suspended Fourth - Dsus4
-    static var Dsus = Chord(.D, type: .suspendedFourthTriad)
+    static var Dsus4 = Chord(.D, type: .suspendedFourthTriad)
 
     /// E Suspended Fourth - Esus4
-    static var Esus = Chord(.E, type: .suspendedFourthTriad)
+    static var Esus4 = Chord(.E, type: .suspendedFourthTriad)
 
     /// F Suspended Fourth - Fsus4
-    static var Fsus = Chord(.F, type: .suspendedFourthTriad)
+    static var Fsus4 = Chord(.F, type: .suspendedFourthTriad)
 
     /// G Suspended Fourth - Gsus4
-    static var Gsus = Chord(.G, type: .suspendedFourthTriad)
+    static var Gsus4 = Chord(.G, type: .suspendedFourthTriad)
 
     /// A Suspended Fourth - Asus4
     static var Asus4 = Chord(.A, type: .suspendedFourthTriad)
