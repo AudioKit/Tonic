@@ -176,8 +176,8 @@ class ChordTests: XCTestCase {
 
         // Assert
         XCTAssertEqual(
-            pitches.sorted(),
-            expectedPitches.sorted(),
+            pitches,
+            expectedPitches,
             "Pitches should match expected pitches for 1st inversion"
         )
     }
@@ -216,8 +216,8 @@ class ChordTests: XCTestCase {
 
         // Assert
         XCTAssertEqual(
-            notes.sorted(),
-            expectedNotes.sorted(),
+            notes,
+            expectedNotes,
             "Notes should match expected notes for 1st inversion"
         )
     }

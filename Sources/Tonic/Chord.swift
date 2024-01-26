@@ -156,13 +156,13 @@ extension Chord {
     public func notes(octave: Int) -> [Note] {
         var notes = noteClasses.map {
             Note($0.letter, accidental: $0.accidental, octave: octave)
-        }.sorted()
+        }
 
         for step in 0..<inversion {
             let index = step % notes.count
             notes[index].octave += 1
         }
 
-        return notes
+        return notes.sorted()
     }
 }
