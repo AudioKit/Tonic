@@ -145,49 +145,80 @@ class ChordTests: XCTestCase {
     func testPitchesWithNoInversion() {
         // Arrange
         let chord = Chord(.C, type: .majorTriad, inversion: 0)
-        let expectedPitches = [Note(.C, octave: 0), Note(.E, octave: 0), Note(.G, octave: 0)].map { $0.pitch }
+        let expectedPitches = [
+            Note(.C, octave: 0),
+            Note(.E, octave: 0),
+            Note(.G, octave: 0)
+        ].map { $0.pitch }
 
         // Act
         let pitches = chord.pitches(octave: 0)
 
         // Assert
-        XCTAssertEqual(pitches, expectedPitches, "Pitches should match expected pitches for no inversion")
+        XCTAssertEqual(
+            pitches,
+            expectedPitches,
+            "Pitches should match expected pitches for no inversion"
+        )
     }
 
     func testPitchesWithInversion() {
         // Arrange
         let chord = Chord(.C, type: .majorTriad, inversion: 1)
-        let expectedPitches = [Note(.E, octave: 4), Note(.G, octave: 4), Note(.C, octave: 5)].map { $0.pitch }
-
+        let expectedPitches = [
+            Note(.E, octave: 4),
+            Note(.G, octave: 4),
+            Note(.C, octave: 5)
+        ].map { $0.pitch }
 
         // Act
         let pitches = chord.pitches(octave: 4)
 
         // Assert
-        XCTAssertEqual(pitches.sorted(), expectedPitches.sorted(), "Pitches should match expected pitches for 1st inversion")
+        XCTAssertEqual(
+            pitches.sorted(),
+            expectedPitches.sorted(),
+            "Pitches should match expected pitches for 1st inversion"
+        )
     }
 
     func testNotesWithNoInversion() {
         // Arrange
         let chord = Chord(.C, type: .majorTriad, inversion: 0)
-        let expectedNotes = [Note(.C, octave: 4), Note(.E, octave: 4), Note(.G, octave: 4)]
+        let expectedNotes = [
+            Note(.C, octave: 4),
+            Note(.E, octave: 4),
+            Note(.G, octave: 4)
+        ]
 
         // Act
         let notes = chord.notes(octave: 4)
 
         // Assert
-        XCTAssertEqual(notes, expectedNotes, "Notes should match expected notes for no inversion")
+        XCTAssertEqual(
+            notes,
+            expectedNotes,
+            "Notes should match expected notes for no inversion"
+        )
     }
 
     func testNotesWithInversion() {
         // Arrange
         let chord = Chord(.C, type: .majorTriad, inversion: 1)
-        let expectedNotes = [Note(.E, octave: 4), Note(.G, octave: 4), Note(.C, octave: 5)].sorted()
+        let expectedNotes = [
+            Note(.E, octave: 4),
+            Note(.G, octave: 4),
+            Note(.C, octave: 5)
+        ]
 
         // Act
         let notes = chord.notes(octave: 4)
 
         // Assert
-        XCTAssertEqual(notes.sorted(), expectedNotes.sorted(), "Notes should match expected notes for 1st inversion")
+        XCTAssertEqual(
+            notes.sorted(),
+            expectedNotes.sorted(),
+            "Notes should match expected notes for 1st inversion"
+        )
     }
 }
