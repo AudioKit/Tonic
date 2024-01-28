@@ -141,3 +141,28 @@ extension Chord {
         return sortedRanks.map({ $0.1 })
     }
 }
+
+extension Chord {
+    /// Returns all Pitches of a certain chord, taking into account the inversion, starting at the given octave
+    /// - Parameter octave: octave of the chord for inversion 0
+    /// - Returns: All pitches in that Chord
+    public func pitches(octave: Int) -> [Pitch] {
+        return notes(octave: octave).map { $0.pitch }
+    }
+
+    /// Returns all Notes of a certain chord, taking into account the inversion, starting at the given octave
+    /// - Parameter octave: initial octave of the chord for inversion 0
+    /// - Returns: All notes in that chord
+    public func notes(octave: Int) -> [Note] {
+        var notes = noteClasses.map {
+            Note($0.letter, accidental: $0.accidental, octave: octave)
+        }
+
+        for step in 0..<inversion {
+            let index = step % notes.count
+            notes[index].octave += 1
+        }
+
+        return notes.sorted()
+    }
+}
