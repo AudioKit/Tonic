@@ -6,7 +6,7 @@ import Foundation
 ///
 /// A representation of a chord as a set of note classes, with a root note class,
 /// and an inversion defined by the lowest note in the chord.
-public struct Chord: Equatable {
+public struct Chord: Equatable, Codable {
     /// Root note class of the chord
     public let root: NoteClass
 
@@ -128,7 +128,6 @@ extension Chord: CustomStringConvertible {
 }
 
 extension Chord {
-    
     public static func getRankedChords(from notes: [Note]) -> [Chord] {
         let potentialChords = ChordTable.shared.getAllChordsForNoteSet(NoteSet(notes: notes))
         let orderedNotes = notes.sorted(by: { f, s in  f.noteNumber < s.noteNumber })
@@ -142,3 +141,26 @@ extension Chord {
         return sortedRanks.map({ $0.1 })
     }
 }
+
+extension Chord {
+     private enum CodingKeys: String, CodingKey {
+         case root
+         case type
+         case inversion
+     }
+
+     public init(from decoder: Decoder) throws {
+         let container = try decoder.container(keyedBy: CodingKeys.self)
+         let root = try container.decode(NoteClass.self, forKey: .root)
+         let type = try container.decode(ChordType.self, forKey: .type)
+         let inversion = try container.decode(Int.self, forKey: .inversion)
+         self.init(root, type: type, inversion: inversion)
+     }
+
+     public func encode(to encoder: Encoder) throws {
+         var container = encoder.container(keyedBy: CodingKeys.self)
+         try container.encode(root, forKey: .root)
+         try container.encode(type, forKey: .type)
+         try container.encode(inversion, forKey: .inversion)
+     }
+ }

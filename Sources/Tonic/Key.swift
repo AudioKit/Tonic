@@ -5,7 +5,7 @@ import Foundation
 /// The key is the set of notes that are played in a composition, or portion of a composition.
 ///
 /// A key is composed of a Root ``Note``, and a ``Scale``.
-public struct Key: Equatable {
+public struct Key: Equatable, Codable {
     /// The primary note class of the key, also known as the tonic
     public let root: NoteClass
 
@@ -79,5 +79,25 @@ extension RangeReplaceableCollection {
     func rotatingLeft(positions: Int) -> SubSequence {
         let index = self.index(startIndex, offsetBy: positions, limitedBy: endIndex) ?? endIndex
         return self[index...] + self[..<index]
+    }
+}
+
+extension Key {
+    private enum CodingKeys: String, CodingKey {
+        case root
+        case scale
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let root = try container.decode(NoteClass.self, forKey: .root)
+        let scale = try container.decode(Scale.self, forKey: .scale)
+        self.init(root: root, scale: scale)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(root, forKey: .root)
+        try container.encode(scale, forKey: .scale)
     }
 }

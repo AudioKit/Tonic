@@ -32,3 +32,23 @@ public struct Scale: OptionSet, Hashable {
         rawValue = r
     }
 }
+
+extension Scale: Codable {
+    private enum CodingKeys: String, CodingKey {
+        case intervals
+        case description
+    }
+
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let intervals = try container.decode([Interval].self, forKey: .intervals)
+        let description = try container.decode(String.self, forKey: .description)
+        self = .init(intervals: intervals, description: description)
+    }
+
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(intervals, forKey: .intervals)
+        try container.encode(description, forKey: .description)
+    }
+}
