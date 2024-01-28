@@ -169,8 +169,8 @@ extension Chord {
             }
         }
 
-        // Stores the final notes shifted to the right octaves based on the inversion
-        var finalNotes: [Note] = []
+        // Stores all shifted notes 
+        var shiftedNotes: [Note] = []
 
         // Iterate over all inversion steps
         for step in 0..<inversion {
@@ -180,14 +180,14 @@ extension Chord {
 
             // if the last note still is higher increase by one again
             // This usually happens if a chord is longer than 2 Octaves
-            if let last = finalNotes.last ?? notes.last {
+            if let last = shiftedNotes.last ?? notes.last {
                 if notes[index].intValue < last.intValue {
                     notes[index].octave += 1
                 }
             }
             // Append the note with the right octave to a new array to we have a properly
             // sorted array in the end
-            finalNotes.append(notes[index])
+            shiftedNotes.append(notes[index])
         }
 
         return notes.sorted()
