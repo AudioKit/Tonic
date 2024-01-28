@@ -1,7 +1,7 @@
 // Copyright AudioKit. All Rights Reserved. Revision History at http://github.com/AudioKit/Tonic/
 
 // CoreGraphics is not available on Linux.
-#if os(macOS) || os(iOS)
+#if os(macOS) || os(iOS) || os(visionOS)
 import CoreGraphics
 
 /// Pitch represented as color.
