@@ -33,6 +33,8 @@ public struct Scale: OptionSet, Hashable {
     }
 }
 
+/// Automatic synthesis of Codable would use OptionSets RawRepresentable Conformance to de- and encode objects.
+/// Unfortunatly this will lead to the loss of the "description" property. That's why we decided to create explicit codable support.
 extension Scale: Codable {
     private enum CodingKeys: String, CodingKey {
         case intervals
