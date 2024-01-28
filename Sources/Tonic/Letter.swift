@@ -10,22 +10,7 @@ public enum Letter: Int, CaseIterable, Equatable, Hashable, Codable {
     case C, D, E, F, G, A, B
 
     var baseNote: UInt8 {
-        switch self {
-            case .C:
-                0
-            case .D:
-                2
-            case .E:
-                4
-            case .F:
-                5
-            case .G:
-                7
-            case .A:
-                9
-            case .B:
-                11
-        }
+        return [0, 2, 4, 5, 7, 9, 11][rawValue]
     }
 }
 

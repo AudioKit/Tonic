@@ -141,26 +141,3 @@ extension Chord {
         return sortedRanks.map({ $0.1 })
     }
 }
-
-extension Chord {
-     private enum CodingKeys: String, CodingKey {
-         case root
-         case type
-         case inversion
-     }
-
-     public init(from decoder: Decoder) throws {
-         let container = try decoder.container(keyedBy: CodingKeys.self)
-         let root = try container.decode(NoteClass.self, forKey: .root)
-         let type = try container.decode(ChordType.self, forKey: .type)
-         let inversion = try container.decode(Int.self, forKey: .inversion)
-         self.init(root, type: type, inversion: inversion)
-     }
-
-     public func encode(to encoder: Encoder) throws {
-         var container = encoder.container(keyedBy: CodingKeys.self)
-         try container.encode(root, forKey: .root)
-         try container.encode(type, forKey: .type)
-         try container.encode(inversion, forKey: .inversion)
-     }
- }

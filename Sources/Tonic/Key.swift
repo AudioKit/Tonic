@@ -81,23 +81,3 @@ extension RangeReplaceableCollection {
         return self[index...] + self[..<index]
     }
 }
-
-extension Key {
-    private enum CodingKeys: String, CodingKey {
-        case root
-        case scale
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let root = try container.decode(NoteClass.self, forKey: .root)
-        let scale = try container.decode(Scale.self, forKey: .scale)
-        self.init(root: root, scale: scale)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(root, forKey: .root)
-        try container.encode(scale, forKey: .scale)
-    }
-}

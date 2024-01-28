@@ -5,7 +5,7 @@ import Foundation
 public typealias NoteClassSet = BitSetAdapter<NoteClass, BitSet64>
 
 /// A note letter and accidental which spell a note. This leaves out the octave of the note.
-public struct NoteClass: Equatable, Hashable {
+public struct NoteClass: Equatable, Hashable, Codable {
     /// Letter of the note class
     public var letter: Letter
 
@@ -44,25 +44,5 @@ extension NoteClass: IntRepresentable {
 
     public var intValue: Int {
         Accidental.count * letter.rawValue + Int(accidental.rawValue) + Accidental.naturalIndex
-    }
-}
-
-extension NoteClass: Codable {
-    private enum CodingKeys: String, CodingKey {
-        case accidental
-        case letter
-    }
-
-    public init(from decoder: Decoder) throws {
-        let container = try decoder.container(keyedBy: CodingKeys.self)
-        let accidental = try container.decode(Accidental.self, forKey: .accidental)
-        let letter = try container.decode(Letter.self, forKey: .letter)
-        self.init(letter, accidental: accidental)
-    }
-
-    public func encode(to encoder: Encoder) throws {
-        var container = encoder.container(keyedBy: CodingKeys.self)
-        try container.encode(accidental, forKey: .accidental)
-        try container.encode(letter, forKey: .letter)
     }
 }
