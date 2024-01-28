@@ -154,13 +154,40 @@ extension Chord {
     /// - Parameter octave: initial octave of the chord for inversion 0
     /// - Returns: All notes in that chord
     public func notes(octave: Int) -> [Note] {
-        var notes = noteClasses.map {
-            Note($0.letter, accidental: $0.accidental, octave: octave)
+        // This array will store all the notes with the correct octaves
+        var notes: [Note] = []
+        // Convert the root note class to a note object
+        let rootNote = Note(root.letter, accidental: root.accidental, octave: octave)
+        // append the note to the array of our notes
+        notes.append(rootNote)
+
+        // Iterate over all intervals
+        for interval in self.type.intervals {
+            // Create the next note by using the shiftup function
+            if let shifted = rootNote.shiftUp(interval) {
+                notes.append(shifted)
+            }
         }
 
+        // Stores the final notes shifted to the right octaves based on the inversion
+        var finalNotes: [Note] = []
+
+        // Iterate over all inversion steps
         for step in 0..<inversion {
+            // increase the right index of the base chord depending on the inversion
             let index = step % notes.count
             notes[index].octave += 1
+
+            // if the last note still is higher increase by one again
+            // This usually happens if a chord is longer than 2 Octaves
+            if let last = finalNotes.last ?? notes.last {
+                if notes[index].intValue < last.intValue {
+                    notes[index].octave += 1
+                }
+            }
+            // Append the note with the right octave to a new array to we have a properly
+            // sorted array in the end
+            finalNotes.append(notes[index])
         }
 
         return notes.sorted()

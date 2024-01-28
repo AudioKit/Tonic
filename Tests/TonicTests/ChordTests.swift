@@ -221,4 +221,28 @@ class ChordTests: XCTestCase {
             "Notes should match expected notes for 1st inversion"
         )
     }
+
+    func testNotesWithMultipleOctaveChordInversion() {
+        // Arrange
+        let chord = Chord(.C, type: .majorThirteenth, inversion: 1)
+        let expectedNotes = [
+            Note(.E, octave: 4),
+            Note(.G, octave: 4),
+            Note(.B, octave: 4),
+            Note(.D, octave: 5),
+            Note(.F, octave: 5),
+            Note(.A, octave: 5),
+            Note(.C, octave: 6),
+        ]
+
+        // Act
+        let notes = chord.notes(octave: 4)
+
+        // Assert
+        XCTAssertEqual(
+            notes,
+            expectedNotes,
+            "Notes should match expected notes for 1st inversion"
+        )
+    }
 }
