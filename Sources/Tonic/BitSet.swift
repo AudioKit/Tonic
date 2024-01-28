@@ -3,7 +3,7 @@
 import Foundation
 
 /// Interface to bit sets used to represent sets of pitches and sets of notes.
-public protocol BitSet: Hashable {
+public protocol BitSet: Hashable, Codable {
     init()
     func isSet(bit: Int) -> Bool
     mutating func add(bit: Int)
@@ -195,7 +195,7 @@ public protocol IntRepresentable {
     var intValue: Int { get }
 }
 
-public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable {
+public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, Codable {
     public var bits: B
 
     public init() {

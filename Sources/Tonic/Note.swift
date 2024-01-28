@@ -3,7 +3,7 @@
 import Foundation
 
 /// A pitch with a particular spelling.
-public struct Note: Equatable, Hashable {
+public struct Note: Equatable, Hashable, Codable {
     /// Base name for the note
     public var noteClass: NoteClass = .init(.C, accidental: .natural)
 

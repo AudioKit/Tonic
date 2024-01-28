@@ -27,7 +27,7 @@ public extension PitchSet {
 ///
 /// We want to use a notion of pitch that lends itself to combinatorial algorithms,
 /// as opposed to using e.g. a fundamental frequency.
-public struct Pitch: Equatable, Hashable {
+public struct Pitch: Equatable, Hashable, Codable {
     /// MIDI Note Number 0-127
     public var midiNoteNumber: Int8
 

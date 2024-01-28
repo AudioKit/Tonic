@@ -6,7 +6,7 @@ import Foundation
 ///
 /// These letters can be modified by adding an ``Accidental`` to describe any ``NoteClass``.
 /// And by specificying an octave, you can create any ``Note``.
-public enum Letter: Int, CaseIterable, Equatable, Hashable {
+public enum Letter: Int, CaseIterable, Equatable, Hashable, Codable {
     case C, D, E, F, G, A, B
 
     var baseNote: UInt8 {
