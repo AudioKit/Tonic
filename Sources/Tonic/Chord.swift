@@ -128,6 +128,24 @@ extension Chord: CustomStringConvertible {
 }
 
 extension Chord {
+    
+    /// Get chords that match a set of pitches, listing enharmonic chords with sharp before flats
+    public static func getRankedChords(from pitchSet: PitchSet) -> [Chord] {
+        var flatNotes: [Note] = []
+        var sharpNotes: [Note] = []
+        var returnArray: [Chord] = []
+        
+        for pitch in pitchSet.array {
+            flatNotes.append(Note(pitch: pitch, key: .F))
+            sharpNotes.append(Note(pitch: pitch, key: .C))
+        }
+        returnArray.append(contentsOf: Chord.getRankedChords(from: sharpNotes))
+        returnArray.append(contentsOf: Chord.getRankedChords(from: flatNotes))
+        
+        return returnArray
+    }
+    /// Get chords from actual notes (spelling matters, C# F G# will not return a C# major)
+    /// Use pitch set version of this function for all enharmonic chords
     public static func getRankedChords(from notes: [Note]) -> [Chord] {
         let potentialChords = ChordTable.shared.getAllChordsForNoteSet(NoteSet(notes: notes))
         let orderedNotes = notes.sorted(by: { f, s in  f.noteNumber < s.noteNumber })
