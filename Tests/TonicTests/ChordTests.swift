@@ -141,6 +141,13 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(gChords.map { $0.description }, ["Gsus4", "Csus2"])
         XCTAssertEqual(cChords.map { $0.description }, ["Csus2", "Gsus4"])
     }
+    
+    func testEnharmonicChords() {
+        let midiNotes: [Int8] = [54, 58, 61]
+        let fSharp =  PitchSet(pitches: midiNotes.map { Pitch($0) } )
+        let chords = Chord.getRankedChords(from: fSharp)
+        XCTAssertEqual(chords.map { $0.description }, ["F♯", "G♭"])
+    }
 
     func testPitchesWithNoInversion() {
         // Arrange
