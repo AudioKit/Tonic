@@ -148,7 +148,7 @@ class ChordTests: XCTestCase {
         let chords = Chord.getRankedChords(from: fSharp)
         XCTAssertEqual(chords.map { $0.description }, ["F♯", "G♭"])
     }
-    
+
     func testDuplicateRankedChords() {
         let midiNotes: [Int8] = [60, 64, 67]
         let pitchSet = PitchSet(pitches: midiNotes.map { Pitch($0) } )
