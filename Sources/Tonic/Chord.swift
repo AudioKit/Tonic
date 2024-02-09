@@ -145,10 +145,7 @@ extension Chord {
             if !returnArray.contains(chord) {
                 returnArray.append(chord)
             }
-        }
-
-        returnArray.append(contentsOf: Chord.getRankedChords(from: flatNotes))
-        
+        }        
         return returnArray
     }
     /// Get chords from actual notes (spelling matters, C# F G# will not return a C# major)
