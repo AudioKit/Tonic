@@ -140,6 +140,13 @@ extension Chord {
             sharpNotes.append(Note(pitch: pitch, key: .C))
         }
         returnArray.append(contentsOf: Chord.getRankedChords(from: sharpNotes))
+
+        for chord in Chord.getRankedChords(from: flatNotes) {
+            if !returnArray.contains(chord) {
+                returnArray.append(chord)
+            }
+        }
+
         returnArray.append(contentsOf: Chord.getRankedChords(from: flatNotes))
         
         return returnArray
