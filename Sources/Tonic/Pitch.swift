@@ -21,6 +21,27 @@ public extension PitchSet {
     func contains(pitchClass: Int8) -> Bool {
         array.first { pitch in pitch.pitchClass == pitchClass } != nil
     }
+    var closedVoicing: PitchSet {
+        var pitchArray: [Pitch] = []
+        self.forEach { pitch in
+            // if this is a new note
+            if !pitchArray.map({ $0.midiNoteNumber % 12 }).contains(pitch.midiNoteNumber % 12) {
+                // add the new note in the closes octave to the bass note
+                if let bassNote = pitchArray.first {
+                    var pitchCopy = pitch
+                    while pitchCopy.midiNoteNumber > bassNote.midiNoteNumber + 12 {
+                        pitchCopy = Pitch(pitchCopy.midiNoteNumber - 12)
+                    }
+                    pitchArray.append(pitchCopy)
+                } else {
+                    pitchArray.append(pitch)
+                }
+
+            }
+        }
+
+        return PitchSet(pitches: pitchArray)
+    }
 }
 
 /// Essentially a midi note number.

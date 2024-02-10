@@ -96,8 +96,7 @@ class ChordIdentifier: ObservableObject {
     }
 
     private func getPotentialChords() -> [Chord] {
-        return Chord.getRankedChords(from: notes)
-        //return ChordTable.shared.getAllChordsForNoteSet(noteSet)
+        return Chord.getRankedChords(from: pitchSet)
     }
 
     private func getDefaultChord() -> Chord? {

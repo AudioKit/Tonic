@@ -259,4 +259,12 @@ class ChordTests: XCTestCase {
             "Notes should match expected notes for 1st inversion"
         )
     }
+    func testClosedVoicing() {
+        let openNotes: [Int8] = [60, 64 + 12, 67 + 24, 60 + 24, 64 + 36]
+        let results: [Int8] = [60, 64, 67]
+        let pitchSet = PitchSet(pitches: openNotes.map { Pitch($0) })
+        let resultSet = PitchSet(pitches: results.map { Pitch($0) })
+        print(pitchSet.closedVoicing.array)
+        XCTAssertEqual(pitchSet.closedVoicing, resultSet)
+    }
 }
