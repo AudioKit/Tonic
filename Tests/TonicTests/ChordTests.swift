@@ -259,6 +259,7 @@ class ChordTests: XCTestCase {
             "Notes should match expected notes for 1st inversion"
         )
     }
+
     func testClosedVoicing() {
         let openNotes: [Int8] = [60, 64 + 12, 67 + 24, 60 + 24, 64 + 36]
         let results: [Int8] = [60, 64, 67]
@@ -267,4 +268,24 @@ class ChordTests: XCTestCase {
         print(pitchSet.closedVoicing.array)
         XCTAssertEqual(pitchSet.closedVoicing, resultSet)
     }
+
+    func testLowestOctave() {
+        let openNotes: [Int8] = [60, 64 + 12, 67 + 24, 60 + 24, 64 + 36]
+        let results: [Int8] = [0, 4, 7] // another idea
+        let pitchSet = PitchSet(pitches: openNotes.map { Pitch($0) })
+        let resultSet = PitchSet(pitches: results.map { Pitch($0) })
+        print(pitchSet.closedVoicing.transposedBassNoteTo(octave: -1).array)
+        XCTAssertEqual(pitchSet.closedVoicing.transposedBassNoteTo(octave: -1), resultSet)
+    }
+
+    func testLowestOctave2() {
+        let openNotes: [Int8] = [60, 64 + 12, 67 + 24, 60 + 24, 64 + 36]
+        let results: [Int8] = [0, 4 + 12, 7 + 24, 0 + 24, 4 + 36] // another idea
+        let pitchSet = PitchSet(pitches: openNotes.map { Pitch($0) })
+        let resultSet = PitchSet(pitches: results.map { Pitch($0) })
+        print(pitchSet.transposedBassNoteTo(octave: -1).array)
+        XCTAssertEqual(pitchSet.transposedBassNoteTo(octave: -1), resultSet)
+    }
+
+
 }

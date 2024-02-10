@@ -36,7 +36,7 @@ struct ContentView: View {
                             isActivated: isActivated,
                             text: chordIdentifier.text(pitch: pitch),
                             pressedColor: Color(PitchColor.newtonian[Int(pitch.pitchClass)]),
-                            isActivatedExternally: chordIdentifier.pitchSet.contains(pitch))
+                            isActivatedExternally: chordIdentifier.pitchSet.closedVoicing.transposedBassNoteTo(octave: -1).contains(pitch))
             }
         }
         .padding(50)

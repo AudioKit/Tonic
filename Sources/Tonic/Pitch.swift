@@ -21,6 +21,7 @@ public extension PitchSet {
     func contains(pitchClass: Int8) -> Bool {
         array.first { pitch in pitch.pitchClass == pitchClass } != nil
     }
+
     var closedVoicing: PitchSet {
         var pitchArray: [Pitch] = []
         self.forEach { pitch in
@@ -42,6 +43,18 @@ public extension PitchSet {
 
         return PitchSet(pitches: pitchArray)
     }
+
+    func transposedBassNoteTo(octave: Int) -> PitchSet {
+        guard let bass = self.array.first,
+              let targetOctave = Octave(rawValue: octave),
+              let bassOctave = Octave(of: bass) else {
+            return PitchSet()
+        }
+
+        let octaveDifference = targetOctave.rawValue - bassOctave.rawValue
+        return PitchSet(pitches: self.array.map { Pitch($0.midiNoteNumber + Int8(octaveDifference * 12)) })
+    }
+
 }
 
 /// Essentially a midi note number.
