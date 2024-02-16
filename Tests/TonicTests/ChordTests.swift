@@ -260,6 +260,40 @@ class ChordTests: XCTestCase {
         )
     }
 
+    func assertChords(_ notes: [Int8], _ expected: [Chord]) {
+        let pitchSet = PitchSet(pitches: notes.map { Pitch($0) })
+        // print(pitchSet.array.map { Note(pitch: $0)})
+        let chords = Chord.getRankedChords(from: pitchSet)
+        // print(chords, expected)
+        // Note that this is strange that we can't compare the arrays directly
+        XCTAssertEqual(chords.description, expected.description)
+    }
+
+    func testDiatonicChords() {
+        // Basic triads
+        assertChords([2, 6, 9], [.D])
+
+        // We prioritize by the number of accidentals
+        assertChords([1, 5, 8], [.Db, .Cs])
+
+        // This test shows that we are aware that A# Major triad is more compactly described as Bb
+        // because of the required C## in the A# spelling
+        assertChords([10, 14, 17], [.Bb])
+        // F should not be reported as E#
+        assertChords([5, 9, 12], [.F])
+        // E could be reported as Fb, but its accidental is lower it is first
+        assertChords([4, 8, 11], [.E, .Fb])
+        // C should not be reported as B#
+        assertChords([0, 4, 7], [.C])
+        // B could be reported as Cb, but its accidental is lower it is first
+        assertChords([11, 15, 18], [.B, .Cb])
+
+        // Extensions that can be spelled only without double accidentals should be found
+        assertChords([1, 5, 8, 11], [Chord(.Cs, type: .dominantSeventh), Chord(.Db, type: .dominantSeventh)])
+        assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .flatNinth)])
+
+    }
+
     func testClosedVoicing() {
         let openNotes: [Int8] = [60, 64 + 12, 67 + 24, 60 + 24, 64 + 36]
         let results: [Int8] = [60, 64, 67]

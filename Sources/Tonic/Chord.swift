@@ -128,28 +128,58 @@ extension Chord: CustomStringConvertible {
 }
 
 extension Chord {
-    
-    /// Get chords that match a set of pitches, listing enharmonic chords with sharp before flats
+
+    public var accidentalCount: Int {
+        var count = 0
+        for note in self.noteClasses {
+            switch note.accidental {
+                case .natural:
+                    break
+                case .flat, .sharp:
+                    count += 1
+                case .doubleFlat, .doubleSharp:
+                    count += 2
+            }
+        }
+        return count
+    }
+
+    /// Get chords that match a set of pitches, ranking by least number of accidentals
     public static func getRankedChords(from pitchSet: PitchSet) -> [Chord] {
-        var flatNotes: [Note] = []
-        var sharpNotes: [Note] = []
+        var cNotes: [Note] = []
+        var bNotes: [Note] = []
+        var sNotes: [Note] = []
         var returnArray: [Chord] = []
         
         for pitch in pitchSet.array {
-            flatNotes.append(Note(pitch: pitch, key: .F))
-            sharpNotes.append(Note(pitch: pitch, key: .C))
+            cNotes.append(Note(pitch: pitch, key: .C))
+            bNotes.append(Note(pitch: pitch, key: .Cb))
+            sNotes.append(Note(pitch: pitch, key: .Cs))
         }
-        returnArray.append(contentsOf: Chord.getRankedChords(from: sharpNotes))
+        returnArray.append(contentsOf: Chord.getRankedChords(from: cNotes))
 
-        for chord in Chord.getRankedChords(from: flatNotes) {
+        for chord in Chord.getRankedChords(from: sNotes) {
             if !returnArray.contains(chord) {
                 returnArray.append(chord)
             }
-        }        
+        }
+        for chord in Chord.getRankedChords(from: bNotes) {
+            if !returnArray.contains(chord) {
+                returnArray.append(chord)
+            }
+        }
+        for chord in returnArray {
+            print(chord, chord.accidentalCount)
+        }
+        // order the array by least number of accidentals
+        returnArray.sort { $0.accidentalCount < $1.accidentalCount }
+        
         return returnArray
     }
     /// Get chords from actual notes (spelling matters, C# F G# will not return a C# major)
     /// Use pitch set version of this function for all enharmonic chords
+    /// The ranking is based on how low the root note of the chord appears, for example we
+    /// want to list the notes C, E, G, A as C6 if the C is in the bass
     public static func getRankedChords(from notes: [Note]) -> [Chord] {
         let potentialChords = ChordTable.shared.getAllChordsForNoteSet(NoteSet(notes: notes))
         let orderedNotes = notes.sorted(by: { f, s in  f.noteNumber < s.noteNumber })
