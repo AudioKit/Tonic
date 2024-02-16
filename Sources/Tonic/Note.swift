@@ -110,13 +110,15 @@ public struct Note: Equatable, Hashable, Codable {
     public func shiftDown(_ shift: Interval) -> Note? {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         var newLetterIndex = (noteClass.letter.rawValue - (shift.degree - 1))
-        let newOctave = (Int(pitch.midiNoteNumber) - shift.semitones) / 12 - 1
+        var carrying = 0
 
         while newLetterIndex < 0 {
             newLetterIndex += 7
+            carrying -= 1
         }
 
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
+        let newOctave = calculateOctave(newLetter: newLetter, carrying: carrying)
         for accidental in Accidental.allCases {
             newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if (newNote.noteNumber % 12) == ((Int(noteNumber) - shift.semitones) % 12) {
@@ -133,7 +135,7 @@ public struct Note: Equatable, Hashable, Codable {
         var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
-        let newOctave = (Int(pitch.midiNoteNumber) + shift.semitones) / 12 - 1
+        let newOctave = calculateOctave(newLetter: newLetter, carrying: newLetterIndex / Letter.allCases.count)
         for accidental in Accidental.allCases {
             newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if (newNote.noteNumber % 12) == ((Int(noteNumber) + shift.semitones) % 12) {
@@ -141,6 +143,20 @@ public struct Note: Equatable, Hashable, Codable {
             }
         }
         return nil
+    }
+    
+    /// Calculate new octave
+    /// - Parameters:
+    ///   - newLetter: Shifted letter
+    ///   - carrying: The number carry-up or carry-down
+    /// - Returns: Calculated new octave
+    private func calculateOctave(newLetter: Letter, carrying: Int) -> Int {
+        return (
+            Int(pitch.midiNoteNumber) +
+            Int(newLetter.baseNote) - Int(letter.baseNote)
+        ) / 12
+        + carrying
+        - 1
     }
 }
 
