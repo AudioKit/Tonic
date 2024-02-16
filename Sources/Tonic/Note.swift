@@ -46,6 +46,10 @@ public struct Note: Equatable, Hashable, Codable {
                 noteInKey = note
             }
         }
+        // The octave is wrong if the letter is C and we've flattened into the previous octave
+        if noteInKey?.noteClass.letter == .C && [Accidental.flat, Accidental.doubleFlat].contains(noteInKey?.accidental) {
+            octave += 1
+        }
 
         if let note = noteInKey {
             noteClass = note.noteClass
@@ -168,5 +172,12 @@ extension Note: CustomStringConvertible {
     /// String representation of the note, including octave
     public var description: String {
         "\(noteClass)\(octave)"
+    }
+}
+
+extension Note {
+    var isUncommonEnharmonic: Bool {
+        let uglyNotes: [NoteClass] = [.Cb, .Es, .Fb, .Bs]
+        return uglyNotes.contains(self.noteClass)
     }
 }

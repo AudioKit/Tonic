@@ -184,12 +184,19 @@ extension Chord {
             returnArray.append(contentsOf: Chord.getRankedChords(from: noteArray))
         }
         
-        // sort by alphabetical to prevent nondeterminstic sorting from same number of accdientals
-        returnArray.sort { $0.root.accidental < $1.root.accidental }
+        // Sorts anti-alphabetical, but the net effect is to pefer flats to sharps
+        returnArray.sort { $0.root.letter > $1.root.letter }
 
         // order the array by least number of accidentals
         returnArray.sort { $0.accidentalCount < $1.accidentalCount }
-        
+
+        // order the array preferring root position
+        returnArray.sort { $0.inversion < ($1.inversion > 0 ? 1 : 0) }
+
+        // prefer root notes not being uncommon enharmonics
+        returnArray.sort { ($0.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) < ($1.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) }
+
+
         return returnArray
     }
     /// Get chords from actual notes (spelling matters, C# F G# will not return a C# major)

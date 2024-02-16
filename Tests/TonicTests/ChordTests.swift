@@ -26,10 +26,16 @@ class ChordTests: XCTestCase {
     func testC7() {
         XCTAssertEqual(Chord(.C, type: .dominantSeventh).description, "C7")
         let notes: [Int8] = [60, 67, 70, 76]
-        let c7 =  PitchSet(pitches: notes.map { Pitch($0) } )
-        let chords = Chord.getRankedChords(from: c7)
-        XCTAssertEqual(chords.map { $0.description }, ["C7"])
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let c7 = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(c7.map { $0.description }, ["C7"])
+    }
 
+    func testAugmentedDiminishededChordsPreferNoInversions() {
+        let notes: [Int8] = [60, 64, 68]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let cAug = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(cAug.map { $0.slashDescription }.first, "C⁺")
     }
 
     func testRomanNumerals() {
@@ -119,11 +125,11 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(firstInversion.inversion, 1)
         XCTAssertEqual(firstInversion.slashDescription, "Am/C")
 
-        var secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
+        let secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
         XCTAssertEqual(secondInversion.inversion, 2)
         XCTAssertEqual(secondInversion.slashDescription, "Am/E")
 
-        var thirdInversion = Chord(.C, type: .dominantSeventh, inversion: 3)
+        let thirdInversion = Chord(.C, type: .dominantSeventh, inversion: 3)
 
         XCTAssertEqual(thirdInversion.slashDescription, "C7/B♭")
         
@@ -287,7 +293,7 @@ class ChordTests: XCTestCase {
     func assertChords(_ notes: [Int8], _ expected: [Chord]) {
         let pitchSet = PitchSet(pitches: notes.map { Pitch($0) })
         let chords = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chords.description, expected.description)
+        XCTAssertEqual(chords.map { $0.slashDescription }, expected.map { $0.slashDescription })
     }
 
     func testDiatonicChords() {
@@ -312,7 +318,6 @@ class ChordTests: XCTestCase {
         // Extensions that can be spelled only without double accidentals should be found
         assertChords([1, 5, 8, 11], [Chord(.Db, type: .dominantSeventh), Chord(.Cs, type: .dominantSeventh),])
         assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .flatNinth)])
-
     }
 
     func testClosedVoicing() {
