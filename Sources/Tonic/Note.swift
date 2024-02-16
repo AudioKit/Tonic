@@ -142,7 +142,7 @@ public struct Note: Equatable, Hashable, Codable {
         }
         return nil
     }
-    
+
     /// Calculate new octave
     /// - Parameters:
     ///   - newLetter: Shifted letter
