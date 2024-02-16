@@ -119,11 +119,12 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(firstInversion.inversion, 1)
         XCTAssertEqual(firstInversion.slashDescription, "Am/C")
 
-        let secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
+        var secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
         XCTAssertEqual(secondInversion.inversion, 2)
         XCTAssertEqual(secondInversion.slashDescription, "Am/E")
-        
-        let thirdInversion = Chord(.C, type: .dominantSeventh, inversion: 3)
+
+        var thirdInversion = Chord(.C, type: .dominantSeventh, inversion: 3)
+
         XCTAssertEqual(thirdInversion.slashDescription, "C7/B♭")
         
         firstInversion = Chord(.Cs, type: .majorTriad, inversion: 1)
