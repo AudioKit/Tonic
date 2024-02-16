@@ -12,7 +12,7 @@ final class PerformanceTests: XCTestCase {
                     index_sum += Note(pitch: Pitch(Int8(i))).intValue
                 }
                 if index_sum != 23779 {
-                    print("index_sum: \(index_sum)")
+                    //print("index_sum: \(index_sum)")
                     abort()
                 }
             }

@@ -36,7 +36,7 @@ public class ChordTable {
         for chordType in ChordType.allCases {
             ChordTable.generateChords(type: chordType, &r)
         }
-        print("generated \(r.count) chords")
+        //print("generated \(r.count) chords")
         return r
     }
 
@@ -61,7 +61,7 @@ public class ChordTable {
                 }
             }
         }
-        print("generated \(returnChords.count) chords")
+        //print("generated \(returnChords.count) chords")
         return returnChords
     }
 

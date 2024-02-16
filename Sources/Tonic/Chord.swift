@@ -169,28 +169,24 @@ extension Chord {
 
     /// Get chords that match a set of pitches, ranking by least number of accidentals
     public static func getRankedChords(from pitchSet: PitchSet) -> [Chord] {
-        var cNotes: [Note] = []
-        var bNotes: [Note] = []
-        var sNotes: [Note] = []
+        var noteArrays: Set<[Note]> = []
         var returnArray: [Chord] = []
         
-        for pitch in pitchSet.array {
-            cNotes.append(Note(pitch: pitch, key: .C))
-            bNotes.append(Note(pitch: pitch, key: .Cb))
-            sNotes.append(Note(pitch: pitch, key: .Cs))
+        for key in Key.circleOfFifths {
+            noteArrays.insert(pitchSet.array.map { Note(pitch: $0, key: key) })
         }
-        returnArray.append(contentsOf: Chord.getRankedChords(from: cNotes))
+        
+        for key in Key.circleOfFourths {
+            noteArrays.insert(pitchSet.array.map { Note(pitch: $0, key: key) })
+        }
+        
+        for noteArray in noteArrays {
+            returnArray.append(contentsOf: Chord.getRankedChords(from: noteArray))
+        }
+        
+        // sort by alphabetical to prevent nondeterminstic sorting from same number of accdientals
+        returnArray.sort { $0.root.accidental < $1.root.accidental }
 
-        for chord in Chord.getRankedChords(from: sNotes) {
-            if !returnArray.contains(chord) {
-                returnArray.append(chord)
-            }
-        }
-        for chord in Chord.getRankedChords(from: bNotes) {
-            if !returnArray.contains(chord) {
-                returnArray.append(chord)
-            }
-        }
         // order the array by least number of accidentals
         returnArray.sort { $0.accidentalCount < $1.accidentalCount }
         
