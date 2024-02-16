@@ -108,7 +108,6 @@ public struct Note: Equatable, Hashable, Codable {
     /// - Parameter shift: The interval by which to shift
     /// - Returns: New note the correct distance away
     public func shiftDown(_ shift: Interval) -> Note? {
-        var newNote = Note(.C, accidental: .natural, octave: 0)
         var newLetterIndex = (noteClass.letter.rawValue - (shift.degree - 1))
         var carrying = 0
 
@@ -120,7 +119,7 @@ public struct Note: Equatable, Hashable, Codable {
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newOctave = calculateOctave(newLetter: newLetter, carrying: carrying)
         for accidental in Accidental.allCases {
-            newNote = Note(newLetter, accidental: accidental, octave: newOctave)
+            let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if (newNote.noteNumber % 12) == ((Int(noteNumber) - shift.semitones) % 12) {
                 return newNote
             }
@@ -132,12 +131,11 @@ public struct Note: Equatable, Hashable, Codable {
     /// - Parameter shift: The interval by which to shift
     /// - Returns: New note the correct distance away
     public func shiftUp(_ shift: Interval) -> Note? {
-        var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newOctave = calculateOctave(newLetter: newLetter, carrying: newLetterIndex / Letter.allCases.count)
         for accidental in Accidental.allCases {
-            newNote = Note(newLetter, accidental: accidental, octave: newOctave)
+            let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if (newNote.noteNumber % 12) == ((Int(noteNumber) + shift.semitones) % 12) {
                 return newNote
             }
