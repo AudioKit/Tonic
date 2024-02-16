@@ -125,6 +125,29 @@ extension Chord: CustomStringConvertible {
     public var description: String {
         return "\(root)\(type)"
     }
+    
+    /// Name of chord using slash chords
+    public var slashDescription: String {
+        return "\(root)\(type)\(inversionText)"
+    }
+    
+    /// Bass Note computed from inversion and root note
+    /// Useful for custom rendering of slash notation
+    public var bassNote: NoteClass {
+        switch inversion {
+            case 1...4:
+                if let bass = root.canonicalNote.shiftUp(type.intervals[inversion - 1]) {
+                    return bass.noteClass
+                }
+            default:
+                break
+        }
+        return root.canonicalNote.noteClass
+    }
+    
+    private var inversionText: String {
+        return "/\(bassNote)"
+    }
 }
 
 extension Chord {
@@ -167,9 +190,6 @@ extension Chord {
             if !returnArray.contains(chord) {
                 returnArray.append(chord)
             }
-        }
-        for chord in returnArray {
-            print(chord, chord.accidentalCount)
         }
         // order the array by least number of accidentals
         returnArray.sort { $0.accidentalCount < $1.accidentalCount }
