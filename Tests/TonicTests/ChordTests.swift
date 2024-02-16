@@ -64,7 +64,7 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(Cmaj7?.description, "Cmaj7")
 
         let ChalfDim7 = Chord(notes: [.C, .Eb, .Gb, .Bb])
-        XCTAssertEqual(ChalfDim7?.description, "C(1/2)°7")
+        XCTAssertEqual(ChalfDim7?.description, "Cø7")
 
         let Adim7 = Chord(notes: [.A, .C, .Eb, .Gb])
         XCTAssertEqual(Adim7?.description, "A°7")
@@ -85,9 +85,10 @@ class ChordTests: XCTestCase {
         let G11 = Chord(notes: [.G, .B, .D, .F, .A, .C])
         XCTAssertEqual(G11?.description, "G11")
 
-        let BhalfDiminished11NoteSet = NoteSet(notes: [.B, .D, .F, .A, .C, .E])
+        let BhalfDiminished11NoteSet = NoteSet(notes: [Note(.B, octave: 1), .D, .F, .A, .C, .E])
         let chords = ChordTable.shared.getAllChordsForNoteSet(BhalfDiminished11NoteSet)
-        XCTAssertTrue(chords.contains(where: { $0.description == "B(1/2)°11" }))
+        print(chords.description)
+        XCTAssertTrue(chords.contains(where: { $0.description == "Bø11" }))
     }
 
     func testThirteenthNaming() {
@@ -98,7 +99,7 @@ class ChordTests: XCTestCase {
         XCTAssertTrue(chords.contains(where: { $0.description == "Em♭13♭9" }))
         XCTAssertTrue(chords.contains(where: { $0.description == "Fmaj13♯11" }))
         XCTAssertTrue(chords.contains(where: { $0.description == "Am11♭13" }))
-        XCTAssertTrue(chords.contains(where: { $0.description == "B(1/2)°♭13" }))
+        XCTAssertTrue(chords.contains(where: { $0.description == "Bø♭13" }))
     }
 
     func testInversions() {
@@ -106,13 +107,19 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(chord.inversion, 0)
         XCTAssertTrue(chord.isTriad)
 
-        let firstInversion = Chord(notes: [.C, .E, Note(.A, octave: 6)])!
+        var firstInversion = Chord(notes: [.C, .E, Note(.A, octave: 6)])!
         XCTAssertEqual(firstInversion.inversion, 1)
-        XCTAssertEqual(firstInversion.description, "Am")
+        XCTAssertEqual(firstInversion.slashDescription, "Am/C")
 
-        let secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
+        var secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
         XCTAssertEqual(secondInversion.inversion, 2)
-        XCTAssertEqual(secondInversion.description, "Am")
+        XCTAssertEqual(secondInversion.slashDescription, "Am/E")
+        
+        var thirdInversion = Chord(.C, type: .dominantSeventh, inversion: 3)
+        XCTAssertEqual(thirdInversion.slashDescription, "C7/B♭")
+        
+        firstInversion = Chord(.Cs, type: .majorTriad, inversion: 1)
+        XCTAssertEqual(firstInversion.slashDescription, "C♯/E♯")
     }
 
     func testTriadsWithRedundantNotes() {
@@ -259,13 +266,18 @@ class ChordTests: XCTestCase {
             "Notes should match expected notes for 1st inversion"
         )
     }
+    
+    func testBassNoteChords() {
+        // C Major 1st inversion
+        let notes: [Int8] = [4, 7, 12]
+        let pitchSet = PitchSet(pitches: notes.map { Pitch($0) })
+        let chords = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(chords.map{$0.bassNote}, [NoteClass.E])
+    }
 
     func assertChords(_ notes: [Int8], _ expected: [Chord]) {
         let pitchSet = PitchSet(pitches: notes.map { Pitch($0) })
-        // print(pitchSet.array.map { Note(pitch: $0)})
         let chords = Chord.getRankedChords(from: pitchSet)
-        // print(chords, expected)
-        // Note that this is strange that we can't compare the arrays directly
         XCTAssertEqual(chords.description, expected.description)
     }
 

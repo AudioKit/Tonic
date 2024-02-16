@@ -195,13 +195,13 @@ extension ChordType: CustomStringConvertible {
         case .suspendedFourthTriad:             return "sus4"
         case .sixth:                            return "6"
         case .minorSixth:                       return "m6"
-        case .halfDiminishedSeventh:            return "(1/2)°7"
+        case .halfDiminishedSeventh:            return "ø7"
         case .diminishedSeventh:                return "°7"
         case .dominantSeventh:                  return "7"
         case .majorSeventh:                     return "maj7"
         case .minorSeventh:                     return "m7"
         case .minorMajorSeventh:                return "mMaj7"
-        case .halfDiminishedNinth:              return "(1/2)°9"
+        case .halfDiminishedNinth:              return "ø9"
         case .dominantNinth:                    return "9"
         case .flatNinth:                        return "7♭9"
         case .sharpNinth:                       return "7♯9"
@@ -214,7 +214,7 @@ extension ChordType: CustomStringConvertible {
         case .majorEleventh:                    return "maj11"
         case .dominantEleventh:                 return "11"
         case .minorEleventh:                    return "m11"
-        case .halfDiminishedEleventh:           return "(1/2)°11"
+        case .halfDiminishedEleventh:           return "ø11"
         case .majorSeventhFlatFifth:            return "maj7♭5"
         case .minorSeventhSharpFifth:           return "maj7♯5"
         case .majorNinthSharpEleventh:          return "maj9♯11"
@@ -229,7 +229,7 @@ extension ChordType: CustomStringConvertible {
         case .majorThirteenthSharpEleventh:     return "maj13♯11"
         case .dominantThirteenth:               return "13"
         case .minorEleventhFlatThirteenth:      return "m11♭13"
-        case .halfDiminishedFlatThirteenth:     return "(1/2)°♭13"
+        case .halfDiminishedFlatThirteenth:     return "ø♭13"
         }
     }
 }
