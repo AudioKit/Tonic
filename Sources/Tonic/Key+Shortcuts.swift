@@ -3,6 +3,10 @@
 import Foundation
 
 public extension Key {
+    
+    static let circleOfFifths: [Key] = [.C, .G, .D, .A, .E, .B, .Fs, .Cs]
+    static let circleOfFourths: [Key] = [.F, .Bb, .Eb, .Ab, .Db, .Gb, .Cb]
+    
     // MARK: - Major keys
 
     /// C♭ Major

@@ -22,6 +22,15 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(Chord.Asus2.description, "Asus2")
         XCTAssertEqual(Chord.Bsus2.description, "Bsus2")
     }
+    
+    func testC7() {
+        XCTAssertEqual(Chord(.C, type: .dominantSeventh).description, "C7")
+        let notes: [Int8] = [60, 67, 70, 76]
+        let c7 =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chords = Chord.getRankedChords(from: c7)
+        XCTAssertEqual(chords.map { $0.description }, ["C7"])
+
+    }
 
     func testRomanNumerals() {
         XCTAssertEqual(Key.C.primaryTriads.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
@@ -87,7 +96,6 @@ class ChordTests: XCTestCase {
 
         let BhalfDiminished11NoteSet = NoteSet(notes: [Note(.B, octave: 1), .D, .F, .A, .C, .E])
         let chords = ChordTable.shared.getAllChordsForNoteSet(BhalfDiminished11NoteSet)
-        print(chords.description)
         XCTAssertTrue(chords.contains(where: { $0.description == "Bø11" }))
     }
 
@@ -114,8 +122,9 @@ class ChordTests: XCTestCase {
         var secondInversion = Chord(notes: [Note(.E, octave: 1), .A, .C])!
         XCTAssertEqual(secondInversion.inversion, 2)
         XCTAssertEqual(secondInversion.slashDescription, "Am/E")
-        
+
         var thirdInversion = Chord(.C, type: .dominantSeventh, inversion: 3)
+
         XCTAssertEqual(thirdInversion.slashDescription, "C7/B♭")
         
         firstInversion = Chord(.Cs, type: .majorTriad, inversion: 1)
@@ -153,7 +162,7 @@ class ChordTests: XCTestCase {
         let midiNotes: [Int8] = [54, 58, 61]
         let fSharp =  PitchSet(pitches: midiNotes.map { Pitch($0) } )
         let chords = Chord.getRankedChords(from: fSharp)
-        XCTAssertEqual(chords.map { $0.description }, ["F♯", "G♭"])
+        XCTAssertEqual(chords.map { $0.description }, ["G♭","F♯"])
     }
 
     func testDuplicateRankedChords() {
@@ -301,7 +310,7 @@ class ChordTests: XCTestCase {
         assertChords([11, 15, 18], [.B, .Cb])
 
         // Extensions that can be spelled only without double accidentals should be found
-        assertChords([1, 5, 8, 11], [Chord(.Cs, type: .dominantSeventh), Chord(.Db, type: .dominantSeventh)])
+        assertChords([1, 5, 8, 11], [Chord(.Db, type: .dominantSeventh), Chord(.Cs, type: .dominantSeventh),])
         assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .flatNinth)])
 
     }
@@ -311,7 +320,6 @@ class ChordTests: XCTestCase {
         let results: [Int8] = [60, 64, 67]
         let pitchSet = PitchSet(pitches: openNotes.map { Pitch($0) })
         let resultSet = PitchSet(pitches: results.map { Pitch($0) })
-        print(pitchSet.closedVoicing.array)
         XCTAssertEqual(pitchSet.closedVoicing, resultSet)
     }
 
@@ -320,7 +328,6 @@ class ChordTests: XCTestCase {
         let results: [Int8] = [0, 4, 7] // another idea
         let pitchSet = PitchSet(pitches: openNotes.map { Pitch($0) })
         let resultSet = PitchSet(pitches: results.map { Pitch($0) })
-        print(pitchSet.closedVoicing.transposedBassNoteTo(octave: -1).array)
         XCTAssertEqual(pitchSet.closedVoicing.transposedBassNoteTo(octave: -1), resultSet)
     }
 
@@ -329,7 +336,6 @@ class ChordTests: XCTestCase {
         let results: [Int8] = [0, 4 + 12, 7 + 24, 0 + 24, 4 + 36] // another idea
         let pitchSet = PitchSet(pitches: openNotes.map { Pitch($0) })
         let resultSet = PitchSet(pitches: results.map { Pitch($0) })
-        print(pitchSet.transposedBassNoteTo(octave: -1).array)
         XCTAssertEqual(pitchSet.transposedBassNoteTo(octave: -1), resultSet)
     }
 
