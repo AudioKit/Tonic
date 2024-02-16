@@ -128,7 +128,11 @@ extension Chord: CustomStringConvertible {
     
     /// Name of chord using slash chords
     public var slashDescription: String {
-        return "\(root)\(type)\(inversionText)"
+        if inversion > 0 {
+            return "\(root)\(type)/\(bassNote)"
+        } else {
+            return description
+        }
     }
     
     /// Bass Note computed from inversion and root note
@@ -143,10 +147,6 @@ extension Chord: CustomStringConvertible {
                 break
         }
         return root.canonicalNote.noteClass
-    }
-    
-    private var inversionText: String {
-        return "/\(bassNote)"
     }
 }
 
