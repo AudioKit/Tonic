@@ -89,7 +89,7 @@ final class NoteTests: XCTestCase {
 
         let g = Note(.C, octave: 6).shiftDown(.P11)
         XCTAssertEqual(g!.description, "G4")
-        
+
         var notesAugmentedTriadShiftUpIntoE: [Note] = []
         for interval in ChordType.augmentedTriad.intervals {
             if let shifted = Note(.E, accidental: .natural, octave: 0).shiftUp(interval) {
