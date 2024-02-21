@@ -92,11 +92,11 @@ final class NoteTests: XCTestCase {
     }
 
     func testNoteShiftBSharp() {
-        let c1 = Note(.C, accidental: .natural, octave: 1).shiftUp(.P1)
-        XCTAssertEqual(c1!.description, "C1")
+        let c1Case1 = Note(.C, accidental: .natural, octave: 1).shiftUp(.P1)
+        XCTAssertEqual(c1Case1!.description, "C1")
 
-        let c1_2 = Note(.A, accidental: .flat, octave: 0).shiftUp(.M3)
-        XCTAssertEqual(c1_2!.description, "C1")
+        let c1Case2 = Note(.A, accidental: .flat, octave: 0).shiftUp(.M3)
+        XCTAssertEqual(c1Case2!.description, "C1")
 
         let bsharp0 = Note(.G, accidental: .sharp, octave: 0).shiftUp(.M3)
         XCTAssertEqual(bsharp0!.description, "B♯0")
