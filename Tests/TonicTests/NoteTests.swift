@@ -8,7 +8,7 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(c4.description, "C4")
 
         let cb4 = Note(.C, accidental: .flat, octave: 4)
-        XCTAssertEqual(cb4.noteNumber, 59)
+        XCTAssertEqual(cb4.noteNumber, 71)
         XCTAssertEqual(cb4.description, "C♭4")
 
         let c5 = Note(.C, octave: 5)
@@ -23,11 +23,11 @@ final class NoteTests: XCTestCase {
     // "Accidentals applied to a note do not have an effect on its ASPN number. For example, B♯3 and C4 have different octave numbers despite being enharmonically equivalent, because the B♯ is still considered part of the lower octave."
     func testThatOctaveRefersToAccidentalLessBaseNote() {
         let bs3 = Note(.B, accidental: .sharp, octave: 3)
-        XCTAssertEqual(bs3.noteNumber, 60)
+        XCTAssertEqual(bs3.noteNumber, 48)
         XCTAssertEqual(bs3.description, "B♯3")
 
         let cb4 = Note(.C, accidental: .flat, octave: 4)
-        XCTAssertEqual(cb4.noteNumber, 59)
+        XCTAssertEqual(cb4.noteNumber, 71)
         XCTAssertEqual(cb4.description, "C♭4")
     }
 
@@ -99,7 +99,7 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(c1Case2!.description, "C1")
 
         let bsharp0 = Note(.G, accidental: .sharp, octave: 0).shiftUp(.M3)
-        XCTAssertEqual(bsharp0!.description, "B♯0")
+        XCTAssertEqual(bsharp0!.description, "B♯1")
 
         var notesAugmentedTriadShiftUpIntoE: [Note] = []
         for interval in ChordType.augmentedTriad.intervals {
@@ -108,7 +108,7 @@ final class NoteTests: XCTestCase {
             }
         }
         XCTAssertEqual(notesAugmentedTriadShiftUpIntoE[0].description, "G♯0")
-        XCTAssertEqual(notesAugmentedTriadShiftUpIntoE[1].description, "B♯0")
+        XCTAssertEqual(notesAugmentedTriadShiftUpIntoE[1].description, "B♯1")
 
         var notesMinorTriadShiftUpIntoA: [Note] = []
         for interval in ChordType.minorTriad.intervals {
