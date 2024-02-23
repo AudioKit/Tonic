@@ -11,6 +11,9 @@ public enum Interval: Int, CaseIterable, Codable {
     /// Perfect Unison
     case P1
 
+    /// Augmented Unison
+    case A1
+
     /// Minor Second
     case m2
 
@@ -59,8 +62,14 @@ public enum Interval: Int, CaseIterable, Codable {
     /// Major Seventh
     case M7
 
-    /// Octave
+    /// Diminished Octave
+    case d8
+
+    /// Perfect Octave
     case P8
+
+    /// AugmentedOctave
+    case A8
 
     /// Minor Ninth
     case m9
@@ -90,6 +99,7 @@ public enum Interval: Int, CaseIterable, Codable {
     public var semitones: Int {
         switch self {
         case .P1: return 0
+        case .A1: return 1
         case .m2: return 1
         case .M2: return 2
         case .m3: return 3
@@ -106,7 +116,9 @@ public enum Interval: Int, CaseIterable, Codable {
         case .A6: return 10
         case .m7: return 10
         case .M7: return 11
+        case .d8: return 11
         case .P8: return 12
+        case .A8: return 13
         case .m9: return 13
         case .M9: return 14
         case .A9: return 15
@@ -122,6 +134,7 @@ public enum Interval: Int, CaseIterable, Codable {
     var degree: Int {
         switch self {
         case .P1: return 1
+        case .A1: return 1
         case .m2: return 2
         case .M2: return 2
         case .m3: return 3
@@ -138,7 +151,9 @@ public enum Interval: Int, CaseIterable, Codable {
         case .d7: return 7
         case .m7: return 7
         case .M7: return 7
+        case .d8: return 8
         case .P8: return 8
+        case .A8: return 8
         case .m9: return 9
         case .M9: return 9
         case .A9: return 9
@@ -168,7 +183,8 @@ public enum Interval: Int, CaseIterable, Codable {
         if degree < 0 { degree += Letter.allCases.count }
         degree += 1
         for interval in Interval.allCases where interval.semitones == n1.semitones(to: n2) {
-            if n1.shiftUp(interval) == n2 {
+            print(n1, n2, interval, n1.shiftUp(interval))
+            if let n1Exists = n1.shiftUp(interval), n1Exists == n2 {
                 return interval
             }
         }
@@ -181,6 +197,7 @@ extension Interval: CustomStringConvertible {
     public var description: String {
         switch self {
         case .P1: return "P1"
+        case .A1: return "A1"
         case .m2: return "m2"
         case .M2: return "M2"
         case .m3: return "m3"
@@ -197,7 +214,9 @@ extension Interval: CustomStringConvertible {
         case .d7: return "d7"
         case .m7: return "m7"
         case .M7: return "M7"
+        case .d8: return "d8"
         case .P8: return "P8"
+        case .A8: return "A8"
         case .m9: return "m9"
         case .M9: return "M9"
         case .A9: return "A9"
@@ -213,6 +232,7 @@ extension Interval: CustomStringConvertible {
     public var longDescription: String {
         switch self {
         case .P1: return "Perfect Unison"
+        case .A1: return "Augmented Unison"
         case .m2: return "Minor Second"
         case .M2: return "Major Second"
         case .m3: return "Minor Third"
@@ -229,7 +249,9 @@ extension Interval: CustomStringConvertible {
         case .d7: return "Diminished Seventh"
         case .m7: return "Minor Seventh"
         case .M7: return "Major Seventh"
+        case .d8: return "Diminished Octave"
         case .P8: return "Perfect Octave"
+        case .A8: return "Augmented Octave"
         case .m9: return "Minor Ninth"
         case .M9: return "Major Ninth"
         case .A9: return "Augmented Ninth"
