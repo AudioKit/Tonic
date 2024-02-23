@@ -84,11 +84,11 @@ public struct Note: Equatable, Hashable, Codable {
     /// MIDI Note 0-127 starting at C
     public var noteNumber: Int8 {
         let octaveBounds = ((octave + 1) * 12) ... ((octave + 2) * 12)
-        var note = Int(noteClass.letter.baseNote)
+        var note = Int(noteClass.letter.baseNote) + Int(noteClass.accidental.rawValue)
         while !octaveBounds.contains(note) {
             note += 12
         }
-        return Int8(note) + noteClass.accidental.rawValue
+        return Int8(note)
     }
 
     /// The pitch for the note
@@ -136,10 +136,9 @@ public struct Note: Equatable, Hashable, Codable {
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newMidiNoteNumber = Int(pitch.midiNoteNumber) + shift.semitones
-        let newOctave =
-        newMidiNoteNumber / 12
-        - ((newMidiNoteNumber % 12 == 0 && newLetter == .B) ? 1 : 0)
-        - 1
+
+        let newOctave = newMidiNoteNumber / 12 - 1
+
         for accidental in Accidental.allCases {
             let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if newNote.noteNumber % 12 == newMidiNoteNumber % 12 {
