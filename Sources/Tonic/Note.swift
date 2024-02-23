@@ -138,7 +138,7 @@ public struct Note: Equatable, Hashable, Codable {
         - 1
         for accidental in Accidental.allCases {
             let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
-            if newNote.noteNumber == newMidiNoteNumber {
+            if newNote.noteNumber % 12 == newMidiNoteNumber % 12 {
                 return newNote
             }
         }
