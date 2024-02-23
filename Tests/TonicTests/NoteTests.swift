@@ -91,6 +91,35 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(g!.description, "G4")
     }
 
+    func testNoteShiftBSharp() {
+        let c1Case1 = Note(.C, accidental: .natural, octave: 1).shiftUp(.P1)
+        XCTAssertEqual(c1Case1!.description, "C1")
+
+        let c1Case2 = Note(.A, accidental: .flat, octave: 0).shiftUp(.M3)
+        XCTAssertEqual(c1Case2!.description, "C1")
+
+        let bsharp0 = Note(.G, accidental: .sharp, octave: 0).shiftUp(.M3)
+        XCTAssertEqual(bsharp0!.description, "B♯0")
+
+        var notesAugmentedTriadShiftUpIntoE: [Note] = []
+        for interval in ChordType.augmentedTriad.intervals {
+            if let shifted = Note(.E, accidental: .natural, octave: 0).shiftUp(interval) {
+                notesAugmentedTriadShiftUpIntoE.append(shifted)
+            }
+        }
+        XCTAssertEqual(notesAugmentedTriadShiftUpIntoE[0].description, "G♯0")
+        XCTAssertEqual(notesAugmentedTriadShiftUpIntoE[1].description, "B♯0")
+
+        var notesMinorTriadShiftUpIntoA: [Note] = []
+        for interval in ChordType.minorTriad.intervals {
+            if let shifted = Note(.A, accidental: .natural, octave: 0).shiftUp(interval) {
+                notesMinorTriadShiftUpIntoA.append(shifted)
+            }
+        }
+        XCTAssertEqual(notesMinorTriadShiftUpIntoA[0].description, "C1")
+        XCTAssertEqual(notesMinorTriadShiftUpIntoA[1].description, "E1")
+    }
+
     func testNoteShiftLimits() {
         let ebbb = Note(.F, accidental: .doubleFlat).shiftDown(.M2)
         XCTAssertNil(ebbb)

@@ -112,7 +112,6 @@ public struct Note: Equatable, Hashable, Codable {
     /// - Parameter shift: The interval by which to shift
     /// - Returns: New note the correct distance away
     public func shiftDown(_ shift: Interval) -> Note? {
-        var newNote = Note(.C, accidental: .natural, octave: 0)
         var newLetterIndex = (noteClass.letter.rawValue - (shift.degree - 1))
         let newOctave = (Int(pitch.midiNoteNumber) - shift.semitones) / 12 - 1
 
@@ -122,7 +121,7 @@ public struct Note: Equatable, Hashable, Codable {
 
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         for accidental in Accidental.allCases {
-            newNote = Note(newLetter, accidental: accidental, octave: newOctave)
+            let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if (newNote.noteNumber % 12) == ((Int(noteNumber) - shift.semitones) % 12) {
                 return newNote
             }
@@ -134,13 +133,16 @@ public struct Note: Equatable, Hashable, Codable {
     /// - Parameter shift: The interval by which to shift
     /// - Returns: New note the correct distance away
     public func shiftUp(_ shift: Interval) -> Note? {
-        var newNote = Note(.C, accidental: .natural, octave: 0)
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
-        let newOctave = (Int(pitch.midiNoteNumber) + shift.semitones) / 12 - 1
+        let newMidiNoteNumber = Int(pitch.midiNoteNumber) + shift.semitones
+        let newOctave =
+        newMidiNoteNumber / 12
+        - ((newMidiNoteNumber % 12 == 0 && newLetter == .B) ? 1 : 0)
+        - 1
         for accidental in Accidental.allCases {
-            newNote = Note(newLetter, accidental: accidental, octave: newOctave)
-            if (newNote.noteNumber % 12) == ((Int(noteNumber) + shift.semitones) % 12) {
+            let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
+            if newNote.noteNumber % 12 == newMidiNoteNumber % 12 {
                 return newNote
             }
         }
