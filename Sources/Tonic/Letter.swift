@@ -12,6 +12,25 @@ public enum Letter: Int, CaseIterable, Equatable, Hashable, Codable {
     var baseNote: UInt8 {
         return [0, 2, 4, 5, 7, 9, 11][rawValue]
     }
+    
+    var chordFontDescription: String {
+        switch self {
+            case .C:
+                return "C"
+            case .D:
+                return "D"
+            case .E:
+                return "E"
+            case .F:
+                return "F"
+            case .G:
+                return "G"
+            case .A:
+                return "A"
+            case .B:
+                return "B"
+        }
+    }
 }
 
 extension Letter: Comparable {

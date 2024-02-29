@@ -135,6 +135,22 @@ extension Chord: CustomStringConvertible {
         }
     }
     
+    /// Name of chord using specialized Chord Symbol Fonts Norfolk or Pori from
+    /// NotationExpress: https://www.notationcentral.com/product/norfolk-fonts-for-sibelius/
+    public var chordFontDescription: String {
+        return "\(root.chordFontDescription)\(type.chordFontDescription)"
+    }
+    
+    /// Name of chord with slash notation using specialized Chord Symbol Fonts Norfolk or Pori from
+    /// NotationExpress: https://www.notationcentral.com/product/norfolk-fonts-for-sibelius/
+    public var slashChordFontDescription: String {
+        if inversion > 0 {
+            return "\(root.chordFontDescription)\(type.chordFontDescription)?\(bassNote.chordFontDescription)"
+        } else {
+            return chordFontDescription
+        }
+    }
+    
     /// Bass Note computed from inversion and root note
     /// Useful for custom rendering of slash notation
     public var bassNote: NoteClass {

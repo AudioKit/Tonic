@@ -232,4 +232,55 @@ extension ChordType: CustomStringConvertible {
         case .halfDiminishedFlatThirteenth:     return "ø♭13"
         }
     }
+    
+    /// Adornment to the Root NoteClass (letter+accidental) that defines the chord type 
+    /// using specialized Chord Symbol Fonts Norfolk or Pori from
+    /// NotationExpress: https://www.notationcentral.com/product/norfolk-fonts-for-sibelius/
+    public var chordFontDescription: String {
+        switch self {
+        case .majorTriad:                       return ""
+        case .minorTriad:                       return "m"
+        case .diminishedTriad:                  return "º"
+        case .augmentedTriad:                   return "&"
+        case .suspendedSecondTriad:             return "“2"
+        case .suspendedFourthTriad:             return "“4"
+        case .sixth:                            return "6"
+        case .minorSixth:                       return "m6"
+        case .halfDiminishedSeventh:            return "Ø7"
+        case .diminishedSeventh:                return "º7"
+        case .dominantSeventh:                  return "7"
+        case .majorSeventh:                     return "^7"
+        case .minorSeventh:                     return "m7"
+        case .minorMajorSeventh:                return "m^7"
+        case .halfDiminishedNinth:              return "Ø9"
+        case .dominantNinth:                    return "9"
+        case .flatNinth:                        return "7b9"
+        case .sharpNinth:                       return "7#9"
+        case .majorNinth:                       return "^9"
+        case .minorFlatNinth:                   return "m7b9"
+        case .minorNinth:                       return "m9"
+        case .majorAddNine:                     return "@9"
+        case .minorAddNine:                     return "m@9"
+        case .sixOverNine:                      return "%"
+        case .majorEleventh:                    return "^11"
+        case .dominantEleventh:                 return "11"
+        case .minorEleventh:                    return "m11"
+        case .halfDiminishedEleventh:           return "Ø11"
+        case .majorSeventhFlatFifth:            return "^7b5"
+        case .minorSeventhSharpFifth:           return "^7#5"
+        case .majorNinthSharpEleventh:          return "^9#11"
+        case .dominantFlatFifth:                return "7b5"
+        case .dominantSharpFifth:               return "7#5"
+        case .dominantFlatNinthSharpEleventh:   return "7âÅ"
+        case .dominantSharpNinthSharpEleventh:  return "7åÅ"
+        case .minorSeventhFlatNinthAddEleventh: return "m7b9(@11)"
+        case .majorThirteenth:                  return "^13"
+        case .minorThirteenth:                  return "m13"
+        case .minorFlatThirteenthFlatNinth:     return "máÆ"
+        case .majorThirteenthSharpEleventh:     return "^13#11"
+        case .dominantThirteenth:               return "13"
+        case .minorEleventhFlatThirteenth:      return "m11b13"
+        case .halfDiminishedFlatThirteenth:     return "Øb13"
+        }
+    }
 }

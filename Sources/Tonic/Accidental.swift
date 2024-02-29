@@ -30,6 +30,12 @@ extension Accidental: CustomStringConvertible {
     public var description: String {
         ["𝄫", "♭", "", "♯", "𝄪"][Int(rawValue) + Accidental.naturalIndex]
     }
+    
+    /// Name of Accidental using specialized Chord Symbol Fonts Norfolk or Pori from
+    /// NotationExpress: https://www.notationcentral.com/product/norfolk-fonts-for-sibelius/
+    public var chordFontDescription: String {
+        ["¬", "b", "", "#", "«"][Int(rawValue) + Accidental.naturalIndex]
+    }
 }
 
 extension Accidental: Comparable {

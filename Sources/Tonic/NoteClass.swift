@@ -34,6 +34,12 @@ extension NoteClass: CustomStringConvertible {
     public var description: String {
         return "\(letter)\(accidental)"
     }
+    
+    /// Name of Note using specialized Chord Symbol Fonts Norfolk or Pori from
+    /// NotationExpress: https://www.notationcentral.com/product/norfolk-fonts-for-sibelius/
+    public var chordFontDescription: String {
+        return "\(letter.chordFontDescription)\(accidental.chordFontDescription)"
+    }
 }
 
 extension NoteClass: IntRepresentable {
