@@ -12,8 +12,10 @@ public enum Letter: Int, CaseIterable, Equatable, Hashable, Codable {
     var baseNote: UInt8 {
         return [0, 2, 4, 5, 7, 9, 11][rawValue]
     }
-    
-    var chordFontDescription: String {
+}
+
+extension Letter: CustomStringConvertible {
+    public var description: String {
         switch self {
             case .C:
                 return "C"

@@ -38,7 +38,7 @@ extension NoteClass: CustomStringConvertible {
     /// Name of Note using specialized Chord Symbol Fonts Norfolk or Pori from
     /// NotationExpress: https://www.notationcentral.com/product/norfolk-fonts-for-sibelius/
     public var chordFontDescription: String {
-        return "\(letter.chordFontDescription)\(accidental.chordFontDescription)"
+        return "\(letter)\(accidental.chordFontDescription)"
     }
 }
 

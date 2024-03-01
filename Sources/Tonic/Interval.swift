@@ -183,7 +183,6 @@ public enum Interval: Int, CaseIterable, Codable {
         if degree < 0 { degree += Letter.allCases.count }
         degree += 1
         for interval in Interval.allCases where interval.semitones == n1.semitones(to: n2) {
-            print(n1, n2, interval, n1.shiftUp(interval))
             if let n1Exists = n1.shiftUp(interval), n1Exists == n2 {
                 return interval
             }
