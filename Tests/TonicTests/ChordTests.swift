@@ -74,6 +74,13 @@ class ChordTests: XCTestCase {
         let chord = Chord.getRankedChords(from: pitchSet)
         XCTAssertEqual(chord.map { $0.description }, ["C6sus4", "Fadd9"])
     }
+    
+    func testMinorMajor9th() {
+        let notes: [Int8] = [60, 63, 67, 71, 74]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(chord.map { $0.description }, ["CmMaj9"])
+    }
 
 
     func testAugmentedDiminishededChordsPreferNoInversions() {

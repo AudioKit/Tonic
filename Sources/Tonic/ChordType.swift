@@ -79,6 +79,9 @@ public enum ChordType: String, CaseIterable, Codable {
 
     /// Major Ninth: Major Third, Perfect Fifth, Major Seventh, Major Ninth
     case majorNinth
+    
+    /// Minor Major Ninth: Minor Third, Perfect Fifth, Major Seventh, Major Ninth
+    case minorMajorNinth
 
     /// Minor Ninth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth
     case minorNinth
@@ -181,6 +184,7 @@ public enum ChordType: String, CaseIterable, Codable {
             case .flatNinth:                        return [.M3, .P5, .m7, .m9]
             case .sharpNinth:                       return [.M3, .P5, .m7, .A9]
             case .majorNinth:                       return [.M3, .P5, .M7, .M9]
+            case .minorMajorNinth:                  return [.M3, .P5, .M7, .M9]
             case .minorFlatNinth:                   return [.m3, .P5, .m7, .m9]
             case .minorNinth:                       return [.m3, .P5, .m7, .M9]
             case .majorAddNine:                     return [.M3, .P5, .M9]
@@ -240,6 +244,7 @@ extension ChordType: CustomStringConvertible {
             case .majorNinth:                       return "maj9"
             case .minorFlatNinth:                   return "m7♭9"
             case .minorNinth:                       return "m9"
+            case .minorMajorNinth:                  return "mMaj9"
             case .majorAddNine:                     return "add9"
             case .minorAddNine:                     return "mAdd9"
             case .sixOverNine:                      return "6/9"
@@ -295,6 +300,7 @@ extension ChordType: CustomStringConvertible {
             case .flatNinth:                        return "7b9"
             case .sharpNinth:                       return "7#9"
             case .majorNinth:                       return "^9"
+            case .minorMajorNinth:                  return "m^9"
             case .minorFlatNinth:                   return "m7b9"
             case .minorNinth:                       return "m9"
             case .majorAddNine:                     return "@9"
