@@ -14,6 +14,9 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Diminished Triad: Minor Third, Diminished Fifth
     case diminishedTriad
 
+    /// Major Flat Five: Major Third, Diminished Fifth
+    case flatFive
+
     /// Augmented Triad: Major Third, Augmented Fifth
     case augmentedTriad
 
@@ -139,6 +142,7 @@ public enum ChordType: String, CaseIterable, Codable {
         case .majorTriad:                       return [.M3, .P5]
         case .minorTriad:                       return [.m3, .P5]
         case .diminishedTriad:                  return [.m3, .d5]
+        case .flatFive:                         return [.M3, .d5]
         case .augmentedTriad:                   return [.M3, .A5]
         case .suspendedSecondTriad:             return [.M2, .P5]
         case .suspendedFourthTriad:             return [.P4, .P5]
@@ -190,6 +194,7 @@ extension ChordType: CustomStringConvertible {
         case .majorTriad:                       return ""
         case .minorTriad:                       return "m"
         case .diminishedTriad:                  return "°"
+        case .flatFive:                         return "♭5"
         case .augmentedTriad:                   return "⁺"
         case .suspendedSecondTriad:             return "sus2"
         case .suspendedFourthTriad:             return "sus4"
@@ -241,6 +246,7 @@ extension ChordType: CustomStringConvertible {
         case .majorTriad:                       return ""
         case .minorTriad:                       return "m"
         case .diminishedTriad:                  return "º"
+        case .flatFive:                         return "b5"
         case .augmentedTriad:                   return "&"
         case .suspendedSecondTriad:             return "“2"
         case .suspendedFourthTriad:             return "“4"
