@@ -62,6 +62,9 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Dominant Ninth: Major Third, Perfect Fifth, Minor Seventh, Major Ninth
     case dominantNinth
 
+    /// Dominant Ninth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Ninth (Major Second)
+    case dominantNinthSuspendedFourth
+
     /// Flat Ninth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth
     case flatNinth
 
@@ -164,6 +167,7 @@ public enum ChordType: String, CaseIterable, Codable {
         case .minorMajorSeventh:                return [.m3, .P5, .M7]
         case .halfDiminishedNinth:              return [.m3, .d5, .m7, .m9]
         case .dominantNinth:                    return [.M3, .P5, .m7, .M9]
+        case .dominantNinthSuspendedFourth:     return [.P4, .P5, .M9]
         case .flatNinth:                        return [.M3, .P5, .m7, .m9]
         case .sharpNinth:                       return [.M3, .P5, .m7, .A9]
         case .majorNinth:                       return [.M3, .P5, .M7, .M9]
@@ -218,6 +222,7 @@ extension ChordType: CustomStringConvertible {
         case .minorMajorSeventh:                return "mMaj7"
         case .halfDiminishedNinth:              return "ø9"
         case .dominantNinth:                    return "9"
+        case .dominantNinthSuspendedFourth:     return "9sus4"
         case .flatNinth:                        return "7♭9"
         case .sharpNinth:                       return "7♯9"
         case .majorNinth:                       return "maj9"
@@ -272,6 +277,7 @@ extension ChordType: CustomStringConvertible {
         case .minorMajorSeventh:                return "m^7"
         case .halfDiminishedNinth:              return "Ø9"
         case .dominantNinth:                    return "9"
+        case .dominantNinthSuspendedFourth:     return "9sus4"
         case .flatNinth:                        return "7b9"
         case .sharpNinth:                       return "7#9"
         case .majorNinth:                       return "^9"

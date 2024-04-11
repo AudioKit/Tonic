@@ -54,6 +54,13 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(c7sus2.map { $0.description }, ["C7sus2"])
     }
 
+    func test9sus4() {
+        let notes: [Int8] = [60, 65, 67, 74]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let c9sus4 = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(c9sus4.map { $0.description }, ["C9sus4", "G7sus4"])
+    }
+
     func testAugmentedDiminishededChordsPreferNoInversions() {
         let notes: [Int8] = [60, 64, 68]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
