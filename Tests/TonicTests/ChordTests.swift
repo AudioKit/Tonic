@@ -21,8 +21,17 @@ class ChordTests: XCTestCase {
 
         XCTAssertEqual(Chord.Asus2.description, "Asus2")
         XCTAssertEqual(Chord.Bsus2.description, "Bsus2")
+
+        XCTAssertEqual(Chord.Bsus2.description, "Bsus2")
     }
-    
+
+    func testFlatFive() {
+        let notes: [Int8] = [60, 64, 66]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let cb5 = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(cb5.map { $0.description }, ["C♭5"])
+    }
+
     func testC7() {
         XCTAssertEqual(Chord(.C, type: .dominantSeventh).description, "C7")
         let notes: [Int8] = [60, 67, 70, 76]
