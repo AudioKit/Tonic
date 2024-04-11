@@ -26,11 +26,17 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Suspended 4 Triad: Perfect Fourth, Perfect Fifth
     case suspendedFourthTriad
 
-    /// Sixth: Major Third, Perfect Fifth, Major Sixth
+    /// Major Sixth: Major Third, Perfect Fifth, Major Sixth
     case sixth
 
     /// Minor Sixth: Minor Third, Perfect Fifth, Major Sixth
     case minorSixth
+
+    /// Major Sixth Suspended Second: Major Second, Perfect Fifth, Major Sixth
+    case sixthSuspendedSecond
+
+    /// Major Sixth Suspended Fourth: Major Fourth, Perfect Fifth, Major Sixth
+    case sixthSuspendedFourth
 
     /// Half Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh
     case halfDiminishedSeventh
@@ -41,11 +47,11 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Dominant Seventh: Major Third, Perfect Fifth, Minor Seventh
     case dominantSeventh
 
-    /// Dominant Seventh Suspendend Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh
-    case dominantSeventhSuspendedFourth
-
     /// Dominant Seventh Suspendend Second: Major Second, Perfect Fifth, Minor Seventh
     case dominantSeventhSuspendedSecond
+
+    /// Dominant Seventh Suspendend Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh
+    case dominantSeventhSuspendedFourth
 
     /// Major Seventh: Major Third, Perfect Fifth, Major Seventh
     case majorSeventh
@@ -146,6 +152,8 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Diminished Thirteenth
     case halfDiminishedFlatThirteenth
 
+
+
     public var intervals: [Interval] {
         switch self {
             case .majorTriad:                       return [.M3, .P5]
@@ -157,11 +165,13 @@ public enum ChordType: String, CaseIterable, Codable {
             case .suspendedFourthTriad:             return [.P4, .P5]
             case .sixth:                            return [.M3, .P5, .M6]
             case .minorSixth:                       return [.m3, .P5, .M6]
+            case .sixthSuspendedSecond:             return [.M2, .P5, .M6]
+            case .sixthSuspendedFourth:             return [.P4, .P5, .M6]
             case .halfDiminishedSeventh:            return [.m3, .d5, .m7]
             case .diminishedSeventh:                return [.m3, .d5, .d7]
             case .dominantSeventh:                  return [.M3, .P5, .m7]
-            case .dominantSeventhSuspendedFourth:   return [.P4, .P5, .m7]
             case .dominantSeventhSuspendedSecond:   return [.M2, .P5, .m7]
+            case .dominantSeventhSuspendedFourth:   return [.P4, .P5, .m7]
             case .majorSeventh:                     return [.M3, .P5, .M7]
             case .minorSeventh:                     return [.m3, .P5, .m7]
             case .minorMajorSeventh:                return [.m3, .P5, .M7]
@@ -212,11 +222,13 @@ extension ChordType: CustomStringConvertible {
             case .suspendedFourthTriad:             return "sus4"
             case .sixth:                            return "6"
             case .minorSixth:                       return "m6"
+            case .sixthSuspendedSecond:             return "6sus2"
+            case .sixthSuspendedFourth:             return "6sus4"
             case .halfDiminishedSeventh:            return "ø7"
             case .diminishedSeventh:                return "°7"
             case .dominantSeventh:                  return "7"
-            case .dominantSeventhSuspendedFourth:   return "7sus4"
             case .dominantSeventhSuspendedSecond:   return "7sus2"
+            case .dominantSeventhSuspendedFourth:   return "7sus4"
             case .majorSeventh:                     return "maj7"
             case .minorSeventh:                     return "m7"
             case .minorMajorSeventh:                return "mMaj7"
@@ -267,11 +279,13 @@ extension ChordType: CustomStringConvertible {
             case .suspendedFourthTriad:             return "“4"
             case .sixth:                            return "6"
             case .minorSixth:                       return "m6"
+            case .sixthSuspendedSecond:             return "6sus2"
+            case .sixthSuspendedFourth:             return "6sus4"
             case .halfDiminishedSeventh:            return "Ø7"
             case .diminishedSeventh:                return "º7"
             case .dominantSeventh:                  return "7"
-            case .dominantSeventhSuspendedFourth:   return "7sus4"
             case .dominantSeventhSuspendedSecond:   return "7sus2"
+            case .dominantSeventhSuspendedFourth:   return "7sus4"
             case .majorSeventh:                     return "^7"
             case .minorSeventh:                     return "m7"
             case .minorMajorSeventh:                return "m^7"

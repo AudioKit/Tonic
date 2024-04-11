@@ -40,13 +40,6 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(c7.map { $0.description }, ["C7"])
     }
 
-    func test7sus4() {
-        let notes: [Int8] = [60, 65, 67, 70]
-        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
-        let c7sus4 = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(c7sus4.map { $0.description }, ["C7sus4", "F9sus4"])
-    }
-
     func test7sus2() {
         let notes: [Int8] = [60, 62, 67, 70]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
@@ -54,12 +47,34 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(c7sus2.map { $0.description }, ["C7sus2"])
     }
 
+    func test7sus4() {
+        let notes: [Int8] = [60, 65, 67, 70]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let c7sus4 = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(c7sus4.map { $0.description }, ["C7sus4", "B♭6sus2", "F9sus4"])
+    }
+
     func test9sus4() {
         let notes: [Int8] = [60, 65, 67, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c9sus4 = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(c9sus4.map { $0.description }, ["C9sus4", "G7sus4"])
+        XCTAssertEqual(c9sus4.map { $0.description }, ["C9sus4", "G7sus4", "F6sus2"])
     }
+
+    func test6sus2() {
+        let notes: [Int8] = [60, 62, 67, 69]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(chord.map { $0.description }, ["C6sus2", "G9sus4", "D7sus4"])
+    }
+
+    func test6sus4() {
+        let notes: [Int8] = [60, 65, 67, 69]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(chord.map { $0.description }, ["C6sus4", "Fadd9"])
+    }
+
 
     func testAugmentedDiminishededChordsPreferNoInversions() {
         let notes: [Int8] = [60, 64, 68]
