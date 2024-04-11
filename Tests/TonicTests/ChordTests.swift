@@ -32,12 +32,19 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(cb5.map { $0.description }, ["C♭5"])
     }
 
-    func testC7() {
+    func test7() {
         XCTAssertEqual(Chord(.C, type: .dominantSeventh).description, "C7")
         let notes: [Int8] = [60, 67, 70, 76]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c7 = Chord.getRankedChords(from: pitchSet)
         XCTAssertEqual(c7.map { $0.description }, ["C7"])
+    }
+
+    func test7sus4() {
+        let notes: [Int8] = [60, 65, 67, 70]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let c7 = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(c7.map { $0.description }, ["C7sus4"])
     }
 
     func testAugmentedDiminishededChordsPreferNoInversions() {

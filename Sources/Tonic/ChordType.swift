@@ -41,6 +41,9 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Dominant Seventh: Major Third, Perfect Fifth, Minor Seventh
     case dominantSeventh
 
+    /// Dominant Seventh Suspendend Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh
+    case dominantSeventhSus4
+
     /// Major Seventh: Major Third, Perfect Fifth, Major Seventh
     case majorSeventh
 
@@ -151,6 +154,7 @@ public enum ChordType: String, CaseIterable, Codable {
         case .halfDiminishedSeventh:            return [.m3, .d5, .m7]
         case .diminishedSeventh:                return [.m3, .d5, .d7]
         case .dominantSeventh:                  return [.M3, .P5, .m7]
+        case .dominantSeventhSus4:              return [.P4, .P5, .m7]
         case .majorSeventh:                     return [.M3, .P5, .M7]
         case .minorSeventh:                     return [.m3, .P5, .m7]
         case .minorMajorSeventh:                return [.m3, .P5, .M7]
@@ -203,6 +207,7 @@ extension ChordType: CustomStringConvertible {
         case .halfDiminishedSeventh:            return "ø7"
         case .diminishedSeventh:                return "°7"
         case .dominantSeventh:                  return "7"
+        case .dominantSeventhSus4:              return "7sus4"
         case .majorSeventh:                     return "maj7"
         case .minorSeventh:                     return "m7"
         case .minorMajorSeventh:                return "mMaj7"
@@ -255,6 +260,7 @@ extension ChordType: CustomStringConvertible {
         case .halfDiminishedSeventh:            return "Ø7"
         case .diminishedSeventh:                return "º7"
         case .dominantSeventh:                  return "7"
+        case .dominantSeventhSus4:              return "7sus4"
         case .majorSeventh:                     return "^7"
         case .minorSeventh:                     return "m7"
         case .minorMajorSeventh:                return "m^7"
