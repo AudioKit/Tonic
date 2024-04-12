@@ -184,7 +184,7 @@ public enum ChordType: String, CaseIterable, Codable {
             case .flatNinth:                        return [.M3, .P5, .m7, .m9]
             case .sharpNinth:                       return [.M3, .P5, .m7, .A9]
             case .majorNinth:                       return [.M3, .P5, .M7, .M9]
-            case .minorMajorNinth:                  return [.M3, .P5, .M7, .M9]
+            case .minorMajorNinth:                  return [.m3, .P5, .M7, .M9]
             case .minorFlatNinth:                   return [.m3, .P5, .m7, .m9]
             case .minorNinth:                       return [.m3, .P5, .m7, .M9]
             case .majorAddNine:                     return [.M3, .P5, .M9]
