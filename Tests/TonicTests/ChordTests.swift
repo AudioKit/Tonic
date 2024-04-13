@@ -55,7 +55,6 @@ class ChordTests: XCTestCase {
     
     func testMinorSeventhSharpFive() {
         let notes: [Int8] = [60, 63, 68, 71]
-        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord(.C, type: .minorSeventhSharpFive)
         XCTAssertEqual(chord.description, "Cm7♯5")
     }
