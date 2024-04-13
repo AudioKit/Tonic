@@ -46,6 +46,20 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(chord.map { $0.description }, ["Cmaj7♭5"])
     }
     
+    func testMajorSeventhSharpFive() {
+        let notes: [Int8] = [60, 64, 68, 71]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord.getRankedChords(from: pitchSet)
+        XCTAssertEqual(chord.map { $0.description }, ["Cmaj7♯5"])
+    }
+    
+    func testMinorSeventhSharpFive() {
+        let notes: [Int8] = [60, 63, 68, 71]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord(.C, type: .minorSeventhSharpFive)
+        XCTAssertEqual(chord.description, "Cm7♯5")
+    }
+    
     func testMajorNinthFlatFive() {
         let notes: [Int8] = [60, 64, 66, 71, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
