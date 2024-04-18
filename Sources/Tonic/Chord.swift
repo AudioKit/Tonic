@@ -182,6 +182,72 @@ extension Chord {
         }
         return count
     }
+    
+    public static func getRankedChords2(from pitchSet: PitchSet) -> [Chord] {
+        var enharmonicNoteArrays: [[Note]] = []
+        var returnArray: [Chord] = []
+        
+        for pitch in pitchSet.array {
+            var noteArray: [Note] = []
+            for letter in Letter.allCases {
+                for accidental in Accidental.allCases {
+                    var intValue = Int(letter.baseNote) + Int(accidental.rawValue)
+                    if intValue > 11 {
+                        intValue -= 12
+                    }
+                    if intValue < 0 {
+                        intValue += 12
+                    }
+                    if pitch.midiNoteNumber % 12 == intValue {
+                        noteArray.append(Note(letter, accidental: accidental))
+                    }
+                }
+            }
+            noteArray.sort { n1, n2 in
+                abs(n1.accidental.rawValue) < abs(n2.accidental.rawValue)
+            }
+            enharmonicNoteArrays.append(noteArray)
+        }
+        
+        //[0] = C, B#, Dbb
+        //[1] = E, Dx, Fb
+        //[2] = G, Fx, Abb
+        
+        var foundNoteArrays: [[Note]] = []
+        for enharmonicNoteArray in enharmonicNoteArrays {
+            for rootNote in enharmonicNoteArray {
+                var usedNoteArrays: [[Note]] = [enharmonicNoteArray]
+                var foundNotes: [Note] = []
+                foundNotes.append(rootNote)
+                for nextLetterOffset in [2,4,6,8,10,12] {
+                    let nextLetter = Letter(rawValue: (rootNote.letter.rawValue + nextLetterOffset) % Letter.allCases.count)
+                    var foundCurrentLetter = false
+                    print("rootNote: \(rootNote) nextLetter: \(nextLetter)")
+                    for accidental in Accidental.allCases.sorted(by: {
+                        abs($0.rawValue) < abs($1.rawValue)
+                    }) {
+                        if foundCurrentLetter { continue }
+                        if let nextLetter {
+                            let searchNote = Note(nextLetter, accidental: accidental)
+                            for noteArray in enharmonicNoteArrays where !usedNoteArrays.contains(noteArray) {
+                                if noteArray.contains(searchNote) {
+                                    foundNotes.append(searchNote)
+                                    usedNoteArrays.append(noteArray)
+                                    foundCurrentLetter = true
+                                }
+                            }
+                        }
+                    }
+                }
+                foundNoteArrays.append(foundNotes)
+            }
+            
+        }
+        
+        print("NoteArrays:\(enharmonicNoteArrays.debugDescription)")
+        print("Found note Arrays:\(foundNoteArrays.debugDescription)")
+        return returnArray
+    }
 
     /// Get chords that match a set of pitches, ranking by least number of accidentals
     public static func getRankedChords(from pitchSet: PitchSet) -> [Chord] {

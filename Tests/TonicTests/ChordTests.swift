@@ -2,6 +2,14 @@ import Tonic
 import XCTest
 
 class ChordTests: XCTestCase {
+    
+    func testNewAlgo() {
+        /// 1. Pitch set of C E G
+        let pitchSet = PitchSet(pitches: [Pitch(60), Pitch(64), Pitch(67)])
+        /// 2. Get enharmonic note names for each pitch as array
+        let chords = Chord.getRankedChords2(from: pitchSet)
+    }
+    
     func testChords() {
         XCTAssertTrue(Chord.C.isTriad)
         XCTAssertEqual(Chord.Cs.description, "C♯")
