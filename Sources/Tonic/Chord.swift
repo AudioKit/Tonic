@@ -213,52 +213,35 @@ extension Chord {
             enharmonicNoteArrays.append(noteArray)
         }
         
-        //[0] = C, B#, Dbb
-        //[1] = E, Dx, Fb
-        //[2] = G, Fx, Abb
+        let chordSearchIntervalArray: [[Interval]] =
+        [[.M3, .m3], [.P5, .d5], [.M7, .m7], [.M9, .m9, .A9], [.P11, .A11], [.M13, .m13, .A13]]
         
-//        print("At start of EnharmonicNoteArray")
         var foundNoteArrays: [[Note]] = []
         for enharmonicNoteArray in enharmonicNoteArrays {
             for rootNote in enharmonicNoteArray {
-                print("For rootNote:\(rootNote.description)")
                 var usedNoteArrays: [[Note]] = [enharmonicNoteArray]
                 var foundNotes: [Note] = []
                 foundNotes.append(rootNote)
-                for nextLetterOffset in [2,4,6,8,10,12] {
-                    print("For next letter offset:\(nextLetterOffset)")
-                    let nextLetter = Letter(rawValue: (rootNote.letter.rawValue + nextLetterOffset) % Letter.allCases.count)
-                    var foundCurrentLetter = false
-                    for accidental in Accidental.allCases.sorted(by: {
-                        abs($0.rawValue) < abs($1.rawValue)
-                    }) {
-                        print("For accidental:\(accidental)")
-                        if foundCurrentLetter { continue }
-                        if let nextLetter {
-                            let searchNoteClass = Note(nextLetter, accidental: accidental).noteClass
-                            print("Search note class:\(searchNoteClass.description)")
-                            for noteArray in enharmonicNoteArrays where !usedNoteArrays.contains(noteArray) {
-                                print("For noteArray:\(noteArray)")
-                                if noteArray.map({$0.noteClass}).contains(searchNoteClass) {
-                                    guard let matchedNote = noteArray.first(where: {$0.noteClass == searchNoteClass}) else { fatalError() }
-                                    
-                                    foundNotes.append(matchedNote)
-                                    usedNoteArrays.append(noteArray)
-                                    foundCurrentLetter = true
-//                                    print("Found Note Array:\(foundNotes.debugDescription)")
-//                                    print("Used note Array:\(usedNoteArrays)")
-                                }
+                for nextIntervals in chordSearchIntervalArray {
+                    var foundNote = false
+                    for nextInterval in nextIntervals {
+                        if foundNote { continue }
+                        guard let searchNoteClass = rootNote.shiftUp(nextInterval)?.noteClass else { continue }
+                        for noteArray in enharmonicNoteArrays where !usedNoteArrays.contains(noteArray) {
+                            if noteArray.map({$0.noteClass}).contains(searchNoteClass) {
+                                guard let matchedNote = noteArray.first(where: {$0.noteClass == searchNoteClass}) else { fatalError() }
+                                
+                                foundNotes.append(matchedNote)
+                                usedNoteArrays.append(noteArray)
+                                foundNote = true
                             }
                         }
-                        else {
-                            print("Can't unwrap next letter")
-                        }
+                    }
+                    if foundNotes.count == pitchSet.count {
+                        foundNoteArrays.append(foundNotes)
                     }
                 }
-                foundNoteArrays.append(foundNotes)
-                print("Found Note Arrays:\(foundNoteArrays.debugDescription)")
             }
-            
         }
         
         for foundNoteArray in foundNoteArrays {
