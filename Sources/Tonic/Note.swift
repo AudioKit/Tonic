@@ -85,6 +85,12 @@ public struct Note: Equatable, Hashable, Codable {
     public var noteNumber: Int8 {
         let octaveBounds = ((octave + 1) * 12) ... ((octave + 2) * 12)
         var note = Int(noteClass.letter.baseNote) + Int(noteClass.accidental.rawValue)
+        if noteClass.letter == .B && noteClass.accidental.rawValue > 0 {
+            note -= 12
+        }
+        if noteClass.letter == .C && noteClass.accidental.rawValue < 0 {
+            note += 12
+        }
         while !octaveBounds.contains(note) {
             note += 12
         }
@@ -136,7 +142,7 @@ public struct Note: Equatable, Hashable, Codable {
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newMidiNoteNumber = Int(pitch.midiNoteNumber) + shift.semitones
-
+        
         let newOctave = newMidiNoteNumber / 12 - 1
 
         for accidental in Accidental.allCases {
@@ -171,11 +177,8 @@ extension Note: IntRepresentable {
         if index == octaveCount - 1 { letter = .C; accidental = .flat}
 
         noteClass = NoteClass(letter, accidental: accidental)
-//        print("Noteclass, init intValue:\(noteClass.description)")
     }
-    // Cbb Cb C C# C##  D  E  F  G  A               Bbb Bb B  B#  B##
-    // B# B## C C# C##  Dbb Db ... A# A##           Bbb Bb B  Cbb Cb
-    // 0  1   2-4       5-9 10-14 15-19 20-24 25-29 30-32     33  34
+    
     /// Global index of the note for use in a NoteSet
     public var intValue: Int {
         let accidentalCount = Accidental.allCases.count
@@ -191,7 +194,7 @@ extension Note: IntRepresentable {
             if accidental == .doubleFlat { index = octaveCount - 2}
             if accidental == .flat { index = octaveCount - 1}
         }
-//        print("Note intValue:\((octave + 1) * octaveCount + index)")
+
         return (octave + 1) * octaveCount + index
     }
 }
