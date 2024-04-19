@@ -143,6 +143,24 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(chord2.slashDescription, "CmMaj9")
         XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj9"])
     }
+    
+    func testMinorMajor7th() {
+        let notes: [Int8] = [60, 63, 67, 71]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord.getRankedChords(from: pitchSet)
+        let chord2 = Chord(.C, type: .minorMajorSeventh)
+        XCTAssertEqual(chord2.description, "CmMaj7")
+        XCTAssertEqual(chord.map { $0.description }, ["CmMaj7"])
+    }
+    
+    func testMinorMajor9th() {
+        let notes: [Int8] = [60, 63, 67, 71, 74]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord.getRankedChords(from: pitchSet)
+        let chord2 = Chord(.C, type: .minorMajorNinth)
+        XCTAssertEqual(chord2.description, "CmMaj9")
+        XCTAssertEqual(chord.map { $0.description }, ["CmMaj9"])
+    }
 
     func testMajor7thFlatFive() {
         let notes: [Int8] = [60, 64, 66, 71]
