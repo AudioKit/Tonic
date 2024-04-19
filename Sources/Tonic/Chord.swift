@@ -221,36 +221,42 @@ extension Chord {
         var foundNoteArrays: [[Note]] = []
         for enharmonicNoteArray in enharmonicNoteArrays {
             for rootNote in enharmonicNoteArray {
-//                print("For rootNote:\(rootNote.description)")
+                print("For rootNote:\(rootNote.description)")
                 var usedNoteArrays: [[Note]] = [enharmonicNoteArray]
                 var foundNotes: [Note] = []
                 foundNotes.append(rootNote)
                 for nextLetterOffset in [2,4,6,8,10,12] {
-//                    print("For next letter offset:\(nextLetterOffset)")
+                    print("For next letter offset:\(nextLetterOffset)")
                     let nextLetter = Letter(rawValue: (rootNote.letter.rawValue + nextLetterOffset) % Letter.allCases.count)
                     var foundCurrentLetter = false
                     for accidental in Accidental.allCases.sorted(by: {
                         abs($0.rawValue) < abs($1.rawValue)
                     }) {
-//                        print("For accidental:\(accidental)")
+                        print("For accidental:\(accidental)")
                         if foundCurrentLetter { continue }
                         if let nextLetter {
                             let searchNoteClass = Note(nextLetter, accidental: accidental).noteClass
+                            print("Search note class:\(searchNoteClass.description)")
                             for noteArray in enharmonicNoteArrays where !usedNoteArrays.contains(noteArray) {
-//                                print("For noteArray:\(noteArray)")
+                                print("For noteArray:\(noteArray)")
                                 if noteArray.map({$0.noteClass}).contains(searchNoteClass) {
                                     guard let matchedNote = noteArray.first(where: {$0.noteClass == searchNoteClass}) else { fatalError() }
                                     
                                     foundNotes.append(matchedNote)
                                     usedNoteArrays.append(noteArray)
                                     foundCurrentLetter = true
-                                    
+//                                    print("Found Note Array:\(foundNotes.debugDescription)")
+//                                    print("Used note Array:\(usedNoteArrays)")
                                 }
                             }
+                        }
+                        else {
+                            print("Can't unwrap next letter")
                         }
                     }
                 }
                 foundNoteArrays.append(foundNotes)
+                print("Found Note Arrays:\(foundNoteArrays.debugDescription)")
             }
             
         }
@@ -263,6 +269,19 @@ extension Chord {
                 }
             }
         }
+        
+        // Sorts anti-alphabetical, but the net effect is to pefer flats to sharps
+        returnArray.sort { $0.root.letter > $1.root.letter }
+
+        // order the array by least number of accidentals
+        returnArray.sort { $0.accidentalCount < $1.accidentalCount }
+
+        // order the array preferring root position
+        returnArray.sort { $0.inversion < ($1.inversion > 0 ? 1 : 0) }
+
+        // prefer root notes not being uncommon enharmonics
+        returnArray.sort { ($0.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) < ($1.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) }
+        
         return returnArray
     }
 
