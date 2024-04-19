@@ -3,17 +3,17 @@ import XCTest
 
 class KeyTests: XCTestCase {
     func testKeyNotes() {
-        XCTAssertEqual(Key.C.noteSet.array.map { $0.noteClass.description },
-                       ["C", "D", "E", "F", "G", "A", "B"])
+        XCTAssertEqual(Key.C.noteSet.array.map({ $0.noteClass.description }).sorted(),
+                       ["A", "B", "C", "D", "E", "F", "G"])
 
-        XCTAssertEqual(Key.Cm.noteSet.array.map { $0.noteClass.description },
-                       ["C", "D", "E♭", "F", "G", "A♭", "B♭"])
+        XCTAssertEqual(Key.Cm.noteSet.array.sorted().map({ $0.noteClass.description }).sorted(),
+                       ["A♭", "B♭", "C", "D", "E♭", "F", "G"])
 
-        XCTAssertEqual(Key.Cs.noteSet.array.map { $0.noteClass.description },
-                       ["C♯", "D♯", "E♯", "F♯", "G♯", "A♯", "B♯"])
+        XCTAssertEqual(Key.Cs.noteSet.array.sorted().map({ $0.noteClass.description }).sorted(),
+                       ["A♯", "B♯", "C♯", "D♯", "E♯", "F♯", "G♯"])
 
-        XCTAssertEqual(Key.Cb.noteSet.array.map { $0.noteClass.description },
-                       ["C♭", "D♭", "E♭", "F♭", "G♭", "A♭", "B♭"])
+        XCTAssertEqual(Key.Cb.noteSet.array.sorted().map({ $0.noteClass.description }).sorted(),
+                       ["A♭", "B♭","C♭", "D♭", "E♭", "F♭", "G♭"])
     }
 
     func testKeyPrimaryTriads() {

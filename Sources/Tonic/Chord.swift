@@ -112,6 +112,7 @@ public struct Chord: Equatable, Codable {
     /// - Parameter noteClasses: Array of noteClasses for a given chord
     /// - Returns: inversion integer value
     static func getInversion(noteSet: NoteSet, noteClasses: [NoteClass]) -> Int {
+//        print("NoteSet:\(noteSet.array.debugDescription) | NoteClasses:\(noteClasses.map{$0.description})")
         if let firstNote = noteSet.array.first {
             return noteClasses.firstIndex(of: firstNote.noteClass) ?? 0
         } else {
@@ -186,11 +187,14 @@ extension Chord {
     public static func getRankedChords2(from pitchSet: PitchSet) -> [Chord] {
         var enharmonicNoteArrays: [[Note]] = []
         var returnArray: [Chord] = []
-        
+//        print("Start of GetRankedChords2")
         for pitch in pitchSet.array {
+            let octave = pitch.note(in: .C).octave
             var noteArray: [Note] = []
             for letter in Letter.allCases {
+//                print("For letter:\(letter.description)")
                 for accidental in Accidental.allCases {
+//                    print("For Accidental:\(accidental.description)")
                     var intValue = Int(letter.baseNote) + Int(accidental.rawValue)
                     if intValue > 11 {
                         intValue -= 12
@@ -199,7 +203,7 @@ extension Chord {
                         intValue += 12
                     }
                     if pitch.midiNoteNumber % 12 == intValue {
-                        noteArray.append(Note(letter, accidental: accidental))
+                        noteArray.append(Note(letter, accidental: accidental, octave: octave))
                     }
                 }
             }
@@ -213,27 +217,34 @@ extension Chord {
         //[1] = E, Dx, Fb
         //[2] = G, Fx, Abb
         
+//        print("At start of EnharmonicNoteArray")
         var foundNoteArrays: [[Note]] = []
         for enharmonicNoteArray in enharmonicNoteArrays {
             for rootNote in enharmonicNoteArray {
+//                print("For rootNote:\(rootNote.description)")
                 var usedNoteArrays: [[Note]] = [enharmonicNoteArray]
                 var foundNotes: [Note] = []
                 foundNotes.append(rootNote)
                 for nextLetterOffset in [2,4,6,8,10,12] {
+//                    print("For next letter offset:\(nextLetterOffset)")
                     let nextLetter = Letter(rawValue: (rootNote.letter.rawValue + nextLetterOffset) % Letter.allCases.count)
                     var foundCurrentLetter = false
-                    print("rootNote: \(rootNote) nextLetter: \(nextLetter)")
                     for accidental in Accidental.allCases.sorted(by: {
                         abs($0.rawValue) < abs($1.rawValue)
                     }) {
+//                        print("For accidental:\(accidental)")
                         if foundCurrentLetter { continue }
                         if let nextLetter {
-                            let searchNote = Note(nextLetter, accidental: accidental)
+                            let searchNoteClass = Note(nextLetter, accidental: accidental).noteClass
                             for noteArray in enharmonicNoteArrays where !usedNoteArrays.contains(noteArray) {
-                                if noteArray.contains(searchNote) {
-                                    foundNotes.append(searchNote)
+//                                print("For noteArray:\(noteArray)")
+                                if noteArray.map({$0.noteClass}).contains(searchNoteClass) {
+                                    guard let matchedNote = noteArray.first(where: {$0.noteClass == searchNoteClass}) else { fatalError() }
+                                    
+                                    foundNotes.append(matchedNote)
                                     usedNoteArrays.append(noteArray)
                                     foundCurrentLetter = true
+                                    
                                 }
                             }
                         }
@@ -244,8 +255,14 @@ extension Chord {
             
         }
         
-        print("NoteArrays:\(enharmonicNoteArrays.debugDescription)")
-        print("Found note Arrays:\(foundNoteArrays.debugDescription)")
+        for foundNoteArray in foundNoteArrays {
+            let chords = Chord.getRankedChords(from: foundNoteArray)
+            for chord in chords {
+                if !returnArray.contains(chord) {
+                    returnArray.append(chord)
+                }
+            }
+        }
         return returnArray
     }
 
@@ -286,7 +303,10 @@ extension Chord {
     /// The ranking is based on how low the root note of the chord appears, for example we
     /// want to list the notes C, E, G, A as C6 if the C is in the bass
     public static func getRankedChords(from notes: [Note]) -> [Chord] {
+//        print("Note Array before NoteSet:\(notes.debugDescription)")
+//        print("Noteset: \(NoteSet(notes: notes).array.debugDescription)")
         let potentialChords = ChordTable.shared.getAllChordsForNoteSet(NoteSet(notes: notes))
+        if potentialChords.isEmpty { return [] }
         let orderedNotes = notes.sorted(by: { f, s in  f.noteNumber < s.noteNumber })
         var ranks: [(Int, Chord)] = []
         for chord in potentialChords {

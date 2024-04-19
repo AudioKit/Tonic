@@ -157,15 +157,42 @@ extension Note: Comparable {
 
 extension Note: IntRepresentable {
     public init(intValue: Int) {
-        octave = (intValue / 35) - 1
-        let letter = Letter(rawValue: (intValue % 35) / 5)!
-        let accidental = Accidental(rawValue: Int8(intValue % 5) - 2)!
-        noteClass = NoteClass(letter, accidental: accidental)
-    }
+        let accidentalCount = Accidental.allCases.count
+        let letterCount = Letter.allCases.count
+        let octaveCount = letterCount * accidentalCount
+        octave = (intValue / octaveCount) - 1
+        var letter = Letter(rawValue: (intValue % octaveCount) / accidentalCount)!
+        var accidental = Accidental(rawValue: Int8(intValue % accidentalCount) - 2)!
 
+        let index = intValue % octaveCount
+        if index == 0 { letter = .B; accidental = .sharp}
+        if index == 1 { letter = .B; accidental = .doubleSharp}
+        if index == octaveCount - 2 { letter = .C; accidental = .doubleFlat}
+        if index == octaveCount - 1 { letter = .C; accidental = .flat}
+
+        noteClass = NoteClass(letter, accidental: accidental)
+//        print("Noteclass, init intValue:\(noteClass.description)")
+    }
+    // Cbb Cb C C# C##  D  E  F  G  A               Bbb Bb B  B#  B##
+    // B# B## C C# C##  Dbb Db ... A# A##           Bbb Bb B  Cbb Cb
+    // 0  1   2-4       5-9 10-14 15-19 20-24 25-29 30-32     33  34
     /// Global index of the note for use in a NoteSet
     public var intValue: Int {
-        (octave + 1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue) + 2)
+        let accidentalCount = Accidental.allCases.count
+        let letterCount = Letter.allCases.count
+        let octaveCount = letterCount * accidentalCount
+        
+        var index = noteClass.letter.rawValue * accidentalCount + (Int(noteClass.accidental.rawValue) + 2)
+        if letter == .B {
+            if accidental == .sharp { index = 0}
+            if accidental == .doubleSharp { index = 1}
+        }
+        if letter == .C {
+            if accidental == .doubleFlat { index = octaveCount - 2}
+            if accidental == .flat { index = octaveCount - 1}
+        }
+//        print("Note intValue:\((octave + 1) * octaveCount + index)")
+        return (octave + 1) * octaveCount + index
     }
 }
 
