@@ -43,3 +43,12 @@ extension Accidental: Comparable {
         lhs.rawValue < rhs.rawValue
     }
 }
+
+extension Accidental {
+    var isDouble: Bool {
+        switch self {
+            case .doubleFlat, .doubleSharp: return true
+            default: return false
+        }
+    }
+}
