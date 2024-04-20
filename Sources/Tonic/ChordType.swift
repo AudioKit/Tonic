@@ -3,7 +3,7 @@
 import Foundation
 
 /// Chord type as defined by a set of intervals from a root note class
-public enum ChordType: String, CaseIterable, Codable {
+public enum ChordType: String, CaseIterable {
 
 	//MARK: - Triads
     /// Major Triad: Major Third, Perfect Fifth, e.g. `C`
