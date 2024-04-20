@@ -143,24 +143,6 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(chord2.slashDescription, "CmMaj9")
         XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj9"])
     }
-    
-    func testMinorMajor7th() {
-        let notes: [Int8] = [60, 63, 67, 71]
-        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
-        let chord = Chord.getRankedChords(from: pitchSet)
-        let chord2 = Chord(.C, type: .minorMajorSeventh)
-        XCTAssertEqual(chord2.description, "CmMaj7")
-        XCTAssertEqual(chord.map { $0.description }, ["CmMaj7"])
-    }
-    
-    func testMinorMajor9th() {
-        let notes: [Int8] = [60, 63, 67, 71, 74]
-        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
-        let chord = Chord.getRankedChords(from: pitchSet)
-        let chord2 = Chord(.C, type: .minorMajorNinth)
-        XCTAssertEqual(chord2.description, "CmMaj9")
-        XCTAssertEqual(chord.map { $0.description }, ["CmMaj9"])
-    }
 
     func testMajor7thFlatFive() {
         let notes: [Int8] = [60, 64, 66, 71]
@@ -451,7 +433,7 @@ class ChordTests: XCTestCase {
         assertChords([0, 4, 7], [.C])
         // Extensions that can be spelled only without double accidentals should be found
         assertChords([1, 5, 8, 11], [Chord(.Db, type: .dominantSeventh), Chord(.Cs, type: .dominantSeventh),])
-        assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .flatNinth)])
+        assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .dominantFlatNinth)])
     }
 
     func testClosedVoicing() {
@@ -477,6 +459,11 @@ class ChordTests: XCTestCase {
         let resultSet = PitchSet(pitches: results.map { Pitch($0) })
         XCTAssertEqual(pitchSet.transposedBassNoteTo(octave: -1), resultSet)
     }
-
-
+	
+	func testNewChords() {
+		let notes: [Int8] = [0, 3, 5, 7, 10]
+		let pitchSet = PitchSet(pitches: notes.map { Pitch($0) })
+		let chords = Chord.getRankedChords(from: pitchSet)
+		print(chords.map {$0.slashDescription})
+	}
 }
