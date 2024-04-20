@@ -85,6 +85,12 @@ public struct Note: Equatable, Hashable, Codable {
     public var noteNumber: Int8 {
         let octaveBounds = ((octave + 1) * 12) ... ((octave + 2) * 12)
         var note = Int(noteClass.letter.baseNote) + Int(noteClass.accidental.rawValue)
+        if noteClass.letter == .B && noteClass.accidental.rawValue > 0 {
+            note -= 12
+        }
+        if noteClass.letter == .C && noteClass.accidental.rawValue < 0 {
+            note += 12
+        }
         while !octaveBounds.contains(note) {
             note += 12
         }
@@ -136,7 +142,7 @@ public struct Note: Equatable, Hashable, Codable {
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newMidiNoteNumber = Int(pitch.midiNoteNumber) + shift.semitones
-
+        
         let newOctave = newMidiNoteNumber / 12 - 1
 
         for accidental in Accidental.allCases {
@@ -157,15 +163,39 @@ extension Note: Comparable {
 
 extension Note: IntRepresentable {
     public init(intValue: Int) {
-        octave = (intValue / 35) - 1
-        let letter = Letter(rawValue: (intValue % 35) / 5)!
-        let accidental = Accidental(rawValue: Int8(intValue % 5) - 2)!
+        let accidentalCount = Accidental.allCases.count
+        let letterCount = Letter.allCases.count
+        let octaveCount = letterCount * accidentalCount
+        octave = (intValue / octaveCount) - 1
+        var letter = Letter(rawValue: (intValue % octaveCount) / accidentalCount)!
+        var accidental = Accidental(rawValue: Int8(intValue % accidentalCount) - 2)!
+
+        let index = intValue % octaveCount
+        if index == 0 { letter = .B; accidental = .sharp}
+        if index == 1 { letter = .B; accidental = .doubleSharp}
+        if index == octaveCount - 2 { letter = .C; accidental = .doubleFlat}
+        if index == octaveCount - 1 { letter = .C; accidental = .flat}
+
         noteClass = NoteClass(letter, accidental: accidental)
     }
-
+    
     /// Global index of the note for use in a NoteSet
     public var intValue: Int {
-        (octave + 1) * 7 * 5 + noteClass.letter.rawValue * 5 + (Int(noteClass.accidental.rawValue) + 2)
+        let accidentalCount = Accidental.allCases.count
+        let letterCount = Letter.allCases.count
+        let octaveCount = letterCount * accidentalCount
+        
+        var index = noteClass.letter.rawValue * accidentalCount + (Int(noteClass.accidental.rawValue) + 2)
+        if letter == .B {
+            if accidental == .sharp { index = 0}
+            if accidental == .doubleSharp { index = 1}
+        }
+        if letter == .C {
+            if accidental == .doubleFlat { index = octaveCount - 2}
+            if accidental == .flat { index = octaveCount - 1}
+        }
+
+        return (octave + 1) * octaveCount + index
     }
 }
 

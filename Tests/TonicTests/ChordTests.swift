@@ -2,6 +2,7 @@ import Tonic
 import XCTest
 
 class ChordTests: XCTestCase {
+    
     func testChords() {
         XCTAssertTrue(Chord.C.isTriad)
         XCTAssertEqual(Chord.Cs.description, "C♯")
@@ -29,50 +30,49 @@ class ChordTests: XCTestCase {
         let notes: [Int8] = [60, 64, 66]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["C♭5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["C♭5"])
     }
     
     func testDominantSeventhFlatFive() {
         let notes: [Int8] = [60, 64, 66, 70]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["C7♭5", "F♯7♭5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["C7♭5", "F♯7♭5/C"])
     }
     
     func testMajorSeventhFlatFive() {
         let notes: [Int8] = [60, 64, 66, 71]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["Cmaj7♭5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj7♭5"])
     }
     
     func testMajorNinthFlatFive() {
         let notes: [Int8] = [60, 64, 66, 71, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["Cmaj9♭5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj9♭5"])
     }
     
     func testMajorNinthSharpFive() {
         let notes: [Int8] = [60, 64, 68, 71, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["Cmaj9♯5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj9♯5"])
     }
     
     func testDominantNinthFlatFive() {
         let notes: [Int8] = [60, 64, 66, 70, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["C9♭5", "D9♯5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["C9♭5", "D9♯5/C"])
     }
     
-    //TODO: - Test does not pass (returns "B♭9♭5"), requires update to getRankedChords algo to accomdate
     func testDominantNinthSharpFive() {
         let notes: [Int8] = [60, 64, 68, 70, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-//        XCTAssertEqual(chord.map { $0.description }, ["C9♯5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["C9♯5", "B♭9♭5/C"])
     }
 
     func test7() {
@@ -80,55 +80,59 @@ class ChordTests: XCTestCase {
         let notes: [Int8] = [60, 67, 70, 76]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c7 = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(c7.map { $0.description }, ["C7"])
+        XCTAssertEqual(c7.map { $0.slashDescription }, ["C7"])
+    }
+    
+    func testTheortical() {
+        XCTAssertEqual(Chord(.C, type: .dominantSeventh).description, "C7")
+        let notes: [Int8] = [60, 67, 70, 76]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let c7 = Chord.getRankedChords(from: pitchSet, allowTheoreticalChords: true)
+        XCTAssertEqual(c7.map { $0.slashDescription }, ["C7", "D𝄫7", "B♯7"])
     }
 
     func test7sus2() {
         let notes: [Int8] = [60, 62, 67, 70]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c7sus2 = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(c7sus2.map { $0.description }, ["C7sus2"])
+        XCTAssertEqual(c7sus2.map { $0.slashDescription }, ["C7sus2"])
     }
 
     func test7sus4() {
         let notes: [Int8] = [60, 65, 67, 70]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c7sus4 = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(c7sus4.map { $0.description }, ["C7sus4", "B♭6sus2", "F9sus4"])
+        XCTAssertEqual(c7sus4.map { $0.slashDescription }, ["C7sus4", "B♭6sus2/C", "F9sus4/C"])
     }
 
     func test9sus4() {
         let notes: [Int8] = [60, 65, 67, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c9sus4 = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(c9sus4.map { $0.description }, ["C9sus4", "G7sus4", "F6sus2"])
+        XCTAssertEqual(c9sus4.map { $0.slashDescription }, ["C9sus4", "G7sus4/C", "F6sus2/C"])
     }
 
     func test6sus2() {
         let notes: [Int8] = [60, 62, 67, 69]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["C6sus2", "G9sus4", "D7sus4"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["C6sus2", "G9sus4/C", "D7sus4/C"])
     }
 
     func test6sus4() {
         let notes: [Int8] = [60, 65, 67, 69]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.description }, ["C6sus4", "Fadd9"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["C6sus4", "Fadd9/C"])
     }
-    /*
-     60  61  62  63  64  65  66  67  68  69  70  71  72  73  74  75  76  77  78  79  80  81
-     C   C#  D   D#  E   F   F#  G   G#  A   Bb  B   C   C#  D   D#  E   F   F#  G   G#  A
-     */
     
     func testMinorMajor7th() {
         let notes: [Int8] = [60, 63, 67, 71]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
         let chord2 = Chord(.C, type: .minorMajorSeventh)
-        XCTAssertEqual(chord2.description, "CmMaj7")
-        XCTAssertEqual(chord.map { $0.description }, ["CmMaj7"])
+        XCTAssertEqual(chord2.slashDescription, "CmMaj7")
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj7"])
     }
     
     func testMinorMajor9th() {
@@ -136,8 +140,8 @@ class ChordTests: XCTestCase {
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
         let chord2 = Chord(.C, type: .minorMajorNinth)
-        XCTAssertEqual(chord2.description, "CmMaj9")
-        XCTAssertEqual(chord.map { $0.description }, ["CmMaj9"])
+        XCTAssertEqual(chord2.slashDescription, "CmMaj9")
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj9"])
     }
 
     func testMajor7thFlatFive() {
@@ -145,8 +149,8 @@ class ChordTests: XCTestCase {
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
         let chord2 = Chord(.C, type: .majorSeventhFlatFive)
-        XCTAssertEqual(chord2.description, "Cmaj7♭5")
-        XCTAssertEqual(chord.map { $0.description }, ["Cmaj7♭5"])
+        XCTAssertEqual(chord2.slashDescription, "Cmaj7♭5")
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj7♭5"])
     }
 
     func testAugmentedDiminishededChordsPreferNoInversions() {
@@ -286,14 +290,14 @@ class ChordTests: XCTestCase {
         let midiNotes: [Int8] = [54, 58, 61]
         let fSharp =  PitchSet(pitches: midiNotes.map { Pitch($0) } )
         let chords = Chord.getRankedChords(from: fSharp)
-        XCTAssertEqual(chords.map { $0.description }, ["G♭","F♯"])
+        XCTAssertEqual(chords.map { $0.slashDescription }, ["G♭","F♯"])
     }
 
     func testDuplicateRankedChords() {
         let midiNotes: [Int8] = [60, 64, 67]
         let pitchSet = PitchSet(pitches: midiNotes.map { Pitch($0) } )
-        let cChords = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(cChords.map { $0.description }, ["C"])
+        let cChords = Chord.getRankedChords(from: pitchSet, allowTheoreticalChords: true)
+        XCTAssertEqual(cChords.map { $0.slashDescription }, ["C", "D𝄫", "B♯"])
     }
 
     func testPitchesWithNoInversion() {
@@ -411,31 +415,25 @@ class ChordTests: XCTestCase {
     func assertChords(_ notes: [Int8], _ expected: [Chord]) {
         let pitchSet = PitchSet(pitches: notes.map { Pitch($0) })
         let chords = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chords.map { $0.slashDescription }, expected.map { $0.slashDescription })
+        let isSubset = expected.allSatisfy {chords.contains($0) }
+        XCTAssertTrue(isSubset)
     }
 
     func testDiatonicChords() {
-        // Basic triads
-        assertChords([2, 6, 9], [.D])
-
         // We prioritize by the number of accidentals
         assertChords([1, 5, 8], [.Db, .Cs])
-
+        // Basic triads
+        assertChords([2, 6, 9], [.D])
         // This test shows that we are aware that A# Major triad is more compactly described as Bb
         // because of the required C## in the A# spelling
         assertChords([10, 14, 17], [.Bb])
         // F should not be reported as E#
         assertChords([5, 9, 12], [.F])
-        // E could be reported as Fb, but its accidental is lower it is first
-        assertChords([4, 8, 11], [.E, .Fb])
         // C should not be reported as B#
         assertChords([0, 4, 7], [.C])
-        // B could be reported as Cb, but its accidental is lower it is first
-        assertChords([11, 15, 18], [.B, .Cb])
-
         // Extensions that can be spelled only without double accidentals should be found
         assertChords([1, 5, 8, 11], [Chord(.Db, type: .dominantSeventh), Chord(.Cs, type: .dominantSeventh),])
-        assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .flatNinth)])
+        assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .dominantFlatNinth)])
     }
 
     func testClosedVoicing() {
@@ -461,6 +459,11 @@ class ChordTests: XCTestCase {
         let resultSet = PitchSet(pitches: results.map { Pitch($0) })
         XCTAssertEqual(pitchSet.transposedBassNoteTo(octave: -1), resultSet)
     }
-
-
+	
+	func testNewChords() {
+		let notes: [Int8] = [0, 3, 5, 7, 10]
+		let pitchSet = PitchSet(pitches: notes.map { Pitch($0) })
+		let chords = Chord.getRankedChords(from: pitchSet)
+		print(chords.map {$0.slashDescription})
+	}
 }

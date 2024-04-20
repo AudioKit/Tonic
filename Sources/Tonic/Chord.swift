@@ -182,22 +182,73 @@ extension Chord {
         }
         return count
     }
-
-    /// Get chords that match a set of pitches, ranking by least number of accidentals
-    public static func getRankedChords(from pitchSet: PitchSet) -> [Chord] {
-        var noteArrays: Set<[Note]> = []
+    
+    /// Get chords from a PitchSet, ranked by simplicity of notation
+    /// - Parameters:
+    ///   - pitchSet: Pitches to be analyzed
+    ///   - allowTheoreticalChords: This algorithim will provide chords with double flats, double sharps, and inergonomic root notes like E# and Cb
+    public static func getRankedChords(from pitchSet: PitchSet, allowTheoreticalChords: Bool = false) -> [Chord] {
+        var enharmonicNoteArrays: [[Note]] = []
         var returnArray: [Chord] = []
+        for pitch in pitchSet.array {
+            let octave = pitch.note(in: .C).octave
+            var noteArray: [Note] = []
+            for letter in Letter.allCases {
+                for accidental in Accidental.allCases {
+                    var intValue = Int(letter.baseNote) + Int(accidental.rawValue)
+                    if intValue > 11 {
+                        intValue -= 12
+                    }
+                    if intValue < 0 {
+                        intValue += 12
+                    }
+                    if pitch.midiNoteNumber % 12 == intValue {
+                        noteArray.append(Note(letter, accidental: accidental, octave: octave))
+                    }
+                }
+            }
+            noteArray.sort { n1, n2 in
+                abs(n1.accidental.rawValue) < abs(n2.accidental.rawValue)
+            }
+            enharmonicNoteArrays.append(noteArray)
+        }
+        let chordSearchIntervalArray: [[Interval]] =
+        [[.M3, .m3], [.P5, .d5], [.M7, .m7], [.M9, .m9, .A9], [.P11, .A11], [.M13, .m13, .A13]]
         
-        for key in Key.circleOfFifths {
-            noteArrays.insert(pitchSet.array.map { Note(pitch: $0, key: key) })
+        var foundNoteArrays: [[Note]] = []
+        for enharmonicNoteArray in enharmonicNoteArrays {
+            for rootNote in enharmonicNoteArray {
+                var usedNoteArrays: [[Note]] = [enharmonicNoteArray]
+                var foundNotes: [Note] = []
+                foundNotes.append(rootNote)
+                for nextIntervals in chordSearchIntervalArray {
+                    var foundNote = false
+                    for nextInterval in nextIntervals {
+                        if foundNote { continue }
+                        guard let searchNoteClass = rootNote.shiftUp(nextInterval)?.noteClass else { continue }
+                        for noteArray in enharmonicNoteArrays where !usedNoteArrays.contains(noteArray) {
+                            if noteArray.map({$0.noteClass}).contains(searchNoteClass) {
+                                guard let matchedNote = noteArray.first(where: {$0.noteClass == searchNoteClass}) else { continue }
+                                foundNotes.append(matchedNote)
+                                usedNoteArrays.append(noteArray)
+                                foundNote = true
+                            }
+                        }
+                    }
+                    if foundNotes.count == pitchSet.count {
+                        foundNoteArrays.append(foundNotes)
+                    }
+                }
+            }
         }
         
-        for key in Key.circleOfFourths {
-            noteArrays.insert(pitchSet.array.map { Note(pitch: $0, key: key) })
-        }
-        
-        for noteArray in noteArrays {
-            returnArray.append(contentsOf: Chord.getRankedChords(from: noteArray))
+        for foundNoteArray in foundNoteArrays {
+            let chords = Chord.getRankedChords(from: foundNoteArray)
+            for chord in chords {
+                if !returnArray.contains(chord) {
+                    returnArray.append(chord)
+                }
+            }
         }
         
         // Sorts anti-alphabetical, but the net effect is to pefer flats to sharps
@@ -211,16 +262,32 @@ extension Chord {
 
         // prefer root notes not being uncommon enharmonics
         returnArray.sort { ($0.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) < ($1.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) }
-
-
+        
+        if !allowTheoreticalChords {
+            returnArray = returnArray.filter { chord in
+                !chord.root.accidental.isDouble
+            }
+            returnArray = returnArray.filter { chord in
+                !chord.root.canonicalNote.isUncommonEnharmonic
+            }
+            returnArray = returnArray.filter { chord in
+                !chord.bassNote.canonicalNote.isUncommonEnharmonic
+            }
+            returnArray = returnArray.filter { chord in
+                !chord.bassNote.accidental.isDouble
+            }
+        }
+        
         return returnArray
     }
+
     /// Get chords from actual notes (spelling matters, C# F G# will not return a C# major)
     /// Use pitch set version of this function for all enharmonic chords
     /// The ranking is based on how low the root note of the chord appears, for example we
     /// want to list the notes C, E, G, A as C6 if the C is in the bass
     public static func getRankedChords(from notes: [Note]) -> [Chord] {
         let potentialChords = ChordTable.shared.getAllChordsForNoteSet(NoteSet(notes: notes))
+        if potentialChords.isEmpty { return [] }
         let orderedNotes = notes.sorted(by: { f, s in  f.noteNumber < s.noteNumber })
         var ranks: [(Int, Chord)] = []
         for chord in potentialChords {
