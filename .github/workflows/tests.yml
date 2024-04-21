@@ -12,9 +12,9 @@ jobs:
     name: Test
     runs-on: macos-latest
     steps:
-      - name: Check out vger
+      - name: Check out Tonic
         uses: actions/checkout@v4
-      - name: Build vger
+      - name: Build Tonic
         run: swift test
 
   build_demo:
