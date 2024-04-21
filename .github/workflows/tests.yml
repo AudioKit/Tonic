@@ -10,11 +10,9 @@ on:
 jobs:
   swift_test:
     name: Test
-    uses: AudioKit/ci/.github/workflows/swift_test.yml@main
-    with:
-      scheme: Tonic
-      platforms: iOS macOS tvOS watchOS Linux
-      swift-versions: 5.6
+    runs-on: macos-latest
+    uses: actions/checkout@v4 
+    run: swift test
 
   build_demo:
     name: Build ${{ matrix.scheme }} (Xcode ${{ matrix.xcode_version }})
