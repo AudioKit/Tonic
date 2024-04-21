@@ -11,8 +11,11 @@ jobs:
   swift_test:
     name: Test
     runs-on: macos-latest
-    uses: actions/checkout@v4 
-    run: swift test
+    steps:
+      - name: Check out vger
+        uses: actions/checkout@v4
+      - name: Build vger
+        run: swift test
 
   build_demo:
     name: Build ${{ matrix.scheme }} (Xcode ${{ matrix.xcode_version }})
