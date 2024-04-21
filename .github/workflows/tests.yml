@@ -15,7 +15,7 @@ jobs:
       - name: Check out Tonic
         uses: actions/checkout@v4
       - name: Build Tonic
-        run: swift test
+        run: swift test -c release
 
   build_demo:
     name: Build ${{ matrix.scheme }} (Xcode ${{ matrix.xcode_version }})
