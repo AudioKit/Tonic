@@ -533,7 +533,7 @@
 			repositoryURL = "https://github.com/audiokit/Keyboard";
 			requirement = {
 				kind = exactVersion;
-				version = 1.3.7;
+				version = 1.3.6;
 			};
 		};
 		F1201BEE2849F4DC0050DD22 /* XCRemoteSwiftPackageReference "MIDIKit" */ = {

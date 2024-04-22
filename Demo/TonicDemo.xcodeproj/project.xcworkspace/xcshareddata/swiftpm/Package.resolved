@@ -5,8 +5,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/audiokit/Keyboard",
       "state" : {
-        "revision" : "538dea4edb44ba5de0cdc318ae1904f5ee8fb12f",
-        "version" : "1.3.7"
+        "revision" : "fb589acbbb0854da0fa571ad83c4f1230c2cd280",
+        "version" : "1.3.6"
       }
     },
     {
