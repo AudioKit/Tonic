@@ -251,7 +251,7 @@ extension Chord {
             }
         }
         
-        // Sorts anti-alphabetical, but the net effect is to pefer flats to sharps
+        // Sorts anti-alphabetical, but the net effect is to prefer flats to sharps
         returnArray.sort { $0.root.letter > $1.root.letter }
 
         // order the array by least number of accidentals

@@ -44,21 +44,21 @@ class ChordTests: XCTestCase {
         let notes: [Int8] = [60, 64, 66, 71]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj7♭5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj7(♭5)"])
     }
     
     func testMajorNinthFlatFive() {
         let notes: [Int8] = [60, 64, 66, 71, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj9♭5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj9(♭5)"])
     }
     
     func testMajorNinthSharpFive() {
         let notes: [Int8] = [60, 64, 68, 71, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj9♯5"])
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj9(♯5)"])
     }
     
     func testDominantNinthFlatFive() {
@@ -149,8 +149,8 @@ class ChordTests: XCTestCase {
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
         let chord2 = Chord(.C, type: .majorSeventhFlatFive)
-        XCTAssertEqual(chord2.slashDescription, "Cmaj7♭5")
-        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj7♭5"])
+        XCTAssertEqual(chord2.slashDescription, "Cmaj7(♭5)")
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj7(♭5)"])
     }
 
     func testAugmentedDiminishededChordsPreferNoInversions() {

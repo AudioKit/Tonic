@@ -113,17 +113,17 @@ public enum ChordType: String, CaseIterable, Codable {
 
     /// Six Over Nine: Major Third, Perfect Fifth, Major Sixth, Major Ninth, e.g. `C6/9`
     case sixOverNine
+    
+    /// Augmented Major Ninth: Major Third, Augmented Fifth, Major Seventh, Major Nine, e.g. `C+maj9
+    case augmentedMajorNinth
 	
 	/// Major Ninth Flat Five: Major Third, Diminished Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(♭5)
 	case majorNinthFlatFive
-
-	/// Major Ninth Sharp Five: Major Third, Augmented Fifth, Major Seventh, Major Nine
-	case majorNinthSharpFive
 	
-	/// Dominant Ninth Flat Five: Major Third, Diminished Fifth, Minor Seventh, Major Nine
+	/// Dominant Ninth Flat Five: Major Third, Diminished Fifth, Minor Seventh, Major Nine, e.g. `C9(♭5)`
 	case dominantNinthFlatFive
 
-	/// Dominant Ninth Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Nine
+	/// Dominant Ninth Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Nine, e.g. `C9(♯5)`
 	case dominantNinthSharpFive
 
 	//MARK: - Elevenths
@@ -139,8 +139,16 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, e.g. `Cø11`
     case halfDiminishedEleventh
 
-    /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh
+    /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♯11)
     case majorNinthSharpEleventh
+    
+    /// Dominant Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9(♯11)
+    case dominantNinthSharpEleventh
+    
+    /// Minor Ninth Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `Cm9(♯11)
+//    case minorNinthSharpEleventh
+    
+//    case majorFlatNinthSharpEleventh
 
     /// Dominant Flat Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh
     case dominantFlatNinthSharpEleventh
@@ -214,9 +222,10 @@ public enum ChordType: String, CaseIterable, Codable {
             case .majorSeventhFlatFive:             return [.M3, .d5, .M7]
             case .augmentedMajorSeventh:            return [.M3, .A5, .M7]
             case .majorNinthSharpEleventh:          return [.M3, .P5, .M7, .M9, .A11]
+            case .dominantNinthSharpEleventh:       return [.M3, .P5, .m7, .M9, .A11]
             case .dominantFlatNinthSharpEleventh:   return [.M3, .P5, .m7, .m9, .A11]
-            case .dominantSeventhFlatFive:                 return [.M3, .d5, .m7]
-            case .dominantSeventhSharpFive:                return [.M3, .A5, .m7]
+            case .dominantSeventhFlatFive:          return [.M3, .d5, .m7]
+            case .dominantSeventhSharpFive:         return [.M3, .A5, .m7]
             case .dominantSharpNinthSharpEleventh:  return [.M3, .P5, .m7, .A9, .A11]
             case .minorSeventhFlatNinthAddEleventh: return [.m3, .P5, .m7, .m9, .P11]
             case .majorThirteenth:                  return [.M3, .P5, .M7, .M9, .P11, .M13]
@@ -227,7 +236,7 @@ public enum ChordType: String, CaseIterable, Codable {
             case .minorEleventhFlatThirteenth:      return [.m3, .P5, .m7, .M9, .P11, .m13]
             case .halfDiminishedFlatThirteenth:     return [.m3, .d5, .m7, .m9, .P11, .m13]
             case .majorNinthFlatFive:               return [.M3, .d5, .M7, .M9]
-            case .majorNinthSharpFive:              return [.M3, .A5, .M7, .M9]
+            case .augmentedMajorNinth:              return [.M3, .A5, .M7, .M9]
             case .dominantNinthFlatFive:            return [.M3, .d5, .m7, .M9]
             case .dominantNinthSharpFive:           return [.M3, .A5, .m7, .M9]
                 
@@ -275,7 +284,7 @@ extension ChordType: CustomStringConvertible {
             case .minorAddNine:                     return "m(add9)"
             case .sixOverNine:                      return "6/9"
 			case .majorNinthFlatFive:               return "maj9(♭5)"
-			case .majorNinthSharpFive:              return "maj9(♯5)"
+			case .augmentedMajorNinth:              return "maj9(♯5)"
             case .majorEleventh:                    return "maj11"
             case .dominantEleventh:                 return "11"
             case .minorEleventh:                    return "m11"
@@ -293,6 +302,7 @@ extension ChordType: CustomStringConvertible {
             case .halfDiminishedFlatThirteenth:     return "ø♭13"
             case .dominantNinthFlatFive:            return "9♭5"
             case .dominantNinthSharpFive:           return "9♯5"
+            case .dominantNinthSharpEleventh:       return "9(♯11)"
         }
     }
 
@@ -339,8 +349,8 @@ extension ChordType: CustomStringConvertible {
             case .minorEleventh:                    return "m11"
             case .halfDiminishedEleventh:           return "Ø11"
             case .majorNinthSharpEleventh:          return "^9#11"
-            case .dominantSeventhFlatFive:                 return "7b5"
-            case .dominantSeventhSharpFive:                return "7#5"
+            case .dominantSeventhFlatFive:          return "7b5"
+            case .dominantSeventhSharpFive:         return "7#5"
             case .dominantFlatNinthSharpEleventh:   return "7âÅ"
             case .dominantSharpNinthSharpEleventh:  return "7åÅ"
             case .minorSeventhFlatNinthAddEleventh: return "m7b9(@11)"
@@ -352,9 +362,10 @@ extension ChordType: CustomStringConvertible {
             case .minorEleventhFlatThirteenth:      return "m11b13"
             case .halfDiminishedFlatThirteenth:     return "Øb13"
             case .majorNinthFlatFive:               return "^9b5"
-            case .majorNinthSharpFive:              return "^9#5"
+            case .augmentedMajorNinth:              return "^9#5"
             case .dominantNinthFlatFive:            return "9b5"
             case .dominantNinthSharpFive:           return "9#5"
+            case .dominantNinthSharpEleventh:       return "9(#11)"
         }
     }
 }
