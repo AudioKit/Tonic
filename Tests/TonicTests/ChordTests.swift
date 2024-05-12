@@ -139,7 +139,7 @@ class ChordTests: XCTestCase {
         let notes: [Int8] = [60, 63, 67, 71, 74]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        let chord2 = Chord(.C, type: .minorMajorNinth)
+        let chord2 = Chord(.C, type: .min_maj9)
         XCTAssertEqual(chord2.slashDescription, "CmMaj9")
         XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj9"])
     }
@@ -433,7 +433,7 @@ class ChordTests: XCTestCase {
         assertChords([0, 4, 7], [.C])
         // Extensions that can be spelled only without double accidentals should be found
         assertChords([1, 5, 8, 11], [Chord(.Db, type: .dom7), Chord(.Cs, type: .dom7),])
-        assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .dominantFlatNinth)])
+        assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .dom7_flat9)])
     }
 
     func testClosedVoicing() {

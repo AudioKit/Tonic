@@ -87,110 +87,116 @@ public enum ChordType: String, CaseIterable, Codable {
 
 	//MARK: - Ninths
 	/// Major Ninth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, e.g. `Cmaj9`
-	case majorNinth
+	case maj9
 	
 	/// Dominant Ninth: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, e.g. `C9`
-	case dominantNinth
+	case dom9
 	
 	/// Minor Ninth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, e.g. `Cmin9`
-	case minorNinth
+	case min9
+    
+    /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, e.g. `Cø9`
+    case halfDim9
 	
     /// Half Diminished Flat Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, e.g. `Cø♭9`
-    case halfDiminishedFlatNinth
+    case halfDimFlat9
+    
+    /// Diminished Ninth: Minor Third, Diminished Fifth, Diminished Seventh, Major Ninth, e.g. `C°9`
+    case dim9
 	
-	/// Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, e.g. `C°♭9`
-	case diminishedFlatNinth
+	/// Diminished Flat Ninth: Minor Third, Diminished Fifth, Diminshed Seventh, Minor Ninth, e.g. `C°♭9`
+	case dimFlat9
 
     /// Dominant Ninth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Ninth (Major Second), e.g. `C9sus4`
-    case dominantNinthSuspendedFourth
+    case dom9_sus4
 
     /// Flat Ninth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `C7♭9`
-    case dominantFlatNinth
+    case dom7_flat9
 
     /// Sharp Ninth: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, e.g. `C7♯9`
-    case dominantSharpNinth
+    case dom7_sharp9
     
     /// Minor Major Ninth: Minor Third, Perfect Fifth, Major Seventh, Major Ninth, e.g. `CmMaj9`
-    case minorMajorNinth
+    case min_maj9
 
-    /// Minor Flat Ninth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `Cm7♭9`
-    case minorFlatNinth
+    /// Minor Seventh Flat Ninth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `Cm7♭9`
+    case min7_flat9
 
     /// Major Add Nine: Major Third, Perfect Fifth, Major Ninth, e.g. `Cadd9`
-    case majorAddNine
+    case maj_add9
 
     /// Minor Add Nine: Minor Third, Perfect Fifth, Major Ninth, e.g. `Cm(add9)`
-    case minorAddNine
+    case min_add9
 
     /// Six Over Nine: Major Third, Perfect Fifth, Major Sixth, Major Ninth, e.g. `C6/9`
-    case sixOverNine
+    case maj_6_9
     
     /// Augmented Major Ninth: Major Third, Augmented Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(#5)`
-    case majorNinthSharpFive
+    case maj9_sharp5
 	
 	/// Major Ninth Flat Five: Major Third, Diminished Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(♭5)`
-	case majorNinthFlatFive
+	case maj9_flat5
 	
 	/// Dominant Ninth Flat Five: Major Third, Diminished Fifth, Minor Seventh, Major Nine, e.g. `C9(♭5)`
-	case dominantNinthFlatFive
+	case dom9_flat5
 
 	/// Dominant Ninth Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Nine, e.g. `C9(♯5)`
-	case dominantNinthSharpFive
+	case dom9_sharp5
 
 	//MARK: - Elevenths
     /// Major Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, e.g. `Cmaj11`
-    case majorEleventh
+    case maj11
 
     /// Dominant Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11`
-    case dominantEleventh
+    case dom11
 
     /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `Cm11`
-    case minorEleventh
+    case min11
 
     /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `Cø11`
-    case halfDiminishedEleventh
+    case halfDim11
 
     /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♯11)`
-    case majorNinthSharpEleventh
+    case maj9_sharp11
     
     /// Dominant Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9(♯11)`
-    case dominantNinthSharpEleventh
+    case dom9_sharp11
     
     /// Minor Ninth Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `Cm9(♯11)`
-    case minorNinthSharpEleventh
+    case min9_sharp11
 	
 	/// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Augmented Eleventh, e.g. `Cmaj7♭9(♯11)`
-	case majorFlatNinthSharpEleventh
+	case maj7_flat9_sharp11
 
     /// Dominant Flat Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, e.g. `C7♭9(♯11)`
-    case dominantFlatNinthSharpEleventh
+    case dom7_flat9_sharp11
 	
 	/// Minor Flat Ninth Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, e.g. `Cm7♭9(♯11)`
-	case minorFlatNinthSharpEleventh
+	case min7_flat9_sharp11
 	
     /// Dominant Sharp Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Augmented Eleventh, e.g. `C7♯9(♯11)`
-    case dominantSharpNinthSharpEleventh
+    case dom7_sharp9_sharp11
 
     /// Minor Seventh Flat Ninth  Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, e.g. `Cm7♭9(11)`
-    case minorSeventhFlatNinthEleventh
+    case min7_flat9_11
 	
 	/// Major Seventh  Add Eleventh: Major Third, Perfect Fifth, Major Seventh, Perfect Eleventh, e.g. `Cmaj7(add11)`
-	case majorSeventhAddEleventh
+	case maj7_add11
 	
 	/// Major Seventh  Add Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Augmented Eleventh, e.g. `Cmaj7(add♯11)`
-	case majorSeventhAddSharpEleventh
+	case maj7_addSharp11
 	
 	/// Dominant Seventh Add Eleventh: Major Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `C7(add11)`
-	case dominantSeventhAddEleventh
+	case dom7_add11
 	
 	/// Dominant Seventh Add Sharp Eleventh: Major Third, Perfect Fifth, minor Seventh, Augmented Eleventh, e.g. `C7(add♯11)`
-	case dominantSeventhAddSharpEleventh
+	case dom7_addSharp11
 	
 	/// Minor Seventh Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `Cm7(add11)`
-	case minorSeventhAddEleventh
+	case min7_add11
 	
 	/// Minor Seventh Add Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Augmented Eleventh, e.g. `Cm7(add♯11)`
-	case minorSeventhAddSharpEleventh
+	case min7_addSharp11
 
 	//MARK: - Thirteenths
 	
@@ -371,31 +377,31 @@ public enum ChordType: String, CaseIterable, Codable {
             case .maj7:                     return [.M3, .P5, .M7]
             case .min7:                     return [.m3, .P5, .m7]
             case .min_maj7:                return [.m3, .P5, .M7]
-            case .halfDiminishedFlatNinth:              return [.m3, .d5, .m7, .m9]
-            case .dominantNinth:                    return [.M3, .P5, .m7, .M9]
-            case .dominantNinthSuspendedFourth:     return [.P4, .P5, .M9]
-            case .dominantFlatNinth:                return [.M3, .P5, .m7, .m9]
-            case .dominantSharpNinth:               return [.M3, .P5, .m7, .A9]
-            case .majorNinth:                       return [.M3, .P5, .M7, .M9]
-            case .minorMajorNinth:                  return [.m3, .P5, .M7, .M9]
-            case .minorFlatNinth:                   return [.m3, .P5, .m7, .m9]
-            case .minorNinth:                       return [.m3, .P5, .m7, .M9]
-            case .majorAddNine:                     return [.M3, .P5, .M9]
-            case .minorAddNine:                     return [.m3, .P5, .M9]
-            case .sixOverNine:                      return [.M3, .P5, .M6, .M9]
-            case .majorEleventh:                    return [.M3, .P5, .M7, .M9, .P11]
-            case .dominantEleventh:                 return [.M3, .P5, .m7, .M9, .P11]
-            case .minorEleventh:                    return [.m3, .P5, .m7, .M9, .P11]
-            case .halfDiminishedEleventh:           return [.m3, .d5, .m7, .M9, .P11]
+            case .halfDimFlat9:              return [.m3, .d5, .m7, .m9]
+            case .dom9:                    return [.M3, .P5, .m7, .M9]
+            case .dom9_sus4:     return [.P4, .P5, .M9]
+            case .dom7_flat9:                return [.M3, .P5, .m7, .m9]
+            case .dom7_sharp9:               return [.M3, .P5, .m7, .A9]
+            case .maj9:                       return [.M3, .P5, .M7, .M9]
+            case .min_maj9:                  return [.m3, .P5, .M7, .M9]
+            case .min7_flat9:                   return [.m3, .P5, .m7, .m9]
+            case .min9:                       return [.m3, .P5, .m7, .M9]
+            case .maj_add9:                     return [.M3, .P5, .M9]
+            case .min_add9:                     return [.m3, .P5, .M9]
+            case .maj_6_9:                      return [.M3, .P5, .M6, .M9]
+            case .maj11:                    return [.M3, .P5, .M7, .M9, .P11]
+            case .dom11:                 return [.M3, .P5, .m7, .M9, .P11]
+            case .min11:                    return [.m3, .P5, .m7, .M9, .P11]
+            case .halfDim11:           return [.m3, .d5, .m7, .M9, .P11]
             case .maj7_flat5:             return [.M3, .d5, .M7]
             case .maj7_sharp5:            return [.M3, .A5, .M7]
-            case .majorNinthSharpEleventh:          return [.M3, .P5, .M7, .M9, .A11]
-            case .dominantNinthSharpEleventh:       return [.M3, .P5, .m7, .M9, .A11]
-            case .dominantFlatNinthSharpEleventh:   return [.M3, .P5, .m7, .m9, .A11]
+            case .maj9_sharp11:          return [.M3, .P5, .M7, .M9, .A11]
+            case .dom9_sharp11:       return [.M3, .P5, .m7, .M9, .A11]
+            case .dom7_flat9_sharp11:   return [.M3, .P5, .m7, .m9, .A11]
             case .dom7_flat5:          return [.M3, .d5, .m7]
             case .dom7_sharp5:         return [.M3, .A5, .m7]
-            case .dominantSharpNinthSharpEleventh:  return [.M3, .P5, .m7, .A9, .A11]
-            case .minorSeventhFlatNinthEleventh: 	return [.m3, .P5, .m7, .m9, .P11]
+            case .dom7_sharp9_sharp11:  return [.M3, .P5, .m7, .A9, .A11]
+            case .min7_flat9_11: 	return [.m3, .P5, .m7, .m9, .P11]
             case .majorThirteenth:                  return [.M3, .P5, .M7, .M9, .P11, .M13]
             case .minorThirteenth:                  return [.m3, .P5, .m7, .M9, .P11, .M13]
             case .minorFlatThirteenthFlatNinth:     return [.m3, .P5, .m7, .m9, .P11, .m13]
@@ -403,10 +409,10 @@ public enum ChordType: String, CaseIterable, Codable {
             case .dominantThirteenth:               return [.M3, .P5, .m7, .M9, .P11, .M13]
             case .minorEleventhFlatThirteenth:      return [.m3, .P5, .m7, .M9, .P11, .m13]
             case .halfDiminishedFlatThirteenth:     return [.m3, .d5, .m7, .m9, .P11, .m13]
-            case .majorNinthFlatFive:               return [.M3, .d5, .M7, .M9]
+            case .maj9_flat5:               return [.M3, .d5, .M7, .M9]
             case .augmentedMajorNinth:              return [.M3, .A5, .M7, .M9]
-            case .dominantNinthFlatFive:            return [.M3, .d5, .m7, .M9]
-            case .dominantNinthSharpFive:           return [.M3, .A5, .m7, .M9]
+            case .dom9_flat5:            return [.M3, .d5, .m7, .M9]
+            case .dom9_sharp5:           return [.M3, .A5, .m7, .M9]
                 
         }
     }
@@ -439,28 +445,28 @@ extension ChordType: CustomStringConvertible {
 			case .maj7_sharp5:            return "maj7(♯5)"
 			case .dom7_flat5:                 return "7♭5"
 			case .dom7_sharp5:                return "7♯5"
-            case .halfDiminishedFlatNinth:              return "ø9"
-            case .dominantNinth:                    return "9"
-            case .dominantNinthSuspendedFourth:     return "9sus4"
-            case .dominantFlatNinth:                return "7♭9"
-            case .dominantSharpNinth:               return "7♯9"
-            case .majorNinth:                       return "maj9"
-            case .minorFlatNinth:                   return "m7♭9"
-            case .minorNinth:                       return "m9"
-            case .minorMajorNinth:                  return "mMaj9"
-            case .majorAddNine:                     return "add9"
-            case .minorAddNine:                     return "m(add9)"
-            case .sixOverNine:                      return "6/9"
-			case .majorNinthFlatFive:               return "maj9(♭5)"
+            case .halfDimFlat9:              return "ø9"
+            case .dom9:                    return "9"
+            case .dom9_sus4:     return "9sus4"
+            case .dom7_flat9:                return "7♭9"
+            case .dom7_sharp9:               return "7♯9"
+            case .maj9:                       return "maj9"
+            case .min7_flat9:                   return "m7♭9"
+            case .min9:                       return "m9"
+            case .min_maj9:                  return "mMaj9"
+            case .maj_add9:                     return "add9"
+            case .min_add9:                     return "m(add9)"
+            case .maj_6_9:                      return "6/9"
+			case .maj9_flat5:               return "maj9(♭5)"
 			case .augmentedMajorNinth:              return "maj9(♯5)"
-            case .majorEleventh:                    return "maj11"
-            case .dominantEleventh:                 return "11"
-            case .minorEleventh:                    return "m11"
-            case .halfDiminishedEleventh:           return "ø11"
-            case .majorNinthSharpEleventh:          return "maj9(♯11)"
-            case .dominantFlatNinthSharpEleventh:   return "7♭9♯11"
-            case .dominantSharpNinthSharpEleventh:  return "7♯9♯11"
-            case .minorSeventhFlatNinthEleventh: 	return "m7♭9(11)"
+            case .maj11:                    return "maj11"
+            case .dom11:                 return "11"
+            case .min11:                    return "m11"
+            case .halfDim11:           return "ø11"
+            case .maj9_sharp11:          return "maj9(♯11)"
+            case .dom7_flat9_sharp11:   return "7♭9♯11"
+            case .dom7_sharp9_sharp11:  return "7♯9♯11"
+            case .min7_flat9_11: 	return "m7♭9(11)"
             case .majorThirteenth:                  return "maj13"
             case .minorThirteenth:                  return "m13"
             case .minorFlatThirteenthFlatNinth:     return "m♭13♭9"
@@ -468,9 +474,9 @@ extension ChordType: CustomStringConvertible {
             case .dominantThirteenth:               return "13"
             case .minorEleventhFlatThirteenth:      return "m11♭13"
             case .halfDiminishedFlatThirteenth:     return "ø♭13"
-            case .dominantNinthFlatFive:            return "9♭5"
-            case .dominantNinthSharpFive:           return "9♯5"
-            case .dominantNinthSharpEleventh:       return "9(♯11)"
+            case .dom9_flat5:            return "9♭5"
+            case .dom9_sharp5:           return "9♯5"
+            case .dom9_sharp11:       return "9(♯11)"
         }
     }
 
@@ -500,28 +506,28 @@ extension ChordType: CustomStringConvertible {
             case .min_maj7:                return "m^7"
 			case .maj7_flat5:             return "^7b5"
 			case .maj7_sharp5:            return "^7#5"
-            case .halfDiminishedFlatNinth:              return "Ø9"
-            case .dominantNinth:                    return "9"
-            case .dominantNinthSuspendedFourth:     return "9sus4"
-            case .dominantFlatNinth:                return "7b9"
-            case .dominantSharpNinth:               return "7#9"
-            case .majorNinth:                       return "^9"
-            case .minorMajorNinth:                  return "m^9"
-            case .minorFlatNinth:                   return "m7b9"
-            case .minorNinth:                       return "m9"
-            case .majorAddNine:                     return "@9"
-            case .minorAddNine:                     return "m@9"
-            case .sixOverNine:                      return "%"
-            case .majorEleventh:                    return "^11"
-            case .dominantEleventh:                 return "11"
-            case .minorEleventh:                    return "m11"
-            case .halfDiminishedEleventh:           return "Ø11"
-            case .majorNinthSharpEleventh:          return "^9#11"
+            case .halfDimFlat9:              return "Ø9"
+            case .dom9:                    return "9"
+            case .dom9_sus4:     return "9sus4"
+            case .dom7_flat9:                return "7b9"
+            case .dom7_sharp9:               return "7#9"
+            case .maj9:                       return "^9"
+            case .min_maj9:                  return "m^9"
+            case .min7_flat9:                   return "m7b9"
+            case .min9:                       return "m9"
+            case .maj_add9:                     return "@9"
+            case .min_add9:                     return "m@9"
+            case .maj_6_9:                      return "%"
+            case .maj11:                    return "^11"
+            case .dom11:                 return "11"
+            case .min11:                    return "m11"
+            case .halfDim11:           return "Ø11"
+            case .maj9_sharp11:          return "^9#11"
             case .dom7_flat5:          return "7b5"
             case .dom7_sharp5:         return "7#5"
-            case .dominantFlatNinthSharpEleventh:   return "7âÅ"
-            case .dominantSharpNinthSharpEleventh:  return "7åÅ"
-            case .minorSeventhFlatNinthEleventh: 	return "m7b9(11)"
+            case .dom7_flat9_sharp11:   return "7âÅ"
+            case .dom7_sharp9_sharp11:  return "7åÅ"
+            case .min7_flat9_11: 	return "m7b9(11)"
             case .majorThirteenth:                  return "^13"
             case .minorThirteenth:                  return "m13"
             case .minorFlatThirteenthFlatNinth:     return "máÆ"
@@ -529,11 +535,11 @@ extension ChordType: CustomStringConvertible {
             case .dominantThirteenth:               return "13"
             case .minorEleventhFlatThirteenth:      return "m11b13"
             case .halfDiminishedFlatThirteenth:     return "Øb13"
-            case .majorNinthFlatFive:               return "^9b5"
+            case .maj9_flat5:               return "^9b5"
             case .augmentedMajorNinth:              return "^9#5"
-            case .dominantNinthFlatFive:            return "9b5"
-            case .dominantNinthSharpFive:           return "9#5"
-            case .dominantNinthSharpEleventh:       return "9(#11)"
+            case .dom9_flat5:            return "9b5"
+            case .dom9_sharp5:           return "9#5"
+            case .dom9_sharp11:       return "9(#11)"
         }
     }
 }
