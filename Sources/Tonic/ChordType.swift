@@ -64,6 +64,7 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh, e.g. `C°7`
     case dim7
 
+    #warning("This might be better described as a Minor Triad Add 11")
     /// Dominant Seventh Suspendend Second: Major Second, Perfect Fifth, Minor Seventh, e.g. `C7sus2`
     case dom7_sus2
 
@@ -118,20 +119,53 @@ public enum ChordType: String, CaseIterable, Codable {
     
     /// Minor Major Ninth: Minor Third, Perfect Fifth, Major Seventh, Major Ninth, e.g. `CmMaj9`
     case min_maj9
+    
+    /// Minor Major Flat Ninth: Minor Third, Perfect Fifth, Major Seventh, Minor Ninth, e.g. `CmMaj(♭9)`
+    case min_maj_flat9
 
     /// Minor Seventh Flat Ninth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `Cm7♭9`
     case min7_flat9
 
-    /// Major Add Nine: Major Third, Perfect Fifth, Major Ninth, e.g. `Cadd9`
+    /// Major Add Nine: Major Third, Perfect Fifth, Major Ninth, e.g. `C(add9)`
     case maj_add9
 
     /// Minor Add Nine: Minor Third, Perfect Fifth, Major Ninth, e.g. `Cm(add9)`
     case min_add9
+    
+    /// Diminished Add Nine: Minor Third, Diminished Fifth, Major Ninth, e.g. `C°(add9)`
+    case dim_add9
+    
+    /// Augmented Add Nine: Major Third, Augmented Fifth, Major Ninth, e.g. `C+(add9)`
+    case aug_add9
+    
+    /// Major Add Flat Nine: Major Third, Perfect Fifth, Minor Ninth, e.g. `C(add♭9)`
+    case maj_addFlat9
+
+    /// Minor Add Flat Nine: Minor Third, Perfect Fifth, Minor Minor, e.g. `Cm(add♭9)`
+    case min_addFlat9
+    
+    /// Diminished Add FlatNine: Minor Third, Diminished Fifth, Minor Ninth, e.g. `C°(add♭9)`
+    case dim_addFlat9
+    
+    /// Augmented Add Nine: Major Third, Augmented Fifth, Minor Ninth, e.g. `C+(add♭9)`
+    case aug_addFlat9
+    
+    /// Major Add Sharp Nine: Major Third, Perfect Fifth, Augmented Ninth, e.g. `C(add♯9)`
+    case maj_addSharp9
+
+    /// Minor Add Sharp Nine: Minor Third, Perfect Fifth, Augmented Minor, e.g. `Cm(add♯9)`
+    case min_addSharp9
+    
+    /// Diminished Add Sharp Nine: Minor Third, Diminished Fifth, Augmented Ninth, e.g. `C°(add♯9)`
+    case dim_addSharp9
+    
+    /// Augmented Add Sharp Nine: Major Third, Augmented Fifth, Augmented Ninth, e.g. `C+(add♯9)`
+    case aug_addSharp9
 
     /// Six Over Nine: Major Third, Perfect Fifth, Major Sixth, Major Ninth, e.g. `C6/9`
     case maj_6_9
     
-    /// Augmented Major Ninth: Major Third, Augmented Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(#5)`
+    /// Augmented Major Ninth: Major Third, Augmented Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(♯5)`
     case maj9_sharp5
 	
 	/// Major Ninth Flat Five: Major Third, Diminished Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(♭5)`
@@ -153,8 +187,23 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `Cm11`
     case min11
 
-    /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `Cø11`
+    /// Half Diminished Eleventh: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `Cø11`
     case halfDim11
+    
+    /// Diminished Ninth: Minor Third, Diminished Fifth, Diminished Seventh, Major Ninth, Perfect Eleventh, e.g. `C°11`
+    case dim11
+    
+    /// Major Eleventh Flat Five: Major Third, Diminished Fifth, Major Seventh, Major Ninth, Perfect Eleventh, e.g. `Cmaj11(♭5)`
+    case maj11_flat5
+    
+    /// Major Eleventh Sharp Five: Major Third, Augmented Fifth, Major Seventh, Major Ninth, Perfect Eleventh, e.g. `Cmaj11(♯5)`
+    case maj11_sharp5
+    
+    /// Dominant Eleventh Flat Five: Major Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11(♭5)`
+    case dom11_flat5
+    
+    /// Dominant Eleventh Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11(♯5)`
+    case dom11_sharp5
 
     /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♯11)`
     case maj9_sharp11
@@ -164,6 +213,18 @@ public enum ChordType: String, CaseIterable, Codable {
     
     /// Minor Ninth Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `Cm9(♯11)`
     case min9_sharp11
+    
+    /// Major Ninth  Flat Five Sharp Eleventh: Major Third, Diminished Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♭5)(♯11)`
+    case maj9_flat5_sharp11
+    
+    /// Major Ninth Sharp Five Sharp Eleventh: Major Third, Augmented Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♯5)(♯11)`
+    case maj9_sharp5_sharp11
+    
+    /// Dominant Ninth Flat Five Sharp Eleventh: Major Third, Diminished Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9(♭5)(♯11)`
+    case dom9_flat5_sharp11
+    
+    /// Dominant Ninth Sharp Five Sharp Eleventh: Major Third, Augmented Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9(♯5)(♯11)`
+    case dom9_sharp5_sharp11
 	
 	/// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Augmented Eleventh, e.g. `Cmaj7♭9(♯11)`
 	case maj7_flat9_sharp11
@@ -197,6 +258,9 @@ public enum ChordType: String, CaseIterable, Codable {
 	
 	/// Minor Seventh Add Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Augmented Eleventh, e.g. `Cm7(add♯11)`
 	case min7_addSharp11
+    
+    /// Half Diminished Seventh Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `Cø7(add11)`
+    case halfDim7_add11
 
 	//MARK: - Thirteenths
 	
