@@ -102,7 +102,7 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(bsharp0!.description, "B♯1")
 
         var notesAugmentedTriadShiftUpIntoE: [Note] = []
-        for interval in ChordType.augmentedTriad.intervals {
+        for interval in ChordType.aug.intervals {
             if let shifted = Note(.E, accidental: .natural, octave: 0).shiftUp(interval) {
                 notesAugmentedTriadShiftUpIntoE.append(shifted)
             }
@@ -111,7 +111,7 @@ final class NoteTests: XCTestCase {
         XCTAssertEqual(notesAugmentedTriadShiftUpIntoE[1].description, "B♯1")
 
         var notesMinorTriadShiftUpIntoA: [Note] = []
-        for interval in ChordType.minorTriad.intervals {
+        for interval in ChordType.minor.intervals {
             if let shifted = Note(.A, accidental: .natural, octave: 0).shiftUp(interval) {
                 notesMinorTriadShiftUpIntoA.append(shifted)
             }

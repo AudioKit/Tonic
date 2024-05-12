@@ -97,9 +97,9 @@ public struct Chord: Equatable, Codable {
         if let index = key.primaryTriads.firstIndex(where: { $0 == self }) {
             let romanNumeral = capitalRomanNumerals[index]
             switch type {
-            case .majorTriad: return romanNumeral
-            case .minorTriad: return romanNumeral.lowercased()
-            case .diminishedTriad: return "\(romanNumeral.lowercased())°"
+            case .major: return romanNumeral
+            case .minor: return romanNumeral.lowercased()
+            case .dim: return "\(romanNumeral.lowercased())°"
             default: return nil
             }
         }

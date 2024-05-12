@@ -15,7 +15,7 @@ class ChordTests: XCTestCase {
 
         XCTAssertEqual(Chord.Caug.description, "C⁺")
         XCTAssertEqual(Chord.Aaug.description, "A⁺")
-        XCTAssertEqual(Chord(.Db, type: .augmentedTriad).description, "D♭⁺")
+        XCTAssertEqual(Chord(.Db, type: .aug).description, "D♭⁺")
 
         XCTAssertEqual(Chord.Asus4.description, "Asus4")
         XCTAssertEqual(Chord.Bsus4.description, "Bsus4")
@@ -76,7 +76,7 @@ class ChordTests: XCTestCase {
     }
 
     func test7() {
-        XCTAssertEqual(Chord(.C, type: .dominantSeventh).description, "C7")
+        XCTAssertEqual(Chord(.C, type: .dom7).description, "C7")
         let notes: [Int8] = [60, 67, 70, 76]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c7 = Chord.getRankedChords(from: pitchSet)
@@ -84,7 +84,7 @@ class ChordTests: XCTestCase {
     }
     
     func testTheortical() {
-        XCTAssertEqual(Chord(.C, type: .dominantSeventh).description, "C7")
+        XCTAssertEqual(Chord(.C, type: .dom7).description, "C7")
         let notes: [Int8] = [60, 67, 70, 76]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let c7 = Chord.getRankedChords(from: pitchSet, allowTheoreticalChords: true)
@@ -130,7 +130,7 @@ class ChordTests: XCTestCase {
         let notes: [Int8] = [60, 63, 67, 71]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        let chord2 = Chord(.C, type: .minorMajorSeventh)
+        let chord2 = Chord(.C, type: .min_maj7)
         XCTAssertEqual(chord2.slashDescription, "CmMaj7")
         XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj7"])
     }
@@ -148,7 +148,7 @@ class ChordTests: XCTestCase {
         let notes: [Int8] = [60, 64, 66, 71]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
         let chord = Chord.getRankedChords(from: pitchSet)
-        let chord2 = Chord(.C, type: .majorSeventhFlatFive)
+        let chord2 = Chord(.C, type: .maj7_flat5)
         XCTAssertEqual(chord2.slashDescription, "Cmaj7(♭5)")
         XCTAssertEqual(chord.map { $0.slashDescription }, ["Cmaj7(♭5)"])
     }
@@ -251,11 +251,11 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(secondInversion.inversion, 2)
         XCTAssertEqual(secondInversion.slashDescription, "Am/E")
 
-        let thirdInversion = Chord(.C, type: .dominantSeventh, inversion: 3)
+        let thirdInversion = Chord(.C, type: .dom7, inversion: 3)
 
         XCTAssertEqual(thirdInversion.slashDescription, "C7/B♭")
         
-        firstInversion = Chord(.Cs, type: .majorTriad, inversion: 1)
+        firstInversion = Chord(.Cs, type: .major, inversion: 1)
         XCTAssertEqual(firstInversion.slashDescription, "C♯/E♯")
     }
 
@@ -302,7 +302,7 @@ class ChordTests: XCTestCase {
 
     func testPitchesWithNoInversion() {
         // Arrange
-        let chord = Chord(.C, type: .majorTriad, inversion: 0)
+        let chord = Chord(.C, type: .major, inversion: 0)
         let expectedPitches = [
             Note(.C, octave: 0),
             Note(.E, octave: 0),
@@ -322,7 +322,7 @@ class ChordTests: XCTestCase {
 
     func testPitchesWithInversion() {
         // Arrange
-        let chord = Chord(.C, type: .majorTriad, inversion: 1)
+        let chord = Chord(.C, type: .major, inversion: 1)
         let expectedPitches = [
             Note(.E, octave: 4),
             Note(.G, octave: 4),
@@ -342,7 +342,7 @@ class ChordTests: XCTestCase {
 
     func testNotesWithNoInversion() {
         // Arrange
-        let chord = Chord(.C, type: .majorTriad, inversion: 0)
+        let chord = Chord(.C, type: .major, inversion: 0)
         let expectedNotes = [
             Note(.C, octave: 4),
             Note(.E, octave: 4),
@@ -362,7 +362,7 @@ class ChordTests: XCTestCase {
 
     func testNotesWithInversion() {
         // Arrange
-        let chord = Chord(.C, type: .majorTriad, inversion: 1)
+        let chord = Chord(.C, type: .major, inversion: 1)
         let expectedNotes = [
             Note(.E, octave: 4),
             Note(.G, octave: 4),
@@ -432,7 +432,7 @@ class ChordTests: XCTestCase {
         // C should not be reported as B#
         assertChords([0, 4, 7], [.C])
         // Extensions that can be spelled only without double accidentals should be found
-        assertChords([1, 5, 8, 11], [Chord(.Db, type: .dominantSeventh), Chord(.Cs, type: .dominantSeventh),])
+        assertChords([1, 5, 8, 11], [Chord(.Db, type: .dom7), Chord(.Cs, type: .dom7),])
         assertChords([1, 5, 8, 11, 14], [Chord(.Cs, type: .dominantFlatNinth)])
     }
 
