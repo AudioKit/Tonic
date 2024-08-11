@@ -12,11 +12,9 @@ public struct NoteClass: Equatable, Hashable, Codable {
     /// Accidental of the note class
     public var accidental: Accidental
 
-    private static let canonicalOctave = Note.MiddleCStandard.yamaha.middleCNumber
-
-    /// A representative note for this class, in the canonical octave, which is 4
+    /// A representative note for this class, in the canonical octave
     public var canonicalNote: Note {
-        Note(letter, accidental: accidental, octave: NoteClass.canonicalOctave)
+        Note(letter, accidental: accidental, octave: Note.MiddleCStandard.yamaha.middleCNumber)
     }
 
     /// Initialize the note class
