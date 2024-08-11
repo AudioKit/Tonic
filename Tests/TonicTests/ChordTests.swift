@@ -276,7 +276,7 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(gSus4.description, "Gsus4")
         
         // To deal with this, you have to tell Tonic that you want an array of potential chords
-        let gChords = Chord.getRankedChords(from: [.C, .D, Note(.G, octave: 3)])
+        let gChords = Chord.getRankedChords(from: [.C, .D, Note(.G, octave: 2)])
         
         // What we want is for this to list "Gsus4 first and Csus2 second whereas
         let cChords = Chord.getRankedChords(from: [.C, .D, .G])
