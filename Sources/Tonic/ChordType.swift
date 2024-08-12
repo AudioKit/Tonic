@@ -28,6 +28,21 @@ public enum ChordType: String, CaseIterable, Codable {
 
     /// Suspended 4 Triad: Perfect Fourth, Perfect Fifth, e.g. `Csus4`
     case sus4
+    
+    /// Suspended Fourth Add Nine: Perfect Fourth, Perfect Fifth, Major Ninth, e.g. `Csus4(add9)`
+    case sus4_add9
+
+    /// Suspended Second Add Eleven: Major Second, Perfect Fifth, Perfect Eleventh, e.g. `Csus2(add11)`
+    case sus2_add11
+
+    /// Suspended Fourth Add Flat Nine: Perfect Fourth, Perfect Fifth, Minor Ninth, e.g. `Csus4(addb9)`
+    case sus4_addFlat9
+
+    /// Suspended Fourth Add Sharp Nine: Perfect Fourth, Perfect Fifth, Augmented Ninth, e.g. `Csus4(add#9)`
+    case sus4_addSharp9
+
+    /// Suspended Second Add Sharp Eleven: Major Second, Perfect Fifth, Augmented Eleventh, e.g. `Csus2(add#11)`
+    case sus2_addSharp11
 
 	//MARK: - Sixths
     /// Major Sixth: Major Third, Perfect Fifth, Major Sixth, e.g. `C6`
@@ -47,6 +62,12 @@ public enum ChordType: String, CaseIterable, Codable {
 
     /// Suspended 4th Add Flat Thirteen: Major Second, Perfect Fifth, Minor Thirteenth, e.g. `Csus4(add♭13)`
     case sus4_addFlat13
+    
+    /// Suspended Second Add Sharp Thirteen: Major Second, Perfect Fifth, Augmented Thirteenth, e.g. `Csus2(add#13)`
+    case sus2_addSharp13
+
+    /// Suspended Fourth Add Sharp Thirteen: Perfect Fourth, Perfect Fifth, Augmented Thirteenth, e.g. `Csus4(add#13)`
+    case sus4_addSharp13
 	
 	//MARK: - Sevenths
 	/// Major Seventh: Major Third, Perfect Fifth, Major Seventh, e.g. `Cmaj7`
@@ -85,6 +106,12 @@ public enum ChordType: String, CaseIterable, Codable {
 
 	/// Dominant Sharp Five: Major Third, Augmented Fifth, Minor Seventh, e.g. `C7(♯5)`
 	case dom7_sharp5
+    
+    /// Major Seventh Suspended Second: Major Second, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus2`
+    case maj7_sus2
+
+    /// Major Seventh Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus4`
+    case maj7_sus4
 
 	//MARK: - Ninths
 	/// Major Ninth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, e.g. `Cmaj9`
@@ -176,6 +203,9 @@ public enum ChordType: String, CaseIterable, Codable {
 
 	/// Dominant Ninth Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Nine, e.g. `C9(♯5)`
 	case dom9_sharp5
+    
+    /// Major Ninth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, e.g. `Cmaj9sus4`
+    case maj9_sus4
 
 	//MARK: - Elevenths
     /// Major Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, e.g. `Cmaj11`
@@ -261,6 +291,9 @@ public enum ChordType: String, CaseIterable, Codable {
     
     /// Half Diminished Seventh Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `Cø7(add11)`
     case halfDim7_add11
+    
+    /// Dominant Eleventh Suspended Second: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11sus2`
+    case dom11_sus2
 
     //MARK: - Thirteenths
     /// Major Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13`
@@ -440,6 +473,78 @@ public enum ChordType: String, CaseIterable, Codable {
 
     /// Minor Thirteenth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13(add11)`
     case min13_add11
+    
+    /// Major Thirteenth Suspended Second: Major Second, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus2`
+    case maj13_sus2
+
+    /// Major Thirteenth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4`
+    case maj13_sus4
+    
+    /// Dominant Thirteenth Suspended Second: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus2`
+    case dom13_sus2
+
+    /// Dominant Thirteenth Suspended Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4`
+    case dom13_sus4
+    
+    /// Dominant Seventh Suspended Fourth Flat Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `C7sus4(♭9)`
+    case dom7_sus4_flat9
+
+    /// Dominant Seventh Suspended Fourth Sharp Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Augmented Ninth, e.g. `C7sus4(♯9)`
+    case dom7_sus4_sharp9
+
+    /// Dominant Seventh Suspended Second Sharp Eleventh: Major Second, Perfect Fifth, Minor Seventh, Augmented Eleventh, e.g. `C7sus2(♯11)`
+    case dom7_sus2_sharp11
+
+    /// Dominant Seventh Suspended Fourth Flat Thirteenth: Perfect Fourth, Perfect Fifth, Minor Seventh, Minor Thirteenth, e.g. `C7sus4(♭13)`
+    case dom7_sus4_flat13
+
+    /// Dominant Seventh Suspended Fourth Sharp Thirteenth: Perfect Fourth, Perfect Fifth, Minor Seventh, Augmented Thirteenth, e.g. `C7sus4(♯13)`
+    case dom7_sus4_sharp13
+
+    /// Dominant Ninth Suspended Fourth Flat Thirteenth: Perfect Fourth, Perfect Fifth, Minor Seventh, Major Ninth, Minor Thirteenth, e.g. `C9sus4(♭13)`
+    case dom9_sus4_flat13
+
+    /// Dominant Ninth Suspended Fourth Sharp Eleventh: Perfect Fourth, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9sus4(♯11)`
+    case dom9_sus4_sharp13
+
+    /// Dominant Eleventh Suspended Second Flat Ninth: Major Second, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, e.g. `C11sus2(♭9)`
+    case dom11_sus2_flat9
+
+    /// Dominant Eleventh Suspended Second Sharp Ninth: Major Second, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, e.g. `C11sus2(♯9)`
+    case dom11_sus2_flat13
+
+    /// Dominant Eleventh Suspended Second Sharp Thirteenth: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Augmented Thirteenth, e.g. `C11sus2(♯13)`
+    case dom11_sus2_sharp13
+
+    /// Dominant Thirteenth Suspended Fourth Flat Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4(♭9)`
+    case dom13_sus4_flat9
+
+    /// Dominant Thirteenth Suspended Fourth Sharp Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4(♯9)`
+    case dom13_sus4_sharp9
+
+    /// Dominant Thirteenth Suspended Second Sharp Eleventh: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, Major Thirteenth, e.g. `C13sus2(♯11)`
+    case dom13_sus2_sharp11
+
+    /// Major Seventh Suspended Fourth Flat Ninth: Perfect Fourth, Perfect Fifth, Major Seventh, Minor Ninth, e.g. `Cmaj7sus4(♭9)`
+    case maj7_sus4_flat9
+
+    /// Major Seventh Suspended Fourth Sharp Ninth: Perfect Fourth, Perfect Fifth, Major Seventh, Augmented Ninth, e.g. `Cmaj7sus4(♯9)`
+    case maj7_sus4_sharp9
+
+    /// Major Seventh Suspended Second Sharp Eleventh: Major Second, Perfect Fifth, Major Seventh, Augmented Eleventh, e.g. `Cmaj7sus2(♯11)`
+    case maj7_sus2_sharp11
+
+    /// Major Ninth Suspended Fourth Flat Thirteenth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Minor Thirteenth, e.g. `Cmaj9sus4(♭13)`
+    case maj9_sus4_flat13
+
+    /// Major Ninth Suspended Fourth Sharp Eleventh: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9sus4(♯11)`
+    case maj9_sus4_sharp11
+
+    /// Major Eleventh Suspended Second Flat Ninth: Major Second, Perfect Fifth, Major Seventh, Minor Ninth, Perfect Eleventh, e.g. `Cmaj11sus2(♭9)`
+    case maj11_sus2_flat9
+
+    /// Major Eleventh Suspended Second Sharp Ninth: Major Second, Perfect Fifth, Major Seventh, Augmented Ninth, Perfect Eleventh, e.g. `Cmaj11sus2(♯9)`
+    case maj11_sus2_sharp9
 
     public var intervals: [Interval] {
         switch self {
@@ -585,6 +690,41 @@ public enum ChordType: String, CaseIterable, Codable {
             case .maj13_add11:                 return [.M3, .P5, .M7, .M9, .P11, .M13]
             case .dom13_add11:                 return [.M3, .P5, .m7, .M9, .P11, .M13]
             case .min13_add11:                 return [.m3, .P5, .m7, .M9, .P11, .M13]
+            case .sus4_add9:                 return [.P4, .P5, .M9]
+            case .sus2_add11:                return [.M2, .P5, .P11]
+            case .sus4_addFlat9:             return [.P4, .P5, .m9]
+            case .sus4_addSharp9:            return [.P4, .P5, .A9]
+            case .sus2_addSharp11:           return [.M2, .P5, .A11]
+            case .sus2_addSharp13:           return [.M2, .P5, .A13]
+            case .sus4_addSharp13:           return [.P4, .P5, .A13]
+            case .maj7_sus2:                 return [.M2, .P5, .M7]
+            case .maj7_sus4:                 return [.P4, .P5, .M7]
+            case .maj9_sus4:                 return [.P4, .P5, .M7, .M9]
+            case .dom11_sus2:                return [.M2, .P5, .m7, .M9, .P11]
+            case .maj13_sus2:                return [.M2, .P5, .M7, .M9, .P11, .M13]
+            case .maj13_sus4:                return [.P4, .P5, .M7, .M9, .P11, .M13]
+            case .dom13_sus2:                return [.M2, .P5, .m7, .M9, .P11, .M13]
+            case .dom13_sus4:                return [.P4, .P5, .m7, .M9, .P11, .M13]
+            case .dom7_sus4_flat9:           return [.P4, .P5, .m7, .m9]
+            case .dom7_sus4_sharp9:          return [.P4, .P5, .m7, .A9]
+            case .dom7_sus2_sharp11:         return [.M2, .P5, .m7, .A11]
+            case .dom7_sus4_flat13:          return [.P4, .P5, .m7, .m13]
+            case .dom7_sus4_sharp13:         return [.P4, .P5, .m7, .A13]
+            case .dom9_sus4_flat13:          return [.P4, .P5, .m7, .M9, .m13]
+            case .dom9_sus4_sharp13:         return [.P4, .P5, .m7, .M9, .A13]
+            case .dom11_sus2_flat9:          return [.M2, .P5, .m7, .m9, .P11]
+            case .dom11_sus2_flat13:         return [.M2, .P5, .m7, .M9, .P11, .m13]
+            case .dom11_sus2_sharp13:        return [.M2, .P5, .m7, .M9, .P11, .A13]
+            case .dom13_sus4_flat9:          return [.P4, .P5, .m7, .m9, .P11, .M13]
+            case .dom13_sus4_sharp9:         return [.P4, .P5, .m7, .A9, .P11, .M13]
+            case .dom13_sus2_sharp11:        return [.M2, .P5, .m7, .M9, .A11, .M13]
+            case .maj7_sus4_flat9:           return [.P4, .P5, .M7, .m9]
+            case .maj7_sus4_sharp9:          return [.P4, .P5, .M7, .A9]
+            case .maj7_sus2_sharp11:         return [.M2, .P5, .M7, .A11]
+            case .maj9_sus4_flat13:          return [.P4, .P5, .M7, .M9, .m13]
+            case .maj9_sus4_sharp11:         return [.P4, .P5, .M7, .M9, .A11]
+            case .maj11_sus2_flat9:          return [.M2, .P5, .M7, .m9, .P11]
+            case .maj11_sus2_sharp9:         return [.M2, .P5, .M7, .A9, .P11]
         }
     }
 }
@@ -597,7 +737,7 @@ extension ChordType: CustomStringConvertible {
             case .minor:                       return "m"
             case .dim:                         return "°"
             case .flat5:                       return "(♭5)"
-            case .aug:                         return "+"
+            case .aug:                         return "⁺"
             case .sus2:                        return "sus2"
             case .sus4:                        return "sus4"
             case .maj6:                        return "6"
@@ -735,6 +875,41 @@ extension ChordType: CustomStringConvertible {
             case .maj13_add11:                 return "maj13(add11)"
             case .dom13_add11:                 return "13(add11)"
             case .min13_add11:                 return "m13(add11)"
+            case .sus4_add9:                   return "sus4(add9)"
+            case .sus2_add11:                  return "sus2(add11)"
+            case .sus4_addFlat9:               return "sus4(add♭9)"
+            case .sus4_addSharp9:              return "sus4(add♯9)"
+            case .sus2_addSharp11:             return "sus2(add♯11)"
+            case .sus2_addSharp13:             return "sus2(add♯13)"
+            case .sus4_addSharp13:             return "sus4(add♯13)"
+            case .maj7_sus2:                   return "maj7sus2"
+            case .maj7_sus4:                   return "maj7sus4"
+            case .maj9_sus4:                   return "maj9sus4"
+            case .dom11_sus2:                  return "11sus2"
+            case .maj13_sus2:                  return "maj13sus2"
+            case .maj13_sus4:                  return "maj13sus4"
+            case .dom13_sus2:                  return "13sus2"
+            case .dom13_sus4:                  return "13sus4"
+            case .dom7_sus4_flat9:             return "7sus4(♭9)"
+            case .dom7_sus4_sharp9:            return "7sus4(♯9)"
+            case .dom7_sus2_sharp11:           return "7sus2(♯11)"
+            case .dom7_sus4_flat13:            return "7sus4(♭13)"
+            case .dom7_sus4_sharp13:           return "7sus4(♯13)"
+            case .dom9_sus4_flat13:            return "9sus4(♭13)"
+            case .dom9_sus4_sharp13:           return "9sus4(♯13)"
+            case .dom11_sus2_flat9:            return "11sus2(♭9)"
+            case .dom11_sus2_flat13:           return "11sus2(♭13)"
+            case .dom11_sus2_sharp13:          return "11sus2(♯13)"
+            case .dom13_sus4_flat9:            return "13sus4(♭9)"
+            case .dom13_sus4_sharp9:           return "13sus4(♯9)"
+            case .dom13_sus2_sharp11:          return "13sus2(♯11)"
+            case .maj7_sus4_flat9:             return "maj7sus4(♭9)"
+            case .maj7_sus4_sharp9:            return "maj7sus4(♯9)"
+            case .maj7_sus2_sharp11:           return "maj7sus2(♯11)"
+            case .maj9_sus4_flat13:            return "maj9sus4(♭13)"
+            case .maj9_sus4_sharp11:           return "maj9sus4(♯11)"
+            case .maj11_sus2_flat9:            return "maj11sus2(♭9)"
+            case .maj11_sus2_sharp9:           return "maj11sus2(♯9)"
         }
     }
 
@@ -885,6 +1060,42 @@ extension ChordType: CustomStringConvertible {
             case .maj13_add11:                 return "^13@11"
             case .dom13_add11:                 return "13@11"
             case .min13_add11:                 return "m13@11"
+            case .sus4_add9:                   return "“4@9"
+            case .sus2_add11:                  return "“2@11"
+            case .sus4_addFlat9:               return "“4@b9"
+            case .sus4_addSharp9:              return "“4@#9"
+            case .sus2_addSharp11:             return "“2@#11"
+            case .sus2_addSharp13:             return "“2@#13"
+            case .sus4_addSharp13:             return "“4@#13"
+            case .maj7_sus2:                   return "^7“2"
+            case .maj7_sus4:                   return "^7“4"
+            case .maj9_sus4:                   return "^9“4"
+            case .dom11_sus2:                  return "11“2"
+            case .maj13_sus2:                  return "^13“2"
+            case .maj13_sus4:                  return "^13“4"
+            case .dom13_sus2:                  return "13“2"
+            case .dom13_sus4:                  return "13“4"
+            case .dom7_sus4_flat9:             return "7“4b9"
+            case .dom7_sus4_sharp9:            return "7“4#9"
+            case .dom7_sus2_sharp11:           return "7“2#11"
+            case .dom7_sus4_flat13:            return "7“4b13"
+            case .dom7_sus4_sharp13:           return "7“4#13"
+            case .dom9_sus4_flat13:            return "9“4b13"
+            case .dom9_sus4_sharp13:           return "9“4#13"
+            case .dom11_sus2_flat9:            return "11“2b9"
+            case .dom11_sus2_flat9:            return "11“2b9"
+            case .dom11_sus2_flat13:           return "11“2b13"
+            case .dom11_sus2_sharp13:          return "11“2#13"
+            case .dom13_sus4_flat9:            return "13“4b9"
+            case .dom13_sus4_sharp9:           return "13“4#9"
+            case .dom13_sus2_sharp11:          return "13“2#11"
+            case .maj7_sus4_flat9:             return "^7“4b9"
+            case .maj7_sus4_sharp9:            return "^7“4#9"
+            case .maj7_sus2_sharp11:           return "^7“2#11"
+            case .maj9_sus4_flat13:            return "^9“4b13"
+            case .maj9_sus4_sharp11:           return "^9“4#11"
+            case .maj11_sus2_flat9:            return "^11“2b9"
+            case .maj11_sus2_sharp9:           return "^11“2#9"
         }
     }
 }
