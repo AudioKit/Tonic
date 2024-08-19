@@ -474,10 +474,10 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Minor Thirteenth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13(add11)`
     case min13_add11
     
-    /// Major Thirteenth Suspended Second: Major Second, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus2`
+    /// Major Thirteenth Suspended Second: Major Second, Perfect Fifth, Major Seventh, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13sus2`
     case maj13_sus2
 
-    /// Major Thirteenth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4`
+    /// Major Thirteenth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Major Thirteenth, e.g. `Cmaj13sus4`
     case maj13_sus4
     
     /// Dominant Thirteenth Suspended Second: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus2`
@@ -700,11 +700,11 @@ public enum ChordType: String, CaseIterable, Codable {
             case .maj7_sus2:                 return [.M2, .P5, .M7]
             case .maj7_sus4:                 return [.P4, .P5, .M7]
             case .maj9_sus4:                 return [.P4, .P5, .M7, .M9]
-            case .dom11_sus2:                return [.M2, .P5, .m7, .M9, .P11]
-            case .maj13_sus2:                return [.M2, .P5, .M7, .M9, .P11, .M13]
-            case .maj13_sus4:                return [.P4, .P5, .M7, .M9, .P11, .M13]
-            case .dom13_sus2:                return [.M2, .P5, .m7, .M9, .P11, .M13]
-            case .dom13_sus4:                return [.P4, .P5, .m7, .M9, .P11, .M13]
+            case .dom11_sus2:                return [.M2, .P5, .m7, .P11]
+            case .maj13_sus2:                return [.M2, .P5, .M7, .P11, .M13]
+            case .maj13_sus4:                return [.P4, .P5, .M7, .M9, .M13]
+            case .dom13_sus2:                return [.M2, .P5, .m7, .P11, .M13]
+            case .dom13_sus4:                return [.P4, .P5, .m7, .M9, .M13]
             case .dom7_sus4_flat9:           return [.P4, .P5, .m7, .m9]
             case .dom7_sus4_sharp9:          return [.P4, .P5, .m7, .A9]
             case .dom7_sus2_sharp11:         return [.M2, .P5, .m7, .A11]
@@ -1082,7 +1082,6 @@ extension ChordType: CustomStringConvertible {
             case .dom7_sus4_sharp13:           return "7“4#13"
             case .dom9_sus4_flat13:            return "9“4b13"
             case .dom9_sus4_sharp13:           return "9“4#13"
-            case .dom11_sus2_flat9:            return "11“2b9"
             case .dom11_sus2_flat9:            return "11“2b9"
             case .dom11_sus2_flat13:           return "11“2b13"
             case .dom11_sus2_sharp13:          return "11“2#13"
