@@ -25,7 +25,9 @@ public class ChordTable {
                     continue
                 }
 
-                r[ChordTable.hash(chord.noteClasses)] = chord
+                if r[ChordTable.hash(chord.noteClasses)] == nil {
+                    r[ChordTable.hash(chord.noteClasses)] = chord
+                }
             }
         }
     }
@@ -53,7 +55,7 @@ public class ChordTable {
                     let chord = Chord(root, type: chordType)
 
                     if chord.noteClasses.count <= chord.type.intervals.count {
-                        // chord is not valid
+                        // chord would need to be spelt with triple sharps or flats so we omit
                         continue
                     }
 
