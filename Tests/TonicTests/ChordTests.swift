@@ -538,25 +538,44 @@ class ChordTests: XCTestCase {
     }
     
     func testDiminishedSeventhChords() {
-        assertRankedChord([59, 62, 65, 68], expectedDescriptions: ["B°7"])
-        assertRankedChord([62, 65, 68, 71], expectedDescriptions: ["D°7"])
+        assertRankedChord([59, 62, 65, 68], expectedDescriptions: ["B°7", "G♯°7/B"])
+        assertRankedChord([62, 65, 68, 71], expectedDescriptions: ["D°7", "B°7/D", "G♯°7/D"])
     }
     
     // MARK: - Extended Chords
     
     func testNinthChords() {
-        assertRankedChord([60, 64, 67, 70, 74], expectedDescriptions: ["C9"])
-        assertRankedChord([62, 65, 69, 72, 76], expectedDescriptions: ["Dm9"])
+        assertRankedChord([60, 64, 67, 70, 74], expectedDescriptions: ["C9", "Eø7(add♭13)/C"])
+        assertRankedChord([62, 65, 69, 72, 76], expectedDescriptions: ["Dm9", "Fmaj7(add13)/D"])
     }
     
     func testEleventhChords() {
-        assertRankedChord([60, 64, 67, 70, 74, 77], expectedDescriptions: ["C11"])
+        assertRankedChord([60, 64, 67, 70, 74, 77], expectedDescriptions: ["C11", "Fmaj13sus2/C"])
         assertRankedChord([65, 69, 72, 76, 79, 82], expectedDescriptions: ["Fmaj11"])
     }
     
     func testThirteenthChords() {
-        assertRankedChord([60, 64, 67, 70, 74, 77, 81], expectedDescriptions: ["C13"])
-        assertRankedChord([67, 71, 74, 77, 81, 84, 88], expectedDescriptions: ["G13"])
+        assertRankedChord([60, 64, 67, 70, 74, 77, 81], 
+                          expectedDescriptions: ["C13",
+                                                 "Gm13/C",
+                                                 "Fmaj13/C",
+                                                 "Dm7(♭13)/C",
+                                                 "Dm11(♭13)/C",
+                                                 "Am(♭13)(♭9)/C",
+                                                 "B♭maj13(♯11)/C",
+                                                 "Am7(♭9)(♭13)/C",
+                                                 "Eø7(♭5)(♭9)(♭13)/C"])
+        
+        assertRankedChord([67, 71, 74, 77, 81, 84, 88], 
+                          expectedDescriptions: ["G13",
+                                                 "Dm13/G",
+                                                 "Cmaj13/G",
+                                                 "Am7(♭13)/G",
+                                                 "Am11(♭13)/G",
+                                                 "Fmaj13(♯11)/G",
+                                                 "Em(♭13)(♭9)/G",
+                                                 "Em7(♭9)(♭13)/G",
+                                                 "Bø7(♭5)(♭9)(♭13)/G"])
     }
     
     // MARK: - Suspended Chords
@@ -573,8 +592,8 @@ class ChordTests: XCTestCase {
     // MARK: - Add Chords
     
     func testAdd9Chords() {
-        assertRankedChord([60, 64, 67, 74], expectedDescriptions: ["C(add9)"])
-        assertRankedChord([65, 69, 72, 79], expectedDescriptions: ["F(add9)"])
+        assertRankedChord([60, 64, 67, 74], expectedDescriptions: ["C(add9)", "Gsus4(add13)/C"])
+        assertRankedChord([65, 69, 72, 79], expectedDescriptions: ["F(add9)", "Csus4(add13)/F"])
     }
     
     // MARK: - Altered Chords
