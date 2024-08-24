@@ -278,6 +278,9 @@ extension Chord {
             }
         }
         
+        // prefer fewer number of characters (favor less complex chords in ranking)
+        returnArray.sort { $0.slashDescription.count < $1.slashDescription.count }
+        
         return returnArray
     }
 
