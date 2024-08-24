@@ -548,183 +548,360 @@ public enum ChordType: String, CaseIterable, Codable {
 
     public var intervals: [Interval] {
         switch self {
-            case .major:                       return [.M3, .P5]
-            case .minor:                       return [.m3, .P5]
-            case .dim:                         return [.m3, .d5]
-            case .flat5:                       return [.M3, .d5]
-            case .aug:                         return [.M3, .A5]
-            case .sus2:                        return [.M2, .P5]
-            case .sus4:                        return [.P4, .P5]
-            case .maj6:                        return [.M3, .P5, .M6]
-            case .min6:                        return [.m3, .P5, .M6]
-            case .sus2_add13:                  return [.M2, .P5, .M13]
-            case .sus4_add13:                  return [.P4, .P5, .M13]
-            case .sus2_addFlat13:              return [.M2, .P5, .m13]
-            case .sus4_addFlat13:              return [.P4, .P5, .m13]
-            case .maj7:                        return [.M3, .P5, .M7]
-            case .dom7:                        return [.M3, .P5, .m7]
-            case .min7:                        return [.m3, .P5, .m7]
-            case .halfDim7:                    return [.m3, .d5, .m7]
-            case .dim7:                        return [.m3, .d5, .d7]
-            case .dom7_sus2:                   return [.M2, .P5, .m7]
-            case .dom7_sus4:                   return [.P4, .P5, .m7]
-            case .maj7_sharp5:                 return [.M3, .A5, .M7]
-            case .min_maj7:                    return [.m3, .P5, .M7]
-            case .maj7_flat5:                  return [.M3, .d5, .M7]
-            case .dom7_flat5:                  return [.M3, .d5, .m7]
-            case .dom7_sharp5:                 return [.M3, .A5, .m7]
-            case .maj9:                        return [.M3, .P5, .M7, .M9]
-            case .dom9:                        return [.M3, .P5, .m7, .M9]
-            case .min9:                        return [.m3, .P5, .m7, .M9]
-            case .halfDim9:                    return [.m3, .d5, .m7, .M9]
-            case .halfDimFlat9:                return [.m3, .d5, .m7, .m9]
-            case .dim9:                        return [.m3, .d5, .d7, .M9]
-            case .dimFlat9:                    return [.m3, .d5, .d7, .m9]
-            case .dom9_sus4:                   return [.P4, .P5, .m7, .M9]
-            case .dom7_flat9:                  return [.M3, .P5, .m7, .m9]
-            case .dom7_sharp9:                 return [.M3, .P5, .m7, .A9]
-            case .min_maj9:                    return [.m3, .P5, .M7, .M9]
-            case .min_maj_flat9:               return [.m3, .P5, .M7, .m9]
-            case .min7_flat9:                  return [.m3, .P5, .m7, .m9]
-            case .maj_add9:                    return [.M3, .P5, .M9]
-            case .min_add9:                    return [.m3, .P5, .M9]
-            case .dim_add9:                    return [.m3, .d5, .M9]
-            case .aug_add9:                    return [.M3, .A5, .M9]
-            case .maj_addFlat9:                return [.M3, .P5, .m9]
-            case .min_addFlat9:                return [.m3, .P5, .m9]
-            case .dim_addFlat9:                return [.m3, .d5, .m9]
-            case .aug_addFlat9:                return [.M3, .A5, .m9]
-            case .maj_addSharp9:               return [.M3, .P5, .A9]
-            case .min_addSharp9:               return [.m3, .P5, .A9]
-            case .dim_addSharp9:               return [.m3, .d5, .A9]
-            case .aug_addSharp9:               return [.M3, .A5, .A9]
-            case .maj_6_9:                     return [.M3, .P5, .M6, .M9]
-            case .maj9_sharp5:                 return [.M3, .A5, .M7, .M9]
-            case .maj9_flat5:                  return [.M3, .d5, .M7, .M9]
-            case .dom9_flat5:                  return [.M3, .d5, .m7, .M9]
-            case .dom9_sharp5:                 return [.M3, .A5, .m7, .M9]
-            case .maj11:                       return [.M3, .P5, .M7, .M9, .P11]
-            case .dom11:                       return [.M3, .P5, .m7, .M9, .P11]
-            case .min11:                       return [.m3, .P5, .m7, .M9, .P11]
-            case .halfDim11:                   return [.m3, .d5, .m7, .M9, .P11]
-            case .dim11:                       return [.m3, .d5, .d7, .M9, .P11]
-            case .maj11_flat5:                 return [.M3, .d5, .M7, .M9, .P11]
-            case .maj11_sharp5:                return [.M3, .A5, .M7, .M9, .P11]
-            case .dom11_flat5:                 return [.M3, .d5, .m7, .M9, .P11]
-            case .dom11_sharp5:                return [.M3, .A5, .m7, .M9, .P11]
-            case .maj9_sharp11:                return [.M3, .P5, .M7, .M9, .A11]
-            case .dom9_sharp11:                return [.M3, .P5, .m7, .M9, .A11]
-            case .min9_sharp11:                return [.m3, .P5, .m7, .M9, .A11]
-            case .maj9_flat5_sharp11:          return [.M3, .d5, .M7, .M9, .A11]
-            case .maj9_sharp5_sharp11:         return [.M3, .A5, .M7, .M9, .A11]
-            case .dom9_flat5_sharp11:          return [.M3, .d5, .m7, .M9, .A11]
-            case .dom9_sharp5_sharp11:         return [.M3, .A5, .m7, .M9, .A11]
-            case .maj7_flat9_sharp11:          return [.M3, .P5, .M7, .m9, .A11]
-            case .dom7_flat9_sharp11:          return [.M3, .P5, .m7, .m9, .A11]
-            case .min7_flat9_sharp11:          return [.m3, .P5, .m7, .m9, .A11]
-            case .dom7_sharp9_sharp11:         return [.M3, .P5, .m7, .A9, .A11]
-            case .min7_flat9_11:               return [.m3, .P5, .m7, .m9, .P11]
-            case .maj7_add11:                  return [.M3, .P5, .M7, .P11]
-            case .maj7_addSharp11:             return [.M3, .P5, .M7, .A11]
-            case .dom7_add11:                  return [.M3, .P5, .m7, .P11]
-            case .dom7_addSharp11:             return [.M3, .P5, .m7, .A11]
-            case .min7_add11:                  return [.m3, .P5, .m7, .P11]
-            case .min7_addSharp11:             return [.m3, .P5, .m7, .A11]
-            case .halfDim7_add11:              return [.m3, .d5, .m7, .P11]
-            case .maj13:                       return [.M3, .P5, .M7, .M9, .P11, .M13]
-            case .dom13:                       return [.M3, .P5, .m7, .M9, .P11, .M13]
-            case .min13:                       return [.m3, .P5, .m7, .M9, .P11, .M13]
-            case .halfDim13:                   return [.m3, .d5, .m7, .M9, .P11, .M13]
-            case .min13_flat5:                 return [.m3, .d5, .m7, .M9, .P11, .M13]
-            case .maj13_flat9:                 return [.M3, .P5, .M7, .m9, .P11, .M13]
-            case .dom13_flat9:                 return [.M3, .P5, .m7, .m9, .P11, .M13]
-            case .min13_flat9:                 return [.m3, .P5, .m7, .m9, .P11, .M13]
-            case .min13_flat5_flat9:           return [.m3, .d5, .m7, .m9, .P11, .M13]
-            case .maj13_sharp9:                return [.M3, .P5, .M7, .A9, .P11, .M13]
-            case .dom13_sharp9:                return [.M3, .P5, .m7, .A9, .P11, .M13]
-            case .min13_sharp9:                return [.m3, .P5, .m7, .A9, .P11, .M13]
-            case .min13_flat5_sharp9:          return [.m3, .d5, .m7, .A9, .P11, .M13]
-            case .maj13_sharp11:               return [.M3, .P5, .M7, .M9, .A11, .M13]
-            case .dom13_sharp11:               return [.M3, .P5, .m7, .M9, .A11, .M13]
-            case .min13_sharp11:               return [.m3, .P5, .m7, .M9, .A11, .M13]
-            case .maj7_flat13:                 return [.M3, .P5, .M7, .M9, .P11, .m13]
-            case .dom7_flat13:                 return [.M3, .P5, .m7, .M9, .P11, .m13]
-            case .min7_flat13:                 return [.m3, .P5, .m7, .M9, .P11, .m13]
-            case .halfDim7_flat13:             return [.m3, .d5, .m7, .M9, .P11, .m13]
-            case .maj7_flat9_flat13:           return [.M3, .P5, .M7, .m9, .P11, .m13]
-            case .dom7_flat9_flat13:           return [.M3, .P5, .m7, .m9, .P11, .m13]
-            case .min7_flat9_flat13:           return [.m3, .P5, .m7, .m9, .P11, .m13]
-            case .min7_flat5_flat9_flat13:     return [.m3, .d5, .m7, .m9, .P11, .m13]
-            case .maj7_sharp9_flat13:          return [.M3, .P5, .M7, .A9, .P11, .m13]
-            case .dom7_sharp9_flat13:          return [.M3, .P5, .m7, .A9, .P11, .m13]
-            case .min7_sharp9_flat13:          return [.m3, .P5, .m7, .A9, .P11, .m13]
-            case .min7_flat5_sharp9_flat13:    return [.m3, .d5, .m7, .A9, .P11, .m13]
-            case .maj7_flat9_sharp11_flat13:   return [.M3, .P5, .M7, .m9, .A11, .m13]
-            case .dom7_flat9_sharp11_flat13:   return [.M3, .P5, .m7, .m9, .A11, .m13]
-            case .min7_flat9_sharp11_flat13:   return [.m3, .P5, .m7, .m9, .A11, .m13]
-            case .min7_flat5_flat9_sharp11_flat13: return [.m3, .d5, .m7, .m9, .A11, .m13]
-            case .maj7_sharp9_sharp11_flat13:  return [.M3, .P5, .M7, .A9, .A11, .m13]
-            case .dom7_sharp9_sharp11_flat13:  return [.M3, .P5, .m7, .A9, .A11, .m13]
-            case .min7_sharp9_sharp11_flat13:  return [.m3, .P5, .m7, .A9, .A11, .m13]
-            case .min7_flat5_sharp9_sharp11_flat13: return [.m3, .d5, .m7, .A9, .A11, .m13]
-            case .maj7_add13:                  return [.M3, .P5, .M7, .M13]
-            case .dom7_add13:                  return [.M3, .P5, .m7, .M13]
-            case .min7_add13:                  return [.m3, .P5, .m7, .M13]
-            case .halfDim7_add13:              return [.m3, .d5, .m7, .M13]
-            case .maj7_addFlat13:              return [.M3, .P5, .M7, .m13]
-            case .dom7_addFlat13:              return [.M3, .P5, .m7, .m13]
-            case .min7_addFlat13:              return [.m3, .P5, .m7, .m13]
-            case .halfDim7_addFlat13:          return [.m3, .d5, .m7, .m13]
-            case .maj7_add9_add13:             return [.M3, .P5, .M7, .M9, .M13]
-            case .maj7_addFlat9_add13:         return [.M3, .P5, .M7, .m9, .M13]
-            case .maj7_addFlat9_addFlat13:     return [.M3, .P5, .M7, .m9, .m13]
-            case .min_flat13_flat9:            return [.m3, .P5, .m7, .m9, .P11, .m13]
-            case .min11_flat13:                return [.m3, .P5, .m7, .M9, .P11, .m13]
-            case .halfDim_flat13:              return [.m3, .d5, .m7, .M9, .P11, .m13]
-            case .dom13_flat5:                 return [.M3, .d5, .m7, .M9, .P11, .M13]
-            case .dom13_sharp5:                return [.M3, .A5, .m7, .M9, .P11, .M13]
-            case .maj13_flat5:                 return [.M3, .d5, .M7, .M9, .P11, .M13]
-            case .maj13_sharp5:                return [.M3, .A5, .M7, .M9, .P11, .M13]
-            case .dom13_flat9_sharp11:         return [.M3, .P5, .m7, .m9, .A11, .M13]
-            case .dom13_sharp9_sharp11:        return [.M3, .P5, .m7, .A9, .A11, .M13]
-            case .maj13_add11:                 return [.M3, .P5, .M7, .M9, .P11, .M13]
-            case .dom13_add11:                 return [.M3, .P5, .m7, .M9, .P11, .M13]
-            case .min13_add11:                 return [.m3, .P5, .m7, .M9, .P11, .M13]
-            case .sus4_add9:                 return [.P4, .P5, .M9]
-            case .sus2_add11:                return [.M2, .P5, .P11]
-            case .sus4_addFlat9:             return [.P4, .P5, .m9]
-            case .sus4_addSharp9:            return [.P4, .P5, .A9]
-            case .sus2_addSharp11:           return [.M2, .P5, .A11]
-            case .sus2_addSharp13:           return [.M2, .P5, .A13]
-            case .sus4_addSharp13:           return [.P4, .P5, .A13]
-            case .maj7_sus2:                 return [.M2, .P5, .M7]
-            case .maj7_sus4:                 return [.P4, .P5, .M7]
-            case .maj9_sus4:                 return [.P4, .P5, .M7, .M9]
-            case .dom11_sus2:                return [.M2, .P5, .m7, .P11]
-            case .maj13_sus2:                return [.M2, .P5, .M7, .P11, .M13]
-            case .maj13_sus4:                return [.P4, .P5, .M7, .M9, .M13]
-            case .dom13_sus2:                return [.M2, .P5, .m7, .P11, .M13]
-            case .dom13_sus4:                return [.P4, .P5, .m7, .M9, .M13]
-            case .dom7_sus4_flat9:           return [.P4, .P5, .m7, .m9]
-            case .dom7_sus4_sharp9:          return [.P4, .P5, .m7, .A9]
-            case .dom7_sus2_sharp11:         return [.M2, .P5, .m7, .A11]
-            case .dom7_sus4_flat13:          return [.P4, .P5, .m7, .m13]
-            case .dom7_sus4_sharp13:         return [.P4, .P5, .m7, .A13]
-            case .dom9_sus4_flat13:          return [.P4, .P5, .m7, .M9, .m13]
-            case .dom9_sus4_sharp13:         return [.P4, .P5, .m7, .M9, .A13]
-            case .dom11_sus2_flat9:          return [.M2, .P5, .m7, .m9, .P11]
-            case .dom11_sus2_flat13:         return [.M2, .P5, .m7, .M9, .P11, .m13]
-            case .dom11_sus2_sharp13:        return [.M2, .P5, .m7, .M9, .P11, .A13]
-            case .dom13_sus4_flat9:          return [.P4, .P5, .m7, .m9, .P11, .M13]
-            case .dom13_sus4_sharp9:         return [.P4, .P5, .m7, .A9, .P11, .M13]
-            case .dom13_sus2_sharp11:        return [.M2, .P5, .m7, .M9, .A11, .M13]
-            case .maj7_sus4_flat9:           return [.P4, .P5, .M7, .m9]
-            case .maj7_sus4_sharp9:          return [.P4, .P5, .M7, .A9]
-            case .maj7_sus2_sharp11:         return [.M2, .P5, .M7, .A11]
-            case .maj9_sus4_flat13:          return [.P4, .P5, .M7, .M9, .m13]
-            case .maj9_sus4_sharp11:         return [.P4, .P5, .M7, .M9, .A11]
-            case .maj11_sus2_flat9:          return [.M2, .P5, .M7, .m9, .P11]
-            case .maj11_sus2_sharp9:         return [.M2, .P5, .M7, .A9, .P11]
+            case .major:                       
+                return [.M3, .P5]
+            case .minor:                       
+                return [.m3, .P5]
+            case .dim:                         
+                return [.m3, .d5]
+            case .flat5:                       
+                return [.M3, .d5]
+            case .aug:
+                return [.M3, .A5]
+            case .sus2:                        
+                return [.M2, .P5]
+            case .sus4:
+                return [.P4, .P5]
+            case .maj6:
+                return [.M3, .P5, .M6]
+            case .min6:
+                return [.m3, .P5, .M6]
+            case .sus2_add13:
+                return [.M2, .P5, .M13]
+            case .sus4_add13:
+                return [.P4, .P5, .M13]
+            case .sus2_addFlat13:
+                return [.M2, .P5, .m13]
+            case .sus4_addFlat13:
+                return [.P4, .P5, .m13]
+            case .maj7:
+                return [.M3, .P5, .M7]
+            case .dom7:
+                return [.M3, .P5, .m7]
+            case .min7:
+                return [.m3, .P5, .m7]
+            case .halfDim7:
+                return [.m3, .d5, .m7]
+            case .dim7:
+                return [.m3, .d5, .d7]
+            case .dom7_sus2:
+                return [.M2, .P5, .m7]
+            case .dom7_sus4:
+                return [.P4, .P5, .m7]
+            case .maj7_sharp5:
+                return [.M3, .A5, .M7]
+            case .min_maj7:
+                return [.m3, .P5, .M7]
+            case .maj7_flat5:
+                return [.M3, .d5, .M7]
+            case .dom7_flat5:
+                return [.M3, .d5, .m7]
+            case .dom7_sharp5:
+                return [.M3, .A5, .m7]
+            case .maj9:
+                return [.M3, .P5, .M7, .M9]
+            case .dom9:
+                return [.M3, .P5, .m7, .M9]
+            case .min9:
+                return [.m3, .P5, .m7, .M9]
+            case .halfDim9:
+                return [.m3, .d5, .m7, .M9]
+            case .halfDimFlat9:
+                return [.m3, .d5, .m7, .m9]
+            case .dim9:
+                return [.m3, .d5, .d7, .M9]
+            case .dimFlat9:
+                return [.m3, .d5, .d7, .m9]
+            case .dom9_sus4:
+                return [.P4, .P5, .m7, .M9]
+            case .dom7_flat9:
+                return [.M3, .P5, .m7, .m9]
+            case .dom7_sharp9:
+                return [.M3, .P5, .m7, .A9]
+            case .min_maj9:
+                return [.m3, .P5, .M7, .M9]
+            case .min_maj_flat9:
+                return [.m3, .P5, .M7, .m9]
+            case .min7_flat9:
+                return [.m3, .P5, .m7, .m9]
+            case .maj_add9:
+                return [.M3, .P5, .M9]
+            case .min_add9:
+                return [.m3, .P5, .M9]
+            case .dim_add9:
+                return [.m3, .d5, .M9]
+            case .aug_add9:
+                return [.M3, .A5, .M9]
+            case .maj_addFlat9:
+                return [.M3, .P5, .m9]
+            case .min_addFlat9:
+                return [.m3, .P5, .m9]
+            case .dim_addFlat9:
+                return [.m3, .d5, .m9]
+            case .aug_addFlat9:
+                return [.M3, .A5, .m9]
+            case .maj_addSharp9:
+                return [.M3, .P5, .A9]
+            case .min_addSharp9:
+                return [.m3, .P5, .A9]
+            case .dim_addSharp9:
+                return [.m3, .d5, .A9]
+            case .aug_addSharp9:
+                return [.M3, .A5, .A9]
+            case .maj_6_9:
+                return [.M3, .P5, .M6, .M9]
+            case .maj9_sharp5:
+                return [.M3, .A5, .M7, .M9]
+            case .maj9_flat5:
+                return [.M3, .d5, .M7, .M9]
+            case .dom9_flat5:
+                return [.M3, .d5, .m7, .M9]
+            case .dom9_sharp5:
+                return [.M3, .A5, .m7, .M9]
+            case .maj11:
+                return [.M3, .P5, .M7, .M9, .P11]
+            case .dom11:
+                return [.M3, .P5, .m7, .M9, .P11]
+            case .min11:
+                return [.m3, .P5, .m7, .M9, .P11]
+            case .halfDim11:
+                return [.m3, .d5, .m7, .M9, .P11]
+            case .dim11:
+                return [.m3, .d5, .d7, .M9, .P11]
+            case .maj11_flat5:
+                return [.M3, .d5, .M7, .M9, .P11]
+            case .maj11_sharp5:
+                return [.M3, .A5, .M7, .M9, .P11]
+            case .dom11_flat5:
+                return [.M3, .d5, .m7, .M9, .P11]
+            case .dom11_sharp5:
+                return [.M3, .A5, .m7, .M9, .P11]
+            case .maj9_sharp11:
+                return [.M3, .P5, .M7, .M9, .A11]
+            case .dom9_sharp11:
+                return [.M3, .P5, .m7, .M9, .A11]
+            case .min9_sharp11:
+                return [.m3, .P5, .m7, .M9, .A11]
+            case .maj9_flat5_sharp11:
+                return [.M3, .d5, .M7, .M9, .A11]
+            case .maj9_sharp5_sharp11:
+                return [.M3, .A5, .M7, .M9, .A11]
+            case .dom9_flat5_sharp11:
+                return [.M3, .d5, .m7, .M9, .A11]
+            case .dom9_sharp5_sharp11:
+                return [.M3, .A5, .m7, .M9, .A11]
+            case .maj7_flat9_sharp11:
+                return [.M3, .P5, .M7, .m9, .A11]
+            case .dom7_flat9_sharp11:
+                return [.M3, .P5, .m7, .m9, .A11]
+            case .min7_flat9_sharp11:
+                return [.m3, .P5, .m7, .m9, .A11]
+            case .dom7_sharp9_sharp11:
+                return [.M3, .P5, .m7, .A9, .A11]
+            case .min7_flat9_11:
+                return [.m3, .P5, .m7, .m9, .P11]
+            case .maj7_add11:
+                return [.M3, .P5, .M7, .P11]
+            case .maj7_addSharp11:
+                return [.M3, .P5, .M7, .A11]
+            case .dom7_add11:
+                return [.M3, .P5, .m7, .P11]
+            case .dom7_addSharp11:
+                return [.M3, .P5, .m7, .A11]
+            case .min7_add11:
+                return [.m3, .P5, .m7, .P11]
+            case .min7_addSharp11:
+                return [.m3, .P5, .m7, .A11]
+            case .halfDim7_add11:
+                return [.m3, .d5, .m7, .P11]
+            case .maj13:
+                return [.M3, .P5, .M7, .M9, .P11, .M13]
+            case .dom13:
+                return [.M3, .P5, .m7, .M9, .P11, .M13]
+            case .min13:
+                return [.m3, .P5, .m7, .M9, .P11, .M13]
+            case .halfDim13:
+                return [.m3, .d5, .m7, .M9, .P11, .M13]
+            case .min13_flat5:
+                return [.m3, .d5, .m7, .M9, .P11, .M13]
+            case .maj13_flat9:
+                return [.M3, .P5, .M7, .m9, .P11, .M13]
+            case .dom13_flat9:
+                return [.M3, .P5, .m7, .m9, .P11, .M13]
+            case .min13_flat9:
+                return [.m3, .P5, .m7, .m9, .P11, .M13]
+            case .min13_flat5_flat9:
+                return [.m3, .d5, .m7, .m9, .P11, .M13]
+            case .maj13_sharp9:
+                return [.M3, .P5, .M7, .A9, .P11, .M13]
+            case .dom13_sharp9:
+                return [.M3, .P5, .m7, .A9, .P11, .M13]
+            case .min13_sharp9:
+                return [.m3, .P5, .m7, .A9, .P11, .M13]
+            case .min13_flat5_sharp9:
+                return [.m3, .d5, .m7, .A9, .P11, .M13]
+            case .maj13_sharp11:
+                return [.M3, .P5, .M7, .M9, .A11, .M13]
+            case .dom13_sharp11:
+                return [.M3, .P5, .m7, .M9, .A11, .M13]
+            case .min13_sharp11:
+                return [.m3, .P5, .m7, .M9, .A11, .M13]
+            case .maj7_flat13:
+                return [.M3, .P5, .M7, .M9, .P11, .m13]
+            case .dom7_flat13:
+                return [.M3, .P5, .m7, .M9, .P11, .m13]
+            case .min7_flat13:
+                return [.m3, .P5, .m7, .M9, .P11, .m13]
+            case .halfDim7_flat13:
+                return [.m3, .d5, .m7, .M9, .P11, .m13]
+            case .maj7_flat9_flat13:
+                return [.M3, .P5, .M7, .m9, .P11, .m13]
+            case .dom7_flat9_flat13:
+                return [.M3, .P5, .m7, .m9, .P11, .m13]
+            case .min7_flat9_flat13:
+                return [.m3, .P5, .m7, .m9, .P11, .m13]
+            case .min7_flat5_flat9_flat13:
+                return [.m3, .d5, .m7, .m9, .P11, .m13]
+            case .maj7_sharp9_flat13:
+                return [.M3, .P5, .M7, .A9, .P11, .m13]
+            case .dom7_sharp9_flat13:
+                return [.M3, .P5, .m7, .A9, .P11, .m13]
+            case .min7_sharp9_flat13:
+                return [.m3, .P5, .m7, .A9, .P11, .m13]
+            case .min7_flat5_sharp9_flat13:
+                return [.m3, .d5, .m7, .A9, .P11, .m13]
+            case .maj7_flat9_sharp11_flat13:
+                return [.M3, .P5, .M7, .m9, .A11, .m13]
+            case .dom7_flat9_sharp11_flat13:
+                return [.M3, .P5, .m7, .m9, .A11, .m13]
+            case .min7_flat9_sharp11_flat13:
+                return [.m3, .P5, .m7, .m9, .A11, .m13]
+            case .min7_flat5_flat9_sharp11_flat13: 
+                return [.m3, .d5, .m7, .m9, .A11, .m13]
+            case .maj7_sharp9_sharp11_flat13:  
+                return [.M3, .P5, .M7, .A9, .A11, .m13]
+            case .dom7_sharp9_sharp11_flat13:
+                return [.M3, .P5, .m7, .A9, .A11, .m13]
+            case .min7_sharp9_sharp11_flat13:
+                return [.m3, .P5, .m7, .A9, .A11, .m13]
+            case .min7_flat5_sharp9_sharp11_flat13: 
+                return [.m3, .d5, .m7, .A9, .A11, .m13]
+            case .maj7_add13:                  
+                return [.M3, .P5, .M7, .M13]
+            case .dom7_add13:
+                return [.M3, .P5, .m7, .M13]
+            case .min7_add13:
+                return [.m3, .P5, .m7, .M13]
+            case .halfDim7_add13:
+                return [.m3, .d5, .m7, .M13]
+            case .maj7_addFlat13:
+                return [.M3, .P5, .M7, .m13]
+            case .dom7_addFlat13:
+                return [.M3, .P5, .m7, .m13]
+            case .min7_addFlat13:
+                return [.m3, .P5, .m7, .m13]
+            case .halfDim7_addFlat13:
+                return [.m3, .d5, .m7, .m13]
+            case .maj7_add9_add13:
+                return [.M3, .P5, .M7, .M9, .M13]
+            case .maj7_addFlat9_add13:
+                return [.M3, .P5, .M7, .m9, .M13]
+            case .maj7_addFlat9_addFlat13:
+                return [.M3, .P5, .M7, .m9, .m13]
+            case .min_flat13_flat9:
+                return [.m3, .P5, .m7, .m9, .P11, .m13]
+            case .min11_flat13:
+                return [.m3, .P5, .m7, .M9, .P11, .m13]
+            case .halfDim_flat13:
+                return [.m3, .d5, .m7, .M9, .P11, .m13]
+            case .dom13_flat5:
+                return [.M3, .d5, .m7, .M9, .P11, .M13]
+            case .dom13_sharp5:
+                return [.M3, .A5, .m7, .M9, .P11, .M13]
+            case .maj13_flat5:
+                return [.M3, .d5, .M7, .M9, .P11, .M13]
+            case .maj13_sharp5:
+                return [.M3, .A5, .M7, .M9, .P11, .M13]
+            case .dom13_flat9_sharp11:
+                return [.M3, .P5, .m7, .m9, .A11, .M13]
+            case .dom13_sharp9_sharp11:
+                return [.M3, .P5, .m7, .A9, .A11, .M13]
+            case .maj13_add11:
+                return [.M3, .P5, .M7, .P11, .M13]
+            case .dom13_add11:
+                return [.M3, .P5, .m7, .P11, .M13]
+            case .min13_add11:
+                return [.m3, .P5, .m7, .P11, .M13]
+            case .sus4_add9:                    
+                return [.P4, .P5, .M9]
+            case .sus2_add11:
+                return [.M2, .P5, .P11]
+            case .sus4_addFlat9:
+                return [.P4, .P5, .m9]
+            case .sus4_addSharp9:
+                return [.P4, .P5, .A9]
+            case .sus2_addSharp11:
+                return [.M2, .P5, .A11]
+            case .sus2_addSharp13:
+                return [.M2, .P5, .A13]
+            case .sus4_addSharp13:
+                return [.P4, .P5, .A13]
+            case .maj7_sus2:
+                return [.M2, .P5, .M7]
+            case .maj7_sus4:
+                return [.P4, .P5, .M7]
+            case .maj9_sus4:
+                return [.P4, .P5, .M7, .M9]
+            case .dom11_sus2:
+                return [.M2, .P5, .m7, .P11]
+            case .maj13_sus2:
+                return [.M2, .P5, .M7, .P11, .M13]
+            case .maj13_sus4:
+                return [.P4, .P5, .M7, .M9, .M13]
+            case .dom13_sus2:
+                return [.M2, .P5, .m7, .P11, .M13]
+            case .dom13_sus4:
+                return [.P4, .P5, .m7, .M9, .M13]
+            case .dom7_sus4_flat9:
+                return [.P4, .P5, .m7, .m9]
+            case .dom7_sus4_sharp9:
+                return [.P4, .P5, .m7, .A9]
+            case .dom7_sus2_sharp11:
+                return [.M2, .P5, .m7, .A11]
+            case .dom7_sus4_flat13:
+                return [.P4, .P5, .m7, .m13]
+            case .dom7_sus4_sharp13:
+                return [.P4, .P5, .m7, .A13]
+            case .dom9_sus4_flat13:
+                return [.P4, .P5, .m7, .M9, .m13]
+            case .dom9_sus4_sharp13:
+                return [.P4, .P5, .m7, .M9, .A13]
+            case .dom11_sus2_flat9:
+                return [.M2, .P5, .m7, .m9, .P11]
+            case .dom11_sus2_flat13:
+                return [.M2, .P5, .m7, .M9, .P11, .m13]
+            case .dom11_sus2_sharp13:
+                return [.M2, .P5, .m7, .M9, .P11, .A13]
+            case .dom13_sus4_flat9:
+                return [.P4, .P5, .m7, .m9, .P11, .M13]
+            case .dom13_sus4_sharp9:
+                return [.P4, .P5, .m7, .A9, .P11, .M13]
+            case .dom13_sus2_sharp11:
+                return [.M2, .P5, .m7, .M9, .A11, .M13]
+            case .maj7_sus4_flat9:
+                return [.P4, .P5, .M7, .m9]
+            case .maj7_sus4_sharp9:
+                return [.P4, .P5, .M7, .A9]
+            case .maj7_sus2_sharp11:
+                return [.M2, .P5, .M7, .A11]
+            case .maj9_sus4_flat13:
+                return [.P4, .P5, .M7, .M9, .m13]
+            case .maj9_sus4_sharp11:
+                return [.P4, .P5, .M7, .M9, .A11]
+            case .maj11_sus2_flat9:
+                return [.M2, .P5, .M7, .m9, .P11]
+            case .maj11_sus2_sharp9:
+                return [.M2, .P5, .M7, .A9, .P11]
         }
     }
 }
