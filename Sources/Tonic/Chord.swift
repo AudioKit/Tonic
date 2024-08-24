@@ -30,7 +30,7 @@ public struct Chord: Equatable, Codable {
 
     /// Try to initialize a chord from an array of notes.
     ///
-    /// If the array does not fit into a known chord type, this initialier will fail.
+    /// If the array does not fit into a known chord type, this initializer will fail.
     /// - Parameter notes: Note array
     public init?(notes: [Note]) {
         var set = NoteSet()
@@ -155,7 +155,7 @@ extension Chord: CustomStringConvertible {
     /// Useful for custom rendering of slash notation
     public var bassNote: NoteClass {
         switch inversion {
-            case 1...4:
+            case 1...type.intervals.count:
                 if let bass = root.canonicalNote.shiftUp(type.intervals[inversion - 1]) {
                     return bass.noteClass
                 }
