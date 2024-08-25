@@ -233,11 +233,8 @@ class ChordTests: XCTestCase {
         let Cadd9 = Chord(notes: [.C, .E, .G, .D])
         XCTAssertEqual(Cadd9?.description, "C(add9)")
 
-        //TODO: - need to figure how to get .maj_6_9 working in this test
         let C69 = Chord(notes: [.C, .E, .G, .A, .D])
-        XCTAssertEqual(C69?.description, "D11sus2")
-        
-        // should be: XCTAssertEqual(C69?.description, "C6/9")
+        XCTAssertEqual(C69?.description, "C6/9")
     }
 
     func testEleventhNaming() {
