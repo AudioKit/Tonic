@@ -211,7 +211,9 @@ class ChordTests: XCTestCase {
     }
 
     func testSeventhNaming() {
-        let Am7 = Chord(notes: [.C, .E, .G, .A])
+//        let Am7 = Chord(notes: [.C, .E, .G, .A])
+        let Am7 = Chord(notes: [.A, .C, .E, .G])
+
         XCTAssertEqual(Am7?.description, "Am7")
 
         let C7 = Chord(notes: [.C, .E, .G, .Bb])
