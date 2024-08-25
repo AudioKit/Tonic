@@ -22,96 +22,37 @@ public enum ChordType: String, CaseIterable, Codable {
 
     /// Augmented Triad: Major Third, Augmented Fifth, e.g. `C⁺`
     case aug
-
-    /// Suspended 2 Triad: Major Second, Perfect Fifth, e.g. `Csus2`
-    case sus2
-
-    /// Suspended 4 Triad: Perfect Fourth, Perfect Fifth, e.g. `Csus4`
-    case sus4
     
-    /// Suspended Fourth Add Nine: Perfect Fourth, Perfect Fifth, Major Ninth, e.g. `Csus4(add9)`
-    case sus4_add9
-
-    /// Suspended Second Add Eleven: Major Second, Perfect Fifth, Perfect Eleventh, e.g. `Csus2(add11)`
-    case sus2_add11
-
-    /// Suspended Fourth Add Flat Nine: Perfect Fourth, Perfect Fifth, Minor Ninth, e.g. `Csus4(addb9)`
-    case sus4_addFlat9
-
-    /// Suspended Fourth Add Sharp Nine: Perfect Fourth, Perfect Fifth, Augmented Ninth, e.g. `Csus4(add#9)`
-    case sus4_addSharp9
-
-    /// Suspended Second Add Sharp Eleven: Major Second, Perfect Fifth, Augmented Eleventh, e.g. `Csus2(add#11)`
-    case sus2_addSharp11
-
-	//MARK: - Sixths
-    /// Major Sixth: Major Third, Perfect Fifth, Major Sixth, e.g. `C6`
-    case maj6
-
-    /// Minor Sixth: Minor Third, Perfect Fifth, Major Sixth, e.g. `Cm6`
-    case min6
-
-    /// Suspended 2nd Add Thirteen: Major Second, Perfect Fifth, Major Thirteenth, e.g. `Csus2(add13)`
-    case sus2_add13
-
-    /// Suspended 4th Add Thirteen: Major Fourth, Perfect Fifth, Major Sixth, e.g. `Csus4(add13)`
-    case sus4_add13
+    //MARK: - Sevenths
+    /// Major Seventh: Major Third, Perfect Fifth, Major Seventh, e.g. `Cmaj7`
+    case maj7
     
-    /// Suspended 2nd Add Flat Thirteen: Major Second, Perfect Fifth, Minor Thirteenth, e.g. `Csus2(add♭13)`
-    case sus2_addFlat13
+    /// Dominant Seventh: Major Third, Perfect Fifth, Minor Seventh, e.g. `C7`
+    case dom7
 
-    /// Suspended 4th Add Flat Thirteen: Major Second, Perfect Fifth, Minor Thirteenth, e.g. `Csus4(add♭13)`
-    case sus4_addFlat13
-    
-    /// Suspended Second Add Sharp Thirteen: Major Second, Perfect Fifth, Augmented Thirteenth, e.g. `Csus2(add#13)`
-    case sus2_addSharp13
-
-    /// Suspended Fourth Add Sharp Thirteen: Perfect Fourth, Perfect Fifth, Augmented Thirteenth, e.g. `Csus4(add#13)`
-    case sus4_addSharp13
-	
-	//MARK: - Sevenths
-	/// Major Seventh: Major Third, Perfect Fifth, Major Seventh, e.g. `Cmaj7`
-	case maj7
-	
-	/// Dominant Seventh: Major Third, Perfect Fifth, Minor Seventh, e.g. `C7`
-	case dom7
-
-	/// Minor Seventh: Minor Third, Perfect Fifth, Minor Seventh, e.g. `Cmin7`
-	case min7
+    /// Minor Seventh: Minor Third, Perfect Fifth, Minor Seventh, e.g. `Cmin7`
+    case min7
 
     /// Half Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh, e.g. `Cø7`
     case halfDim7
 
     /// Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh, e.g. `C°7`
     case dim7
-
-    #warning("This might be better described as a Minor Triad Add 11")
-    /// Dominant Seventh Suspendend Second: Major Second, Perfect Fifth, Minor Seventh, e.g. `C7sus2`
-    case dom7_sus2
-
-    /// Dominant Seventh Suspendend Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh, e.g. `C7sus4`
-    case dom7_sus4
-	
-	/// Major Seventh Sharp Five: Major Third, Augmented Fifth, Major Seventh, e.g. `CMaj7(#5)`
-	case maj7_sharp5
+    
+    /// Major Seventh Sharp Five: Major Third, Augmented Fifth, Major Seventh, e.g. `CMaj7(#5)`
+    case maj7_sharp5
 
     /// Minor Major Seventh: Minor Third, Perfect Fifth, Major Seventh, e.g. `CmMaj7`
     case min_maj7
-	
-	/// Major Seventh Flat Five: Major Third, Diminished Fifth, Major Seventh, e.g. `Cmaj7(♭5)`
-	case maj7_flat5
-	
-	/// Dominant Seventh Flat Five: Major Third, Diminished Fifth, Minor Seventh, e.g. `C7(♭5)`
-	case dom7_flat5
-
-	/// Dominant Sharp Five: Major Third, Augmented Fifth, Minor Seventh, e.g. `C7(♯5)`
-	case dom7_sharp5
     
-    /// Major Seventh Suspended Second: Major Second, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus2`
-    case maj7_sus2
+    /// Major Seventh Flat Five: Major Third, Diminished Fifth, Major Seventh, e.g. `Cmaj7(♭5)`
+    case maj7_flat5
+    
+    /// Dominant Seventh Flat Five: Major Third, Diminished Fifth, Minor Seventh, e.g. `C7(♭5)`
+    case dom7_flat5
 
-    /// Major Seventh Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus4`
-    case maj7_sus4
+    /// Dominant Sharp Five: Major Third, Augmented Fifth, Minor Seventh, e.g. `C7(♯5)`
+    case dom7_sharp5
 
 	//MARK: - Ninths
 	/// Major Ninth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, e.g. `Cmaj9`
@@ -135,8 +76,7 @@ public enum ChordType: String, CaseIterable, Codable {
 	/// Diminished Flat Ninth: Minor Third, Diminished Fifth, Diminshed Seventh, Minor Ninth, e.g. `C°♭9`
 	case dimFlat9
 
-    /// Dominant Ninth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Ninth (Major Second), e.g. `C9sus4`
-    case dom9_sus4
+
 
     /// Flat Ninth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `C7♭9`
     case dom7_flat9
@@ -474,6 +414,51 @@ public enum ChordType: String, CaseIterable, Codable {
     /// Minor Thirteenth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13(add11)`
     case min13_add11
     
+    //MARK: - Sixths
+    /// Major Sixth: Major Third, Perfect Fifth, Major Sixth, e.g. `C6`
+    case maj6
+
+    /// Minor Sixth: Minor Third, Perfect Fifth, Major Sixth, e.g. `Cm6`
+    case min6
+    
+    //MARK: - Sus
+    /// Suspended 2 Triad: Major Second, Perfect Fifth, e.g. `Csus2`
+    case sus2
+
+    /// Suspended 4 Triad: Perfect Fourth, Perfect Fifth, e.g. `Csus4`
+    case sus4
+    
+    //MARK: - Seventh Sus
+    /// Dominant Seventh Suspendend Second: Major Second, Perfect Fifth, Minor Seventh, e.g. `C7sus2`
+    case dom7_sus2
+
+    /// Dominant Seventh Suspendend Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh, e.g. `C7sus4`
+    case dom7_sus4
+    
+    /// Major Seventh Suspended Second: Major Second, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus2`
+    case maj7_sus2
+
+    /// Major Seventh Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus4`
+    case maj7_sus4
+    
+    /// Dominant Ninth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Ninth (Major Second), e.g. `C9sus4`
+    case dom9_sus4
+    
+    /// Suspended Fourth Add Nine: Perfect Fourth, Perfect Fifth, Major Ninth, e.g. `Csus4(add9)`
+    case sus4_add9
+
+    /// Suspended Second Add Eleven: Major Second, Perfect Fifth, Perfect Eleventh, e.g. `Csus2(add11)`
+    case sus2_add11
+
+    /// Suspended Fourth Add Flat Nine: Perfect Fourth, Perfect Fifth, Minor Ninth, e.g. `Csus4(addb9)`
+    case sus4_addFlat9
+
+    /// Suspended Fourth Add Sharp Nine: Perfect Fourth, Perfect Fifth, Augmented Ninth, e.g. `Csus4(add#9)`
+    case sus4_addSharp9
+
+    /// Suspended Second Add Sharp Eleven: Major Second, Perfect Fifth, Augmented Eleventh, e.g. `Csus2(add#11)`
+    case sus2_addSharp11
+    
     /// Major Thirteenth Suspended Second: Major Second, Perfect Fifth, Major Seventh, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13sus2`
     case maj13_sus2
 
@@ -545,6 +530,24 @@ public enum ChordType: String, CaseIterable, Codable {
 
     /// Major Eleventh Suspended Second Sharp Ninth: Major Second, Perfect Fifth, Major Seventh, Augmented Ninth, Perfect Eleventh, e.g. `Cmaj11sus2(♯9)`
     case maj11_sus2_sharp9
+    
+    /// Suspended 2nd Add Thirteen: Major Second, Perfect Fifth, Major Thirteenth, e.g. `Csus2(add13)`
+    case sus2_add13
+
+    /// Suspended 4th Add Thirteen: Major Fourth, Perfect Fifth, Major Sixth, e.g. `Csus4(add13)`
+    case sus4_add13
+    
+    /// Suspended 2nd Add Flat Thirteen: Major Second, Perfect Fifth, Minor Thirteenth, e.g. `Csus2(add♭13)`
+    case sus2_addFlat13
+
+    /// Suspended 4th Add Flat Thirteen: Major Second, Perfect Fifth, Minor Thirteenth, e.g. `Csus4(add♭13)`
+    case sus4_addFlat13
+    
+    /// Suspended Second Add Sharp Thirteen: Major Second, Perfect Fifth, Augmented Thirteenth, e.g. `Csus2(add#13)`
+    case sus2_addSharp13
+
+    /// Suspended Fourth Add Sharp Thirteen: Perfect Fourth, Perfect Fifth, Augmented Thirteenth, e.g. `Csus4(add#13)`
+    case sus4_addSharp13
 
     public var intervals: [Interval] {
         switch self {
