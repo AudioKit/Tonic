@@ -43,6 +43,7 @@ public class ChordTable {
 
     lazy var chords: [Int: Chord] = ChordTable.generateAllChords()
 
+    @available(*, deprecated, renamed: "getRankedChords()", message: "Please use getRankedChords() for higher quality chord detection")
     static func generateAllChordsIncludingEnharmonic() -> [Chord] {
         var returnChords: [Chord] = []
 
@@ -73,6 +74,7 @@ public class ChordTable {
     ///
     /// - Parameter noteSet: Array of chord notes in a chosen order
     /// - Returns: array of enharmonic chords that could describe the NoteSet
+    @available(*, deprecated, renamed: "getRankedChords", message: "Please use getRankedChords() for higher quality chord detection")
     public func getAllChordsForNoteSet(_ noteSet: NoteSet) -> [Chord] {
         var returnedChords = [Chord]()
         for chord in chordsIncludingEnharmonic {
