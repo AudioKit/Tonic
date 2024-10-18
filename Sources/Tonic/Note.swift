@@ -36,8 +36,9 @@ public struct Note: Equatable, Hashable, Codable {
     ///   - pitch: Pitch, or essentially the midi note number of a note
     ///   - key: Key in which to search for the appropriate note
     public init(pitch: Pitch, key: Key = .C) {
-        octave = Int(Double(pitch.midiNoteNumber) / 12) - 1
-
+//        octave = Int(Double(pitch.midiNoteNumber) / 12) - 1
+        self = .C
+        return
         let pitchClass = pitch.pitchClass
         var noteInKey: Note?
 
