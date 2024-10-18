@@ -532,8 +532,8 @@
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/audiokit/Keyboard";
 			requirement = {
-				branch = main;
-				kind = branch;
+				kind = exactVersion;
+				version = 1.3.6;
 			};
 		};
 		F1201BEE2849F4DC0050DD22 /* XCRemoteSwiftPackageReference "MIDIKit" */ = {

@@ -12,9 +12,9 @@ final class TonicTests: XCTestCase {
     }
 
     func testNoteIndex() {
-        let c4 = Note.C
-        let index = c4.intValue
-        XCTAssertEqual(c4, Note(index: index))
+        let c3 = Note.C
+        let index = c3.intValue
+        XCTAssertEqual(c3, Note(index: index))
     }
 
     func testPitch() {

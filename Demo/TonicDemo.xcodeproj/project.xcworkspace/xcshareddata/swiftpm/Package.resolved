@@ -1,34 +1,32 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "Keyboard",
-        "repositoryURL": "https://github.com/audiokit/Keyboard",
-        "state": {
-          "branch": "main",
-          "revision": "a19fd275871cbaa4f80b87e5566c1c1fc0560d7b",
-          "version": null
-        }
-      },
-      {
-        "package": "MIDIKit",
-        "repositoryURL": "https://github.com/orchetect/MIDIKit",
-        "state": {
-          "branch": null,
-          "revision": "80baa7a57debd6982389f03bb7c8634c291df7ef",
-          "version": "0.6.1"
-        }
-      },
-      {
-        "package": "TimecodeKit",
-        "repositoryURL": "https://github.com/orchetect/TimecodeKit",
-        "state": {
-          "branch": null,
-          "revision": "4159255c40aca9b99b327a1cf6a0ae75d4487e3c",
-          "version": "1.3.1"
-        }
+  "pins" : [
+    {
+      "identity" : "keyboard",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/audiokit/Keyboard",
+      "state" : {
+        "revision" : "fb589acbbb0854da0fa571ad83c4f1230c2cd280",
+        "version" : "1.3.6"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "midikit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/MIDIKit",
+      "state" : {
+        "revision" : "b4947edd4c96760dbf1e9c7a686a69b5a30d44bf",
+        "version" : "0.9.5"
+      }
+    },
+    {
+      "identity" : "timecodekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/orchetect/TimecodeKit",
+      "state" : {
+        "revision" : "63ba241b35675a23802f0937c5b938e74e4f9aea",
+        "version" : "2.0.10"
+      }
+    }
+  ],
+  "version" : 2
 }

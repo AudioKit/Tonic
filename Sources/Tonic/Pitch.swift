@@ -99,7 +99,13 @@ extension Pitch: IntRepresentable {
     }
 
     public init(intValue: Int) {
-        midiNoteNumber = Int8(intValue)
+        if intValue < 0 {
+            midiNoteNumber = 0
+        } else if intValue > 127 {
+            midiNoteNumber =  127
+        } else {
+            midiNoteNumber = Int8(intValue)
+        }
     }
 }
 

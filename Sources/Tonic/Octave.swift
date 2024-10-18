@@ -3,6 +3,7 @@ import Foundation
 /// Private Octave enumeration for octave related functions
 /// Will make it public once the entirety of Tonic uses it well
 enum Octave: Int {
+    case negative2 = -2
     case negative1 = -1
     case zero = 0
     case one = 1
@@ -15,8 +16,8 @@ enum Octave: Int {
     case eight = 8
     case nine = 9
 
-    init?(of pitch:Pitch) {
-        let octaveInt = Int(pitch.midiNoteNumber) / 12 - 1
+    init?(of pitch:Pitch, style: Note.MiddleCStandard = .roland ) {
+        let octaveInt = Int(pitch.midiNoteNumber) / 12 + style.firstOctaveOffset
         if let octave = Octave(rawValue: octaveInt) {
             self = octave
         } else {

@@ -3,17 +3,17 @@ import XCTest
 
 final class NoteTests: XCTestCase {
     func testNoteOctave() {
-        let c4 = Note.C
-        XCTAssertEqual(c4.noteNumber, 60)
+        let middleC = Note.C
+        XCTAssertEqual(middleC.noteNumber, 60)
+        XCTAssertEqual(middleC.description, "C3")
+
+        let cb3 = Note(.C, accidental: .flat, octave: 3)
+        XCTAssertEqual(cb3.noteNumber, 71)
+        XCTAssertEqual(cb3.description, "C♭3")
+
+        let c4 = Note(.C, octave: 4)
+        XCTAssertEqual(c4.noteNumber, 72)
         XCTAssertEqual(c4.description, "C4")
-
-        let cb4 = Note(.C, accidental: .flat, octave: 4)
-        XCTAssertEqual(cb4.noteNumber, 71)
-        XCTAssertEqual(cb4.description, "C♭4")
-
-        let c5 = Note(.C, octave: 5)
-        XCTAssertEqual(c5.noteNumber, 72)
-        XCTAssertEqual(c5.description, "C5")
     }
 
     // From: https://github.com/AudioKit/Tonic/issues/16
@@ -23,33 +23,33 @@ final class NoteTests: XCTestCase {
     // "Accidentals applied to a note do not have an effect on its ASPN number. For example, B♯3 and C4 have different octave numbers despite being enharmonically equivalent, because the B♯ is still considered part of the lower octave."
     func testThatOctaveRefersToAccidentalLessBaseNote() {
         let bs3 = Note(.B, accidental: .sharp, octave: 3)
-        XCTAssertEqual(bs3.noteNumber, 48)
+        XCTAssertEqual(bs3.noteNumber, 60)
         XCTAssertEqual(bs3.description, "B♯3")
 
         let cb4 = Note(.C, accidental: .flat, octave: 4)
-        XCTAssertEqual(cb4.noteNumber, 71)
+        XCTAssertEqual(cb4.noteNumber, 83)
         XCTAssertEqual(cb4.description, "C♭4")
     }
 
     func testNoteSpelling() {
         let dFlat = Note.Db
         XCTAssertEqual(dFlat.noteNumber, 61)
-        XCTAssertEqual(dFlat.description, "D♭4")
+        XCTAssertEqual(dFlat.description, "D♭3")
         XCTAssertEqual(dFlat.spelling(in: Key.C).description, "C♯")
         XCTAssertEqual(dFlat.spelling(in: Key.F).description, "D♭")
 
         let cSharp = Note.Cs
         XCTAssertEqual(cSharp.noteNumber, 61)
-        XCTAssertEqual(cSharp.description, "C♯4")
+        XCTAssertEqual(cSharp.description, "C♯3")
         XCTAssertEqual(cSharp.spelling(in: Key.Ab).description, "D♭")
 
         let dDoubleFlat = Note(.D, accidental: .doubleFlat)
         XCTAssertEqual(dDoubleFlat.noteNumber, 60)
-        XCTAssertEqual(dDoubleFlat.description, "D𝄫4")
+        XCTAssertEqual(dDoubleFlat.description, "D𝄫3")
 
         let cDoubleSharp = Note(accidental: .doubleSharp)
         XCTAssertEqual(cDoubleSharp.noteNumber, 62)
-        XCTAssertEqual(cDoubleSharp.description, "C𝄪4")
+        XCTAssertEqual(cDoubleSharp.description, "C𝄪3")
     }
 
     func testComparison() {
@@ -58,34 +58,34 @@ final class NoteTests: XCTestCase {
 
     func testNoteShift() {
         let d = Note(.C).shiftUp(.M2)
-        XCTAssertEqual(d!.description, "D4")
+        XCTAssertEqual(d!.description, "D3")
 
         let eFlat = Note(.C).shiftUp(.m3)
-        XCTAssertEqual(eFlat!.description, "E♭4")
+        XCTAssertEqual(eFlat!.description, "E♭3")
 
         let db = Note(.C).shiftDown(.M7)
-        XCTAssertEqual(db!.description, "D♭3")
+        XCTAssertEqual(db!.description, "D♭2")
 
         let ebbb = Note(.F, accidental: .doubleFlat).shiftDown(.M2)
         XCTAssertNil(ebbb)
 
         let c = Note(.D).shiftDown(.M2)
-        XCTAssertEqual(c!.description, "C4")
+        XCTAssertEqual(c!.description, "C3")
 
         let cs = Note(.D).shiftDown(.m2)
-        XCTAssertEqual(cs!.description, "C♯4")
+        XCTAssertEqual(cs!.description, "C♯3")
 
         let eb = Note(.B).shiftUp(.d4)
-        XCTAssertEqual(eb!.description, "E♭5")
+        XCTAssertEqual(eb!.description, "E♭4")
 
         let fs = Note(.C).shiftUp(.A4)
-        XCTAssertEqual(fs!.description, "F♯4")
+        XCTAssertEqual(fs!.description, "F♯3")
 
         let asharp = Note(.C).shiftUp(.A6)
-        XCTAssertEqual(asharp!.description, "A♯4")
+        XCTAssertEqual(asharp!.description, "A♯3")
 
         let c6 = Note(.G).shiftUp(.P11)
-        XCTAssertEqual(c6!.description, "C6")
+        XCTAssertEqual(c6!.description, "C5")
 
         let g = Note(.C, octave: 6).shiftDown(.P11)
         XCTAssertEqual(g!.description, "G4")
@@ -131,11 +131,11 @@ final class NoteTests: XCTestCase {
     func testNoteDistance() {
         XCTAssertEqual(Note.C.semitones(to: Note.D), 2)
         XCTAssertEqual(Note.C.semitones(to: Note.G), 7)
-        XCTAssertEqual(Note.C.semitones(to: Note(.G, octave: 3)), 5)
+        XCTAssertEqual(Note.C.semitones(to: Note(.G, octave: 2)), 5)
     }
 
     func testNoteIntValue() {
-        let lowest = Note(.C, octave: -1).intValue
+        let lowest = Note(.C, octave: -2).intValue
         let highest = Note(pitch: Pitch(127), key: .C).intValue
 
         for i in lowest ..< highest {
