@@ -257,9 +257,6 @@ extension Chord {
         // order the array by least number of accidentals
         returnArray.sort { $0.accidentalCount < $1.accidentalCount }
 
-        // order the array preferring root position
-        returnArray.sort { $0.inversion < ($1.inversion > 0 ? 1 : 0) }
-
         // prefer root notes not being uncommon enharmonics
         returnArray.sort { ($0.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) < ($1.root.canonicalNote.isUncommonEnharmonic ? 1 : 0) }
         
@@ -281,8 +278,12 @@ extension Chord {
         // prefer fewer number of characters (favor less complex chords in ranking)
         returnArray.sort { $0.slashDescription.count < $1.slashDescription.count }
         
+        // order the array preferring root position
+        returnArray.sort { $0.inversion < ($1.inversion > 0 ? 1 : 0) }
+        
         return returnArray
     }
+
 
     /// Get chords from actual notes (spelling matters, C# F G# will not return a C# major)
     /// Use pitch set version of this function for all enharmonic chords
