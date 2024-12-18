@@ -13,8 +13,8 @@ public struct Note: Equatable, Hashable, Codable {
     /// Convenience accessor for the accidental of the note
     public var accidental: Accidental { noteClass.accidental }
 
-    /// Range from -1 to 7
-    public var octave: Int = 4
+    /// Range from -2 to 8
+    public var octave: Int = 3
 
     /// Initialize the note
     ///
@@ -24,7 +24,7 @@ public struct Note: Equatable, Hashable, Codable {
     ///   - letter: Letter of the note
     ///   - accidental: Accidental shift
     ///   - octave: Which octave the note appears in
-    public init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 4) {
+    public init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 3) {
         noteClass = NoteClass(letter, accidental: accidental)
         self.octave = octave
     }
@@ -36,9 +36,7 @@ public struct Note: Equatable, Hashable, Codable {
     ///   - pitch: Pitch, or essentially the midi note number of a note
     ///   - key: Key in which to search for the appropriate note
     public init(pitch: Pitch, key: Key = .C) {
-//        octave = Int(Double(pitch.midiNoteNumber) / 12) - 1
-        self = .C
-        return
+        octave = Int(Double(pitch.midiNoteNumber) / 12) - 2
         let pitchClass = pitch.pitchClass
         var noteInKey: Note?
 
@@ -76,7 +74,7 @@ public struct Note: Equatable, Hashable, Codable {
     /// Initialize from raw value
     /// - Parameter index: integer represetnation
     public init(index: Int) {
-        octave = (index / 35) - 1
+        octave = (index / 35) - 2
         let letter = Letter(rawValue: (index % 35) / 5)!
         let accidental = Accidental(rawValue: Int8(index % 5) - 2)!
         noteClass = NoteClass(letter, accidental: accidental)
@@ -84,7 +82,7 @@ public struct Note: Equatable, Hashable, Codable {
 
     /// MIDI Note 0-127 starting at C
     public var noteNumber: Int8 {
-        let octaveBounds = ((octave + 1) * 12) ... ((octave + 2) * 12)
+        let octaveBounds = ((octave + 2) * 12) ... ((octave + 3) * 12)
         var note = Int(noteClass.letter.baseNote) + Int(noteClass.accidental.rawValue)
         if noteClass.letter == .B && noteClass.accidental.rawValue > 0 {
             note -= 12
@@ -120,7 +118,7 @@ public struct Note: Equatable, Hashable, Codable {
     /// - Returns: New note the correct distance away
     public func shiftDown(_ shift: Interval) -> Note? {
         var newLetterIndex = (noteClass.letter.rawValue - (shift.degree - 1))
-        let newOctave = (Int(pitch.midiNoteNumber) - shift.semitones) / 12 - 1
+        let newOctave = (Int(pitch.midiNoteNumber) - shift.semitones) / 12 - 2
 
         while newLetterIndex < 0 {
             newLetterIndex += 7
@@ -144,7 +142,7 @@ public struct Note: Equatable, Hashable, Codable {
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newMidiNoteNumber = Int(pitch.midiNoteNumber) + shift.semitones
         
-        let newOctave = newMidiNoteNumber / 12 - 1
+        let newOctave = newMidiNoteNumber / 12 - 2
 
         for accidental in Accidental.allCases {
             let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
@@ -167,7 +165,7 @@ extension Note: IntRepresentable {
         let accidentalCount = Accidental.allCases.count
         let letterCount = Letter.allCases.count
         let octaveCount = letterCount * accidentalCount
-        octave = (intValue / octaveCount) - 1
+        octave = (intValue / octaveCount) - 2
         var letter = Letter(rawValue: (intValue % octaveCount) / accidentalCount)!
         var accidental = Accidental(rawValue: Int8(intValue % accidentalCount) - 2)!
 
@@ -196,7 +194,7 @@ extension Note: IntRepresentable {
             if accidental == .flat { index = octaveCount - 1}
         }
 
-        return (octave + 1) * octaveCount + index
+        return (octave + 2) * octaveCount + index
     }
 }
 

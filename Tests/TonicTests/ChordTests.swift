@@ -486,7 +486,7 @@ class ChordTests: XCTestCase {
         let results: [Int8] = [0, 4, 7] // another idea
         let pitchSet = PitchSet(pitches: openNotes.map { Pitch($0) })
         let resultSet = PitchSet(pitches: results.map { Pitch($0) })
-        XCTAssertEqual(pitchSet.closedVoicing.transposedBassNoteTo(octave: -1), resultSet)
+        XCTAssertEqual(pitchSet.closedVoicing.transposedBassNoteTo(octave: Note.MiddleCStandard.yamaha.firstOctaveOffset), resultSet)
     }
 
     func testLowestOctave2() {
