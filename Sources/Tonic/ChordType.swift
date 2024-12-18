@@ -9,545 +9,545 @@ public enum ChordType: String, CaseIterable, Codable {
 
 	//MARK: - Triads
     /// Major Triad: Major Third, Perfect Fifth, e.g. `C`
-    case major
+    case major = "major"
 
     /// Minor Triad: Minor Third, Perfect Fifth, e.g. `Cm`
-    case minor
+    case minor = "minor"
 
     /// Diminished Triad: Minor Third, Diminished Fifth, e.g. `C°`
-    case dim
+    case dim = "dim"
 
     /// Major Flat Five Triad: Major Third, Diminished Fifth, e.g. `C♭5`
-    case flat5
+    case flat5 = "flat5"
 
     /// Augmented Triad: Major Third, Augmented Fifth, e.g. `C⁺`
-    case aug
+    case aug = "aug"
     
     //MARK: - Sevenths
     /// Major Seventh: Major Third, Perfect Fifth, Major Seventh, e.g. `Cmaj7`
-    case maj7
+    case maj7 = "maj7"
     
     /// Dominant Seventh: Major Third, Perfect Fifth, Minor Seventh, e.g. `C7`
-    case dom7
+    case dom7 = "dom7"
 
     /// Minor Seventh: Minor Third, Perfect Fifth, Minor Seventh, e.g. `Cmin7`
-    case min7
+    case min7 = "min7"
 
     /// Half Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh, e.g. `Cø7`
-    case halfDim7
+    case halfDim7 = "halfDim7"
 
     /// Diminished Seventh: Minor Third, Diminished Fifth, Minor Seventh, e.g. `C°7`
-    case dim7
+    case dim7 = "dim7"
     
     /// Major Seventh Sharp Five: Major Third, Augmented Fifth, Major Seventh, e.g. `CMaj7(#5)`
-    case maj7_sharp5
+    case maj7_sharp5 = "maj7_sharp5"
 
     /// Minor Major Seventh: Minor Third, Perfect Fifth, Major Seventh, e.g. `CmMaj7`
-    case min_maj7
+    case min_maj7 = "min_maj7"
     
     /// Major Seventh Flat Five: Major Third, Diminished Fifth, Major Seventh, e.g. `Cmaj7(♭5)`
-    case maj7_flat5
+    case maj7_flat5 = "maj7_flat5"
     
     /// Dominant Seventh Flat Five: Major Third, Diminished Fifth, Minor Seventh, e.g. `C7(♭5)`
-    case dom7_flat5
+    case dom7_flat5 = "dom7_flat5"
 
     /// Dominant Sharp Five: Major Third, Augmented Fifth, Minor Seventh, e.g. `C7(♯5)`
-    case dom7_sharp5
+    case dom7_sharp5 = "dom7_sharp5"
 
 	//MARK: - Ninths
 	/// Major Ninth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, e.g. `Cmaj9`
-	case maj9
+	case maj9 = "maj9"
 	
 	/// Dominant Ninth: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, e.g. `C9`
-	case dom9
+	case dom9 = "dom9"
 	
 	/// Minor Ninth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, e.g. `Cmin9`
-	case min9
+	case min9 = "min9"
     
     /// Half Diminished Ninth: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, e.g. `Cø9`
-    case halfDim9
+    case halfDim9 = "halfDim9"
 	
     /// Half Diminished Flat Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, e.g. `Cø♭9`
-    case halfDimFlat9
+    case halfDimFlat9 = "halfDimFlat9"
     
     /// Diminished Ninth: Minor Third, Diminished Fifth, Diminished Seventh, Major Ninth, e.g. `C°9`
-    case dim9
+    case dim9 = "dim9"
 	
 	/// Diminished Flat Ninth: Minor Third, Diminished Fifth, Diminshed Seventh, Minor Ninth, e.g. `C°♭9`
-	case dimFlat9
+	case dimFlat9 = "dimFlat9"
 
 
 
     /// Flat Ninth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `C7♭9`
-    case dom7_flat9
+    case dom7_flat9 = "dom7_flat9"
 
     /// Sharp Ninth: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, e.g. `C7♯9`
-    case dom7_sharp9
+    case dom7_sharp9 = "dom7_sharp9"
     
     /// Minor Major Ninth: Minor Third, Perfect Fifth, Major Seventh, Major Ninth, e.g. `CmMaj9`
-    case min_maj9
+    case min_maj9 = "min_maj9"
     
     /// Minor Major Flat Ninth: Minor Third, Perfect Fifth, Major Seventh, Minor Ninth, e.g. `CmMaj(♭9)`
-    case min_maj_flat9
+    case min_maj_flat9 = "min_maj_flat9"
 
     /// Minor Seventh Flat Ninth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `Cm7♭9`
-    case min7_flat9
+    case min7_flat9 = "min7_flat9"
 
     /// Major Add Nine: Major Third, Perfect Fifth, Major Ninth, e.g. `C(add9)`
-    case maj_add9
+    case maj_add9 = "maj_add9"
 
     /// Minor Add Nine: Minor Third, Perfect Fifth, Major Ninth, e.g. `Cm(add9)`
-    case min_add9
+    case min_add9 = "min_add9"
     
     /// Diminished Add Nine: Minor Third, Diminished Fifth, Major Ninth, e.g. `C°(add9)`
-    case dim_add9
+    case dim_add9 = "dim_add9"
     
     /// Augmented Add Nine: Major Third, Augmented Fifth, Major Ninth, e.g. `C+(add9)`
-    case aug_add9
+    case aug_add9 = "aug_add9"
     
     /// Major Add Flat Nine: Major Third, Perfect Fifth, Minor Ninth, e.g. `C(add♭9)`
-    case maj_addFlat9
+    case maj_addFlat9 = "maj_addFlat9"
 
     /// Minor Add Flat Nine: Minor Third, Perfect Fifth, Minor Minor, e.g. `Cm(add♭9)`
-    case min_addFlat9
+    case min_addFlat9 = "min_addFlat9"
     
     /// Diminished Add FlatNine: Minor Third, Diminished Fifth, Minor Ninth, e.g. `C°(add♭9)`
-    case dim_addFlat9
+    case dim_addFlat9 = "dim_addFlat9"
     
     /// Augmented Add Nine: Major Third, Augmented Fifth, Minor Ninth, e.g. `C+(add♭9)`
-    case aug_addFlat9
+    case aug_addFlat9 = "aug_addFlat9"
     
     /// Major Add Sharp Nine: Major Third, Perfect Fifth, Augmented Ninth, e.g. `C(add♯9)`
-    case maj_addSharp9
+    case maj_addSharp9 = "maj_addSharp9"
 
     /// Minor Add Sharp Nine: Minor Third, Perfect Fifth, Augmented Minor, e.g. `Cm(add♯9)`
-    case min_addSharp9
+    case min_addSharp9 = "min_addSharp9"
     
     /// Diminished Add Sharp Nine: Minor Third, Diminished Fifth, Augmented Ninth, e.g. `C°(add♯9)`
-    case dim_addSharp9
+    case dim_addSharp9 = "dim_addSharp9"
     
     /// Augmented Add Sharp Nine: Major Third, Augmented Fifth, Augmented Ninth, e.g. `C+(add♯9)`
-    case aug_addSharp9
+    case aug_addSharp9 = "aug_addSharp9"
 
     /// Six Over Nine: Major Third, Perfect Fifth, Major Sixth, Major Ninth, e.g. `C6/9`
-    case maj_6_9
+    case maj_6_9 = "maj_6_9"
     
     /// Augmented Major Ninth: Major Third, Augmented Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(♯5)`
-    case maj9_sharp5
+    case maj9_sharp5 = "maj9_sharp5"
 	
 	/// Major Ninth Flat Five: Major Third, Diminished Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(♭5)`
-	case maj9_flat5
+	case maj9_flat5 = "maj9_flat5"
 	
 	/// Dominant Ninth Flat Five: Major Third, Diminished Fifth, Minor Seventh, Major Nine, e.g. `C9(♭5)`
-	case dom9_flat5
+	case dom9_flat5 = "dom9_flat5"
 
 	/// Dominant Ninth Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Nine, e.g. `C9(♯5)`
-	case dom9_sharp5
+	case dom9_sharp5 = "dom9_sharp5"
     
     /// Major Ninth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, e.g. `Cmaj9sus4`
-    case maj9_sus4
+    case maj9_sus4 = "maj9_sus4"
 
 	//MARK: - Elevenths
     /// Major Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, e.g. `Cmaj11`
-    case maj11
+    case maj11 = "maj11"
 
     /// Dominant Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11`
-    case dom11
+    case dom11 = "dom11"
 
     /// Minor Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `Cm11`
-    case min11
+    case min11 = "min11"
 
     /// Half Diminished Eleventh: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `Cø11`
-    case halfDim11
+    case halfDim11 = "halfDim11"
     
     /// Diminished Ninth: Minor Third, Diminished Fifth, Diminished Seventh, Major Ninth, Perfect Eleventh, e.g. `C°11`
-    case dim11
+    case dim11 = "dim11"
     
     /// Major Eleventh Flat Five: Major Third, Diminished Fifth, Major Seventh, Major Ninth, Perfect Eleventh, e.g. `Cmaj11(♭5)`
-    case maj11_flat5
+    case maj11_flat5 = "maj11_flat5"
     
     /// Major Eleventh Sharp Five: Major Third, Augmented Fifth, Major Seventh, Major Ninth, Perfect Eleventh, e.g. `Cmaj11(♯5)`
-    case maj11_sharp5
+    case maj11_sharp5 = "maj11_sharp5"
     
     /// Dominant Eleventh Flat Five: Major Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11(♭5)`
-    case dom11_flat5
+    case dom11_flat5 = "dom11_flat5"
     
     /// Dominant Eleventh Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11(♯5)`
-    case dom11_sharp5
+    case dom11_sharp5 = "dom11_sharp5"
 
     /// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♯11)`
-    case maj9_sharp11
+    case maj9_sharp11 = "maj9_sharp11"
     
     /// Dominant Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9(♯11)`
-    case dom9_sharp11
+    case dom9_sharp11 = "dom9_sharp11"
     
     /// Minor Ninth Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `Cm9(♯11)`
-    case min9_sharp11
+    case min9_sharp11 = "min9_sharp11"
     
     /// Major Ninth  Flat Five Sharp Eleventh: Major Third, Diminished Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♭5)(♯11)`
-    case maj9_flat5_sharp11
+    case maj9_flat5_sharp11 = "maj9_flat5_sharp11"
     
     /// Major Ninth Sharp Five Sharp Eleventh: Major Third, Augmented Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9(♯5)(♯11)`
-    case maj9_sharp5_sharp11
+    case maj9_sharp5_sharp11 = "maj9_sharp5_sharp11"
     
     /// Dominant Ninth Flat Five Sharp Eleventh: Major Third, Diminished Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9(♭5)(♯11)`
-    case dom9_flat5_sharp11
+    case dom9_flat5_sharp11 = "dom9_flat5_sharp11"
     
     /// Dominant Ninth Sharp Five Sharp Eleventh: Major Third, Augmented Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9(♯5)(♯11)`
-    case dom9_sharp5_sharp11
+    case dom9_sharp5_sharp11 = "dom9_sharp5_sharp11"
 	
 	/// Major Ninth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Augmented Eleventh, e.g. `Cmaj7♭9(♯11)`
-	case maj7_flat9_sharp11
+	case maj7_flat9_sharp11 = "maj7_flat9_sharp11"
 
     /// Dominant Flat Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, e.g. `C7♭9(♯11)`
-    case dom7_flat9_sharp11
+    case dom7_flat9_sharp11 = "dom7_flat9_sharp11"
 	
 	/// Minor Flat Ninth Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, e.g. `Cm7♭9(♯11)`
-	case min7_flat9_sharp11
+	case min7_flat9_sharp11 = "min7_flat9_sharp11"
 	
     /// Dominant Sharp Ninth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Augmented Eleventh, e.g. `C7♯9(♯11)`
-    case dom7_sharp9_sharp11
+    case dom7_sharp9_sharp11 = "dom7_sharp9_sharp11"
 
     /// Minor Seventh Flat Ninth  Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, e.g. `Cm7♭9(11)`
-    case min7_flat9_11
+    case min7_flat9_11 = "min7_flat9_11"
 	
 	/// Major Seventh  Add Eleventh: Major Third, Perfect Fifth, Major Seventh, Perfect Eleventh, e.g. `Cmaj7(add11)`
-	case maj7_add11
+	case maj7_add11 = "maj7_add11"
 	
 	/// Major Seventh  Add Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Augmented Eleventh, e.g. `Cmaj7(add♯11)`
-	case maj7_addSharp11
+	case maj7_addSharp11 = "maj7_addSharp11"
 	
 	/// Dominant Seventh Add Eleventh: Major Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `C7(add11)`
-	case dom7_add11
+	case dom7_add11 = "dom7_add11"
 	
 	/// Dominant Seventh Add Sharp Eleventh: Major Third, Perfect Fifth, minor Seventh, Augmented Eleventh, e.g. `C7(add♯11)`
-	case dom7_addSharp11
+	case dom7_addSharp11 = "dom7_addSharp11"
 	
 	/// Minor Seventh Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `Cm7(add11)`
-	case min7_add11
+	case min7_add11 = "min7_add11"
 	
 	/// Minor Seventh Add Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Augmented Eleventh, e.g. `Cm7(add♯11)`
-	case min7_addSharp11
+	case min7_addSharp11 = "min7_addSharp11"
     
     /// Half Diminished Seventh Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `Cø7(add11)`
-    case halfDim7_add11
+    case halfDim7_add11 = "halfDim7_add11"
     
     /// Dominant Eleventh Suspended Second: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, e.g. `C11sus2`
-    case dom11_sus2
+    case dom11_sus2 = "dom11_sus2"
 
     //MARK: - Thirteenths
     /// Major Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13`
-    case maj13
+    case maj13 = "maj13"
 
     /// Dominant Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13`
-    case dom13
+    case dom13 = "dom13"
 
     /// Minor Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13`
-    case min13
+    case min13 = "min13"
 
     /// Half Diminished Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth e.g. `Cø13`
-    case halfDim13
+    case halfDim13 = "halfDim13"
 
     /// Minor Thirteenth Flat Five: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13(♭5)`
-    case min13_flat5
+    case min13_flat5 = "min13_flat5"
 
     /// Major Thirteenth Flat Ninth: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13(♭9)`
-    case maj13_flat9
+    case maj13_flat9 = "maj13_flat9"
 
     /// Dominant Thirteenth Flat Ninth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13(♭9)`
-    case dom13_flat9
+    case dom13_flat9 = "dom13_flat9"
 
     /// Minor Thirteenth Flat Ninth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13(♭9)`
-    case min13_flat9
+    case min13_flat9 = "min13_flat9"
 
     /// Minor Thirteenth Flat Five Flat Ninth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13♭5(♭9)`
-    case min13_flat5_flat9
+    case min13_flat5_flat9 = "min13_flat5_flat9"
 
     /// Major Thirteenth Sharp Ninth: Major Third, Perfect Fifth, Major Seventh, Augmented Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13(♯9)`
-    case maj13_sharp9
+    case maj13_sharp9 = "maj13_sharp9"
 
     /// Dominant Thirteenth Sharp Ninth: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13(♯9)`
-    case dom13_sharp9
+    case dom13_sharp9 = "dom13_sharp9"
 
     /// Minor Thirteenth Sharp Ninth: Minor Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13(♯9)`
-    case min13_sharp9
+    case min13_sharp9 = "min13_sharp9"
 
     /// Minor Thirteenth Flat Five Sharp Ninth: Minor Third, Diminished Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13♭5(♯9)`
-    case min13_flat5_sharp9
+    case min13_flat5_sharp9 = "min13_flat5_sharp9"
 
     /// Major Thirteenth Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, Major Thirteenth, e.g. `Cmaj13(♯11)`
-    case maj13_sharp11
+    case maj13_sharp11 = "maj13_sharp11"
 
     /// Dominant Thirteenth Sharp Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, Major Thirteenth, e.g. `C13(♯11)`
-    case dom13_sharp11
+    case dom13_sharp11 = "dom13_sharp11"
 
     /// Minor Thirteenth Sharp Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, Major Thirteenth, e.g. `Cm13(♯11)`
-    case min13_sharp11
+    case min13_sharp11 = "min13_sharp11"
 
     /// Major Seventh Flat Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cmaj7(♭13)`
-    case maj7_flat13
+    case maj7_flat13 = "maj7_flat13"
 
     /// Dominant Seventh Flat Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `C7(♭13)`
-    case dom7_flat13
+    case dom7_flat13 = "dom7_flat13"
 
     /// Minor Seventh Flat Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cm7(♭13)`
-    case min7_flat13
+    case min7_flat13 = "min7_flat13"
 
     /// Half Diminished Seventh Flat Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cø7(♭13)`
-    case halfDim7_flat13
+    case halfDim7_flat13 = "halfDim7_flat13"
 
     /// Major Seventh Flat Ninth Flat Thirteenth: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cmaj7♭9(♭13)`
-    case maj7_flat9_flat13
+    case maj7_flat9_flat13 = "maj7_flat9_flat13"
 
     /// Dominant Seventh Flat Ninth Flat Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `C7♭9(♭13)`
-    case dom7_flat9_flat13
+    case dom7_flat9_flat13 = "dom7_flat9_flat13"
 
     /// Minor Seventh Flat Ninth Flat Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cm7♭9(♭13)`
-    case min7_flat9_flat13
+    case min7_flat9_flat13 = "min7_flat9_flat13"
 
     /// Minor Seventh Flat Five Flat Ninth Flat Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cm7♭5♭9(♭13)`
-    case min7_flat5_flat9_flat13
+    case min7_flat5_flat9_flat13 = "min7_flat5_flat9_flat13"
 
     /// Major Seventh Sharp Ninth Flat Thirteenth: Major Third, Perfect Fifth, Major Seventh, Augmented Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cmaj7♯9(♭13)`
-    case maj7_sharp9_flat13
+    case maj7_sharp9_flat13 = "maj7_sharp9_flat13"
 
     /// Dominant Seventh Sharp Ninth Flat Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `C7♯9(♭13)`
-    case dom7_sharp9_flat13
+    case dom7_sharp9_flat13 = "dom7_sharp9_flat13"
 
     /// Minor Seventh Sharp Ninth Flat Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cm7♯9(♭13)`
-    case min7_sharp9_flat13
+    case min7_sharp9_flat13 = "min7_sharp9_flat13"
 
     /// Minor Seventh Flat Five Sharp Ninth Flat Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cm7♭5♯9(♭13)`
-    case min7_flat5_sharp9_flat13
+    case min7_flat5_sharp9_flat13 = "min7_flat5_sharp9_flat13"
 
     /// Major Seventh Flat Ninth Sharp Eleventh Flat Thirteenth: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `Cmaj7♭9♯11(♭13)`
-    case maj7_flat9_sharp11_flat13
+    case maj7_flat9_sharp11_flat13 = "maj7_flat9_sharp11_flat13"
 
     /// Dominant Seventh Flat Ninth Sharp Eleventh Flat Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `C7♭9♯11(♭13)`
-    case dom7_flat9_sharp11_flat13
+    case dom7_flat9_sharp11_flat13 = "dom7_flat9_sharp11_flat13"
 
     /// Minor Seventh Flat Ninth Sharp Eleventh Flat Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `Cm7♭9♯11(♭13)`
-    case min7_flat9_sharp11_flat13
+    case min7_flat9_sharp11_flat13 = "min7_flat9_sharp11_flat13"
 
     /// Minor Seventh Flat Five Flat Ninth Sharp Eleventh Flat Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `Cm7♭5♭9♯11(♭13)`
-    case min7_flat5_flat9_sharp11_flat13
+    case min7_flat5_flat9_sharp11_flat13 = "min7_flat5_flat9_sharp11_flat13"
 
     /// Major Seventh Sharp Ninth Sharp Eleventh Flat Thirteenth: Major Third, Perfect Fifth, Major Seventh, Augmented Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `Cmaj7♯9♯11(♭13)`
-    case maj7_sharp9_sharp11_flat13
+    case maj7_sharp9_sharp11_flat13 = "maj7_sharp9_sharp11_flat13"
 
     /// Dominant Seventh Sharp Ninth Sharp Eleventh Flat Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `C7♯9♯11(♭13)`
-    case dom7_sharp9_sharp11_flat13
+    case dom7_sharp9_sharp11_flat13 = "dom7_sharp9_sharp11_flat13"
 
     /// Minor Seventh Sharp Ninth Sharp Eleventh Flat Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `Cm7♯9♯11(♭13)`
-    case min7_sharp9_sharp11_flat13
+    case min7_sharp9_sharp11_flat13 = "min7_sharp9_sharp11_flat13"
 
     /// Minor Seventh Flat Five Sharp Ninth Sharp Eleventh Flat Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Augmented Ninth, Augmented Eleventh, Minor Thirteenth, e.g. `Cm7♭5♯9♯11(♭13)`
-    case min7_flat5_sharp9_sharp11_flat13
+    case min7_flat5_sharp9_sharp11_flat13 = "min7_flat5_sharp9_sharp11_flat13"
 
     /// Major Seventh Add Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Thirteenth, e.g. `Cmaj7(add13)`
-    case maj7_add13
+    case maj7_add13 = "maj7_add13"
 
     /// Dominant Seventh Add Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Major Thirteenth, e.g. `C7(add13)`
-    case dom7_add13
+    case dom7_add13 = "dom7_add13"
 
     /// Minor Seventh Add Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Major Thirteenth, e.g. `Cm7(add13)`
-    case min7_add13
+    case min7_add13 = "min7_add13"
 
     /// Half Diminished Seventh Add Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Major Thirteenth, e.g. `Cø7(add13)`
-    case halfDim7_add13
+    case halfDim7_add13 = "halfDim7_add13"
 
     /// Major Seventh Add Flat Thirteenth: Major Third, Perfect Fifth, Major Seventh, Minor Thirteenth, e.g. `Cmaj7(add♭13)`
-    case maj7_addFlat13
+    case maj7_addFlat13 = "maj7_addFlat13"
 
     /// Dominant Seventh Add Flat Thirteenth: Major Third, Perfect Fifth, Minor Seventh, Minor Thirteenth, e.g. `C7(add♭13)`
-    case dom7_addFlat13
+    case dom7_addFlat13 = "dom7_addFlat13"
 
     /// Minor Seventh Add Flat Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Minor Thirteenth, e.g. `Cm7(add♭13)`
-    case min7_addFlat13
+    case min7_addFlat13 = "min7_addFlat13"
 
     /// Half Diminished Seventh Add Flat Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Minor Thirteenth, e.g. `Cø7(add♭13)`
-    case halfDim7_addFlat13
+    case halfDim7_addFlat13 = "halfDim7_addFlat13"
 
     /// Major Seventh Add Ninth Add Thirteenth: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Major Thirteenth, e.g. `Cmaj7(add9)(add13)`
-    case maj7_add9_add13
+    case maj7_add9_add13 = "maj7_add9_add13"
 
     /// Major Seventh Add Flat Ninth Add Thirteenth: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Major Thirteenth, e.g. `Cmaj7(add♭9)(add13)`
-    case maj7_addFlat9_add13
+    case maj7_addFlat9_add13 = "maj7_addFlat9_add13"
 
     /// Major Seventh Add Flat Ninth Add Flat Thirteenth: Major Third, Perfect Fifth, Major Seventh, Minor Ninth, Minor Thirteenth, e.g. `Cmaj7(add♭9)(add♭13)`
-    case maj7_addFlat9_addFlat13
+    case maj7_addFlat9_addFlat13 = "maj7_addFlat9_addFlat13"
 
     /// Minor Flat Thirteenth Flat Ninth: Minor Third, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cm♭13♭9`
-    case min_flat13_flat9
+    case min_flat13_flat9 = "min_flat13_flat9"
 
     /// Minor Eleventh Flat Thirteenth: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cm11(♭13)`
-    case min11_flat13
+    case min11_flat13 = "min11_flat13"
 
     /// Half Diminished Flat Thirteenth: Minor Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Minor Thirteenth, e.g. `Cø(♭13)`
-    case halfDim_flat13
+    case halfDim_flat13 = "halfDim_flat13"
 
     // Additional 13th chord types
     /// Dominant Thirteenth Flat Five: Major Third, Diminished Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13(♭5)`
-    case dom13_flat5
+    case dom13_flat5 = "dom13_flat5"
 
     /// Dominant Thirteenth Sharp Five: Major Third, Augmented Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13(♯5)`
-    case dom13_sharp5
+    case dom13_sharp5 = "dom13_sharp5"
 
     /// Major Thirteenth Flat Five: Major Third, Diminished Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13(♭5)`
-    case maj13_flat5
+    case maj13_flat5 = "maj13_flat5"
 
     /// Major Thirteenth Sharp Five: Major Third, Augmented Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13(♯5)`
-    case maj13_sharp5
+    case maj13_sharp5 = "maj13_sharp5"
 
     /// Dominant Thirteenth Flat Nine Sharp Eleven: Major Third, Perfect Fifth, Minor Seventh, Minor Ninth, Augmented Eleventh, Major Thirteenth, e.g. `C13(♭9)(♯11)`
-    case dom13_flat9_sharp11
+    case dom13_flat9_sharp11 = "dom13_flat9_sharp11"
 
     /// Dominant Thirteenth Sharp Nine Sharp Eleven: Major Third, Perfect Fifth, Minor Seventh, Augmented Ninth, Augmented Eleventh, Major Thirteenth, e.g. `C13(♯9)(♯11)`
-    case dom13_sharp9_sharp11
+    case dom13_sharp9_sharp11 = "dom13_sharp9_sharp11"
 
     /// Major Thirteenth Add Eleventh: Major Third, Perfect Fifth, Major Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13(add11)`
-    case maj13_add11
+    case maj13_add11 = "maj13_add11"
 
     /// Dominant Thirteenth Add Eleventh: Major Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13(add11)`
-    case dom13_add11
+    case dom13_add11 = "dom13_add11"
 
     /// Minor Thirteenth Add Eleventh: Minor Third, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `Cm13(add11)`
-    case min13_add11
+    case min13_add11 = "min13_add11"
     
     //MARK: - Sixths
     /// Major Sixth: Major Third, Perfect Fifth, Major Sixth, e.g. `C6`
-    case maj6
+    case maj6 = "maj6"
 
     /// Minor Sixth: Minor Third, Perfect Fifth, Major Sixth, e.g. `Cm6`
-    case min6
+    case min6 = "min6"
     
     //MARK: - Sus
     /// Suspended 2 Triad: Major Second, Perfect Fifth, e.g. `Csus2`
-    case sus2
+    case sus2 = "sus2"
 
     /// Suspended 4 Triad: Perfect Fourth, Perfect Fifth, e.g. `Csus4`
-    case sus4
+    case sus4 = "sus4"
     
     //MARK: - Seventh Sus
     /// Dominant Seventh Suspendend Second: Major Second, Perfect Fifth, Minor Seventh, e.g. `C7sus2`
-    case dom7_sus2
+    case dom7_sus2 = "dom7_sus2"
 
     /// Dominant Seventh Suspendend Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh, e.g. `C7sus4`
-    case dom7_sus4
+    case dom7_sus4 = "dom7_sus4"
     
     /// Major Seventh Suspended Second: Major Second, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus2`
-    case maj7_sus2
+    case maj7_sus2 = "maj7_sus2"
 
     /// Major Seventh Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, e.g. `Cmaj7sus4`
-    case maj7_sus4
+    case maj7_sus4 = "maj7_sus4"
     
     /// Dominant Ninth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Ninth (Major Second), e.g. `C9sus4`
-    case dom9_sus4
+    case dom9_sus4 = "dom9_sus4"
     
     /// Suspended Fourth Add Nine: Perfect Fourth, Perfect Fifth, Major Ninth, e.g. `Csus4(add9)`
-    case sus4_add9
+    case sus4_add9 = "sus4_add9"
 
     /// Suspended Second Add Eleven: Major Second, Perfect Fifth, Perfect Eleventh, e.g. `Csus2(add11)`
-    case sus2_add11
+    case sus2_add11 = "sus2_add11"
 
     /// Suspended Fourth Add Flat Nine: Perfect Fourth, Perfect Fifth, Minor Ninth, e.g. `Csus4(addb9)`
-    case sus4_addFlat9
+    case sus4_addFlat9 = "sus4_addFlat9"
 
     /// Suspended Fourth Add Sharp Nine: Perfect Fourth, Perfect Fifth, Augmented Ninth, e.g. `Csus4(add#9)`
-    case sus4_addSharp9
+    case sus4_addSharp9 = "sus4_addSharp9"
 
     /// Suspended Second Add Sharp Eleven: Major Second, Perfect Fifth, Augmented Eleventh, e.g. `Csus2(add#11)`
-    case sus2_addSharp11
+    case sus2_addSharp11 = "sus2_addSharp11"
     
     /// Major Thirteenth Suspended Second: Major Second, Perfect Fifth, Major Seventh, Perfect Eleventh, Major Thirteenth, e.g. `Cmaj13sus2`
-    case maj13_sus2
+    case maj13_sus2 = "maj13_sus2"
 
     /// Major Thirteenth Suspended Fourth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Major Thirteenth, e.g. `Cmaj13sus4`
-    case maj13_sus4
+    case maj13_sus4 = "maj13_sus4"
     
     /// Dominant Thirteenth Suspended Second: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus2`
-    case dom13_sus2
+    case dom13_sus2 = "dom13_sus2"
 
     /// Dominant Thirteenth Suspended Fourth: Perfect Fourth, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4`
-    case dom13_sus4
+    case dom13_sus4 = "dom13_sus4"
     
     /// Dominant Seventh Suspended Fourth Flat Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Minor Ninth, e.g. `C7sus4(♭9)`
-    case dom7_sus4_flat9
+    case dom7_sus4_flat9 = "dom7_sus4_flat9"
 
     /// Dominant Seventh Suspended Fourth Sharp Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Augmented Ninth, e.g. `C7sus4(♯9)`
-    case dom7_sus4_sharp9
+    case dom7_sus4_sharp9 = "dom7_sus4_sharp9"
 
     /// Dominant Seventh Suspended Second Sharp Eleventh: Major Second, Perfect Fifth, Minor Seventh, Augmented Eleventh, e.g. `C7sus2(♯11)`
-    case dom7_sus2_sharp11
+    case dom7_sus2_sharp11 = "dom7_sus2_sharp11"
 
     /// Dominant Seventh Suspended Fourth Flat Thirteenth: Perfect Fourth, Perfect Fifth, Minor Seventh, Minor Thirteenth, e.g. `C7sus4(♭13)`
-    case dom7_sus4_flat13
+    case dom7_sus4_flat13 = "dom7_sus4_flat13"
 
     /// Dominant Seventh Suspended Fourth Sharp Thirteenth: Perfect Fourth, Perfect Fifth, Minor Seventh, Augmented Thirteenth, e.g. `C7sus4(♯13)`
-    case dom7_sus4_sharp13
+    case dom7_sus4_sharp13 = "dom7_sus4_sharp13"
 
     /// Dominant Ninth Suspended Fourth Flat Thirteenth: Perfect Fourth, Perfect Fifth, Minor Seventh, Major Ninth, Minor Thirteenth, e.g. `C9sus4(♭13)`
-    case dom9_sus4_flat13
+    case dom9_sus4_flat13 = "dom9_sus4_flat13"
 
     /// Dominant Ninth Suspended Fourth Sharp Eleventh: Perfect Fourth, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, e.g. `C9sus4(♯11)`
-    case dom9_sus4_sharp13
+    case dom9_sus4_sharp13 = "dom9_sus4_sharp13"
 
     /// Dominant Eleventh Suspended Second Flat Ninth: Major Second, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, e.g. `C11sus2(♭9)`
-    case dom11_sus2_flat9
+    case dom11_sus2_flat9 = "dom11_sus2_flat9"
 
     /// Dominant Eleventh Suspended Second Sharp Ninth: Major Second, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, e.g. `C11sus2(♯9)`
-    case dom11_sus2_flat13
+    case dom11_sus2_flat13 = "dom11_sus2_flat13"
 
     /// Dominant Eleventh Suspended Second Sharp Thirteenth: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Perfect Eleventh, Augmented Thirteenth, e.g. `C11sus2(♯13)`
-    case dom11_sus2_sharp13
+    case dom11_sus2_sharp13 = "dom11_sus2_sharp13"
 
     /// Dominant Thirteenth Suspended Fourth Flat Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Minor Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4(♭9)`
-    case dom13_sus4_flat9
+    case dom13_sus4_flat9 = "dom13_sus4_flat9"
 
     /// Dominant Thirteenth Suspended Fourth Sharp Ninth: Perfect Fourth, Perfect Fifth, Minor Seventh, Augmented Ninth, Perfect Eleventh, Major Thirteenth, e.g. `C13sus4(♯9)`
-    case dom13_sus4_sharp9
+    case dom13_sus4_sharp9 = "dom13_sus4_sharp9"
 
     /// Dominant Thirteenth Suspended Second Sharp Eleventh: Major Second, Perfect Fifth, Minor Seventh, Major Ninth, Augmented Eleventh, Major Thirteenth, e.g. `C13sus2(♯11)`
-    case dom13_sus2_sharp11
+    case dom13_sus2_sharp11 = "dom13_sus2_sharp11"
 
     /// Major Seventh Suspended Fourth Flat Ninth: Perfect Fourth, Perfect Fifth, Major Seventh, Minor Ninth, e.g. `Cmaj7sus4(♭9)`
-    case maj7_sus4_flat9
+    case maj7_sus4_flat9 = "maj7_sus4_flat9"
 
     /// Major Seventh Suspended Fourth Sharp Ninth: Perfect Fourth, Perfect Fifth, Major Seventh, Augmented Ninth, e.g. `Cmaj7sus4(♯9)`
-    case maj7_sus4_sharp9
+    case maj7_sus4_sharp9 = "maj7_sus4_sharp9"
 
     /// Major Seventh Suspended Second Sharp Eleventh: Major Second, Perfect Fifth, Major Seventh, Augmented Eleventh, e.g. `Cmaj7sus2(♯11)`
-    case maj7_sus2_sharp11
+    case maj7_sus2_sharp11 = "maj7_sus2_sharp11"
 
     /// Major Ninth Suspended Fourth Flat Thirteenth: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Minor Thirteenth, e.g. `Cmaj9sus4(♭13)`
-    case maj9_sus4_flat13
+    case maj9_sus4_flat13 = "maj9_sus4_flat13"
 
     /// Major Ninth Suspended Fourth Sharp Eleventh: Perfect Fourth, Perfect Fifth, Major Seventh, Major Ninth, Augmented Eleventh, e.g. `Cmaj9sus4(♯11)`
-    case maj9_sus4_sharp11
+    case maj9_sus4_sharp11 = "maj9_sus4_sharp11"
 
     /// Major Eleventh Suspended Second Flat Ninth: Major Second, Perfect Fifth, Major Seventh, Minor Ninth, Perfect Eleventh, e.g. `Cmaj11sus2(♭9)`
-    case maj11_sus2_flat9
+    case maj11_sus2_flat9 = "maj11_sus2_flat9"
 
     /// Major Eleventh Suspended Second Sharp Ninth: Major Second, Perfect Fifth, Major Seventh, Augmented Ninth, Perfect Eleventh, e.g. `Cmaj11sus2(♯9)`
-    case maj11_sus2_sharp9
+    case maj11_sus2_sharp9 = "maj11_sus2_sharp9"
     
     /// Suspended 2nd Add Thirteen: Major Second, Perfect Fifth, Major Thirteenth, e.g. `Csus2(add13)`
-    case sus2_add13
+    case sus2_add13 = "sus2_add13"
 
     /// Suspended 4th Add Thirteen: Major Fourth, Perfect Fifth, Major Sixth, e.g. `Csus4(add13)`
-    case sus4_add13
+    case sus4_add13 = "sus4_add13"
     
     /// Suspended 2nd Add Flat Thirteen: Major Second, Perfect Fifth, Minor Thirteenth, e.g. `Csus2(add♭13)`
-    case sus2_addFlat13
+    case sus2_addFlat13 = "sus2_addFlat13"
 
     /// Suspended 4th Add Flat Thirteen: Major Second, Perfect Fifth, Minor Thirteenth, e.g. `Csus4(add♭13)`
-    case sus4_addFlat13
+    case sus4_addFlat13 = "sus4_addFlat13"
     
     /// Suspended Second Add Sharp Thirteen: Major Second, Perfect Fifth, Augmented Thirteenth, e.g. `Csus2(add#13)`
-    case sus2_addSharp13
+    case sus2_addSharp13 = "sus2_addSharp13"
 
     /// Suspended Fourth Add Sharp Thirteen: Perfect Fourth, Perfect Fifth, Augmented Thirteenth, e.g. `Csus4(add#13)`
-    case sus4_addSharp13
+    case sus4_addSharp13 = "sus4_addSharp13"
 
     public var intervals: [Interval] {
         switch self {
