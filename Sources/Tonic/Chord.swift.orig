@@ -6,7 +6,7 @@ import Foundation
 ///
 /// A representation of a chord as a set of note classes, with a root note class,
 /// and an inversion defined by the lowest note in the chord.
-public struct Chord: Equatable, Codable {
+public struct Chord: Equatable {
     /// Root note class of the chord
     public let root: NoteClass
 
@@ -251,7 +251,11 @@ extension Chord {
             }
         }
         
+<<<<<<< HEAD
         // Sorts anti-alphabetical, but the net effect is to prefer flats to sharps
+=======
+        // Sorts anti-alphabetical, but the net effect is to pefer flats to sharps
+>>>>>>> upstream/main
         returnArray.sort { $0.root.letter > $1.root.letter }
 
         // order the array by least number of accidentals
@@ -275,6 +279,7 @@ extension Chord {
             }
         }
         
+<<<<<<< HEAD
         // prefer fewer number of characters (favor less complex chords in ranking)
         returnArray.sort { $0.slashDescription.count < $1.slashDescription.count }
         
@@ -284,6 +289,12 @@ extension Chord {
         return returnArray
     }
 
+
+=======
+        return returnArray
+    }
+
+>>>>>>> upstream/main
     /// Get chords from actual notes (spelling matters, C# F G# will not return a C# major)
     /// Use pitch set version of this function for all enharmonic chords
     /// The ranking is based on how low the root note of the chord appears, for example we

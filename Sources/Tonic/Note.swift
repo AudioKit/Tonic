@@ -4,7 +4,6 @@ import Foundation
 
 /// A pitch with a particular spelling.
 public struct Note: Equatable, Hashable, Codable {
-    
     /// Base name for the note
     public var noteClass: NoteClass = .init(.C, accidental: .natural)
 
@@ -14,11 +13,8 @@ public struct Note: Equatable, Hashable, Codable {
     /// Convenience accessor for the accidental of the note
     public var accidental: Accidental { noteClass.accidental }
 
-    /// Range from -2 to 8, with a dependency on the note style
-    public var octave: Int = Note.MiddleCStandard.yamaha.middleCNumber
-
-    /// yamaha is the default for Logic Pro
-    public var middleCStandard: Note.MiddleCStandard = .yamaha
+    /// Range from -2 to 8
+    public var octave: Int = 3
 
     /// Initialize the note
     ///
@@ -28,7 +24,7 @@ public struct Note: Equatable, Hashable, Codable {
     ///   - letter: Letter of the note
     ///   - accidental: Accidental shift
     ///   - octave: Which octave the note appears in
-    public init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = Note.MiddleCStandard.yamaha.middleCNumber) {
+    public init(_ letter: Letter = .C, accidental: Accidental = .natural, octave: Int = 3) {
         noteClass = NoteClass(letter, accidental: accidental)
         self.octave = octave
     }
@@ -40,8 +36,7 @@ public struct Note: Equatable, Hashable, Codable {
     ///   - pitch: Pitch, or essentially the midi note number of a note
     ///   - key: Key in which to search for the appropriate note
     public init(pitch: Pitch, key: Key = .C) {
-        octave = Int(Double(pitch.midiNoteNumber) / 12) + middleCStandard.firstOctaveOffset
-
+        octave = Int(Double(pitch.midiNoteNumber) / 12) - 2
         let pitchClass = pitch.pitchClass
         var noteInKey: Note?
 
@@ -79,7 +74,7 @@ public struct Note: Equatable, Hashable, Codable {
     /// Initialize from raw value
     /// - Parameter index: integer represetnation
     public init(index: Int) {
-        octave = (index / 35) + middleCStandard.firstOctaveOffset
+        octave = (index / 35) - 2
         let letter = Letter(rawValue: (index % 35) / 5)!
         let accidental = Accidental(rawValue: Int8(index % 5) - 2)!
         noteClass = NoteClass(letter, accidental: accidental)
@@ -87,7 +82,7 @@ public struct Note: Equatable, Hashable, Codable {
 
     /// MIDI Note 0-127 starting at C
     public var noteNumber: Int8 {
-        let octaveBounds = ((octave + middleCStandard.middleCNumber - 1) * 12) ... ((octave + middleCStandard.middleCNumber) * 12)
+        let octaveBounds = ((octave + 2) * 12) ... ((octave + 3) * 12)
         var note = Int(noteClass.letter.baseNote) + Int(noteClass.accidental.rawValue)
         if noteClass.letter == .B && noteClass.accidental.rawValue > 0 {
             note -= 12
@@ -123,7 +118,7 @@ public struct Note: Equatable, Hashable, Codable {
     /// - Returns: New note the correct distance away
     public func shiftDown(_ shift: Interval) -> Note? {
         var newLetterIndex = (noteClass.letter.rawValue - (shift.degree - 1))
-        let newOctave = (Int(pitch.midiNoteNumber) - shift.semitones) / 12 + middleCStandard.firstOctaveOffset
+        let newOctave = (Int(pitch.midiNoteNumber) - shift.semitones) / 12 - 2
 
         while newLetterIndex < 0 {
             newLetterIndex += 7
@@ -146,8 +141,9 @@ public struct Note: Equatable, Hashable, Codable {
         let newLetterIndex = (noteClass.letter.rawValue + (shift.degree - 1))
         let newLetter = Letter(rawValue: newLetterIndex % Letter.allCases.count)!
         let newMidiNoteNumber = Int(pitch.midiNoteNumber) + shift.semitones
+        
+        let newOctave = newMidiNoteNumber / 12 - 2
 
-        let newOctave = (newMidiNoteNumber / 12) + middleCStandard.firstOctaveOffset
         for accidental in Accidental.allCases {
             let newNote = Note(newLetter, accidental: accidental, octave: newOctave)
             if newNote.noteNumber % 12 == newMidiNoteNumber % 12 {
@@ -169,7 +165,7 @@ extension Note: IntRepresentable {
         let accidentalCount = Accidental.allCases.count
         let letterCount = Letter.allCases.count
         let octaveCount = letterCount * accidentalCount
-        octave = (intValue / octaveCount) + middleCStandard.firstOctaveOffset
+        octave = (intValue / octaveCount) - 2
         var letter = Letter(rawValue: (intValue % octaveCount) / accidentalCount)!
         var accidental = Accidental(rawValue: Int8(intValue % accidentalCount) - 2)!
 
@@ -190,15 +186,15 @@ extension Note: IntRepresentable {
         
         var index = noteClass.letter.rawValue * accidentalCount + (Int(noteClass.accidental.rawValue) + 2)
         if letter == .B {
-            if accidental == .sharp { index = 0 }
-            if accidental == .doubleSharp { index = 1 }
+            if accidental == .sharp { index = 0}
+            if accidental == .doubleSharp { index = 1}
         }
         if letter == .C {
-            if accidental == .doubleFlat { index = octaveCount - 2 }
-            if accidental == .flat { index = octaveCount - 1 }
+            if accidental == .doubleFlat { index = octaveCount - 2}
+            if accidental == .flat { index = octaveCount - 1}
         }
 
-        return (octave + middleCStandard.middleCNumber - 1) * octaveCount + index
+        return (octave + 2) * octaveCount + index
     }
 }
 

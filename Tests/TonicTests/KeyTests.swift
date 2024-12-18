@@ -41,7 +41,7 @@ class KeyTests: XCTestCase {
     }
 
     func testKeyChords() {
-        XCTAssertEqual(Key.G.chords.count, 49)
+        XCTAssertEqual(Key.G.chords.count, 60) // This should only change if new chord types are added
         for triad in Key.G.primaryTriads {
             XCTAssert(Key.G.chords.contains(triad))
         }

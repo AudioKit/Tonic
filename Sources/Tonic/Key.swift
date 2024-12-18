@@ -42,7 +42,7 @@ public struct Key: Equatable {
         var chords: [Chord] = []
         var primaryTriads: [Chord] = []
 
-        let allowablePrimaryTriads: [ChordType] = [.majorTriad, .minorTriad, .diminishedTriad, .augmentedTriad]
+        let allowablePrimaryTriads: [ChordType] = [.major, .minor, .dim, .aug]
 
         for (_, chord) in table.chords where chord.noteClassSet.isSubset(of: noteSet.noteClassSet) {
             chords.append(Chord(chord.root, type: chord.type))

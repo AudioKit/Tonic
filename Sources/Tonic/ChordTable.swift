@@ -15,7 +15,7 @@ public class ChordTable {
     }
 
     static func generateChords(type: ChordType, _ r: inout [Int: Chord]) {
-        let accidentals: [Accidental] = [.doubleFlat, .flat, .natural, .sharp, .doubleSharp]
+        let accidentals: [Accidental] = [.natural, .flat, .sharp, .doubleFlat, .doubleSharp]
         for accidental in accidentals {
             for letter in Letter.allCases {
                 let root = NoteClass(letter, accidental: accidental)
@@ -24,8 +24,9 @@ public class ChordTable {
                     // chord is not valid
                     continue
                 }
-
-                r[ChordTable.hash(chord.noteClasses)] = chord
+                if r[ChordTable.hash(chord.noteClasses)] == nil {
+                    r[ChordTable.hash(chord.noteClasses)] = chord
+                }
             }
         }
     }
@@ -42,6 +43,7 @@ public class ChordTable {
 
     lazy var chords: [Int: Chord] = ChordTable.generateAllChords()
 
+    @available(*, deprecated, renamed: "getRankedChords()", message: "Please use getRankedChords() for higher quality chord detection")
     static func generateAllChordsIncludingEnharmonic() -> [Chord] {
         var returnChords: [Chord] = []
 
@@ -53,7 +55,7 @@ public class ChordTable {
                     let chord = Chord(root, type: chordType)
 
                     if chord.noteClasses.count <= chord.type.intervals.count {
-                        // chord is not valid
+                        // chord would need to be spelt with triple sharps or flats so we omit
                         continue
                     }
 
@@ -72,6 +74,7 @@ public class ChordTable {
     ///
     /// - Parameter noteSet: Array of chord notes in a chosen order
     /// - Returns: array of enharmonic chords that could describe the NoteSet
+    @available(*, deprecated, renamed: "getRankedChords", message: "Please use getRankedChords() for higher quality chord detection")
     public func getAllChordsForNoteSet(_ noteSet: NoteSet) -> [Chord] {
         var returnedChords = [Chord]()
         for chord in chordsIncludingEnharmonic {
