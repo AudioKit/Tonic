@@ -16,7 +16,7 @@ enum Octave: Int {
     case eight = 8
     case nine = 9
 
-    init?(of pitch:Pitch, style: Note.MiddleCStandard = .roland ) {
+    init?(of pitch:Pitch, style: Note.MiddleCStandard = .yamaha ) {
         let octaveInt = Int(pitch.midiNoteNumber) / 12 + style.firstOctaveOffset
         if let octave = Octave(rawValue: octaveInt) {
             self = octave
