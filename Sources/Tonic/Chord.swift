@@ -94,7 +94,7 @@ public struct Chord: Equatable, Codable {
     /// - Returns: Roman Numeral notation
     public func romanNumeralNotation(in key: Key) -> String? {
         let capitalRomanNumerals = ["I", "II", "III", "IV", "V", "VI", "VII"]
-        if let index = key.primaryTriads.firstIndex(where: { $0 == self }) {
+        if let index = key.primaryTriads().firstIndex(where: { $0 == self }) {
             let romanNumeral = capitalRomanNumerals[index]
             switch type {
             case .major: return romanNumeral
