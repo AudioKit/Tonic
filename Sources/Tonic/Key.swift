@@ -49,7 +49,7 @@ public struct Key: Equatable {
     }
 
     /// All chords that fit in the key
-    public func chords() -> [Chord] {
+    public var chords: [Chord] {
         let table = ChordTable.shared
         var chords: [Chord] = []
         for (_, chord) in table.chords where chord.noteClassSet.isSubset(of: noteSet.noteClassSet) {
@@ -59,7 +59,7 @@ public struct Key: Equatable {
     }
 
     /// All the traditional triads representable root, third, and fifth from each note in the key
-    public func primaryTriads() -> [Chord] {
+    public var primaryTriads: [Chord] {
         let table = ChordTable.shared
 
         var chords: [Chord] = []

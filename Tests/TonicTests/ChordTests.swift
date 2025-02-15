@@ -185,15 +185,15 @@ class ChordTests: XCTestCase {
     }
 
     func testRomanNumerals() {
-        XCTAssertEqual(Key.C.primaryTriads().map { $0.romanNumeralNotation(in: Key.C) ?? "" },
+        XCTAssertEqual(Key.C.primaryTriads.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
                        ["I", "ii", "iii", "IV", "V", "vi", "vii°"])
-        XCTAssertEqual(Key.C.primaryTriads().map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
+        XCTAssertEqual(Key.C.primaryTriads.map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
                        ["III", "iv", "v", "VI", "VII", "i", "ii°"])
-        XCTAssertEqual(Key.C.primaryTriads().map { $0.romanNumeralNotation(in: Key.G) ?? "" },
+        XCTAssertEqual(Key.C.primaryTriads.map { $0.romanNumeralNotation(in: Key.G) ?? "" },
                        ["IV", "", "vi", "", "I", "ii", ""])
-        XCTAssertEqual(Key.Am.primaryTriads().map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
+        XCTAssertEqual(Key.Am.primaryTriads.map { $0.romanNumeralNotation(in: Key.Am) ?? "" },
                        ["i", "ii°", "III", "iv", "v", "VI", "VII"])
-        XCTAssertEqual(Key.Am.primaryTriads().map { $0.romanNumeralNotation(in: Key.C) ?? "" },
+        XCTAssertEqual(Key.Am.primaryTriads.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
                        ["vi", "vii°", "I", "ii", "iii", "IV", "V"])
     }
 
