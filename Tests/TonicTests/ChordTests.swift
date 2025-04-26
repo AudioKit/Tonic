@@ -195,7 +195,6 @@ class ChordTests: XCTestCase {
                        ["i", "ii°", "III", "iv", "v", "VI", "VII"])
         XCTAssertEqual(Key.Am.primaryTriads.map { $0.romanNumeralNotation(in: Key.C) ?? "" },
                        ["vi", "vii°", "I", "ii", "iii", "IV", "V"])
-        
         let key = Key(root: .C, scale: .wholeDiminished)
         XCTAssertNoThrow(key.primaryTriads.map { $0.romanNumeralNotation(in: key) ?? "" })
     }
