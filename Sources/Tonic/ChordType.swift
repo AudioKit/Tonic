@@ -5,7 +5,7 @@ import Foundation
 /// Chord type as defined by a set of intervals from a root note class
 /// We use abreviated descriptions with extensions seperated by underscores
 /// We don't like usiing underscores for enum cases any more than you do, however is a nice visual speration of extensions
-public enum ChordType: String, CaseIterable, Codable {
+public enum ChordType: String, Sendable, CaseIterable, Codable {
 
 	//MARK: - Triads
     /// Major Triad: Major Third, Perfect Fifth, e.g. `C`
