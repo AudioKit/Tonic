@@ -3,7 +3,7 @@
 import Foundation
 
 /// Interface to bit sets used to represent sets of pitches and sets of notes.
-public protocol BitSet: Hashable, Codable {
+public protocol BitSet: Hashable, Codable, Sendable {
     init()
     func isSet(bit: Int) -> Bool
     mutating func add(bit: Int)
