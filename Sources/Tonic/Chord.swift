@@ -6,7 +6,7 @@ import Foundation
 ///
 /// A representation of a chord as a set of note classes, with a root note class,
 /// and an inversion defined by the lowest note in the chord.
-public struct Chord: Equatable, Hashable, Codable {
+public struct Chord: Sendable, Equatable, Hashable, Codable {
     /// Root note class of the chord
     public let root: NoteClass
 
