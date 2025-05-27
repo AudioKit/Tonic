@@ -5,7 +5,7 @@ import Foundation
 /// The key is the set of notes that are played in a composition, or portion of a composition.
 ///
 /// A key is composed of a Root ``Note``, and a ``Scale``.
-public struct Key: Equatable {
+public struct Key: Equatable, Hashable {
     /// The primary note class of the key, also known as the tonic
     public let root: NoteClass
 
