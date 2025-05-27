@@ -195,7 +195,7 @@ public protocol IntRepresentable {
     var intValue: Int { get }
 }
 
-public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Hashable, Codable {
+public struct BitSetAdapter<T: IntRepresentable, B: BitSet>: Sendable, Hashable, Codable {
     public var bits: B
 
     public init() {
