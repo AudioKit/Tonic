@@ -6,7 +6,7 @@ public extension NoteClass {
     /// C♭
     static var Cb = NoteClass(.C, accidental: .flat)
     /// C
-    static var C = NoteClass(.C)
+    static let C = NoteClass(.C)
     /// C♯
     static var Cs = NoteClass(.C, accidental: .sharp)
 
