@@ -2,7 +2,7 @@ import Foundation
 
 /// Private Octave enumeration for octave related functions
 /// Will make it public once the entirety of Tonic uses it well
-enum Octave: Int {
+enum Octave: Int, Sendable {
     case negative2 = -2
     case negative1 = -1
     case zero = 0
