@@ -4,51 +4,51 @@ import Foundation
 
 public extension Note {
     /// C♭
-    static var Cb = Note(.C, accidental: .flat)
+    static let Cb = Note(.C, accidental: .flat)
     /// C
-    static var C = Note(.C)
+    static let C = Note(.C)
     /// C♯
-    static var Cs = Note(.C, accidental: .sharp)
+    static let Cs = Note(.C, accidental: .sharp)
 
     /// D♭
-    static var Db = Note(.D, accidental: .flat)
+    static let Db = Note(.D, accidental: .flat)
     /// D
-    static var D = Note(.D)
+    static let D = Note(.D)
     /// D♯
-    static var Ds = Note(.D, accidental: .sharp)
+    static let Ds = Note(.D, accidental: .sharp)
 
     /// E♭
-    static var Eb = Note(.E, accidental: .flat)
+    static let Eb = Note(.E, accidental: .flat)
     /// E
-    static var E = Note(.E)
+    static let E = Note(.E)
     /// E♯
-    static var Es = Note(.E, accidental: .sharp)
+    static let Es = Note(.E, accidental: .sharp)
 
     /// F♭
-    static var Fb = Note(.F, accidental: .flat)
+    static let Fb = Note(.F, accidental: .flat)
     /// F
-    static var F = Note(.F)
+    static let F = Note(.F)
     /// F♯
-    static var Fs = Note(.F, accidental: .sharp)
+    static let Fs = Note(.F, accidental: .sharp)
 
     /// G♭
-    static var Gb = Note(.G, accidental: .flat)
+    static let Gb = Note(.G, accidental: .flat)
     /// G
-    static var G = Note(.G)
+    static let G = Note(.G)
     /// G♯
-    static var Gs = Note(.G, accidental: .sharp)
+    static let Gs = Note(.G, accidental: .sharp)
 
     /// A♭
-    static var Ab = Note(.A, accidental: .flat)
+    static let Ab = Note(.A, accidental: .flat)
     /// A
-    static var A = Note(.A)
+    static let A = Note(.A)
     /// A♯
-    static var As = Note(.A, accidental: .sharp)
+    static let As = Note(.A, accidental: .sharp)
 
     /// B♭
-    static var Bb = Note(.B, accidental: .flat)
+    static let Bb = Note(.B, accidental: .flat)
     /// B
-    static var B = Note(.B)
+    static let B = Note(.B)
     /// B♯
-    static var Bs = Note(.B, accidental: .sharp)
+    static let Bs = Note(.B, accidental: .sharp)
 }
