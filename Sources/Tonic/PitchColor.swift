@@ -7,7 +7,7 @@ import CoreGraphics
 /// Pitch represented as color.
 ///
 /// Source: http://theappendix.net/posts/2013/08/music-and-color-the-french-connection
-public struct PitchColor {
+public struct PitchColor: Sendable {
 
     /// Pitch represented as color by Sir Isaac Newton 1704 and filled in by D.D. James 1844
     public static var newtonian: [CGColor] {

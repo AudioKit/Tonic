@@ -5,7 +5,7 @@ import Foundation
 public typealias NoteClassSet = BitSetAdapter<NoteClass, BitSet64>
 
 /// A note letter and accidental which spell a note. This leaves out the octave of the note.
-public struct NoteClass: Equatable, Hashable, Codable {
+public struct NoteClass: Sendable, Equatable, Hashable, Codable {
     /// Letter of the note class
     public var letter: Letter
 

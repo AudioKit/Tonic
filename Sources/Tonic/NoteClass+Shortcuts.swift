@@ -4,51 +4,51 @@ import Foundation
 
 public extension NoteClass {
     /// C♭
-    static var Cb = NoteClass(.C, accidental: .flat)
+    static let Cb = NoteClass(.C, accidental: .flat)
     /// C
-    static var C = NoteClass(.C)
+    static let C = NoteClass(.C)
     /// C♯
-    static var Cs = NoteClass(.C, accidental: .sharp)
+    static let Cs = NoteClass(.C, accidental: .sharp)
 
     /// D♭
-    static var Db = NoteClass(.D, accidental: .flat)
+    static let Db = NoteClass(.D, accidental: .flat)
     /// D
-    static var D = NoteClass(.D)
+    static let D = NoteClass(.D)
     /// D♯
-    static var Ds = NoteClass(.D, accidental: .sharp)
+    static let Ds = NoteClass(.D, accidental: .sharp)
 
     /// E♭
-    static var Eb = NoteClass(.E, accidental: .flat)
+    static let Eb = NoteClass(.E, accidental: .flat)
     /// E
-    static var E = NoteClass(.E)
+    static let E = NoteClass(.E)
     /// E♯
-    static var Es = NoteClass(.E, accidental: .sharp)
+    static let Es = NoteClass(.E, accidental: .sharp)
 
     /// F♭
-    static var Fb = NoteClass(.F, accidental: .flat)
+    static let Fb = NoteClass(.F, accidental: .flat)
     /// F
-    static var F = NoteClass(.F)
+    static let F = NoteClass(.F)
     /// F♯
-    static var Fs = NoteClass(.F, accidental: .sharp)
+    static let Fs = NoteClass(.F, accidental: .sharp)
 
     /// G♭
-    static var Gb = NoteClass(.G, accidental: .flat)
+    static let Gb = NoteClass(.G, accidental: .flat)
     /// G
-    static var G = NoteClass(.G)
+    static let G = NoteClass(.G)
     /// G♯
-    static var Gs = NoteClass(.G, accidental: .sharp)
+    static let Gs = NoteClass(.G, accidental: .sharp)
 
     /// A♭
-    static var Ab = NoteClass(.A, accidental: .flat)
+    static let Ab = NoteClass(.A, accidental: .flat)
     /// A
-    static var A = NoteClass(.A)
+    static let A = NoteClass(.A)
     /// A♯
-    static var As = NoteClass(.A, accidental: .sharp)
+    static let As = NoteClass(.A, accidental: .sharp)
 
     /// B♭
-    static var Bb = NoteClass(.B, accidental: .flat)
+    static let Bb = NoteClass(.B, accidental: .flat)
     /// B
-    static var B = NoteClass(.B)
+    static let B = NoteClass(.B)
     /// B♯
-    static var Bs = NoteClass(.B, accidental: .sharp)
+    static let Bs = NoteClass(.B, accidental: .sharp)
 }

@@ -7,7 +7,7 @@ import Foundation
 /// An interval distance is measured in degree (number of letters away) and
 /// quality of the interval (essentially number of semitones away).
 /// Some Intervals refer to the same difference in pitch.
-public enum Interval: Int, CaseIterable, Codable {
+public enum Interval: Int, Sendable, CaseIterable, Codable {
     /// Perfect Unison
     case P1
 
