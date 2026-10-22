@@ -4,8 +4,12 @@ import Foundation
 
 /// Chord type as defined by a set of intervals from a root note class
 /// We use abreviated descriptions with extensions seperated by underscores
-/// We don't like usiing underscores for enum cases any more than you do, however is a nice visual speration of extensions
+/// We don't like using underscores for enum cases any more than you do, however is a nice visual speration of extensions
 public enum ChordType: String, Sendable, CaseIterable, Codable {
+
+    //MARK: - Dyads
+    /// Five: Perfect Fifth, e.g. `C5`
+    case five
 
 	//MARK: - Triads
     /// Major Triad: Major Third, Perfect Fifth, e.g. `C`
@@ -99,6 +103,9 @@ public enum ChordType: String, Sendable, CaseIterable, Codable {
     /// Major Add Four: Major Third, Perfect Fifth, Perfect Eleventh, e.g. `C(add4)`
     case maj_add4
 
+    /// Major Add Sharp Four: Major Third, Perfect Fifth, Sharp Eleventh, e.g. `C(add♯4)`
+    case maj_addSharp4
+
     /// Minor Add Nine: Minor Third, Perfect Fifth, Major Ninth, e.g. `Cm(add9)`
     case min_add9
     
@@ -134,7 +141,10 @@ public enum ChordType: String, Sendable, CaseIterable, Codable {
 
     /// Six Over Nine: Major Third, Perfect Fifth, Major Sixth, Major Ninth, e.g. `C6/9`
     case maj_6_9
-    
+
+    /// Minor Six Over Nine: Minor Third, Perfect Fifth, Major Sixth, Major Ninth, e.g. `Cm6/9`
+    case min_6_9
+
     /// Augmented Major Ninth: Major Third, Augmented Fifth, Major Seventh, Major Nine, e.g. `Cmaj9(♯5)`
     case maj9_sharp5
 	
@@ -219,7 +229,10 @@ public enum ChordType: String, Sendable, CaseIterable, Codable {
 	
 	/// Major Seventh  Add Sharp Eleventh: Major Third, Perfect Fifth, Major Seventh, Augmented Eleventh, e.g. `Cmaj7(add♯11)`
 	case maj7_addSharp11
-	
+
+    /// Major Seventh Sharp Five Add Sharp Eleventh: Major Third, Augmented Fifth, Major Seventh, Augmented Eleventh, e.g. `Cmaj7(♯5)(add♯11)`
+    case maj7_sharp5_addSharp11
+
 	/// Dominant Seventh Add Eleventh: Major Third, Perfect Fifth, Minor Seventh, Perfect Eleventh, e.g. `C7(add11)`
 	case dom7_add11
 	
@@ -554,7 +567,9 @@ public enum ChordType: String, Sendable, CaseIterable, Codable {
 
     public var intervals: [Interval] {
         switch self {
-            case .major:                       
+            case .five:
+                return [.P5]
+            case .major:
                 return [.M3, .P5]
             case .minor:                       
                 return [.m3, .P5]
@@ -634,6 +649,8 @@ public enum ChordType: String, Sendable, CaseIterable, Codable {
                 return [.M3, .P5, .M9]
             case .maj_add4:
                 return [.M3, .P5, .P11]
+            case .maj_addSharp4:
+                return [.M3, .P5, .A11]
             case .min_add9:
                 return [.m3, .P5, .M9]
             case .dim_add9:
@@ -658,6 +675,8 @@ public enum ChordType: String, Sendable, CaseIterable, Codable {
                 return [.M3, .A5, .A9]
             case .maj_6_9:
                 return [.M3, .P5, .M6, .M9]
+            case .min_6_9:
+                return [.m3, .P5, .M6, .M9]
             case .maj9_sharp5:
                 return [.M3, .A5, .M7, .M9]
             case .maj9_flat5:
@@ -712,6 +731,8 @@ public enum ChordType: String, Sendable, CaseIterable, Codable {
                 return [.M3, .P5, .M7, .P11]
             case .maj7_addSharp11:
                 return [.M3, .P5, .M7, .A11]
+            case .maj7_sharp5_addSharp11:
+                return [.M3, .A5, .M7, .A11]
             case .dom7_add11:
                 return [.M3, .P5, .m7, .P11]
             case .dom7_addSharp11:
@@ -918,6 +939,7 @@ extension ChordType: CustomStringConvertible {
     /// Adornment to the Root NoteClass (letter+accidental) that defines the chord type
     public var description: String {
         switch self {
+            case .five:                        return "5"
             case .major:                       return ""
             case .minor:                       return "m"
             case .dim:                         return "°"
@@ -952,8 +974,10 @@ extension ChordType: CustomStringConvertible {
             case .min_maj9:                    return "mMaj9"
             case .maj_add9:                    return "(add9)"
             case .maj_add4:                    return "(add4)"
+            case .maj_addSharp4:               return "(add♯4)"
             case .min_add9:                    return "m(add9)"
             case .maj_6_9:                     return "6/9"
+            case .min_6_9:                     return "m(add6)(add9)"
             case .maj9_flat5:                  return "maj9(♭5)"
             case .maj11:                       return "maj11"
             case .dom11:                       return "11"
@@ -997,6 +1021,7 @@ extension ChordType: CustomStringConvertible {
             case .min7_flat9_sharp11:          return "m7(♭9)(♯11)"
             case .maj7_add11:                  return "maj7(add11)"
             case .maj7_addSharp11:             return "maj7(add♯11)"
+            case .maj7_sharp5_addSharp11:      return "maj7(♯5)(add♯11)"
             case .dom7_add11:                  return "7(add11)"
             case .dom7_addSharp11:             return "7(add♯11)"
             case .min7_add11:                  return "m7(add11)"
@@ -1104,6 +1129,7 @@ extension ChordType: CustomStringConvertible {
     /// NotationExpress: https://www.notationcentral.com/product/norfolk-fonts-for-sibelius/
     public var chordFontDescription: String {
         switch self {
+            case .five:                        return "5"
             case .major:                       return ""
             case .minor:                       return "m"
             case .dim:                         return "º"
@@ -1138,8 +1164,10 @@ extension ChordType: CustomStringConvertible {
             case .min_maj9:                    return "m^9"
             case .maj_add9:                    return "@9"
             case .maj_add4:                    return "@4"
+            case .maj_addSharp4:               return "#4"
             case .min_add9:                    return "m@9"
             case .maj_6_9:                     return "%"
+            case .min_6_9:                     return "m@6@9"
             case .maj9_flat5:                  return "^9b5"
             case .maj11:                       return "^11"
             case .dom11:                       return "11"
@@ -1183,6 +1211,7 @@ extension ChordType: CustomStringConvertible {
             case .min7_flat9_sharp11:          return "m7b9#11"
             case .maj7_add11:                  return "^7@11"
             case .maj7_addSharp11:             return "^7@#11"
+            case .maj7_sharp5_addSharp11:      return "^7#5@#11"
             case .dom7_add11:                  return "7@11"
             case .dom7_addSharp11:             return "7@#11"
             case .min7_add11:                  return "m7@11"

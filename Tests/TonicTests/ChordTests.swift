@@ -168,6 +168,15 @@ class ChordTests: XCTestCase {
         XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj9"])
     }
 
+    func testMinorMajor7thFlat9th() {
+        let notes: [Int8] = [60, 63, 67, 71, 73]
+        let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
+        let chord = Chord.getRankedChords(from: pitchSet)
+        let chord2 = Chord(.C, type: .min_maj_flat9)
+        XCTAssertEqual(chord2.slashDescription, "CmMaj(♭9)")
+        XCTAssertEqual(chord.map { $0.slashDescription }, ["CmMaj(♭9)"])
+    }
+
     func testMajor7thFlatFive() {
         let notes: [Int8] = [60, 64, 66, 71]
         let pitchSet =  PitchSet(pitches: notes.map { Pitch($0) } )
@@ -242,6 +251,9 @@ class ChordTests: XCTestCase {
 
         let C69 = Chord(notes: [.C, .E, .G, .A, .D])
         XCTAssertEqual(C69?.description, "C6/9")
+
+        let Cm69 = Chord(notes: [.C, .Eb, .G, .A, .D])
+        XCTAssertEqual(Cm69?.description, "Cm(add6)(add9)")
     }
 
     func testEleventhNaming() {
@@ -506,8 +518,17 @@ class ChordTests: XCTestCase {
 		print(chords.map {$0.slashDescription})
 	}
     
+    // MARK: - Dyads
+
+    func testPowerChords() {
+        XCTAssertEqual(Chord(notes: [.C, .G])?.description, "C5")
+        assertRankedChord([60, 67], expectedDescriptions: ["C5"])
+        assertRankedChord([67, 74], expectedDescriptions: ["G5"])
+        assertRankedChord([55, 60], expectedDescriptions: ["C5/G"])
+    }
+
     // MARK: - Triads
-    
+
     func testMajorTriads() {
         assertRankedChord([60, 64, 67], expectedDescriptions: ["C"])
         assertRankedChord([65, 69, 72], expectedDescriptions: ["F"])
@@ -610,7 +631,17 @@ class ChordTests: XCTestCase {
         assertRankedChord([60, 64, 67, 74], expectedDescriptions: ["C(add9)", "Gsus4(add13)/C"])
         assertRankedChord([65, 69, 72, 79], expectedDescriptions: ["F(add9)", "Csus4(add13)/F"])
     }
-    
+
+    func testAddSharp4Chords() {
+        assertRankedChord([60, 64, 66, 67], expectedDescriptions: ["C(add♯4)"])
+        assertRankedChord([65, 69, 71, 72], expectedDescriptions: ["F(add♯4)"])
+    }
+
+    func testMinorSixNineChords() {
+        assertRankedChord([60, 63, 67, 69, 74], expectedDescriptions: ["Cm(add6)(add9)", "Aø7(add11)/C", "D7sus4(♭9)/C"])
+        assertRankedChord([62, 65, 69, 71, 76], expectedDescriptions: ["Dm(add6)(add9)", "Bø7(add11)/D", "E7sus4(♭9)/D"])
+    }
+
     // MARK: - Altered Chords
     
     func testFlatFiveChords() {
@@ -622,7 +653,12 @@ class ChordTests: XCTestCase {
         assertRankedChord([60, 64, 68], expectedDescriptions: ["C⁺", "A♭⁺/C"])
         assertRankedChord([65, 69, 73], expectedDescriptions: ["F⁺", "D♭⁺/F"])
     }
-    
+
+    func testMajorSeventhSharpFiveAddSharpEleventhChords() {
+        assertRankedChord([60, 64, 68, 71, 78], expectedDescriptions: ["Cmaj7(♯5)(add♯11)"])
+        assertRankedChord([65, 69, 73, 76, 83], expectedDescriptions: ["Fmaj7(♯5)(add♯11)"])
+    }
+
     // MARK: - Inversions
     
     func testFirstInversion() {
